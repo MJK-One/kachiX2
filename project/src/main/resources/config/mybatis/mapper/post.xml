@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post"><!-- 파일 마다 있는 SQL문들을 구분할수 있는 이름 -->
+
+	<select id="selectList" resultType="post" parameterType="String">
+		select m.nickname, m.m_picture, m.introduce, p.* from post p, member m where p.member_idx = m.idx and p.kind = #{kind}
+	</select>
+	
+	<select id="selectMy" resultType="post" parameterType="int">
+		select * from post where member_idx = #{idx}
+	</select>
+	
+	
+	<select id="selectCntP" resultType="int" parameterType="int">
+		select count(*) from post where kind = '사진' and member_idx =#{idx}
+	</select>
+	
+	<select id="selectCntH" resultType="int" parameterType="int">
+		select count(*) from post where kind = '집들이' and member_idx =#{idx}
+	</select>
+
+	<select id="selectOne" resultType="post" parameterType="int">
+		select * from post p, member m where p.member_idx = m.idx and p.idx = #{idx}
+	</select>
+	
+	<update id="readCount" parameterType="int">
+		update post set hit = hit + 1 where idx = #{idx}
+	</update>
+
+	<select id="getContent" parameterType="int" resultType="map">
+		select p.*,m.email,m.nickname from post p,member m where p.idx = m.idx and
+		p.idx = #{idx}
+	</select>
+
+	<insert id="insert" parameterType="post">
+		insert into post(idx, title, content, time, member_idx, picture, kind)
+		values(#{idx}, #{title, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR},sysdate, #{member_idx}, #{picture}, #{kind}	)
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete post where idx = #{idx}
+	</delete>
+
+	<update id="update" parameterType="post">
+		update post set hit=#{hit}, title=#{title},content=#{content} where idx=#{idx}
+	</update>
+
+	<select id="getIdx" resultType="int">
+		select post_seq.nextval from dual
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

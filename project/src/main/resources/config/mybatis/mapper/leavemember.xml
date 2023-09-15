@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="leave_member">
+
+	
+	<select id="selectList" resultType="leave_member">
+		select * from leave_member
+	</select>
+	
+	<select id="selectOne" resultType="leave_member" parameterType="int">
+		select * from leave_member where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="leave_member">
+		insert into leave_member values(leave_member_seq.nextval,#{member_idx},#{reason_idx},#{wish},#{leave_date})
+	</insert>
+	
+	<update id="update" parameterType="leave_member">
+		update leave_member set member_idx=#{member_idx},reason_idx=#{reason_idx},wish=#{wish},leave_date=#{leave_date} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete leave_member where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

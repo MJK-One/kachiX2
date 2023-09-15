@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="leave_reason">
+
+	
+	<select id="selectList" resultType="leave_reason">
+		select * from leave_reason
+	</select>
+	
+	<select id="selectOne" resultType="leave_reason" parameterType="int">
+		select * from leave_reason where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="leave_reason">
+		insert into leave_reason values(leave_reason_seq.nextval,#{reason_content})
+	</insert>
+	
+	<update id="update" parameterType="leave_reason">
+		update leave_reason set reason_content=#{reason_content} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete leave_reason where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

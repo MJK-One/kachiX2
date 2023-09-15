@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fqa">
+
+	
+	<select id="selectList" resultType="fqa">
+		select * from fqa
+	</select>
+	
+	<select id="selectOne" resultType="fqa" parameterType="int">
+		select * from fqa where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="fqa">
+		insert into fqa values(fqa_seq.nextval,#{question},#{answer},#{fqa_category_idx})
+	</insert>
+	
+	<update id="update" parameterType="fqa">
+		update fqa set question=#{question},answer=#{answer},fqa_category_idx=#{fqa_category_idx} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete fqa where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

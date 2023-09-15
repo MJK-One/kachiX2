@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productcategory"><!-- 파일 마다 있는 SQL문들을 구분할수 있는 이름 -->
+
+	<!-- 사용할 SQL문들을 정의하는 파일 -->
+	
+	<select id="selectList" resultType="productcategory" parameterType="int">
+		select * from product_category where product_idx=#{product_idx}
+	</select>
+	
+	<insert id="insert" parameterType="productcategory">
+		insert into product_category values(product_category_seq.nextval,#{product_idx},#{major_idx},#{middle_idx},#{small_idx})
+	</insert>
+	
+	<insert id="insert2" parameterType="productcategory">
+		insert into product_category(idx, product_idx, major_idx, middle_idx) values(product_category_seq.nextval,#{product_idx},#{major_idx},#{middle_idx})
+	</insert>
+
+	<update id="update" parameterType="productcategory">
+		update product_category set product_idx=#{product_idx},major_idx=#{major_idx},middle_idx=#{middle_idx},small_idx=#{small_idx} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete product_category where idx=#{idx}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="brandcategory">
+
+	<select id="selectList" resultType="brandcategory">
+		select * from brand_category
+	</select>
+	
+	<select id="selectOne" resultType="brandcategory" parameterType="int">
+		select * from brand_category where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="brandcategory">
+		insert into brand_category values(brand_category_seq.nextval,#{brand_product_idx},#{categoies_idx})
+	</insert>
+	
+	<update id="update" parameterType="brandcategory">
+		update brand_category set brand_product_idx=#{brand_product_idx},categories_idx=#{categories_idx} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete brand_category where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

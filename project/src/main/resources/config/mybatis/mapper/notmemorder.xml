@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notMemOrder"><!-- 파일 마다 있는 SQL문들을 구분할수 있는 이름 -->
+
+	<!-- 사용할 SQL문들을 정의하는 파일 -->
+
+	<select id="selectList" resultType="notmemorder">
+		select * from notMemOrder
+	</select>
+	
+	<select id="selectOne" resultType="java.util.HashMap" parameterType="int">
+		select * from notMemOrder where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="notmemorder">
+		insert into notMemOrder values (notmem_order_seq.nextval,#{name},#{email},#{phone},#{delivery_name},#{send_name},#{send_pnum},#{address},#{require},#{payment_idx},#{option_idx},#{count},#{order_date},#{order_state})
+	</insert>
+
+	<update id="update" parameterType="notmemorder">
+		update notMemOrder set name=#{name},email=#{email},phone=#{phone},delivery_name=#{delivery_name},send_name=#{send_name},send_pnum=#{send_pnum},address=#{address},require=#{require},payment_idx=#{payment_idx},option_idx=#{option_idx},count=#{count},order_date=#{order_date},order_state=#{order_state} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete notMemOrder where idx=#{idx}
+	</delete>
+
+</mapper>

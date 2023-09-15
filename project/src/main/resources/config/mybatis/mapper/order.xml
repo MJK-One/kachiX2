@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order"><!-- 파일 마다 있는 SQL문들을 구분할수 있는 이름 -->
+
+	<!-- 사용할 SQL문들을 정의하는 파일 -->
+
+	<select id="selectList" resultType="order">
+		select * from order
+	</select>
+	
+	<select id="selectOne" resultType="java.util.HashMap" parameterType="int">
+		select * from order where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="order">
+		insert into order values(order_seq.nextval,#{member_idx},#{order_date},#{order_state},#{delivery_idx},#{payment_idx},#{request})
+	</insert>
+
+	<update id="update" parameterType="order">
+		update order set member_idx=#{member_idx},order_date=#{order_date},order_state=#{order_state},delivery_idx=#{delivery_idx},payment_idx=#{payment_idx},request=#{request} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete order where idx=#{idx}
+	</delete>
+
+</mapper>

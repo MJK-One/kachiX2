@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post_product"><!-- 파일 마다 있는 SQL문들을 구분할수 있는 이름 -->
+
+	<!-- 사용할 SQL문들을 정의하는 파일 -->
+
+	<select id="selectList" resultType="post_product">
+		select * from post_product
+	</select>
+	
+	<select id="selectOne" resultType="post_product" parameterType="int">
+		select * from post_product where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="post_product">
+		insert into post_product values(post_product_seq.nextval,#{post_idx},#{product_idx})
+	</insert>
+	
+	<update id="update" parameterType="post_product">
+		update post_product set post_idx=#{post_idx},product_idx=#{product_idx} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete post_product where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

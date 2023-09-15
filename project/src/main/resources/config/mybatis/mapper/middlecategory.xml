@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="middlecategory"><!-- 파일 마다 있는 SQL문들을 구분할수 있는 이름 -->
+
+	<!-- 사용할 SQL문들을 정의하는 파일 -->
+	
+	<select id="selectName" resultType="middlecategory" parameterType="int">
+		select * from middle_category where major_idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="middlecategory">
+		insert into middle_category values(middle_categroy_seq.nextval, #{major_idx},#{name})
+	</insert>
+
+	<update id="update" parameterType="middlecategory">
+		update middle_categgory set major_idx=#{major_idx}, name=#{name} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete middle_category where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

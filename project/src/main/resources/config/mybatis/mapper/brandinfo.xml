@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="brandinfo">
+
+	
+	<select id="selectList" resultType="brandinfo">
+		select * from brand_info
+	</select>
+	
+	<select id="selectOne" resultType="brandinfo" parameterType="int">
+		select * from brand_info where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="brandinfo">
+		insert into brand_info values(brand_info_seq.nextval,#{member_idx},#{brand_idx},#{name},#{pnum},#{email},#{private_agree})
+	</insert>
+	
+	<update id="update" parameterType="brandinfo">
+		update brand_info set member_idx=#{member_idx},brand_idx=#{brand_idx},name=#{name},pnum=#{pnum},email=#{email},private_agree=#{private_agree} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete brand_info where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

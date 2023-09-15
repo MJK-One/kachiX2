@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qa">
+
+	
+	<select id="selectList" resultType="qa">
+		select * from qa
+	</select>
+	
+	<select id="selectOne" resultType="qa" parameterType="int">
+		select * from qa where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="qa">
+		insert into qa values(qa_seq.nextval,#{member_idx},#{qa_kind_idx},#{content},#{status},#{file},#{time})
+	</insert>
+	
+	<update id="update" parameterType="qa">
+		update qa set member_idx=#{member_idx},qa_kind_idx=#{qa_kind_idx},content=#{content},status=#{status},file=#{file},time=#{time} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete qa where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="link"><!-- 파일 마다 있는 SQL문들을 구분할수 있는 이름 -->
+
+	<!-- 사용할 SQL문들을 정의하는 파일 -->
+
+	<select id="selectList" resultType="link">
+		select * from link
+	</select>
+	
+	<select id="selectOne" resultType="link" parameterType="int">
+		select * from link where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="link">
+		insert into link values(link_seq.nextval,#{link},#{post_idx})
+	</insert>
+	
+	<update id="update" parameterType="link">
+		update link set link=#{link},post_idx=#{post_idx} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete link where idx=#{idx}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

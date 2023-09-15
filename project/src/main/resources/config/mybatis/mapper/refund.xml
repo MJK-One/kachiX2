@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="refund"><!-- 파일 마다 있는 SQL문들을 구분할수 있는 이름 -->
+
+	<!-- 사용할 SQL문들을 정의하는 파일 -->
+
+	<select id="selectList" resultType="refund">
+		select * from refund
+	</select>
+	
+	<select id="selectOne" resultType="java.util.HashMap" parameterType="int">
+		select * from refund where idx=#{idx}
+	</select>
+	
+	<insert id="insert" parameterType="refund">
+		insert into refund values(refund_seq.nextvalm,#{refund_cost},#{exchange_cost},#{place},#{cancel_idx},#{status})
+	</insert>
+
+	<update id="update" parameterType="refund">
+		update refund set refund_cost=#{refund_cost},exchange_cost=#{exchange_cost},place=#{place},cancel_idx=#{cancel_idx},status=#{status} where idx=#{idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete refund where idx=#{idx}
+	</delete>
+
+</mapper>
