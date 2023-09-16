@@ -1,0 +1,50 @@
+body {
+	background-color : #c9c7c7;
+}
+ul {
+	list-style-type: none;
+}
+li {
+	list-style-type: none;
+	display: inline-block; 
+}
+.container {
+	background-color : white;
+	width : 1000px;
+	height : 100%;
+	margin : -17px auto;
+}
+
+.top {
+	background-color : white;
+	width : 1000px;
+	height : 109px;
+	border-bottom-style: solid;
+  	border-bottom-width: 3px;
+  	border-bottom-color: #c9c7c7;
+  	position : fixed;
+  	top : -15px;
+}
+
+.sidebar{
+	position : sticky;
+	bottom : 300px;
+	left : 1300px;
+	background-color : white;
+	border-radius : 10px;
+	width : 70px;
+	height : 300px;
+	padding : 15px 0 10px 15px;
+}
+
+.main {
+	width : 100%;
+	height : 1000px;
+	
+}
+
+.top-screen {
+	width : 100%;
+	height : 105px;
+}
+
