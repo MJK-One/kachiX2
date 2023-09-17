@@ -19,7 +19,7 @@
 					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="30" height="30">
 					<input>
 				</div>
-				<img class="login" src="${pageContext.request.contextPath}/resources/img/login.png" width="40" height="40">
+				<a href="${pageContext.request.contextPath}/member/loginform" class="nav-link px-2"><img class="login" src="${pageContext.request.contextPath}/resources/img/login.png" width="40" height="40"></a>
 		</div>
 		<div class="top-2">
 			<ul class="menu">

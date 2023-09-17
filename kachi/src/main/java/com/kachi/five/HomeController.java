@@ -20,4 +20,15 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping("/member/loginform")
+	public String loginform() {
+			return "member/loginForm";
+	}
+	
+	
+	@RequestMapping("/member/naver_callback")
+	public String naver_callback() {
+		return "member/naver_callback";
+	}
+
 }
