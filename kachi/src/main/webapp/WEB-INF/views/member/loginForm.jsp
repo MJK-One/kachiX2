@@ -101,16 +101,23 @@
  <% 
    String clientId = "mp5bUy7BFPU5qVPt5OgE";//애플리케이션 클라이언트 아이디값";
    String redirectURI = URLEncoder.encode("http://localhost:8080/five/member/naver_callback", "UTF-8");
+   
+   // CSRF 방지를 위한 상태 토큰 생성 코드
    SecureRandom random = new SecureRandom();
    String state = new BigInteger(130, random).toString();
+   
+   
    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code"
         + "&client_id=" + clientId
         + "&redirect_uri=" + redirectURI
         + "&state=" + state;
+   
+   // 상태 토큰으로 사용할 랜덤 문자열 생성
+   // 세션 또는 별도의 저장 공간에 상태 토큰을 저장
    session.setAttribute("state", state);
 %>
 
-
+<!-- 로그인 버튼 및 폼  -->
 <div class='center-box'>
     <div>
        <h1><img class="icon" src="${pageContext.request.contextPath}/resources/img/name_logo.jpg" width="200" height="70"></h1> 
@@ -129,7 +136,7 @@
 
 	<a href="${pageContext.request.contextPath}/" class='home-link'>홈으로 돌아가기</a>
 </div>
-
+<!-- 로그인 버튼 및 폼 -->
 
 </body>
 </html>

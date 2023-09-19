@@ -30,5 +30,8 @@ public class HomeController {
 	public String naver_callback() {
 		return "member/naver_callback";
 	}
-
+	@RequestMapping("/member/profile")
+	public String profile() {
+		return "member/profile";
+	}
 }
