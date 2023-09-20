@@ -24,4 +24,9 @@ public class LoginController {
 	public String profile() {
 		return "member/profile";
 	}
+	
+	@RequestMapping("/member/logout")
+	public String logout() {
+		return "member/logout";
+	}
 }

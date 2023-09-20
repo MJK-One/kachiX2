@@ -59,7 +59,7 @@
     }
     
   %> 
-  <h1>토큰값 : <%=token %></h1>
+   <a href="${pageContext.request.contextPath}/member/logout">로그아웃</a>
 
  </body>
 </html> 
