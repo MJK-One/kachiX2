@@ -135,6 +135,7 @@
 	</a>
 
 	<a href="${pageContext.request.contextPath}/" class='home-link'>홈으로 돌아가기</a>
+	<a href="${pageContext.request.contextPath}/member/test" class='home-link'>테스트</a>
 </div>
 <!-- 로그인 버튼 및 폼 -->
 
