@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
     
 <%@ include file="/WEB-INF/views/layout/header.jsp" %>
-<%@ include file="/WEB-INF/views/main.jsp" %>
+<%@ include file="/WEB-INF/views/mainpage/main.jsp" %>
 <%@ include file="/WEB-INF/views/layout/side.jsp" %>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @ComponentScan(basePackages = "controller.member")
 @ComponentScan(basePackages = "com.kachi.five.controller")
+@ComponentScan(basePackages = "controller.post")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);

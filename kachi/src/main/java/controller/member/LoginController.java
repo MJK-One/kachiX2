@@ -2,25 +2,31 @@ package controller.member;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kachi.five.DAO.UserDAO;
+import com.kachi.five.bean.UserBean;
 
 
 @Controller
 
 public class LoginController {
 	
-	
+	@Autowired UserDAO userdao;
 	
 	@RequestMapping("/member/loginform")
 	public String loginform() {
@@ -97,9 +103,52 @@ public class LoginController {
 	                    res.append(inputLineUserProfileRequest);
 	                }
 
-	                // 예제에서는 사용자 프로필 정보를 모델에 저장하여 뷰로 전달합니다.
-	                model.addAttribute("userProfile", res.toString());
+	                JSONObject jsonRes = new JSONObject(res.toString());
+	                
+	                // 네이버 API 응답에서 필요한 값 추출하여 User 객체 생성 
+	      		    JSONObject responseJson = jsonRes.getJSONObject("response");
+	      		    
+	                UserBean user = new UserBean();
+	               
+	                	
+	                if (responseJson.has("id")) {
+	                    user.setUserID(responseJson.getString("id"));
+	                }
 
+	                try{
+	                    if (responseJson.has("name")) {
+	                        user.setName(URLDecoder.decode(responseJson.getString("name"), "UTF-8"));
+	                    }
+	                    
+	                    if (responseJson.has("nickname")) {
+	                        user.setNickname(URLDecoder.decode(responseJson.getString("nickname"), "UTF-8"));
+	                    }
+	                } catch(UnsupportedEncodingException e){
+	                    e.printStackTrace();
+	                }
+
+	                if (responseJson.has("email")) {
+	                    user.setEmail(responseJson.getString("email"));
+	                }
+
+	                if (responseJson.has("gender")) {
+	                    user.setGender(responseJson.getString("gender"));
+	                }
+
+	                if (responseJson.has("birthyear")) {
+	                  	user.setBirthYear(responseJson.getString("birthyear"));
+	                }
+	                  
+	                if (responseJson.has("mobile")) {
+	                  	user.setPhoneNumber(responseJson.getString("mobile"));
+	                }
+	    	  	  
+		    	  	  
+		    	  	  // DAO 를 통해 DB에 저장 
+		    		  userdao.insertUser(user);
+
+		    		  model.addAttribute("userProfile", res.toString());
+		    		  
 	                br.close();
 	            } else { // 에러 발생
 	                BufferedReader br = new BufferedReader(new InputStreamReader(conUserProfileRequest.getErrorStream()));
@@ -109,7 +158,7 @@ public class LoginController {
 	            // 예외 처리 코드 추가
 	        }
 
-	        return "member/naver_callback"; 
+	        return "redirect:/"; 
 	    }
 	
 	
