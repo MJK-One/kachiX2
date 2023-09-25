@@ -17,8 +17,8 @@ import com.kachi.five.bean.UserBean;
 public class NaverLoginServiceImpl implements NaverLoginService {
 	@Autowired UserDAO userdao;
 	
-	 private static final String CLIENT_ID = "mp5bUy7BFPU5qVPt5OgE"; // ¾ÖÇÃ¸®ÄÉÀÌ¼Ç Å¬¶óÀÌ¾ğÆ® ¾ÆÀÌµğ°ª
-	 private static final String CLIENT_SECRET = "rrpmQIm5cT"; // ¾ÖÇÃ¸®ÄÉÀÌ¼Ç Å¬¶óÀÌ¾ğÆ® ½ÃÅ©¸´°ª
+	 private static final String CLIENT_ID = "mp5bUy7BFPU5qVPt5OgE"; // ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½ï¿½ï¿½Ìµï¿½
+	 private static final String CLIENT_SECRET = "rrpmQIm5cT"; // ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½
 
 	 
 	@Override	
@@ -26,7 +26,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 		
 		 String redirectURI = URLEncoder.encode("http://localhost:8080/five/member/naver_callback", "UTF-8");
 
-	        // Step 1: ¾×¼¼½º ÅäÅ« ¿äÃ» ¹× Ã³¸®
+	        // Step 1: ï¿½×¼ï¿½ï¿½ï¿½ ï¿½ï¿½Å« ï¿½ï¿½Ã» ï¿½ï¿½ Ã³ï¿½ï¿½
 	        String apiURLTokenRequest = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code"
 	                + "&client_id=" + CLIENT_ID
 	                + "&client_secret=" + CLIENT_SECRET
@@ -41,7 +41,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	        int responseCodeAccessTokenRequest = conTokenRequest.getResponseCode();
 	        String accessTokenForProfileAPIUsage = "";
 
-	        if (responseCodeAccessTokenRequest == 200) { // Á¤»ó È£Ãâ
+	        if (responseCodeAccessTokenRequest == 200) { // ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½
 	            BufferedReader br = new BufferedReader(new InputStreamReader(conTokenRequest.getInputStream()));
 	            StringBuilder resAccessTokenRequest = new StringBuilder();
 	            String inputLineAccessTokenRequest;
@@ -56,15 +56,15 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	            br.close();
 	            
 	          } else { 
-	              throw new Exception("¿¡·¯ : ÅäÅ«¿¡ Á¢±Ù ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+	              throw new Exception("ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Å«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 	          }
 
 	      return accessTokenForProfileAPIUsage; 
 	}
 
-	@Override
+	@Override 
 	public UserBean getUserProfile(String accessToken) throws Exception {
-		 // Step 2: »ç¿ëÀÚ ÇÁ·ÎÇÊ ¿äÃ» ¹× Ã³¸®
+		 // Step 2: ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ Ã³ï¿½ï¿½
         
 	       UserBean userBean = new UserBean();
 
@@ -75,7 +75,8 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	           conn.setRequestProperty("Authorization", "Bearer "+accessToken);
 	           
 	           int responseCode=conn.getResponseCode();
-
+	           
+				
 	           if(responseCode==200){
 	               BufferedReader reader=new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	               StringBuffer buffer=new StringBuffer();
@@ -87,16 +88,23 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	               
 	               JSONObject json=new JSONObject(buffer.toString());
 	               JSONObject response=json.getJSONObject("response");
-
-	               if(response.has("id")) userBean.setUserID(response.getString("id"));
+	               userBean.setAccessToken(accessToken);
+	               
+	               if(response.has("id")) { userBean.setUserID(response.getString("id"));
+	               String userID = response.getString("id");
+	               // DBì—ì„œ writePermission ê°’ ì¡°íšŒ ë° UserBeanì— ì €ì¥
+	               int writePermission = userdao.getWritePermission(userID);
+	               userBean.setWritePermission(writePermission);
+	               }
 	               if(response.has("name")) userBean.setName(URLDecoder.decode(response.getString("name"), "UTF-8"));
 	               if(response.has("nickname")) userBean.setNickname(URLDecoder.decode(response.getString("nickname"), "UTF-8"));
 	               if(response.has("email")) userBean.setEmail(response.getString("email"));
 	               if (response.has("gender")) userBean.setGender(response.getString("gender")); 
 	               if (response.has("birthyear")) userBean.setBirthYear(response.getString("birthyear"));
 	               if (response.has("mobile")) userBean.setPhoneNumber(response.getString("mobile"));
+	              
 	           } else { 
-	              throw new Exception ("¿¡·¯ : À¯ÀúÀÇ Á¤º¸¸¦ °¡Á®¿ÀÁö ¸øÇß½À´Ï´Ù.");
+	              throw new Exception ("ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
 	           }
 	       } catch(Exception e){
 	           e.printStackTrace();
@@ -108,7 +116,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	    public void insertUser(UserBean user) throws Exception {
 	        try {
 	        	if(userdao.getUser(user.getUserID()) == null) { userdao.insertUser(user); }
-	        	else { System.out.println("»ç¿ëÀÚÀÇ °ªÀÌ ÀÌ¹Ì ÀÖ½À´Ï´Ù."); }
+	        	else { System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½."); }
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            System.out.println("Error inserting user: " + e.getMessage());

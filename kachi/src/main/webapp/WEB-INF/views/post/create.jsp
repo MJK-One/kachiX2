@@ -52,7 +52,10 @@
         <textarea name="content" id="editor1" rows="10" cols="80"></textarea>
         <script>
             // Replace the <textarea id="editor1"> with a CKEditor instance.
-            CKEDITOR.replace( 'editor1', { filebrowserUploadUrl : "/path/to/your/script"} );
+              CKEDITOR.replace( 'editor1', {
+			        filebrowserUploadUrl: "/path/to/your/script", // 여기서 "/path/to/your/script" 부분은 실제 파일 업로드를 처리하는 서버 측 스크립트의 URL이어야 합니다.
+			        filebrowserUploadMethod: 'form'
+			    });
         </script>
     </div>
 

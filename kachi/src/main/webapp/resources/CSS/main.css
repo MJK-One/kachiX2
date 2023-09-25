@@ -1,50 +1,121 @@
+/*광고창*/
 .outer {
-  margin-left : 2px;
   background-color : #e8e8e8;
   width: 100%;
-  height: 400px;
+  height: 500px;
   margin-top: -18px;
 }
+.slider {
+  width:96%;
+  height:100%;
+  position:relative;
+  left : 0;
+}
+.slider .slide {
+  position:absolute;
+  top:0;
+  left: 0;
+  width:100%;
+  height:100%;
+  display:none;
+}
+.slideNum {
+	background-color : gray;
+	width : 60px;
+	height : 25px;
+	border-radius : 20px;
+	position:relative;
+	left : 920px;
+	bottom : 50px;
+}
+#currentSlide{
+	float : left;
+	margin-left : 10px;
+	margin-right : 2px;
+	color : white;
+}
+#totalSlides{
+	float : left;
+	margin-right : 5px;
+}
+#prevSlide {
+	position:relative;
+	bottom : 320px;
+	left : 12px;
+	width : 30px;
+	height : 30px;
+	border-radius : 30px;
+}
+#nextSlide {
+	position:relative;
+	bottom : 320px;
+	left : 925px;
+	width : 30px;
+	height : 30px;
+	border-radius : 30px;
+}
 /*카테고리*/
-.category{
-	width: 80%;
-	margin : 5px auto;
-	flex-wrap: wrap;
+#category{
+	position:relative;
+	bottom : 38px;
+	width: 100%;
+	height : 88px;
+	padding: 0 3px;
+	box-sizing: border-box;
+	background-color : white;
+}
+#category.fixed {
+    position: fixed;
+    top: 110px;
+    width: 1000px; /* 상단 고정바가 전체 너비를 차지하도록 설정 */
+    z-index: 9999; /* 다른 요소 위에 오도록 설정 */
 }
 .product{
-	border: 2px solid #717171;
-	float: left;
-	height: 50%;
-	width: 20%;
-	padding: 20px;
-	text-align: center;
-    box-sizing: border-box;
+	width: 100px !important;
 }
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+.product a{
+	display: block; 
+	text-align: center; 
 }
-.active, .dot:hover {
-  background-color: #717171;
+.product .text { 
+	margin: 0 5px; 
+	padding: 16px 5px 8px 5px; 
+	box-sizing: border-box; 
+	position: relative; 
+	display: inline-block; 
+	height: 47px; 
+	white-space: nowrap; 
+	font-size: 1rem; 
+	line-height: 1em; 
+	color: #333; 
+}
+.on .text { 
+	color: #1b64bc; 
+	font-weight: bold; 
+}
+.on .text:after { 
+	content: '';
+	display: block; 
+	position: absolute; 
+	bottom: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 2px; 
+	background: #1b64bc; 
 }
 /*카테고리 메인*/
 .cate-main{
+	display: flex;
 	flex-wrap: wrap;
 	width : 100%;
+	position:relative;
+	bottom : 30px;
 }
 
 .cate-product{
 	background-color : white;
 	border: 1px solid #e1e1e1;
-	float: left;
-    height: 300px;
-    width: 50%;
-    padding: 22px;
+    height: 400px;
+    width: 333px;
     box-sizing: border-box;
-}
+} 

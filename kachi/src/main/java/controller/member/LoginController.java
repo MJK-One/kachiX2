@@ -12,6 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,15 @@ public class LoginController {
 		
 		if (user != null) naverLoginService.insertUser(user);
 		
+			// 로그인한 사용자의 정보를 세션에 저장
+	       HttpSession session = request.getSession();
+	       
+	       // DB에서 writePermission 값 조회 및 세션에 저장
+	       
+	       session.setAttribute("writePermission", user.getWritePermission() == 1);
+	       
+	       session.setAttribute("loggedInUser", user);
+	       
 		} catch (Exception e) { 
 			e.printStackTrace();
 			System.out.println("Error inserting user: " + e.getMessage());}
@@ -71,8 +81,11 @@ public class LoginController {
 
 	
 	@RequestMapping("/member/logout")
-	public String logout() {
-		return "member/logout";
+	public String logout(HttpServletRequest request) {
+		   HttpSession session = request.getSession();
+		   session.invalidate();  // 현재 세션을 무효화하여 모든 데이터 삭제
+		   
+		   return "redirect:/";
 	}
 	@RequestMapping("/member/test")
 	public String test(Model model) throws Exception {

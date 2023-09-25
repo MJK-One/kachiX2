@@ -8,4 +8,5 @@ public interface UserDAO {
 	void insertUser(UserBean user);
     UserBean getUser(String userID) throws Exception;
 	public List<UserBean> test() throws Exception;
+	public int getWritePermission(String userID) throws Exception;
 }

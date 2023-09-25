@@ -13,8 +13,5 @@
 	<div class="main">
 			<jsp:include page="<%=select%>" flush="false" />
 	</div>
-</div>
-</body>
-</html>
 
 

@@ -24,9 +24,21 @@
 					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="30" height="30">
 					<input>
 				</div>
-				<a href="${pageContext.request.contextPath}/member/loginform" class="nav-link px-2"><img class="login" src="${pageContext.request.contextPath}/resources/img/login.png" width="40" height="40"></a>
+				 <!-- 로그인 상태에 따른 동적 표시 -->
+			    <c:choose>
+			        
+			        <c:when test="${not empty sessionScope.loggedInUser}">
+			            <a href="${pageContext.request.contextPath}/member/logout"><img class="" src="${pageContext.request.contextPath}/resources/img/logout.png"></a> 
+			        </c:when>
+			
+			        
+			        <c:otherwise> 
+			            <a href="${pageContext.request.contextPath}/member/loginform"><img class="" src="${pageContext.request.contextPath}/resources/img/login.png"></a> 
+			        </c:otherwise> 
+			    </c:choose>
+				
 		</div>
-		
+		<!--상단 메뉴바-->
 		<div class="top-2">
 		<%
         	String pageChange;
@@ -37,6 +49,13 @@
 				<li><a href="?pageChange=/WEB-INF/views/mainpage/timesale.jsp"><span>타임세일</span></a></li>
 				<li><a href="?pageChange=/WEB-INF/views/mainpage/newarticle.jsp"><span>신상품</span></a></li>
 				<li><a href="${pageContext.request.contextPath}/postform"><span>포스트시험</span></a></li>
+				<c:choose>
+			    <c:when test="${sessionScope.writePermission}">
+			        <a href="${pageContext.request.contextPath}/post/create">글쓰기</a>
+			    </c:when>
+			    <c:otherwise>
+			    </c:otherwise>
+			</c:choose>
 			</ul>
 		</div>
 		<!-- 위로 가기 -->

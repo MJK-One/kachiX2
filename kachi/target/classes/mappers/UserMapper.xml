@@ -18,14 +18,16 @@
 <!-- parameterType : mybatis-config 에서 취해준 Alias -->
 
 	<insert id="insertUser"  parameterType="User">
-      INSERT INTO user (userID, name, nickname, email, gender, birthYear, phoneNumber)
-      VALUES (#{userID}, #{name}, #{nickname}, #{email}, #{gender}, #{birthYear}, #{phoneNumber})
+	      INSERT INTO user (userID, name, nickname, email, gender, birthYear, phoneNumber)
+	      VALUES (#{userID}, #{name}, #{nickname}, #{email}, #{gender}, #{birthYear}, #{phoneNumber})
     </insert>
-	<select id="getUser" parameterType="string" resultType="User">
-	  SELECT * FROM user WHERE userID = #{userID}
+	<select id="getUserID" parameterType="string" resultType="User">
+	 	 SELECT * FROM user WHERE userID = #{userID}
 	</select>
     <select id="test" resultType="Test">
     	Select * from user
     </select>
-
+	<select id="getWritePermission" parameterType="string" resultType="int">
+	 	 SELECT writePermission FROM user WHERE userID = #{userID}
+	</select>
 </mapper>

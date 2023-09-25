@@ -8,12 +8,19 @@ public class UserBean {
     private String gender;
     private String birthYear;
     private String phoneNumber;
-    
+    private String accessToken;
+    private int writePermission;
 	public String getUserID() {
 		return userID;
 	}
 	public void setUserID(String userID) {
 		this.userID = userID;
+	}
+	public String getAccessToken() {
+		return accessToken;
+	}
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 	public String getName() {
 		return name;
@@ -50,5 +57,11 @@ public class UserBean {
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	public int getWritePermission() {
+		return writePermission;
+	}
+	public void setWritePermission(int writePermission) {
+		this.writePermission = writePermission;
 	}
 }
