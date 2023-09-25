@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,11 +22,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kachi.five.DAO.UserDAO;
 import com.kachi.five.bean.UserBean;
+import com.kachi.five.service.TestService;
 
 
 @Controller
 
 public class LoginController {
+	@Inject
+	
+	TestService service;
 	
 	@Autowired UserDAO userdao;
 	
@@ -143,11 +149,13 @@ public class LoginController {
 	                  	user.setPhoneNumber(responseJson.getString("mobile"));
 	                }
 	    	  	  
+	                try {
+	                    userdao.insertUser(user);
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                    System.out.println("Error inserting user: " + e.getMessage());
+	                }
 		    	  	  
-		    	  	  // DAO 를 통해 DB에 저장 
-		    		  userdao.insertUser(user);
-
-		    		  model.addAttribute("userProfile", res.toString());
 		    		  
 	                br.close();
 	            } else { // 에러 발생
@@ -167,5 +175,14 @@ public class LoginController {
 	@RequestMapping("/member/logout")
 	public String logout() {
 		return "member/logout";
+	}
+	@RequestMapping("/member/test")
+	public String test(Model model) throws Exception {
+		List<UserBean> list;		
+
+		list = service.test();	
+
+		model.addAttribute("list",list);
+		return "member/test";
 	}
 }

@@ -1,7 +1,11 @@
 package com.kachi.five.DAO;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.kachi.five.bean.UserBean;
@@ -13,8 +17,18 @@ public class UserDAOimpl implements UserDAO {
 	
 	@Override
 	public void insertUser(UserBean user) {
-		// TODO Auto-generated method stub
-		   sqlSession.insert("com.kachi.five.UserMapper.insertUser", user);
-	}
+        try {
+            sqlSession.insert("com.kachi.five.UserMapper.insertUser", user);
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+            System.out.println("Error Message: " + e.getMessage());
+        }
+    }
+       
+    public List<UserBean> test() throws Exception{
+        return sqlSession.selectList("com.kachi.five.UserMapper.test");
+        
+    }
+
 
 }
