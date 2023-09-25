@@ -107,7 +107,8 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	 @Override
 	    public void insertUser(UserBean user) throws Exception {
 	        try {
-	            userdao.insertUser(user);
+	        	if(userdao.getUser(user.getUserID()) == null) { userdao.insertUser(user); }
+	        	else { System.out.println("사용자의 값이 이미 있습니다."); }
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            System.out.println("Error inserting user: " + e.getMessage());
