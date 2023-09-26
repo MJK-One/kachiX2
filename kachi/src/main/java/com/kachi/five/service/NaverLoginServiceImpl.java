@@ -104,7 +104,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	               if (response.has("mobile")) userBean.setPhoneNumber(response.getString("mobile"));
 	              
 	           } else { 
-	              throw new Exception ("데이터를 받아오지 못했습니다..");
+	              throw new Exception ("데이터를 받아오지 못했습니다.");
 	           }
 	       } catch(Exception e){
 	           e.printStackTrace();
@@ -116,7 +116,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	    public void insertUser(UserBean user) throws Exception {
 	        try {
 	        	if(userdao.getUser(user.getUserID()) == null) { userdao.insertUser(user); }
-	        	else { System.out.println("데이터 베이스에 이미 정보가 있습니다."); }
+	        	else { System.out.println(user.getName() + "님이 로그인 되었습니다."); }
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            System.out.println("Error inserting user: " + e.getMessage());

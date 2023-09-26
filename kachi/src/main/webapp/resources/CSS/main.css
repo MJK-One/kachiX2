@@ -2,7 +2,7 @@
 .outer {
   background-color : #e8e8e8;
   width: 100%;
-  height: 500px;
+  height: 490px;
   margin-top: -18px;
 }
 .slider {
@@ -40,26 +40,30 @@
 }
 #prevSlide {
 	position:relative;
-	bottom : 320px;
+	bottom : 310px;
 	left : 12px;
 	width : 30px;
 	height : 30px;
 	border-radius : 30px;
+	font-size : 20px;
+	opacity: 0.2;
 }
 #nextSlide {
 	position:relative;
-	bottom : 320px;
+	bottom : 310px;
 	left : 925px;
 	width : 30px;
 	height : 30px;
 	border-radius : 30px;
+	font-size : 20px;
+	opacity: 0.2;
 }
 /*카테고리*/
 #category{
 	position:relative;
 	bottom : 38px;
 	width: 100%;
-	height : 88px;
+	height : 90px;
 	padding: 0 3px;
 	box-sizing: border-box;
 	background-color : white;
@@ -68,7 +72,6 @@
     position: fixed;
     top: 110px;
     width: 1000px; /* 상단 고정바가 전체 너비를 차지하도록 설정 */
-    z-index: 9999; /* 다른 요소 위에 오도록 설정 */
 }
 .product{
 	width: 100px !important;
@@ -76,20 +79,24 @@
 .product a{
 	display: block; 
 	text-align: center; 
+	width : 100%;
+	height : 100%;
+}
+.product .cate-icon{
+	width : 60px;
+	height : 60px;
+	margin-left : 20px;
+	margin-top : 5px;
 }
 .product .text { 
-	margin: 0 5px; 
-	padding: 16px 5px 8px 5px; 
-	box-sizing: border-box; 
-	position: relative; 
-	display: inline-block; 
-	height: 47px; 
-	white-space: nowrap; 
-	font-size: 1rem; 
-	line-height: 1em; 
-	color: #333; 
+    box-sizing: border-box;
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    line-height: 1em;
+    color: #333;
 }
-.on .text { 
+/* .on .text { 
 	color: #1b64bc; 
 	font-weight: bold; 
 }
@@ -102,7 +109,7 @@
 	width: 100%; 
 	height: 2px; 
 	background: #1b64bc; 
-}
+} */
 /*카테고리 메인*/
 .cate-main{
 	display: flex;
@@ -111,11 +118,58 @@
 	position:relative;
 	bottom : 30px;
 }
-
+/*카테고리 게시글*/
 .cate-product{
 	background-color : white;
 	border: 1px solid #e1e1e1;
-    height: 400px;
+    height: 450px;
     width: 333px;
     box-sizing: border-box;
 } 
+.pro-img{
+	border : 1px solid gray;
+	width : 300px;
+	height : 300px;
+	margin-left : 15px;
+	margin-top : 10px; 
+}
+.pro-name{
+	width : 280px;
+	margin-top : 10px;
+	margin-left : 22px;
+	height : 30px;
+}
+.pro-price{
+	width : 300px;
+	height : 50px;
+	margin-left : 15px;
+}
+.price1{
+	position : relative;
+	left : 10px;
+	bottom : 5px;
+	font-size : 15px;
+}
+.price2{
+	position : relative;
+	top : 20px;
+	right : 35px;
+	font-size : 20px;
+	color : red;
+}
+.price3{
+	position : relative;
+	top : 20px;
+	right : 20px;
+	font-size : 20px;
+}
+.pro-info{
+	width : 100px;
+	height : 100%;
+	position : relative;
+	bottom : 23px;
+	left : 200px;
+}
+.pro-info li{
+	margin-right : 20px;
+}

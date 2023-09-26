@@ -8,6 +8,7 @@
 		width : 1001px;
 		height : 50px;
 		transition: top 0.2s ease-in-out, bottom 0.2s ease-in-out;
+		z-index: 9999;
 	}
 	.nav-down {
     		bottom: -50px;
@@ -29,10 +30,9 @@
 	}	
 </style>
 	<footer class="bot">
-		<div class="bot-my">1</div>
-		<div class="bot-my">2</div>
-		<div class="bot-my">3</div>
-		<div class="bot-my2">4</div>
+		<c:forEach var="i" begin="1" end="4">
+			<div class="bot-my"><img src="${pageContext.request.contextPath}/resources/img/footer/${i}.jpg" width="30px" height="30px"></div>
+		</c:forEach>
 	</footer>
 	<script type="text/javascript">
 		$(function(){			  

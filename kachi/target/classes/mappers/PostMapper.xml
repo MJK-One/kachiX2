@@ -10,7 +10,7 @@
 <mapper namespace="com.kachi.five.PostMapper"><!-- 파일마다 있는 SQL문들을 구분할 수 있는 이름 -->
 
 	<insert id="insertPost" parameterType="Post">
-	INSERT INTO Post (writerId, <!-- categoryId, --> title, content, price, salePeriod, saleStatus, discountRate)
-	VALUES (#{writerId}, <!-- #{categoryId}, --> #{title}, #{content}, #{price}, #{salePeriod}, #{saleStatus}, #{discountRate})
+	INSERT INTO Post (writerId,  categoryId,  title, content, price, salePeriod, saleStatus, discountRate)
+	VALUES (#{writerId},  #{categoryId},  #{title}, #{content}, #{price}, #{salePeriod}, #{saleStatus}, #{discountRate})
 </insert>
 </mapper>

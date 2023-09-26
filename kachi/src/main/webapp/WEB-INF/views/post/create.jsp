@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>공동구매 게시글 작성</title>
     
     <style type="text/css">
@@ -39,7 +41,7 @@
 
 <h2>공동구매 게시글 작성</h2>
 
-<form action="${pageContext.request.contextPath}/post/create_submit" method="post" enctype = "multipart/form-data">
+<form action="${pageContext.request.contextPath}/post/create_submit" method="POST" >
     
      <!-- 제목 입력 -->
      <div class='form-group'>
@@ -57,6 +59,12 @@
 			        filebrowserUploadUrl: "/path/to/your/script", // 여기서 "/path/to/your/script" 부분은 실제 파일 업로드를 처리하는 서버 측 스크립트의 URL이어야 합니다.
 			        filebrowserUploadMethod: 'form'
 			    });
+              
+              $('form').submit(function() {
+                  for (instance in CKEDITOR.instances) {
+                      CKEDITOR.instances[instance].updateElement();
+                  }
+              });
         </script>
     </div>
 
@@ -81,22 +89,22 @@
 
    <!-- 카테고리 선택 -->   
     　<div class = 'form-group'>
-    　<label for = 'category'>카테고리 :</ label > 
-      　<select id="category" name="category">
+    　<label for = 'categoryId'>카테고리 :</ label > 
+      　<select id="categoryId" name="categoryId">
 		   <c:forEach items="${categories}" var="category">
 		      <option value="${category.categoryId}">${category.categoryName}</option>
 		   </c:forEach>
 		</select>
       </div >
-
-   <!-- 이미지 업로드 -->
+<!-- 
+   이미지 업로드
    <div class='form-group'>
        <label for='image'>이미지 업로드:</label><br />
        <input type='file' id ='image' name ='image'><br />
    </div>
 
-    <!-- 제출 버튼 -->
-   	<input type= "submit" value= "Submit">
+    제출 버튼 -->
+   	<input type= "submit" value= "글쓰기">
   
 </form>
 

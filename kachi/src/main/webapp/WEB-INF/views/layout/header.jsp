@@ -21,12 +21,11 @@
 		<div class="top-1">
 				<img class="icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="60" height="60">
 				<div class="search">
-					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="30" height="30">					
+					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="30" height="30">
 					<input>
 				</div>
-				
-				 <!-- 로그인 상태에 따른 동적 표시 -->
-			    <c:choose>
+				<div class="login">
+					  <c:choose>
 			        
 			        <c:when test="${not empty sessionScope.loggedInUser}">
 			            <a href="${pageContext.request.contextPath}/member/logout" class="nav-link px-2"><img  src="${pageContext.request.contextPath}/resources/img/logout.png" width="40" height="40"></a> 
@@ -37,6 +36,7 @@
 			            <a href="${pageContext.request.contextPath}/member/loginform" class="nav-link px-2" ><img  src="${pageContext.request.contextPath}/resources/img/login.png" width="40" height="40"></a> 
 			        </c:otherwise> 
 			    </c:choose>
+				</div>
 		</div>
 		<!--상단 메뉴바-->
 		<div class="top-2">
@@ -50,9 +50,9 @@
 				<li><a href="?pageChange=/WEB-INF/views/mainpage/newarticle.jsp"><span>신상품</span></a></li>
 				<li><a href="${pageContext.request.contextPath}/postform"><span>포스트시험</span></a></li>
 				<c:choose>
-			    <c:when test="${sessionScope.writePermission}">
-			        <a href="${pageContext.request.contextPath}/post/create">글쓰기</a>
-			    </c:when>
+			    <c:when test="${sessionScope.loggedInUser != null and sessionScope.writePermission}">
+		       		 <a href="${pageContext.request.contextPath}/post/create">글쓰기</a>
+		    	</c:when>
 			    <c:otherwise>
 			    </c:otherwise>
 			</c:choose>

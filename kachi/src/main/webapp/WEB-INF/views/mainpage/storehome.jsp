@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/main.css?">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/main.css?after">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -11,20 +11,17 @@
 <!--광고 배너-->
 <div class="outer">
 	<ul class="slider">
-  		<li class="slide slide">1</li>
-  		<li class="slide slide">2</li>
-  		<li class="slide slide">3</li>
-  		<li class="slide slide">4</li>
- 		<li class="slide slide">5</li>
- 		<li class="slide slide">6</li>
+		<c:forEach var="i" begin="1" end="5">
+	  		<li class="slide slide"><img src="${pageContext.request.contextPath}/resources/img/advertisement/${i}.PNG" width="100%" height="100%"></li>
+	 	</c:forEach>
 	</ul>
   <div class="slideNum">
 	  <div id='currentSlide'></div> <!-- Current Slide Number -->
-	  <div id='totalSlides'>/6 </div> <!-- Total Slide Number -->
+	  <div id='totalSlides'>/5 </div> <!-- Total Slide Number -->
 	  <div id='plus'>+</div>
   </div>
-  <button id='prevSlide'>왼</button> <!-- Previous Button -->
-  <button id='nextSlide'>오</button> <!-- Next Button -->
+  <button id='prevSlide'><span> < </span> </button> <!-- Previous Button -->
+  <button id='nextSlide'><span> > </span> </button> <!-- Next Button -->
 </div>
 <script type="text/javascript">
 	var sn = 0; // current slide number
@@ -69,9 +66,14 @@
 %>
 <div class="swiper-container category" id="category">
 	<div class="swiper-wrapper">
-		<c:forEach var="i" begin="1" end="20">
+		<c:forEach var="i" begin="1" end="17">
 			<div class="swiper-slide product">
-				<a href="#"><span class="text">${i}안녕</span></a>
+				<a href="#">
+					<div class="cate-icon">
+						<img src="${pageContext.request.contextPath}/resources/img/category/${i}.jpg" width="60" height="60">
+					</div>
+					<span class="text">${i}</span>
+				</a>
 			</div>
 		</c:forEach>
 	</div>

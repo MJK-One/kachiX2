@@ -2,6 +2,9 @@ package controller.post;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kachi.five.bean.CategoryBean;
 import com.kachi.five.bean.PostBean;
+import com.kachi.five.bean.UserBean;
 import com.kachi.five.service.CategoryService;
 import com.kachi.five.service.PostService;
 
@@ -34,9 +38,21 @@ public class PostController {
 	}
 	
 	@RequestMapping(value = "/post/create_submit", method = RequestMethod.POST)
-	public String createPost_Submit(@ModelAttribute PostBean post) {
-        postService.createPost(post);
-        System.out.println(post.getTitle());
-        return "redirect:/"; 
-    }
+	public String createPost_Submit(@ModelAttribute PostBean post, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+
+	    if (user != null) {
+	        post.setWriterId(user.getUserID());
+	        post.setSaleStatus(true);
+	      
+	        postService.createPost(post);
+	        
+	        return "redirect:/";
+	    } else {
+	        // 사용자가 로그인하지 않은 상태에서 글을 작성하려는 경우 처리
+	        // 이 부분은 실제 애플리케이션의 요구 사항에 따라 적절히 구현해야 합니다.
+	        return "redirect:/login";  // 예시: 로그인 페이지로 리다이렉트
+	    }
+	}
 }

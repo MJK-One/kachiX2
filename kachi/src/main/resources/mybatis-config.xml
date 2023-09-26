@@ -12,7 +12,6 @@
 
 	<typeAliases>		
 		<typeAlias alias="User" type="com.kachi.five.bean.UserBean" />
-		
 		<typeAlias alias="Test" type="com.kachi.five.bean.UserBean" />
 		<typeAlias alias="Post" type="com.kachi.five.bean.PostBean" />
 	</typeAliases>

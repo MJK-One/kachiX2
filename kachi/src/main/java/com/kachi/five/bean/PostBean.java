@@ -12,9 +12,9 @@ public class PostBean {
 	    private int categoryId;
 	    private String title;
 	    private String content;
-	    private BigDecimal price;  // decimal 타입은 BigDecimal로 처리합니다.
-	    private Timestamp postDate;  // timestamp 타입은 Timestamp로 처리합니다.
-	    private Date salePeriod;  // date 타입은 Date로 처리합니다.
+	    private BigDecimal price;  
+	    private Timestamp postDate;  
+	    private Date salePeriod; 
 	    private boolean saleStatus;
 	    private int discountRate;
 	    
