@@ -21,22 +21,22 @@
 		<div class="top-1">
 				<img class="icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="60" height="60">
 				<div class="search">
-					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="30" height="30">
+					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="30" height="30">					
 					<input>
 				</div>
+				
 				 <!-- 로그인 상태에 따른 동적 표시 -->
 			    <c:choose>
 			        
 			        <c:when test="${not empty sessionScope.loggedInUser}">
-			            <a href="${pageContext.request.contextPath}/member/logout"><img class="" src="${pageContext.request.contextPath}/resources/img/logout.png"></a> 
+			            <a href="${pageContext.request.contextPath}/member/logout" class="nav-link px-2"><img  src="${pageContext.request.contextPath}/resources/img/logout.png" width="40" height="40"></a> 
 			        </c:when>
 			
 			        
 			        <c:otherwise> 
-			            <a href="${pageContext.request.contextPath}/member/loginform"><img class="" src="${pageContext.request.contextPath}/resources/img/login.png"></a> 
+			            <a href="${pageContext.request.contextPath}/member/loginform" class="nav-link px-2" ><img  src="${pageContext.request.contextPath}/resources/img/login.png" width="40" height="40"></a> 
 			        </c:otherwise> 
 			    </c:choose>
-				
 		</div>
 		<!--상단 메뉴바-->
 		<div class="top-2">

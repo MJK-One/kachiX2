@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	
+<mapper namespace="com.kachi.five.PostMapper"><!-- 파일마다 있는 SQL문들을 구분할 수 있는 이름 -->
+
+	<insert id="insertPost" parameterType="Post">
+	INSERT INTO Post (writerId, <!-- categoryId, --> title, content, price, salePeriod, saleStatus, discountRate)
+	VALUES (#{writerId}, <!-- #{categoryId}, --> #{title}, #{content}, #{price}, #{salePeriod}, #{saleStatus}, #{discountRate})
+</insert>
+</mapper>

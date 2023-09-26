@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>공동구매 게시글 작성</title>
@@ -38,20 +39,20 @@
 
 <h2>공동구매 게시글 작성</h2>
 
-<form action="${pageContext.request.contextPath}/post/create" method="post" enctype = "multipart/form-data">
+<form action="${pageContext.request.contextPath}/post/create_submit" method="post" enctype = "multipart/form-data">
     
      <!-- 제목 입력 -->
-     <div class='form - group'>
-       <label for='title'>제목:</label><br />
+     <div class='form-group'>
+       <label for='title'> 제목:</label><br />
        <input type='text' id ='title' name ='title'><br />
      </div>
 
     <!-- 내용 입력 -->
     <div class='form-group'>
-        <label for='content'>내용:</label><br/>
+        <label for='content'> 내용:</label><br/>
         <textarea name="content" id="editor1" rows="10" cols="80"></textarea>
         <script>
-            // Replace the <textarea id="editor1"> with a CKEditor instance.
+           
               CKEDITOR.replace( 'editor1', {
 			        filebrowserUploadUrl: "/path/to/your/script", // 여기서 "/path/to/your/script" 부분은 실제 파일 업로드를 처리하는 서버 측 스크립트의 URL이어야 합니다.
 			        filebrowserUploadMethod: 'form'
@@ -61,33 +62,32 @@
 
    <!-- 가격 입력 -->
    <div class='form-group'>
-       <label for='price'>가격:</label><br />
+       <label for='price'> 가격:</label><br />
        <input type='number' id ='price' name ='price'><br />
    </div>
 
 
    <!-- 할인율 입력 -->  
-  　<div class = 'form - group'>
+  　<div class = 'form-group'>
     　<label for = 'discountRate'>할인율(%):</ label > 
     　<input type = 'number' id= 'discountRate' name= 'discountRate' min= "0" max= "100"><br />
   　</div >
 
    <!-- 판매기간 입력 -->
    <div class='form-group'>
-      <label for='salePeriod'>판매 기간:</label><br />
+      <label for='salePeriod'> 판매 기간:</label><br />
       <input type='date' id ='salePeriod' name ='salePeriod'><br />
    </div>
 
    <!-- 카테고리 선택 -->   
-    　<div class = 'form - group'>
+    　<div class = 'form-group'>
     　<label for = 'category'>카테고리 :</ label > 
-    　<select id = 'category' name = 'category'>
-    　　　<option value = '' selected > 선택하세요.</option >
-    　　　<option value = '1'>카테고리1</option >
-    　　　<option value = '2'>카테고리2</option >
-    　　　<option value = '3'>카테고리3</option >
-    　</select>
-    </div >
+      　<select id="category" name="category">
+		   <c:forEach items="${categories}" var="category">
+		      <option value="${category.categoryId}">${category.categoryName}</option>
+		   </c:forEach>
+		</select>
+      </div >
 
    <!-- 이미지 업로드 -->
    <div class='form-group'>

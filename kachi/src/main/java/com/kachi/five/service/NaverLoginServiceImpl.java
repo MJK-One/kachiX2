@@ -17,8 +17,8 @@ import com.kachi.five.bean.UserBean;
 public class NaverLoginServiceImpl implements NaverLoginService {
 	@Autowired UserDAO userdao;
 	
-	 private static final String CLIENT_ID = "mp5bUy7BFPU5qVPt5OgE"; // ���ø����̼� Ŭ���̾�Ʈ ���̵�
-	 private static final String CLIENT_SECRET = "rrpmQIm5cT"; // ���ø����̼� Ŭ���̾�Ʈ ��ũ����
+	 private static final String CLIENT_ID = "mp5bUy7BFPU5qVPt5OgE";
+	 private static final String CLIENT_SECRET = "rrpmQIm5cT"; 
 
 	 
 	@Override	
@@ -26,7 +26,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 		
 		 String redirectURI = URLEncoder.encode("http://localhost:8080/five/member/naver_callback", "UTF-8");
 
-	        // Step 1: �׼��� ��ū ��û �� ó��
+	       
 	        String apiURLTokenRequest = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code"
 	                + "&client_id=" + CLIENT_ID
 	                + "&client_secret=" + CLIENT_SECRET
@@ -56,7 +56,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	            br.close();
 	            
 	          } else { 
-	              throw new Exception("���� : ��ū�� ���� �� �� �����ϴ�.");
+	              throw new Exception("토큰을 받아오지 못했습니다.");
 	          }
 
 	      return accessTokenForProfileAPIUsage; 
@@ -64,7 +64,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 
 	@Override 
 	public UserBean getUserProfile(String accessToken) throws Exception {
-		 // Step 2: ����� ������ ��û �� ó��
+	
         
 	       UserBean userBean = new UserBean();
 
@@ -104,7 +104,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	               if (response.has("mobile")) userBean.setPhoneNumber(response.getString("mobile"));
 	              
 	           } else { 
-	              throw new Exception ("���� : ������ ������ �������� ���߽��ϴ�.");
+	              throw new Exception ("데이터를 받아오지 못했습니다..");
 	           }
 	       } catch(Exception e){
 	           e.printStackTrace();
@@ -116,7 +116,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	    public void insertUser(UserBean user) throws Exception {
 	        try {
 	        	if(userdao.getUser(user.getUserID()) == null) { userdao.insertUser(user); }
-	        	else { System.out.println("������� ���� �̹� �ֽ��ϴ�."); }
+	        	else { System.out.println("데이터 베이스에 이미 정보가 있습니다."); }
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            System.out.println("Error inserting user: " + e.getMessage());
