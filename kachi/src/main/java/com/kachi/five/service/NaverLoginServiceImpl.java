@@ -41,7 +41,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	        int responseCodeAccessTokenRequest = conTokenRequest.getResponseCode();
 	        String accessTokenForProfileAPIUsage = "";
 
-	        if (responseCodeAccessTokenRequest == 200) { // ���� ȣ��
+	        if (responseCodeAccessTokenRequest == 200) {
 	            BufferedReader br = new BufferedReader(new InputStreamReader(conTokenRequest.getInputStream()));
 	            StringBuilder resAccessTokenRequest = new StringBuilder();
 	            String inputLineAccessTokenRequest;
@@ -62,9 +62,10 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	      return accessTokenForProfileAPIUsage; 
 	}
 
+	//네이버에서 정보를 받아와 userBean 에 저장하는 함수
 	@Override 
 	public UserBean getUserProfile(String accessToken) throws Exception {
-	
+			
         
 	       UserBean userBean = new UserBean();
 
@@ -92,9 +93,8 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	               
 	               if(response.has("id")) { userBean.setUserID(response.getString("id"));
 	               String userID = response.getString("id");
-	               // DB에서 writePermission 값 조회 및 UserBean에 저장
-	               int writePermission = userdao.getWritePermission(userID);
-	               userBean.setWritePermission(writePermission);
+	               
+					 
 	               }
 	               if(response.has("name")) userBean.setName(URLDecoder.decode(response.getString("name"), "UTF-8"));
 	               if(response.has("nickname")) userBean.setNickname(URLDecoder.decode(response.getString("nickname"), "UTF-8"));
@@ -102,7 +102,7 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 	               if (response.has("gender")) userBean.setGender(response.getString("gender")); 
 	               if (response.has("birthyear")) userBean.setBirthYear(response.getString("birthyear"));
 	               if (response.has("mobile")) userBean.setPhoneNumber(response.getString("mobile"));
-	              
+	               
 	           } else { 
 	              throw new Exception ("데이터를 받아오지 못했습니다.");
 	           }
@@ -112,11 +112,17 @@ public class NaverLoginServiceImpl implements NaverLoginService {
 
 	       return userBean;
 	}
+	//네이버에서 정보를 받아와 DB에 데이터를 넣는다. 값이 이미 있다면 사용자 계정의 글쓰기권환을 확인후 로그인 시킨다.
 	 @Override
 	    public void insertUser(UserBean user) throws Exception {
 	        try {
 	        	if(userdao.getUser(user.getUserID()) == null) { userdao.insertUser(user); }
-	        	else { System.out.println(user.getName() + "님이 로그인 되었습니다."); }
+	        	else {
+		               // DB에서 writePermission 값 조회 및 UserBean에 저장
+					
+						  int writePermission = userdao.getWritePermission(user.getUserID());
+						  user.setWritePermission(writePermission); 
+						  System.out.println(user.getName() + "님이 로그인 되었습니다. , 글쓰기 권환 : "+ writePermission); }
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            System.out.println("Error inserting user: " + e.getMessage());

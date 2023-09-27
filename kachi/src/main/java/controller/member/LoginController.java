@@ -58,8 +58,8 @@ public class LoginController {
 		try {
 			String accessTokenForProfileAPIUsage = naverLoginService.getAccessToken(code, state);
 			UserBean user = naverLoginService.getUserProfile(accessTokenForProfileAPIUsage);
-		
-		if (user != null) naverLoginService.insertUser(user);
+			
+		if (user != null) { naverLoginService.insertUser(user);
 		
 			// 로그인한 사용자의 정보를 세션에 저장
 	       HttpSession session = request.getSession();
@@ -69,7 +69,7 @@ public class LoginController {
 	       session.setAttribute("writePermission", user.getWritePermission() == 1);
 	       
 	       session.setAttribute("loggedInUser", user);
-	       
+		}
 		} catch (Exception e) { 
 			e.printStackTrace();
 			System.out.println("Error inserting user: " + e.getMessage());}
