@@ -1,5 +1,7 @@
 package com.kachi.five.DAO;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -22,6 +24,11 @@ public class PostDAOImpl implements PostDAO {
 	            e.printStackTrace();
 	            System.out.println("Error Message: " + e.getMessage());
 	        }
+	}
+	@Override
+	public List<PostBean> getAllPosts(){
+		
+		return sqlSession.selectList("com.kachi.five.PostMapper.getAllPosts");
 	}
 
 }
