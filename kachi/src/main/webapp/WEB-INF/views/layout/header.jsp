@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/side.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -22,20 +22,16 @@
 				<img class="icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="60" height="60">
 				<div class="search">
 					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="30" height="30">
-					<input>
 				</div>
 				<div class="login">
-					  <c:choose>
-			        
-			        <c:when test="${not empty sessionScope.loggedInUser}">
-			            <a href="${pageContext.request.contextPath}/member/logout" class="nav-link px-2"><img  src="${pageContext.request.contextPath}/resources/img/logout.png" width="40" height="40"></a> 
-			        </c:when>
-			
-			        
-			        <c:otherwise> 
-			            <a href="${pageContext.request.contextPath}/member/loginform" class="nav-link px-2" ><img  src="${pageContext.request.contextPath}/resources/img/login.png" width="40" height="40"></a> 
-			        </c:otherwise> 
-			    </c:choose>
+					<c:choose>			        
+				        <c:when test="${not empty sessionScope.loggedInUser}">
+				            <a href="${pageContext.request.contextPath}/member/logout" class="nav-link px-2"><img  src="${pageContext.request.contextPath}/resources/img/logout.png" width="40" height="40"></a> 
+				        </c:when>
+				        <c:otherwise> 
+				            <a href="${pageContext.request.contextPath}/member/loginform" class="nav-link px-2" ><img  src="${pageContext.request.contextPath}/resources/img/login.png" width="40" height="40"></a> 
+				        </c:otherwise> 
+			    	</c:choose>
 				</div>
 		</div>
 		<!--상단 메뉴바-->

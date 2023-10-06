@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kachi.five.bean.CategoryBean;
 import com.kachi.five.bean.PostBean;
 import com.kachi.five.service.PostService;
 
@@ -34,5 +35,11 @@ public class HomeController {
 		return "index";
 	}
 	
-
+	
+	
+	/* 확인을 위해 잠시 넣어둠 */
+	@RequestMapping("/member/mypage")
+	public String mypageJsp(Model model) {
+			return "/member/mypage";
+	}
 }

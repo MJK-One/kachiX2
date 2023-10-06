@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/main.css?after">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/main.css?after3">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -15,50 +15,42 @@
 	  		<li class="slide slide"><img src="${pageContext.request.contextPath}/resources/img/advertisement/${i}.PNG" width="100%" height="100%"></li>
 	 	</c:forEach>
 	</ul>
-  <div class="slideNum">
-	  <div id='currentSlide'></div> <!-- Current Slide Number -->
-	  <div id='totalSlides'>/5 </div> <!-- Total Slide Number -->
-	  <div id='plus'>+</div>
-  </div>
-  <button id='prevSlide'><span> < </span> </button> <!-- Previous Button -->
-  <button id='nextSlide'><span> > </span> </button> <!-- Next Button -->
+  	<div class="slideNum">
+		  <div id='currentSlide'>1</div> <!-- Current Slide Number -->
+		  <div id='totalSlides'>/5 </div> <!-- Total Slide Number -->
+		  <div id='plus'>+</div>
+  	</div>
 </div>
+
 <script type="text/javascript">
-	var sn = 0; // current slide number
-	var totalSlides = $(".slide").length; // total slides
-	// Show first slide initially
-	$(".slider .slide").eq(sn).fadeIn();
-	// Update currentSlide text
-	$('#currentSlide').text(sn+1);
-	$('#nextSlide').click(function(){
-		sn++;
-		slideMove();
-		updateCurrentSlide();
-	});
-	$('#prevSlide').click(function(){
-		sn--;
-		slideMove();
-		updateCurrentSlide();
-	});
-	function updateCurrentSlide() {
-		if(sn >= totalSlides) { 
-	    	sn = 0;
-	  	} else if (sn < 0) {
-	    	sn = totalSlides -1;
-	  	}
-	  	document.getElementById('currentSlide').innerText = sn +1;
-	}
-	function slideMove() {
-	    $(".slider .slide").fadeOut(1000);
-	    $(".slider .slide").eq(sn).fadeIn(1000);
-	}
-	// auto play
-	var autoplay = setInterval(function(){
-		sn++;
-		slideMove();
-		updateCurrentSlide();
-	},3000);
-	updateCurrentSlide();
+//slide action
+var sn = 0;//슬라이드 넘버
+var slide_len = $(".slide").length;//슬라이드의 갯수
+$(".slider .slide").eq(0).fadeIn();//첫번째 슬라이드 표시
+
+function slide_move(){
+  if(sn >= slide_len) {//슬라이드 최대 수를 제어
+    sn = 0;
+  } else if(sn < 0){//슬라이드 최저 수를 제어
+    sn = slide_len-1;
+  }
+  
+  // Update the currentSlide div with the current slide number.
+  $('#currentSlide').text(sn + 1);
+
+  $(".slider .slide").fadeOut('3000');//모든 슬라이드 fade out
+  $(".slider .slide").eq(sn).fadeIn('3000');//번호에 맞는 슬라이드 fade in
+  
+}
+
+// auto play
+var autoplay = null;
+autoplay = setInterval(slide_auto, 3000);//슬라이드에 오토 걸기
+
+function slide_auto(){
+	sn++;
+	slide_move();
+}
 </script>
 <!--카테고리-->
 <%
@@ -66,11 +58,18 @@
 %>
 <div class="swiper-container category" id="category">
 	<div class="swiper-wrapper">
-		<c:forEach var="i" begin="1" end="17">
+		<c:forEach var="i" begin="1" end="14">
 			<div class="swiper-slide product">
 				<a href="#">
 					<div class="cate-icon">
-						<img src="${pageContext.request.contextPath}/resources/img/category/${i}.jpg" width="60" height="60">
+					<c:choose>
+						<c:when test="${i==1}">
+							<img src="${pageContext.request.contextPath}/resources/img/category/all.svg" width="60" height="60">
+						</c:when>
+						<c:otherwise>
+							<img src="${pageContext.request.contextPath}/resources/img/category/${i}.png" width="60" height="60">
+						</c:otherwise>
+					</c:choose>
 					</div>
 					<span class="text">${i}</span>
 				</a>

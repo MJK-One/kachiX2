@@ -9,25 +9,19 @@
 }
 
 .search {
-	width : 83%;
+	width : 70%;
 	height : 40px;
 	position : relative;
 	top : 25px;
 	left : 65px;
+	background-color : #eaeaea;
+	border-radius : 30px;
 }
 .search-i {
 	position : relative;
 	top : 5px;
-	left : 90%;
+	left : 85%;
 	z-index: 1;
-}
-input {
-	position : absolute;
-	left : 0px;
-	border-radius : 20px;
-	height : 90%;
-	width : 100%;
-	padding-left: 20px;
 }
 .login {
 	 position: relative;
