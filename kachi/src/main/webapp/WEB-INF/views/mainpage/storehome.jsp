@@ -58,24 +58,29 @@ function slide_auto(){
 %>
 <div class="swiper-container category" id="category">
 	<div class="swiper-wrapper">
-		<c:forEach var="i" begin="1" end="14">
-			<div class="swiper-slide product">
-				<a href="#">
-					<div class="cate-icon">
-					<c:choose>
-						<c:when test="${i==1}">
-							<img src="${pageContext.request.contextPath}/resources/img/category/all.svg" width="60" height="60">
-						</c:when>
-						<c:otherwise>
-							<img src="${pageContext.request.contextPath}/resources/img/category/${i}.png" width="60" height="60">
-						</c:otherwise>
-					</c:choose>
-					</div>
-					<span class="text">${i}</span>
-				</a>
-			</div>
-		</c:forEach>
-	</div>
+		<!-- 전체 항목 먼저 보이게 -->
+		<div class="swiper-slide product">
+			<a href="#">
+				<div class="cate-icon">
+					<img src="${pageContext.request.contextPath}/resources/img/category/all.svg" width="60" height="60">
+				</div>
+				<span class="text">전체</span>
+			</a>
+	    </div>
+
+	    <!-- 카테고리의 모든 항목을 순서대로 출력 -->
+	    <c:forEach items="${categories}" var="category" >
+	        <div class="swiper-slide product">
+	            <a href="#">
+	                <div class="cate-icon">
+	                    <img src="${pageContext.request.contextPath}/resources/img/category/${category.categoryName}.png" width="60" height="60">						
+	                </div>
+	                <span class="text">${category.categoryName}</span>
+	            </a>
+	        </div>
+	    </c:forEach>
+
+    </div>	
 </div>
 	<script type="text/javascript">
 	/*상단 고정*/

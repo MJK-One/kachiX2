@@ -1,0 +1,160 @@
+.mypage-top{
+	position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 1000px;
+    z-index: 800;
+    display: block;
+    height: 70px;
+    background-color: #fff;
+    box-shadow: none;
+    -webkit-transform: translateZ(0);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.middle{
+	width : 100%;
+	height : 50px;
+	margin-top : 10px;
+}
+.left {
+	float : left;
+	padding-left : 15px;
+}
+.back{
+	position : relative;
+	bottom : 5px;
+    width: 40px;
+    height: 40px;
+}
+.title{
+	position : relative;
+	top : 5px; 
+    width :100px;
+    height : 30px;
+	margin : 0 auto;
+	font-size : 20px;
+	text-align: center
+}
+.screen{
+	height : 78px;
+}
+.login {
+	padding-left : 15px;
+	width : 100%;
+	height : 40px;
+}
+.login button {
+	position : relative;
+	left : 750px;
+}
+.money {
+	width : 100%;
+	height : 100px;
+}
+.money-main {
+	width : 96%;
+	height : 80px;
+	background-color : #e5e5e5;
+	margin : 0 auto;
+	border-radius : 15px;
+}
+.cash {
+	width : 500px;
+	height : 30px;
+	position : relative;
+	top : 25px;
+	left : 20px;
+}
+.cash li{
+	font-size : 20px;
+	position : relative;
+	bottom : 7px;
+}
+.cash-won {
+	padding-left : 10px;
+}
+.mypage-cate {
+	width : 100%;
+	height : 130px;
+	border-bottom:5px solid #e1e1e1;
+}
+.bot-my {
+	float : left;
+	height : 100%;
+	width : 248px;
+	text-align: center;
+}
+.bot-my p{
+	font-size : 20px;
+}
+.save{
+	width : 100%;
+	height : 300px;
+	border-bottom:5px solid #e1e1e1;
+}
+.save li {
+	font-size : 18px;
+	padding-left : 15px;
+	padding-top : 20px;
+}
+.save button {
+	position : relative;
+	left : 764px
+}
+.save-list {
+	margin-top : 15px;
+	width : 100%;
+	height : 220px;
+	background-color : gray;
+}
+.customer{
+	width : 100%;
+	height : 300px;
+}
+
+.n-table {
+    width: 100%;
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.n-table.table-row th {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: top;
+}.n-table.table-row th, .n-table.table-row td {
+    height: auto;
+    padding: 15px 0;
+    box-sizing: border-box;
+    border-top: 1px solid #f1f1f1;
+    border-bottom: none;
+    font-size: 14px;
+    text-align: left;
+}
+.n-table.table-row th {
+    padding-left: 20px; /* 원하는 간격으로 조정하세요 */
+}
+.n-table.table-row tr:first-child th, .n-table.table-row tr:first-child td {
+    border-top: none;
+}
+.n-btn.w100 {
+    min-width: 100px;
+}
+.n-btn.btn-default {
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    color: #000000;
+}
+.n-btn.btn-sm {
+    min-width: 70px;
+    height: 32px;
+    line-height: 30px;
+    padding-top: 0;
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif !important;
+}
+.n-btn:visited {
+    color: #ffffff;
+}
+

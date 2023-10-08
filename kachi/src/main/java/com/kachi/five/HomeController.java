@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kachi.five.bean.CategoryBean;
 import com.kachi.five.bean.PostBean;
+import com.kachi.five.service.CategoryService;
 import com.kachi.five.service.PostService;
 
 @Controller
@@ -27,10 +28,14 @@ public class HomeController {
 
     @Autowired 
     private PostService postService;
+    @Autowired
+    private CategoryService categoryService;
     
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		 List<PostBean> posts = postService.getAllPosts();
+		 List<CategoryBean> categories = categoryService.getAllCategories();
+		 model.addAttribute("categories",categories);
 		 model.addAttribute("posts", posts);
 		return "index";
 	}

@@ -39,7 +39,7 @@ li {
 	width : 100%;
 	height : 120px;
 }
-/*À§·Î°¡±â ¹öÆ°*/
+/*ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°*/
 .back-to-top {
   display: inline-block;
   background-color: #bbb;
@@ -74,4 +74,57 @@ li {
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
+}
+
+.n-table.table-row .n-btn {
+    margin: -5px 0;
+}
+.n-btn.w100 {
+    min-width: 100px;
+}
+.n-btn.btn-default {
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.n-btn.btn-sm {
+    min-width: 70px;
+    height: 32px;
+    line-height: 30px;
+    padding-top: 0;
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif !important;
+}
+.n-table a, .n-table button {
+    display: inline-block;
+    vertical-align: middle;
+}
+.n-table button {
+    font-family: inherit;
+    display: inline-block;
+}
+.n-btn {
+    display: inline-block;
+    min-width: 100px;
+    height: 40px;
+    line-height: 36px;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 2px 8px 0 8px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    -webkit-transition: border 0.2s, background 0.2s ease-in-out;
+    -moz-transition: border 0.2s, background 0.2s ease-in-out;
+    -o-transition: border 0.2s, background 0.2s ease-in-out;
+    transition: border 0.2s, background 0.2s ease-in-out;
+}
+button {
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+    border: 0;
+    cursor: pointer;
+    background: none;
 }
