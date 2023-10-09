@@ -5,7 +5,7 @@ public class AddressBean {
 	private String postCode;
 	private String streetAddress;
 	private String detailAddress;
-	
+	private int addressId;
 	public String getUserId() {
 		return userId;
 	}
@@ -29,6 +29,12 @@ public class AddressBean {
 	}
 	public void setDetailAddress(String detailAddress) {
 		this.detailAddress = detailAddress;
+	}
+	public int getAddressId() {
+		return addressId;
+	}
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
 	}
 	
 }

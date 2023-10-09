@@ -33,4 +33,10 @@
 	<update id="updateNickname" parameterType="User">
 		UPDATE user SET nickname = #{nickname} WHERE userID = #{userID}
 	</update>
+	<select id="getAddresses" parameterType="string" resultType="Address">
+	SELECT * FROM Address WHERE userID = #{userId}
+	</select>
+	   <delete id="deleteAddress"> 
+        DELETE FROM address WHERE addressId = #{addressId} 
+    </delete> 
 </mapper>

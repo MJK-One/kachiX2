@@ -57,6 +57,13 @@ public class UserDAOimpl implements UserDAO {
     	
     	
     }
+    @Override
+    public List<AddressBean> getAddresses(String userId) {
+    	return sqlSession.selectList("com.kachi.five.UserMapper.getAddresses", userId);
+    }
     
-
+    @Override 
+    public void deleteAddress(int addressId) { 
+       sqlSession.delete("com.kachi.five.UserMapper.deleteAddress", addressId); 
+    } 
 }

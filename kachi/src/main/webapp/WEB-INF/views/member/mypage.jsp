@@ -16,7 +16,7 @@
 		<header class="mypage-top">
 			<div class="middle">
 				<div class="left">
-					<input type="button" class="back" onclick="history.back();" />
+					<input type="button" class="back" onclick="history.back();" /> <!-- 뒤로가는거 나중에 수정 해야할듯 -->
 
 					</button>
 					<img src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="50" height="50">
@@ -110,7 +110,12 @@
                     </tr>
                     <tr id="address-area">
                         <th scope="row">배송지</th>
-                        <td></td>
+                        <td><button type="button" id="viewAddressBtn" class="n-btn w100 btn-sm btn-default cert-hidden">배송지 확인</button></td>
+                        	<script>
+								document.getElementById("viewAddressBtn").addEventListener("click", function() {
+								    window.open("${pageContext.request.contextPath}/member/addressList", "배송지 목록", "width=770,height=600");
+								});
+							</script>
                         <td>
                          <form action="${pageContext.request.contextPath}/member/updateAdress" method="post">
                             <input type="text" id="sample6_postcode" placeholder="우편번호" name="postcode">

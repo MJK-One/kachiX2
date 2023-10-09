@@ -11,4 +11,6 @@ public interface UserDAO {
 	public List<UserBean> test() throws Exception;
 	public void updateNickname(UserBean user);
 	void insertAddress(AddressBean address);
+	List<AddressBean> getAddresses(String userId);
+	void deleteAddress(int addressId);
 }

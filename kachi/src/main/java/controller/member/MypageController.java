@@ -1,5 +1,7 @@
 package controller.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -36,7 +38,7 @@ public class MypageController {
 	        
 		    session.setAttribute("loggedInUser", user);
 		    
-		    return "redirect:/";
+		    return "redirect:/member/mypage";
 		} else {
 		    return "error/unauthorized";
 		}
@@ -63,10 +65,41 @@ public class MypageController {
 
 		        // 성공적으로 주소가 업데이트되었음을 사용자에게 보여줄 수 있는 로직 추가해야함
 
-			    return "redirect:/";
+			    return "redirect:/member/mypage";
 			} else {
 			    return "error/unauthorized";
 			}
 
 	}
+	@RequestMapping("/member/addressList")
+	public String addressList(Model model, HttpServletRequest request) {
+	    HttpSession session = request.getSession();
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+
+	    if (user != null) {
+	        List<AddressBean> addresses = userService.getAddresses(user.getUserID());
+	        model.addAttribute("addresses", addresses);
+	        
+	        return "/member/addressList";
+	    } else {
+	        return "error/unauthorized";
+	    }
+	}
+	
+	@RequestMapping(value="/member/deleteAddress", method=RequestMethod.POST)
+	public String deleteAddress(@RequestParam("addressId") int addressId, HttpServletRequest request) {
+	    HttpSession session = request.getSession();
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+
+	    if (user != null) {
+	        userService.deleteAddress(addressId);
+
+	        // 성공적으로 주소가 삭제되었음을 사용자에게 보여줄 수 있는 로직 추가해야함
+
+	        return "redirect:/member/addressList";
+	    } else {
+	        return "error/unauthorized";
+	    }
+	}
+	
 }
