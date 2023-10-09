@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.kachi.five.bean.AddressBean;
 import com.kachi.five.bean.UserBean;
 
 @Repository
@@ -34,11 +35,28 @@ public class UserDAOimpl implements UserDAO {
         return sqlSession.selectList("com.kachi.five.UserMapper.test");
         
     }
+   
+    
     @Override
-    public int getWritePermission(String userID) throws Exception {
-    	 return sqlSession.selectOne("com.kachi.five.UserMapper.getWritePermission", userID);
+    public void updateNickname(UserBean user) {
+        try {
+            sqlSession.update("com.kachi.five.UserMapper.updateNickname", user);
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+            System.out.println("Error Message: " + e.getMessage());
+        }
     }
-
-
+    @Override
+    public void insertAddress(AddressBean address) {
+    	 try {
+             sqlSession.insert("com.kachi.five.UserMapper.insertAddress", address);
+         } catch (DataAccessException e) {
+             e.printStackTrace();
+             System.out.println("Error Message: " + e.getMessage());
+         }
+    	
+    	
+    }
+    
 
 }

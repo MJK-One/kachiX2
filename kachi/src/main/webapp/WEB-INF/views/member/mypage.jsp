@@ -28,7 +28,8 @@
 		<div class="login">
 			<c:choose>		        
 				<c:when test="${not empty sessionScope.loggedInUser}">
-			    	<li>회원이름</li>
+			    	<li>회원이름 : </li>
+			    	<li><strong>${sessionScope.loggedInUser.name}</strong></li>
 			    </c:when>	        
 			    <c:otherwise> 
 			    	<li>로그인해 주세요</li>
@@ -85,12 +86,20 @@
                         <col style="width:50%">
                     </colgroup>
                     <tbody>
-                    <tr>
-                        <th scope="row">생년월일</th>
-                        <td><strong>2000.09.18</strong></td>
-                        <td>&nbsp;</td>
-                    </tr>
-                   
+                   	<tr>
+					    <th scope="row">닉네임</th>
+					    <td><strong>${sessionScope.loggedInUser.nickname}</strong></td>
+					    <td>
+					        <form action="${pageContext.request.contextPath}/member/updateNickname" method="post">
+					       
+					            <input type="text" name="newNickname" placeholder="새 닉네임 입력">
+					            <!-- CSRF 토큰 추가 -->
+					            <input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}"/>
+					            <button type="submit" class="n-btn w100 btn-sm btn-default cert-hidden" id="refund-account-btn">수정</button>
+					        </form>
+					    </td>
+					</tr>
+					                   
                     
                     <tr>
                         <th scope="row">환불계좌</th>
@@ -103,12 +112,13 @@
                         <th scope="row">배송지</th>
                         <td></td>
                         <td>
-                            <input type="text" id="sample6_postcode" placeholder="우편번호">
+                         <form action="${pageContext.request.contextPath}/member/updateAdress" method="post">
+                            <input type="text" id="sample6_postcode" placeholder="우편번호" name="postcode">
 							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" id="sample6_address" placeholder="주소"><br>
-							<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-							<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-							
+							<input type="text" id="sample6_address" placeholder="주소" name="streetAddress"><br>
+							<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="detailAddress1">
+							<input type="text" id="sample6_extraAddress" placeholder="참고항목" name="detailAddress2">
+							<button type="submit" class="n-btn w100 btn-sm btn-default cert-hidden" id="refund-account-btn">배송지 설정</button>
 							<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 							<script>
 							    function sample6_execDaumPostcode() {
@@ -159,6 +169,7 @@
 							        }).open();
 							    }
 							</script>
+							</form>
                         </td>
                     </tr>
                     </tbody>

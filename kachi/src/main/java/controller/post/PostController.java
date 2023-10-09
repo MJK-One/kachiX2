@@ -51,8 +51,8 @@ public class PostController {
 	        return "redirect:/";
 	    } else {
 	        // 사용자가 로그인하지 않은 상태에서 글을 작성하려는 경우 처리
-	        // 이 부분은 실제 애플리케이션의 요구 사항에 따라 적절히 구현해야 합니다.
-	        return "redirect:/login";  // 예시: 로그인 페이지로 리다이렉트
+	       
+	        return "redirect:/login";  
 	    }
 	}
 }

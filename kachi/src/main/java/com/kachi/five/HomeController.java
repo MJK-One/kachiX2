@@ -21,6 +21,7 @@ import com.kachi.five.service.PostService;
 @ComponentScan(basePackages = "controller.member")
 @ComponentScan(basePackages = "com.kachi.five.controller")
 @ComponentScan(basePackages = "controller.post")
+
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -42,9 +43,5 @@ public class HomeController {
 	
 	
 	
-	/* 확인을 위해 잠시 넣어둠 */
-	@RequestMapping("/member/mypage")
-	public String mypageJsp(Model model) {
-			return "/member/mypage";
-	}
+	
 }
