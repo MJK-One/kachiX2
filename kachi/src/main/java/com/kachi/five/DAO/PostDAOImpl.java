@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.kachi.five.bean.MainImageBean;
 import com.kachi.five.bean.PostBean;
 
 @Repository
@@ -28,8 +29,17 @@ public class PostDAOImpl implements PostDAO {
 	}
 	@Override
 	public List<PostBean> getAllPosts(){
-		
-		return sqlSession.selectList("com.kachi.five.PostMapper.getAllPosts");
+		//데이터 베이스에 게시글이 있는 만큼 List에 가져옴
+	    List<PostBean> posts = sqlSession.selectList("com.kachi.five.PostMapper.getAllPosts");
+	    //게시글 수 만큼 게시글id로 게시글의 이미지를 가져옴
+	    for (PostBean post : posts) {
+	        MainImageBean mainImage = sqlSession.selectOne("com.kachi.five.ImageMapper.getMainImgByPostId", post.getPostId());
+	        if (mainImage != null) {
+	            post.setMainImageUrl(mainImage.getImageUrl());
+	        }
+	    }
+
+	    return posts;
 	}
 
 }

@@ -1,4 +1,4 @@
-/*±¤°íÃ¢*/
+/*ï¿½ï¿½ï¿½ï¿½Ã¢*/
 .outer {
   background-color : #e8e8e8;
   width: 100%;
@@ -58,7 +58,7 @@
 	font-size : 20px;
 	opacity: 0.2;
 }
-/*Ä«Å×°í¸®*/
+/*Ä«ï¿½×°ï¿½*/
 #category{
 	position:relative;
 	bottom : 38px;
@@ -71,7 +71,7 @@
 #category.fixed {
     position: fixed;
     top: 110px;
-    width: 1000px; /* »ó´Ü °íÁ¤¹Ù°¡ ÀüÃ¼ ³Êºñ¸¦ Â÷ÁöÇÏµµ·Ï ¼³Á¤ */
+    width: 1000px; /* ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½Ã¼ ï¿½Êºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 .product{
 	width: 100px !important;
@@ -110,7 +110,7 @@
 	height: 2px; 
 	background: #1b64bc; 
 } */
-/*Ä«Å×°í¸® ¸ÞÀÎ*/
+/*Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 .cate-main{
 	display: flex;
 	flex-wrap: wrap;
@@ -118,7 +118,7 @@
 	position:relative;
 	bottom : 30px;
 }
-/*Ä«Å×°í¸® °Ô½Ã±Û*/
+/*Ä«ï¿½×°ï¿½ ï¿½Ô½Ã±ï¿½*/
 .cate-product{
 	background-color : white;
 	border: 1px solid #e1e1e1;
@@ -126,8 +126,13 @@
     width: 333px;
     box-sizing: border-box;
 } 
+.pro-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .pro-img{
-	border : 1px solid gray;
+	
 	width : 300px;
 	height : 300px;
 	margin-left : 15px;
@@ -139,8 +144,8 @@
 	margin-left : 22px;
 	height : 50px;
 	
-	overflow: hidden; /* ³»¿ëÀÌ ³ÑÄ¥ °æ¿ì ¼û±è Ã³¸® */
-	text-overflow: ellipsis; /* ³ÑÄ¡´Â ÅØ½ºÆ®¸¦ ... À¸·Î Ç¥½Ã */
+	overflow: hidden; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¥ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ */
+	text-overflow: ellipsis; /* ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ... ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ */
 	display: -webkit-box;
 	-webkit-line-clamp: 2; 
 	-webkit-box-orient: vertical;

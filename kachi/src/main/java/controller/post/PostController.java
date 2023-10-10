@@ -54,6 +54,15 @@ public class PostController {
 
 	    if (user != null) {
 	    	 try {
+	    		 String originalFilename = imageFile.getOriginalFilename(); //파일의 이름을 가져온다.
+	    		 
+	    		// 파일의 확장자를 추출
+	    		   String extension = "";
+	    		   int i = originalFilename.lastIndexOf('.');
+	    		   if (i > 0) {
+	    		       extension = originalFilename.substring(i+1);
+	    		   }
+	    		   
 	             // 1. 사용자가 업로드한 파일을 서버의 임시 디렉토리에 저장
 	             File tempFile = File.createTempFile("img", ".tmp");
 	             imageFile.transferTo(tempFile);
@@ -69,7 +78,7 @@ public class PostController {
 	             
 	 	    // 여기서 keyName은 원하는 대로 설정할 수 있습니다.
 	 	    // 일반적으로 postId나 UUID 등 유니크한 값을 포함하게 만듭니다.
-	 	    String keyName = "mainImage/" + UUID.randomUUID().toString(); 
+	        String keyName = "mainImage/" + UUID.randomUUID().toString() + "." + extension; 
 
 	 	    storageService.uploadFile(keyName, tempFile);
 
@@ -85,7 +94,7 @@ public class PostController {
 	            return "error";
 	         }
 	    	
-	    	
+	    	System.out.print(post.getMainImageUrl());
 	        post.setWriterId(user.getUserID());
 	        post.setSaleStatus(true);
 	        postService.createPost(post);

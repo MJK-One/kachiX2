@@ -6,7 +6,7 @@
 <c:forEach var="post" items="${posts}">
 	<a href="#">
 		<div class="cate-product">
-			<div class="pro-img">이미지${i}</div>
+			<div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>
 			<div class="pro-name">${post.title}</div>
 			<div class="pro-price">
 				<li class="price1">${post.price} 원</li>

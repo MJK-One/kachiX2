@@ -11,4 +11,7 @@
       INSERT INTO mainimage (postId, imageUrl)
       VALUES (#{postId}, #{imageUrl})
   </insert>
+  <select id="getMainImgByPostId" parameterType="int" resultType="com.kachi.five.bean.MainImageBean">
+  SELECT * FROM MainImage WHERE postId = #{postId}
+</select>
 </mapper>
