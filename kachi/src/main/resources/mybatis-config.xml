@@ -15,6 +15,7 @@
 		<typeAlias alias="Test" type="com.kachi.five.bean.UserBean" />
 		<typeAlias alias="Post" type="com.kachi.five.bean.PostBean" />
 		<typeAlias alias="Address" type="com.kachi.five.bean.AddressBean" />
+		<typeAlias alias="MainImage" type="com.kachi.five.bean.MainImageBean" />
 	</typeAliases>
 	
 	

@@ -41,7 +41,7 @@
 
 <h2>공동구매 게시글 작성</h2>
 
-<form action="${pageContext.request.contextPath}/post/create_submit" method="POST" >
+<form action="${pageContext.request.contextPath}/post/create_submit" method="POST" enctype="multipart/form-data">
     
      <!-- 제목 입력 -->
      <div class='form-group'>
@@ -96,14 +96,13 @@
 		   </c:forEach>
 		</select>
       </div >
-<!-- 
-   이미지 업로드
+
    <div class='form-group'>
-       <label for='image'>이미지 업로드:</label><br />
+       <label for='image'>메인 이미지 업로드:</label><br />
        <input type='file' id ='image' name ='image'><br />
    </div>
 
-    제출 버튼 -->
+
    	<input type= "submit" value= "글쓰기">
   
 </form>

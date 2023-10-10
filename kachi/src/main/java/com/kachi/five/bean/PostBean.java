@@ -17,7 +17,8 @@ public class PostBean {
 	    private Date salePeriod; 
 	    private boolean saleStatus;
 	    private int discountRate;
-	    
+	    private String MainImageUrl;
+	    private String ContentImageUrl;
 		public int getPostId() {
 			return postId;
 		}
@@ -77,6 +78,18 @@ public class PostBean {
 		}
 		public void setDiscountRate(int discountRate) {
 			this.discountRate = discountRate;
+		}
+		public String getMainImageUrl() {
+			return MainImageUrl;
+		}
+		public void setMainImageUrl(String mainImageUrl) {
+			MainImageUrl = mainImageUrl;
+		}
+		public String getContentImageUrl() {
+			return ContentImageUrl;
+		}
+		public void setContentImageUrl(String contentImageUrl) {
+			ContentImageUrl = contentImageUrl;
 		}	
 	    
 	    

@@ -20,6 +20,7 @@ public class PostDAOImpl implements PostDAO {
 		 
 		  try {
 			    sqlSession.insert("com.kachi.five.PostMapper.insertPost", post);
+			    System.out.println("생성된 게시물 ID: " + post.getPostId());
 	        } catch (DataAccessException e) {
 	            e.printStackTrace();
 	            System.out.println("Error Message: " + e.getMessage());
