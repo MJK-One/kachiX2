@@ -1,14 +1,18 @@
 .aaa{
-	height : 2000px;
+	height : 2500px;
 }
 .home{
-	position : absolute;
-	top : 30px;
-	left : 270px;
+	position: relative;
+    top: 25px;
+    left: 20px;
+}
+.search {
+	position: relative;
+    top: 25px;
+    left: 880px;
 }
 .post-img {
 	margin-top : 10px;
-	border : 1px solid blue;
 	width : 100%;
 	height : 700px;
 }
@@ -17,75 +21,160 @@
   height: 100%;
 }
 .event {
-	border: 1px solid blue;
 	width : 100%;
-	height : 50px;
+	height : 30px;
+	padding-top: 4px;
+	text-align: center;
+	font-weight: 700;
+	background-color : #f1f1f1;
 }
 .price{
-	border: 1px solid blue;
 	width : 100%;
-	height : 120px;
+	height : 115px;
+}
+.price-s {
+	position : relative;
+	top : 5px;
+	left: 15px;
+	width : 65px;
+	height : 50px;
+	font-size : 35px;
+	font-weight: 900;
+	color : #ff5a0b;
+}
+.price-s div{
+	position : relative;
+	bottom : 34px;
+	left : 45px;
+	font-size : 20px;
+}
+.price-w {
+	position : relative;
+	bottom : 46px;
+	left : 20px;
+	font-size : 15px;
+	text-decoration: line-through;
+	color : #b1b1b1;
+	font-weight: 300;
+}
+.price-sw{
+	position : relative;
+	bottom : 22px;
+	right : 47px;
+	font-size : 25px;
+}
+.star{
+	position : relative;
+	left : 670px;
+	bottom : 45px;
+	width : 80px;
+}
+.pro-name {
+	position : relative;
+	top : 18px;
+	right : 293px;
+	font-size : 20px;
+}
+.line {
+	position : relative;
+	top : 25px;
+	width : 98%;
+	height : 1px;
+	margin : 0 auto;
+	border-radius : 2px;
+	background-color : #e1e1e1;
 }
 .group-buy{
 	flex-wrap: wrap;
 	width : 100%;
 	height : 250px;
 }
+.group-title{
+	padding-left : 12px;
+	font-weight: 500;
+}
 .group{
-	border: 1px solid blue;
 	float: left;
     height: 40px;
     width: 100%;
     padding: 22px;
     box-sizing: border-box;
 }
+.group-user{
+	position : relative;
+	bottom: 13px;
+}
+.line2{
+	width : 100%;
+	height : 8px;
+	background-color : #e1e1e1;
+}
 #product-menu{
-	border : 1px solid red;
 	width : 100%;
 	height : 50px;
+	background-color : white;
 }
 #product-menu.fixed {
     position: fixed;
-    top: 0;
+    top: 0px;
     width: 1000px; /* 상단 고정바가 전체 너비를 차지하도록 설정 */
+    height : 50px;
     z-index: 9999; /* 다른 요소 위에 오도록 설정 */
 }
 .product-info li{
 	padding-left : 97px;
 	padding-right : 125px;
 	font-size : 20px;
+	
 }
-
-
-
-
-
-
-
-
+.product-info span{
+	font-size : 20px;
+	font-weight: 600;	
+}
+#info-btn {
+	color : #ff5a0b;
+	text-decoration : underline;
+  	text-underline-offset : 9px;
+  	text-decoration-thickness : 2px;
+}
+.info {
+	display: block;
+}
+.after, .ask {
+	display: none;
+}
+section {
+	width : 100%;
+	height : 100%;
+}
 .buy{
-	background-color :#f6f6f6;
+	background-color :#e9e9e9;
 	border: 1px solid #e1e1e1;
 	position: fixed;
 	bottom : 0;
 	width : 1000px;
 	height : 70px;
-
-}
-.one-buy{
-	border : 1px solid blue;
-	border-radius : 10px;
-	margin-left : 20px;
-	margin-top : 7px;
-	width : 33%;
-	height : 80%;
-	display: inline-block; 
 }
 .two-buy{
-	border : 1px solid blue;
 	border-radius : 10px;
-	margin-left : 20px;
-	width : 60%;
+	margin: 7px 15px;
+	width : 97%;
 	height : 80%;
-	display: inline-block; 
+	display: inline-block;
+	background-color : #ff661c;
+}
+.buy-price{
+	position : relative;
+	left: 470px;
+	font-size : 20px;
+	font-weight: 700;
+	color : white;
+}
+.buy-go {
+	position : relative;
+	top : 22px;
+	left: 360px;
+	font-size : 15px;
+	font-weight: 400;
+	color : white;
 }

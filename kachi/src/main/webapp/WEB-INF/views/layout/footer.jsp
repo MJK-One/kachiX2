@@ -7,13 +7,13 @@
 		position : fixed;
 		bottom : 0;
 		width : 1001px;
-		height : 60px;
+		height : 56px;
 		transition: top 0.2s ease-in-out, bottom 0.2s ease-in-out;
 		z-index: 9999;
 		border-top : 2px solid #e1e1e1;
 	}
 	.nav-down {
-    		bottom: -50px;
+    		bottom: -60px;
     		top: auto;
 	}
 	.bot-my {

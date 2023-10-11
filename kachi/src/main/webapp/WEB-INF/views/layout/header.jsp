@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/side.css">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after5">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after5">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <title>같이의 가치-공동구매</title>
 </head>
@@ -20,9 +20,9 @@
 	<header class="top">
 		<div class="top-1">
 				<img class="icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="60" height="60">
-				<div class="search">
+				<div class="search" style=" cursor: pointer;" onclick="window.open('#');">					
 					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="30" height="30">
-				</div>
+				</div>	
 				<div class="login">
 					<c:choose>			        
 				        <c:when test="${not empty sessionScope.loggedInUser}">
@@ -36,27 +36,19 @@
 		</div>
 		<!--상단 메뉴바-->
 		<div class="top-2">
-		<%
-        	String pageChange;
-    	%>
 			<ul class="menu">
-				<li><a href="?pageChange=/WEB-INF/views/mainpage/storehome.jsp"><span>스토어홈</span></a></li>
-				<li><a href="?pageChange=/WEB-INF/views/mainpage/interest.jsp"><span>관심추천</span></a></li>
-				<li><a href="?pageChange=/WEB-INF/views/mainpage/timesale.jsp"><span>타임세일</span></a></li>
-				<li><a href="?pageChange=/WEB-INF/views/mainpage/newarticle.jsp"><span>신상품</span></a></li>
+				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/storehome"><span>스토어홈</span></a></li>
+				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/interest"><span>관심추천</span></a></li>
+				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/timesale"><span>타임세일</span></a></li>
+				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/newarticle"><span>신상품</span></a></li>
 				<li><a href="${pageContext.request.contextPath}/postform"><span>포스트시험</span></a></li>
-				<c:choose>
-			    <c:when test="${sessionScope.loggedInUser != null and sessionScope.writePermission}">
-		       		 <a href="${pageContext.request.contextPath}/post/create">글쓰기</a>
-		    	</c:when>
-			    <c:otherwise>
-			    </c:otherwise>
-			</c:choose>
 			</ul>
 		</div>
 		<!-- 위로 가기 -->
 		<a class="back-to-top"></a>
-		<script type="text/javascript">
+	</header>
+	<script type="text/javascript">
+		/*위로 가기*/
 		$(function(){
 			  $('.back-to-top').on('click',function(e){
 			      e.preventDefault();
@@ -72,4 +64,3 @@
 			  });
 			});
 		</script>
-	</header>

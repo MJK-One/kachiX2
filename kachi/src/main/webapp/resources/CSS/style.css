@@ -1,6 +1,12 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
+*{
+	font-family :'Spoqa Han Sans', sans-serif ;
+}
 body {
 	background-color : #f6f6f6;
 	position: relative;
+	height : 100%;
 }
 ul {
 	list-style-type: none;
@@ -14,42 +20,31 @@ li {
 	width : 1000px;
 	height : 100%;
 	margin : -17px auto;
-	border: 1px solid #e1e1e1;
 }
-
 .top {
 	background-color : white;
 	width : 1000px;
-	height : 109px;
-	border-left : 1px solid #e1e1e1;
-	border-right : 1px solid #e1e1e1;
+	height : 90px;
 	border-bottom:3px solid #e1e1e1;
   	position : fixed;
   	top : 0;
   	z-index : 9999;
 }
-
-.main {
-	background-color : white;
-	width : 100%;
-	height : 100%;
-	z-index : 5000;
-}
 .top-screen {
 	width : 100%;
-	height : 120px;
+	height : 103px;
 }
 /*���ΰ��� ��ư*/
 .back-to-top {
   display: inline-block;
-  background-color: #bbb;
+  background-color: #ebebeb;
   width: 50px;
   height: 50px;
   text-align: center;
   border-radius: 50px;
   position: fixed;
   bottom: 90px;
-  right: 280px;
+  right: 150px;
   transition: background-color .3s, 
   opacity .5s, visibility .5s;
   opacity: 0;
@@ -62,20 +57,19 @@ li {
   font-style: normal;
   font-size: 2em;
   line-height: 50px;
-  color: #717171;
+  color: #b1b1b1;
 }
 .back-to-top:hover {
   cursor: pointer;
-  background-color: #717171;
+  background-color: #ebebeb;
 }
 .back-to-top:active {
-  background-color: #717171;
+  background-color: #ebebeb;
 }
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
 }
-
 .n-table.table-row .n-btn {
     margin: -5px 0;
 }

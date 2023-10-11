@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/main.css?after3">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/main.css?after5">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -53,34 +53,51 @@ function slide_auto(){
 }
 </script>
 <!--카테고리-->
-<%
-	String pageChange;
-%>
 <div class="swiper-container category" id="category">
 	<div class="swiper-wrapper">
 		<!-- 전체 항목 먼저 보이게 -->
 		<div class="swiper-slide product">
-			<a href="#">
 				<div class="cate-icon">
 					<img src="${pageContext.request.contextPath}/resources/img/category/all.svg" width="60" height="60">
 				</div>
-				<span class="text">전체</span>
-			</a>
+				<div class="cate-name click">
+					<span class="0">전체</span>
+				</div>
 	    </div>
-
 	    <!-- 카테고리의 모든 항목을 순서대로 출력 -->
 	    <c:forEach items="${categories}" var="category" >
 	        <div class="swiper-slide product">
-	            <a href="#">
 	                <div class="cate-icon">
 	                    <img src="${pageContext.request.contextPath}/resources/img/category/${category.categoryName}.png" width="60" height="60">						
 	                </div>
-	                <span class="text">${category.categoryName}</span>
-	            </a>
+	                <div class="cate-name">
+	                	<span class="${category.categoryId}">${category.categoryName}</span>
+	                </div>
 	        </div>
 	    </c:forEach>
-
     </div>	
+</div>
+<!--카테고리 게시물 화면-->
+<div class="cate-main">
+	<c:forEach var="post" items="${posts}">
+	<a href="#">
+		<div class="cate-product ${post.categoryId}">
+			<div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>	
+			<div class="pro-name">${post.title}</div>
+			<div class="pro-price">
+				<li class="price1">${post.price} 원</li>
+				<li class="price2">${post.discountRate}%</li>
+				<!-- 가격과 할인율로 실제 판매가격 계산 -->
+				<li class="price3">${post.price - (post.price * post.discountRate / 100)}원</li>
+				<div class="pro-info">
+					<li>별점</li>
+					<li>구매 : ${i}</li>
+				</div>
+				<div class="line"></div>
+		    </div>	
+		</div>
+	</a>
+</c:forEach> 
 </div>
 	<script type="text/javascript">
 	/*상단 고정*/
@@ -88,7 +105,7 @@ function slide_auto(){
 		  var lnb = $("#category").offset().top;
 		  $(window).scroll(function() {
 		    var window = $(this).scrollTop();
-		    if(lnb - 110 <= window) {
+		    if(lnb - 100 <= window) {
 		      $("#category").addClass("fixed");
 		    }else{
 		      $("#category").removeClass("fixed");
@@ -135,15 +152,31 @@ function slide_auto(){
                 "transition-duration": "500ms"
             })}, 200);
         }
-	</script>
-<!--카테고리 게시물 화면-->
-	<%
-        String select = request.getParameter("pageChange");
- 
-        if (select == null) {
-            select = "/WEB-INF/views/category/";
-        }
-    %>
-<div class="cate-main">
-	<jsp:include page="/WEB-INF/views/category/cate1.jsp" flush="false"/>
-</div>
+        
+        
+        /*카테고리 목록별 정렬*/
+		$(document).ready(function(){
+    		$(".swiper-slide.product").click(function() {
+        		var classes = $(this).find('span').attr('class');  // span 클래스를 가져옴       	
+        		var classArray = classes.split(" ");     // 공백으로 구분하여 배열로 변환   	
+       			var category = classArray[0];   // 첫 번째 클래스가 카테고리 ID라고 가정하고 가져옴
+         		$(".cate-product").hide();    // 모든 cate-product 클래스를 가진 div 숨기기     
+         		// 모든 cate-name에 있는 click 클래스 제거 후, 선택된 cate-name에 click 클래스 추가
+         		$('.cate-name').removeClass('click');  
+         		$(this).find('.cate-name').addClass('click');
+         		
+	     		if (category === "0") {
+	            	// 전체 버튼이 눌렸으면 모든 상품 표시 및 이미지 src 변경
+	            	$(".cate-product").show();
+		        	$('.cate-icon img').eq(0).attr('src', '${pageContext.request.contextPath}/resources/img/category/all.svg');
+	            	return;
+	    		} else {
+		    		// 다른 카테고리가 선택되었을 때 전체 버튼의 이미지 src 값을 all-no.svg로 설정 
+		    		$('.cate-icon img').eq(0).attr('src', '${pageContext.request.contextPath}/resources/img/category/all-no.svg');
+	    		} 
+	     		
+		        // 선택된 카테고리의 div 만 보이게 하기
+		        $('.cate-product.' + category).show();
+    		});
+		});
+		</script>
