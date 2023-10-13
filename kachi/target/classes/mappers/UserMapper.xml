@@ -36,7 +36,7 @@
 	<select id="getAddresses" parameterType="string" resultType="Address">
 	SELECT * FROM Address WHERE userID = #{userId}
 	</select>
-	   <delete id="deleteAddress"> 
+	<delete id="deleteAddress"> 
         DELETE FROM address WHERE addressId = #{addressId} 
     </delete> 
 </mapper>

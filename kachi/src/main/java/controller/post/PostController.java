@@ -2,7 +2,9 @@ package controller.post;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,8 +74,8 @@ public class PostController {
 	}
 
 	
-	@RequestMapping(value = "/post/upload_image", method = RequestMethod.POST)
-	@ResponseBody  // This means that the return type should be used to hold the response body.
+	@RequestMapping(value = "/post/upload_image.do", method = RequestMethod.POST)
+	@ResponseBody  
 	public String uploadImage(@RequestParam("upload") MultipartFile multipartFile) {
 
 		try {
@@ -111,8 +113,10 @@ public class PostController {
 	          //DB에 이미지 정보 저장
 	          contentImgService.insertContentImage(contentImg);
 	          
-			  // 4. CKEditor에서 요구하는 JSON 형식으로 결과를 반환
-			  String jsonResponse = "{\"uploaded\": 1, \"fileName\": \"" + originalFilename + "\", \"url\": \"" + imageUrl+ "\"}";
+			
+
+	       // 4. CKEditor에서 요구하는 JSON 형식으로 결과를 반환
+			  String jsonResponse = "{\"uploaded\" : 1, \"fileName\" : \"" + originalFilename + "\", \"url\" : \"" + imageUrl+ "\"}";
 			  
 			  return jsonResponse;
 

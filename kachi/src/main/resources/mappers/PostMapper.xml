@@ -19,5 +19,7 @@
 	<select id="getPostsByID" resultType="com.kachi.five.bean.PostBean">
 	  SELECT * FROM POST WHERE POSTID = #{postId};
 	</select>
-
+	<delete id="deletePost"> 
+        DELETE FROM post WHERE postid = #{postId} 
+    </delete> 
 </mapper>

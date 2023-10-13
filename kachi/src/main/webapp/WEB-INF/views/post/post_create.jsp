@@ -57,8 +57,8 @@
      <script>
     $(document).ready(function() {
         CKEDITOR.replace('content', {
-            filebrowserUploadUrl: "${pageContext.request.contextPath}/post/upload_image",
-            filebrowserUploadMethod: 'form'
+            filebrowserUploadUrl: "${pageContext.request.contextPath}/post/upload_image.do",
+           
         });
     });
 	</script>	
