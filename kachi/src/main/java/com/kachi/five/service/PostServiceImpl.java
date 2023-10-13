@@ -22,4 +22,8 @@ public class PostServiceImpl implements PostService {
 	public List<PostBean> getAllPosts(){
 		return postDAO.getAllPosts();
 	}
+	@Override
+	public PostBean getPostById(int postId){
+	  return postDAO.getPostById(postId);
+	}
 }

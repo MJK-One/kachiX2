@@ -48,25 +48,24 @@
        <label for='title'> 제목:</label><br />
        <input type='text' id ='title' name ='title'><br />
      </div>
+     
+     <div class='form-group'>
+    <label for='content'>내용:</label><br />
+    <textarea id ='content' name ='content'></textarea><br />
+	</div>
+	
+     <script>
+    $(document).ready(function() {
+        CKEDITOR.replace('content', {
+            filebrowserUploadUrl: "${pageContext.request.contextPath}/post/upload_image",
+            filebrowserUploadMethod: 'form'
+        });
+    });
+	</script>	
+     
+     
 
-    <!-- 내용 입력 -->
-    <div class='form-group'>
-        <label for='content'> 내용:</label><br/>
-        <textarea name="content" id="editor1" rows="10" cols="80"></textarea>
-        <script>
-           
-              CKEDITOR.replace( 'editor1', {
-			        filebrowserUploadUrl: "/path/to/your/script", // 여기서 "/path/to/your/script" 부분은 실제 파일 업로드를 처리하는 서버 측 스크립트의 URL이어야 합니다.
-			        filebrowserUploadMethod: 'form'
-			    });
-              
-              $('form').submit(function() {
-                  for (instance in CKEDITOR.instances) {
-                      CKEDITOR.instances[instance].updateElement();
-                  }
-              });
-        </script>
-    </div>
+</script>
 
    <!-- 가격 입력 -->
    <div class='form-group'>

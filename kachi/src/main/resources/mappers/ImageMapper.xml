@@ -11,7 +11,18 @@
       INSERT INTO mainimage (postId, imageUrl)
       VALUES (#{postId}, #{imageUrl})
   </insert>
-  <select id="getMainImgByPostId" parameterType="int" resultType="com.kachi.five.bean.MainImageBean">
+  <select id="getMainImgByPostId" parameterType="int" resultType="MainImage">
   SELECT * FROM MainImage WHERE postId = #{postId}
 </select>
+
+  <insert id="insertContentImg" parameterType="ContentImage">
+      INSERT INTO contentimage (postId, imageUrl)
+      VALUES (#{postId}, #{imageUrl})
+  </insert>
+    <select id="getContentImgByPostId" parameterType="int" resultType="ContentImage">
+	  SELECT * FROM ContentImage WHERE postId = #{postId}
+	</select>
+	  	<update id="updateContentImagesWithPostId" parameterType="map">
+	  UPDATE contentimage SET postid = #{actual_post_id} WHERE postid = #{temp_post_id}
+	</update>
 </mapper>

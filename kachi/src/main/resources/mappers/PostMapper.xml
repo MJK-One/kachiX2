@@ -16,4 +16,8 @@
     <select id="getAllPosts" resultType="com.kachi.five.bean.PostBean">
  		 SELECT * FROM Post;
 	</select>
+	<select id="getPostsByID" resultType="com.kachi.five.bean.PostBean">
+	  SELECT * FROM POST WHERE POSTID = #{postId};
+	</select>
+
 </mapper>

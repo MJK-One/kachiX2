@@ -80,23 +80,25 @@ function slide_auto(){
 <!--카테고리 게시물 화면-->
 <div class="cate-main">
 	<c:forEach var="post" items="${posts}">
-	<a href="#">
-		<div class="cate-product ${post.categoryId}">
-			<div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>	
-			<div class="pro-name">${post.title}</div>
-			<div class="pro-price">
-				<li class="price1">${post.price} 원</li>
-				<li class="price2">${post.discountRate}%</li>
-				<!-- 가격과 할인율로 실제 판매가격 계산 -->
-				<li class="price3">${post.price - (post.price * post.discountRate / 100)}원</li>
-				<div class="pro-info">
-					<li>별점</li>
-					<li>구매 : ${i}</li>
-				</div>
-				<div class="line"></div>
-		    </div>	
-		</div>
-	</a>
+	<c:if test="${post.postId >= 0}">
+		<a href="${pageContext.request.contextPath}/post/view/${post.postId}">
+			<div class="cate-product ${post.categoryId}">
+				<div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>	
+				<div class="pro-name">${post.title}</div>
+				<div class="pro-price">
+					<li class="price1">${post.price} 원</li>
+					<li class="price2">${post.discountRate}%</li>
+					<!-- 가격과 할인율로 실제 판매가격 계산 -->
+					<li class="price3">${post.price - (post.price * post.discountRate / 100)}원</li>
+					<div class="pro-info">
+						<li>별점</li>
+						<li>구매 : ${i}</li>
+					</div>
+					<div class="line"></div>
+			    </div>	
+			</div>
+		</a>
+	</c:if>
 </c:forEach> 
 </div>
 	<script type="text/javascript">

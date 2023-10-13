@@ -41,8 +41,13 @@
 				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/interest"><span>관심추천</span></a></li>
 				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/timesale"><span>타임세일</span></a></li>
 				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/newarticle"><span>신상품</span></a></li>
-				<li><a href="${pageContext.request.contextPath}/postform"><span>포스트시험</span></a></li>
-			</ul>
+		
+		        <!-- Check if writePermission is true -->
+		        <c:if test="${sessionScope.writePermission}">
+		            <li class="m"><a href="${pageContext.request.contextPath}/post/post_create"><span>글쓰기</span></a></li>
+		        </c:if>
+		
+		    </ul>
 		</div>
 		<!-- 위로 가기 -->
 		<a class="back-to-top"></a>

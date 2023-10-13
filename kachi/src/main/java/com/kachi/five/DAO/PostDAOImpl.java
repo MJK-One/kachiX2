@@ -41,5 +41,14 @@ public class PostDAOImpl implements PostDAO {
 
 	    return posts;
 	}
+	@Override 
+	public PostBean getPostById(int id) { 
+	  PostBean post = sqlSession.selectOne("com.kachi.five.PostMapper.getPostsByID", id); 
+	  MainImageBean mainImage = sqlSession.selectOne("com.kachi.five.ImageMapper.getMainImgByPostId", post.getPostId());
+	  if (mainImage != null) {
+		    post.setMainImageUrl(mainImage.getImageUrl());
+		  }
+		  return post;
+	} 
 
 }
