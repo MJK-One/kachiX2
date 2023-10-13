@@ -23,10 +23,10 @@
 	left : 85%;
 	z-index: 1;
 }
-.login {
+.nav-link {
 	 position: relative;
-	 left : 88%;
-	 bottom : 30px;
+	 bottom: 29px;
+     left: 87%;
 }
 
 .top-2 {

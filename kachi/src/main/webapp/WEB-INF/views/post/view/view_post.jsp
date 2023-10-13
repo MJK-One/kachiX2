@@ -14,8 +14,36 @@
 </head>
 <body>
 <div class="aaa">
-    <a href="${pageContext.request.contextPath}/" class="home"><img src="${pageContext.request.contextPath}/resources/img/back.svg" width="25" height="25"></a>
-    <a href="" class="search"><img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.png" width="25" height="25"></a>
+    <div id="top-menu">
+     	<button type="button"  onclick = "location.href = '${pageContext.request.contextPath}/'" class="home"><img src="${pageContext.request.contextPath}/resources/img/back1.svg" width="30" height="30"></button>
+     	<img class="top-post-img" src="${post.mainImageUrl}" alt="Post image" width="50" height="50">
+     	<li class="top-post-name">${post.title}</li>
+    	<button type="button" class="search"><img src="${pageContext.request.contextPath}/resources/img/search1.svg" width="50" height="55"></button>
+    	<button type="button" class="basket"><img src="${pageContext.request.contextPath}/resources/img/basket1.svg" width="50" height="55"></button>
+    </div>
+    <script type="text/javascript">
+    window.onscroll = function() {changeBackground()};
+
+    function changeBackground() {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            document.getElementById("top-menu").style.background = "white";
+            document.querySelector(".home img").src = "${pageContext.request.contextPath}/resources/img/back.svg";
+            document.querySelector(".search img").src = "${pageContext.request.contextPath}/resources/img/search1.svg";
+            document.querySelector(".search").style.visibility = "hidden";
+            document.querySelector(".basket img").src = "${pageContext.request.contextPath}/resources/img/basket.svg";
+            document.querySelector(".top-post-img").style.visibility = "visible";
+            document.querySelector(".top-post-name").style.visibility = "visible";
+        } else {
+            document.getElementById("top-menu").style.background = "linear-gradient(#000 0%, rgba(0, 0, 0, 0) 100%)";
+            document.querySelector(".home img").src = "${pageContext.request.contextPath}/resources/img/back1.svg";
+            document.querySelector(".search img").src = "${pageContext.request.contextPath}/resources/img/search1.svg";
+            document.querySelector(".search").style.visibility = "visible";
+            document.querySelector(".basket img").src = "${pageContext.request.contextPath}/resources/img/basket1.svg";
+            document.querySelector(".top-post-img").style.visibility = "hidden";
+            document.querySelector(".top-post-name").style.visibility = "hidden";
+        }
+    }
+    </script>
 	<div class="post-img">
 		<img src="${post.mainImageUrl}" alt="Post image">
 		<%-- <img src="${pageContext.request.contextPath}/resources/img/icon.jpg"> --%>

@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mypage.css?ver=3">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mypage.css?after4">
 
 <title>같이의 가치-공동구매</title>
 </head>
@@ -16,10 +16,8 @@
 		<header class="mypage-top">
 			<div class="middle">
 				<div class="left">
-					<input type="button" class="back" onclick="history.back();" /> <!-- 뒤로가는거 나중에 수정 해야할듯 -->
-
-					</button>
-					<img src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="50" height="50">
+					<button type="button"  onclick="location.href = '${pageContext.request.contextPath}/'" class="back"><img src="${pageContext.request.contextPath}/resources/img/back.svg" width="30" height="30"></button>
+					<img class="left-icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="50" height="50">
 				</div>
 				<div class="title">MY 공구</div>	
 			</div>
@@ -34,13 +32,12 @@
 			    <c:otherwise> 
 			    	<li>로그인해 주세요</li>
 			    	<button id="loginButton" type="button">로그인</button>
-			    	
-			    	<script>
+
+					<script>
 					document.getElementById('loginButton').addEventListener('click', function() {
 					    window.location.href = '${pageContext.request.contextPath}/member/loginform';
 					});
 					</script>
-					
 			    </c:otherwise> 
 			</c:choose>
 		</div>
@@ -85,6 +82,24 @@
 			<button type="button">찜가기</button>
 			<div class="save-list"></div>
 		</div>
+		<div class="customer-btn">
+			<li>개인정보 수정</li>
+			<button type="button" class="right"><img src="${pageContext.request.contextPath}/resources/img/mypage/right.svg" width="9px" height="14px"></button>
+		</div>
+		<script type="text/javascript">
+		window.onload = function() {
+	        var btn = document.querySelector(".customer-btn button");
+	        var customerDiv = document.querySelector(".customer");
+
+	        btn.addEventListener("click", function() {	   
+	            if (window.getComputedStyle(customerDiv).display === "none") {
+	                customerDiv.style.display = "block";
+	            } else {
+	                customerDiv.style.display = "none";
+	            }
+	        });
+	    }
+		</script>
 		<div class="customer">
 			<table class="n-table table-row">
                     <colgroup>
@@ -97,13 +112,23 @@
 					    <th scope="row">닉네임</th>
 					    <td><strong>${sessionScope.loggedInUser.nickname}</strong></td>
 					    <td>
-					        <form action="${pageContext.request.contextPath}/member/updateNickname" method="post">
+					        <form action="${pageContext.request.contextPath}/member/updateNickname" method="post" id='updateNicknameForm'>
 					       
-					            <input type="text" name="newNickname" placeholder="새 닉네임 입력">
+					            <input type="text" name="newNickname" placeholder="새 닉네임 입력" id='newNickname'>
 					            <!-- CSRF 토큰 추가 -->
 					            <input type = "hidden" name = "${_csrf.parameterName}" value = "${_csrf.token}"/>
 					            <button type="submit" class="n-btn w100 btn-sm btn-default cert-hidden" id="refund-account-btn">수정</button>
 					        </form>
+					        <script>
+					        document.getElementById('updateNicknameForm').addEventListener('submit', function(event) {
+					        	var newNickname = document.getElementById('newNickname').value;
+
+					        	if (!newNickname.trim()) {
+						        	alert('닉네임을 입력해주세요.');
+						        	event.preventDefault();
+					        	}
+					        	});
+					        </script>
 					    </td>
 					</tr>
 					                   
@@ -124,7 +149,7 @@
 								});
 							</script>
                         <td>
-                         <form action="${pageContext.request.contextPath}/member/updateAdress" method="post">
+                         <form action="${pageContext.request.contextPath}/member/updateAdress" method="post" id='updatenewAdress'>
                             <input type="text" id="sample6_postcode" placeholder="우편번호" name="postcode">
 							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 							<input type="text" id="sample6_address" placeholder="주소" name="streetAddress"><br>
@@ -180,6 +205,16 @@
 							            }
 							        }).open();
 							    }
+							    
+							    document.getElementById('updatenewAdress').addEventListener('submit', function(event) {
+								    var postcode = document.getElementById('sample6_postcode').value;
+								    var address = document.getElementById('sample6_address').value;
+								    
+								    if (!postcode.trim() || !address.trim()) {
+								        alert('우편번호와 주소를 입력해주세요.');
+								        event.preventDefault();
+								    }
+								});
 							</script>
 							</form>
                         </td>
