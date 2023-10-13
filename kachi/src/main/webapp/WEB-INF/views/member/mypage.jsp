@@ -33,7 +33,14 @@
 			    </c:when>	        
 			    <c:otherwise> 
 			    	<li>로그인해 주세요</li>
-			    	<button type="button">로그인</button>
+			    	<button id="loginButton" type="button">로그인</button>
+			    	
+			    	<script>
+					document.getElementById('loginButton').addEventListener('click', function() {
+					    window.location.href = '${pageContext.request.contextPath}/member/loginform';
+					});
+					</script>
+					
 			    </c:otherwise> 
 			</c:choose>
 		</div>
