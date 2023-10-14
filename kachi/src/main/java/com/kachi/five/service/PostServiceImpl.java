@@ -26,4 +26,8 @@ public class PostServiceImpl implements PostService {
 	public PostBean getPostById(int postId){
 	  return postDAO.getPostById(postId);
 	}
+	@Override
+	public void deletePost(int postId) {
+		postDAO.deletePost(postId);
+	}
 }

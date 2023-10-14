@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>공동구매 게시글 작성</title>
     
@@ -61,7 +62,7 @@
            
         });
     });
-	</script>	
+	</script>	 
      
      
 
@@ -105,6 +106,7 @@
    	<input type= "submit" value= "글쓰기">
   
 </form>
+
 
 
 </body>

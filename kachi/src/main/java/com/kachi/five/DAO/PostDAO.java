@@ -8,4 +8,5 @@ public interface PostDAO {
 	 public void insertPost(PostBean post);
 	 public List<PostBean> getAllPosts();
 	 public PostBean getPostById(int postId);
+	 public void deletePost(int postId);
 }

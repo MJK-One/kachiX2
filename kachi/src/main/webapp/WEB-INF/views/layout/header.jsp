@@ -44,7 +44,7 @@
 		
 		        <!-- Check if writePermission is true -->
 		        <c:if test="${sessionScope.writePermission}">
-		            <li class="m"><a href="${pageContext.request.contextPath}/post/post_create"><span>글쓰기</span></a></li>
+		            <li class="m"><a href="${pageContext.request.contextPath}/admin/adminform"><span>관리자</span></a></li>
 		        </c:if>
 		
 		    </ul>

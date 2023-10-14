@@ -50,5 +50,9 @@ public class PostDAOImpl implements PostDAO {
 		  }
 		  return post;
 	} 
-
+	@Override
+	 public void deletePost(int postId) {
+		 sqlSession.delete("com.kachi.five.PostMapper.deletePost",postId);
+		 
+	 }
 }

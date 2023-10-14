@@ -21,7 +21,7 @@ import com.kachi.five.service.PostService;
 @ComponentScan(basePackages = "controller.member")
 @ComponentScan(basePackages = "com.kachi.five.controller")
 @ComponentScan(basePackages = "controller.post")
-
+@ComponentScan(basePackages = "controller.admin")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
