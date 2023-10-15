@@ -14,7 +14,7 @@
 .middle{
 	width : 100%;
 	height : 50px;
-	margin-top : 10px;
+	margin-top: 3px;
 }
 .left {
 	float : left;
@@ -155,7 +155,7 @@
     text-align: left;
 }
 .n-table.table-row th {
-    padding-left: 20px; /* �썝�븯�뒗 媛꾧꺽�쑝濡� 議곗젙�븯�꽭�슂 */
+    padding-left: 20px; /* 占쎌뜚占쎈릭占쎈뮉 揶쏄쑨爰쏙옙�몵嚥∽옙 鈺곌퀣�젟占쎈릭占쎄쉭占쎌뒄 */
 }
 .n-table.table-row tr:first-child th, .n-table.table-row tr:first-child td {
     border-top: none;

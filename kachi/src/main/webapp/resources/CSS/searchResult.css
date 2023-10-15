@@ -1,0 +1,199 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
+*{
+	font-family :'Spoqa Han Sans', sans-serif ;
+}
+body {
+	background-color : #f6f6f6;
+	position: relative;
+	height : 100%;
+}
+button {
+	background-color: transparent;
+	border: none;
+    outline: none;
+    cursor: pointer;
+}
+a{
+	text-decoration-line: none;
+}
+.bbb {
+	background-color : white;
+	width : 1000px;
+	height : 100%;
+	margin: -9px auto;
+}
+.search-m{
+	width: 1000px;
+    height: 40px;
+    border-bottom: 1px solid black;
+    padding: 13px 0 10px 0;
+    background-color : white;
+}
+.search-line {
+	width : 100%;
+	height : 40px;
+	background-color : white;
+}
+.home{
+	margin-left: 24px;
+}
+.form-input{
+	height: 40px;
+	width : 800px;
+    position: relative;
+    bottom: 5px;
+    left: 22px;
+    border : 0;
+    outline: none;
+    font-size : 20px;
+    font-weight: 400;
+}
+.search-btn {
+	margin-left: 70px;
+}
+.search-main{
+    height: 800px;
+}
+.search-cate{
+	width : 100%;
+	height: 60px;
+	border : 1px solid black;
+}
+.filter-option {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 32px;
+    height: 40px;
+    border-bottom : 1px solid #aaaaaa;
+}
+.option {
+	flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.select {
+	display: inline-flex;
+    align-items: center;
+    color: #777777;
+    font-weight: 500;
+}
+.price{
+	margin-right: auto;
+}
+.price-box-menu {
+	padding: 18px 16px;
+    border-radius: 6px;
+    border: 1px solid #aaaaaa;
+    background: #fff;
+    position: absolute;
+    top: 171px;
+    left: 154px;
+    width: 126px;
+    z-index: 10;
+    font-weight : 500;
+}
+.pop-box-menu {
+	padding: 18px 16px;
+    border-radius: 6px;
+    border: 1px solid #aaaaaa;
+    background: #fff;
+    position: absolute;
+    top: 171px;
+    right: 190px;
+    width: 45px;
+    z-index: 10;
+    font-weight : 500;
+}
+.hidden {
+    display : none;
+}
+.bar {
+	display: inline-block;
+    margin: 0 12px;
+    height: 14px;
+    width: 1px;
+    vertical-align: middle;
+    background-color: #cdcdcd;
+}
+/*포스트*/
+.filter-post{
+	display: flex;
+	flex-wrap: wrap;
+	width : 100%;
+}
+.pro-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.pro-img{
+	width : 300px;
+	height : 300px;
+	margin-left : 15px;
+	margin-top : 10px; 
+}
+.pro-name{
+	width : 280px;
+	margin-top : 10px;
+	margin-left : 22px;
+	height : 50px;
+	overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+	text-overflow: ellipsis; /* 넘치는 텍스트를 ... 으로 표시 */
+	display: -webkit-box;
+	-webkit-line-clamp: 2; 
+	-webkit-box-orient: vertical;
+	color : black;
+	font-weight: 500;
+	text-overflow: ellipsis; 
+}
+.pro-price{
+	width : 300px;
+	height : 50px;
+	margin-left : 15px;
+	}
+.price1{
+	position : relative;
+	left : 10px;
+	bottom : 5px;
+	font-size : 15px;
+	text-decoration: line-through;
+	color: darkgray;
+    font-weight: 600;
+}
+.price2{
+	position : relative;
+	top : 20px;
+	right : 35px;
+	font-size : 20px;
+	color : red;
+}
+.price3{
+	position : relative;
+	top : 20px;
+	right : 20px;
+	font-size : 20px;
+	color: black;
+    font-weight: bold;
+}
+.pro-info{
+	width : 100px;
+	height : 100%;
+	position : relative;
+	bottom : 23px;
+	left : 200px;
+}
+.pro-info li{
+	margin-right : 20px;
+}
+.line {
+	position : relative;
+	bottom : 7px;
+	width : 95%;
+	height : 2px;
+	margin : 0 auto;
+	border-radius : 2px;
+	background-color : #e1e1e1;
+}

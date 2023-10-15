@@ -50,7 +50,7 @@ public class HomeController {
 	
 	@RequestMapping("mainpage/storehome")
 	public String storehome(Model model) {
-		List<PostBean> posts = postService.getAllPosts();
+		 List<PostBean> posts = postService.getAllPosts();
 		 List<CategoryBean> categories = categoryService.getAllCategories();
 		 model.addAttribute("categories",categories);
 		 model.addAttribute("posts", posts);
@@ -67,5 +67,13 @@ public class HomeController {
 	@RequestMapping("mainpage/interest")
 	public String interest() {
 			return "mainpage/interest";
+	}
+	@RequestMapping("member/searchResult")
+	public String searchResult(Model model) {
+		 List<PostBean> posts = postService.getAllPosts();
+		 List<CategoryBean> categories = categoryService.getAllCategories();
+		 model.addAttribute("categories",categories);
+		 model.addAttribute("posts", posts);
+			return "member/searchResult";
 	}
 }

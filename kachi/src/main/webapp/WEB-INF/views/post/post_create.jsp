@@ -30,6 +30,7 @@
 	    form {
 	        max-width: 500px;
 	        margin:auto; 
+	        height : 1300px;
 	    }
     </style>
 

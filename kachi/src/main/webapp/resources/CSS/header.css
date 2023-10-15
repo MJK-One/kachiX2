@@ -27,7 +27,15 @@
 	 bottom: 29px;
      left: 87%;
 }
-
+.search-jsp {
+    position: fixed;
+    bottom: -100%; /* 초기에는 보이지 않도록 설정 */
+    left: 0;
+    right: 0;
+    padding: 20px;
+    transition: bottom 0.5s ease; /* 애니메이션 효과를 위한 transition 추가 */
+    z-index:99999;
+}
 .top-2 {
     position: relative;
     height: 27px;
@@ -41,6 +49,12 @@
 	bottom : 11px;
 }
 .m {
+	display: inline-block;
+	margin-right: 20px;
+	font-size: 18px;
+    font-weight: bold;
+}
+.b {
 	display: inline-block;
 	margin-right: 20px;
 	font-size: 18px;

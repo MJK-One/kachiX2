@@ -23,9 +23,9 @@
 
 <script>
 $(document).ready(function(){
-	$(".m a").click(function(e) {
+	$(".b a").click(function(e) {
         e.preventDefault();
-        $(".m a").removeClass("active");
+        $(".b a").removeClass("active");
         $(this).addClass("active");
 
         var href = $(this).attr('href');
@@ -40,10 +40,9 @@ $(document).ready(function(){
 <div id="admin-panel">
     <div id="left-menu">
         <ul>
-            <li class="m"><a class = "active" href="${pageContext.request.contextPath}/post/post_create">게시물 생성</a></li>
-            <li class="m"><a href="${pageContext.request.contextPath}/post/post_list">게시물 삭제</a></li>
-            <li class="m"><a href="${pageContext.request.contextPath}/memeber/user_list">회원 관리</a></li>
-            <li class="m"><a href="${pageContext.request.contextPath}/post/post_list">게시물 삭제</a></li>
+            <li class="b"><a class = "active" href="${pageContext.request.contextPath}/post/post_create">게시물 생성</a></li>
+            <li class="b"><a href="${pageContext.request.contextPath}/post/post_list">게시물 삭제</a></li>
+            <li class="b"><a href="${pageContext.request.contextPath}/memeber/user_list">회원 관리</a></li>
         </ul>        
     </div>
     

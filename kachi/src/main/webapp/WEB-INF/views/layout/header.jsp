@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after5">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after5">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after6">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -20,9 +20,26 @@
 	<header class="top">
 		<div class="top-1">
 				<img class="icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="60" height="60">
-				<button type="button" class="search" style=" cursor: pointer;" onclick="location.href = '${pageContext.request.contextPath}/member/search'">					
+				<button type="button" class="search" style="cursor:pointer;" onclick="showSearchJSP()">
 					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.svg" width="26" height="30">
 				</button>
+				<script>
+				  function showSearchJSP() {
+				    var searchJSP = document.getElementById('search-jsp');
+				    var bodyElement = document.getElementsByTagName('body')[0];
+				    
+				    // 버튼 클릭 시 search.jsp를 보여주기 위해 bottom 값을 조정합니다.
+				    if (searchJSP.style.bottom === '-100%' || searchJSP.style.bottom === '') {
+				      searchJSP.style.bottom = '0';
+				      searchJSP.scrollIntoView({ behavior: 'smooth' }); // 스크롤 애니메이션 적용
+				      bodyElement.style.overflowY = 'hidden';
+				    } else {
+				      searchJSP.style.bottom = '-100%';
+				      window.scrollTo(0, 0); // 페이지 최상단으로 스크롤 이동
+				      bodyElement.style.overflowY = 'auto';
+				    }
+				  }
+				</script>
 				<div class="login">
 					<c:choose>			        
 				        <c:when test="${not empty sessionScope.loggedInUser}">
@@ -63,7 +80,9 @@
 		    </ul>    
 		</div>
 	</header>
-	
+	<div id="search-jsp" class="search-jsp">
+		<jsp:include page="/WEB-INF/views/member/search.jsp" flush="false" />
+	</div>
 	<div class="top-screen"></div>
 	<!-- 메인 화면 -->
 	<div class="main">

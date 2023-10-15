@@ -6,19 +6,19 @@
 <head>
 <meta charset="UTF-8">
 
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/search.css?after3">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/search.css?ver=3">
 
 <title>같이의 가치-공동구매</title>
 </head>
 <body>
-	<div class="aaa">
-		<header class="search">
+	<div class="bbb">
+		<div class="search-m">
 			<div class="search-line">
-				<button type="button"  onclick = "location.href = '${pageContext.request.contextPath}/'" class="home"><img src="${pageContext.request.contextPath}/resources/img/back.svg" width="30" height="30"></button>
+				<button type="button"  onclick="showSearchJSP()" class="home"><img src="${pageContext.request.contextPath}/resources/img/back.svg" width="30" height="30"></button>
 				<input class="form-input" autocomplete="off" aria-autocomplete="list" type="search" placeholder="상품을 검색해보세요!" value="">
-				<button type="button" class="search-btn"><img src="${pageContext.request.contextPath}/resources/img/search2.svg" width="30" height="30"></button>
+				<button type="button" onclick="location.href='${pageContext.request.contextPath}/member/searchResult';"class="search-btn"><img src="${pageContext.request.contextPath}/resources/img/search2.svg" width="30" height="30"></button>
 			</div>		
-		</header>
+		</div>
 		<div class="search-main">
 			<div class="recent">
 				<div class="title">최근 검색어</div>
@@ -42,7 +42,7 @@
 				<c:forEach var="i" begin="1" end="2" >
 					<div class="btn">
 						<button type="button" class="search-ti">${i}</button>
-						<button type="button" class="cancel hidden"><img src="${pageContext.request.contextPath}/resources/img/x.svg" width="10" height="10"></button>
+						<button type="button" class="cancel hidden"><img class="x"src="${pageContext.request.contextPath}/resources/img/x.svg" width="10" height="10"></button>
 					</div>
 				</c:forEach>
 			</div>	

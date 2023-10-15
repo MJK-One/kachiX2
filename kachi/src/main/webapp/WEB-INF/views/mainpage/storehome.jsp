@@ -79,7 +79,7 @@ function slide_auto(){
 </div>
 <!--카테고리 게시물 화면-->
 <div class="cate-main">
-	<c:forEach var="post" items="${posts}">
+<c:forEach var="post" items="${posts}">
 	<c:if test="${post.postId >= 0}">
 		<a href="${pageContext.request.contextPath}/post/view/${post.postId}">
 			<div class="cate-product ${post.categoryId}">
@@ -101,7 +101,7 @@ function slide_auto(){
 	</c:if>
 </c:forEach> 
 </div>
-	<script type="text/javascript">
+<script type="text/javascript">
 	/*상단 고정*/
 	$(function() {
 		  var lnb = $("#category").offset().top;
@@ -181,4 +181,4 @@ function slide_auto(){
 		        $('.cate-product.' + category).show();
     		});
 		});
-		</script>
+</script>
