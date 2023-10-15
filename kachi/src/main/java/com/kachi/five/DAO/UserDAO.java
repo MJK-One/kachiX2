@@ -8,10 +8,11 @@ import com.kachi.five.bean.UserBean;
 public interface UserDAO {
 	public void insertUser(UserBean user);
 	public  UserBean getUser(String userID) throws Exception;
-	public List<UserBean> test() throws Exception;
+	public List<UserBean> getAllUsers() throws Exception;
 	public void updateNickname(UserBean user);
 	public void insertAddress(AddressBean address);
 	public List<AddressBean> getAddresses(String userId);
 	public void deleteAddress(int addressId);
-	
+	public void deleteUser (int userId);
+	public void updateUserPermission(UserBean user) throws Exception;
 }

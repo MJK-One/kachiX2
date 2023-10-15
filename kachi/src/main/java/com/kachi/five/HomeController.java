@@ -22,6 +22,7 @@ import com.kachi.five.service.PostService;
 @ComponentScan(basePackages = "com.kachi.five.controller")
 @ComponentScan(basePackages = "controller.post")
 @ComponentScan(basePackages = "controller.admin")
+
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -42,6 +43,29 @@ public class HomeController {
 	}
 	
 	
+	@RequestMapping("member/search")
+	public String search() {
+			return "member/search";
+	}
 	
-	
+	@RequestMapping("mainpage/storehome")
+	public String storehome(Model model) {
+		List<PostBean> posts = postService.getAllPosts();
+		 List<CategoryBean> categories = categoryService.getAllCategories();
+		 model.addAttribute("categories",categories);
+		 model.addAttribute("posts", posts);
+			return "mainpage/storehome";
+	}
+	@RequestMapping("mainpage/timesale")
+	public String timesale() {
+			return "mainpage/timesale";
+	}
+	@RequestMapping("mainpage/newarticle")
+	public String newarticle() {
+			return "mainpage/newarticle";
+	}
+	@RequestMapping("mainpage/interest")
+	public String interest() {
+			return "mainpage/interest";
+	}
 }

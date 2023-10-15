@@ -17,8 +17,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateNickname(UserBean user) {
-		userDao.updateNickname(user);
-
+	    try {
+	        userDao.updateNickname(user);
+	    } catch (Exception e) {
+	       
+	        e.printStackTrace();
+	        System.out.println("Error updating nickname: " + e.getMessage());
+	        
+			
+			throw new RuntimeException(e); 
+	    }
 	}
 	@Override
 	public void insertAddress(AddressBean address) {
@@ -32,4 +40,30 @@ public class UserServiceImpl implements UserService {
 	public void deleteAddress(int addressId) {
 	   userDao.deleteAddress(addressId);
 	}
+	@Override
+	public void deleteUser(int userId) {
+		userDao.deleteUser(userId);
+		
+	}
+	@Override
+	public List<UserBean> getAllUsers() {
+	    try {
+	        return userDao.getAllUsers();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        System.out.println("Error Message: " + e.getMessage());
+	        
+			
+			throw new RuntimeException(e); 
+	    }
+	}
+	@Override
+	public void updateUserPermission(UserBean user) throws Exception {
+		userDao.updateUserPermission(user);
+		
+	}
+	
+	
 }
+	
+

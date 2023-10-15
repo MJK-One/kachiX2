@@ -23,7 +23,7 @@
 	<select id="getUserID" parameterType="string" resultType="User">
 		SELECT * FROM user WHERE userID = #{userID}
 	</select>
-	<select id="test" resultType="Test">
+	<select id="GetAllUsers" resultType="User">
 		Select * from user
 	</select>
 	<insert id="insertAddress" parameterType="Address">
@@ -39,4 +39,10 @@
 	<delete id="deleteAddress"> 
         DELETE FROM address WHERE addressId = #{addressId} 
     </delete> 
+    <delete id="deleteUser"> 
+        DELETE FROM user WHERE userId = #{userId} 
+    </delete> 
+    <update id="updateUserPermission" parameterType="User">
+		UPDATE user SET writePermission = #{writePermission} WHERE userID = #{userID}
+	</update>
 </mapper>

@@ -185,7 +185,7 @@ public class PostController {
 	        mainImgService.insertMainImage(img);
 
 	        contentImgService.updateContentImagesWithPostId(-1, post.getPostId());
-	        return "redirect:/post/post_create";
+	        return "redirect:/";
 	    } else {
 	        // 사용자가 로그인하지 않은 상태에서 글을 작성하려는 경우 처리
 	       
@@ -195,6 +195,6 @@ public class PostController {
 	@RequestMapping(value="/post/deletePost", method=RequestMethod.POST)
 	public String deletePost(@RequestParam("postId") int postId) {
 		if(postId > 0) postService.deletePost(postId);
-		return "redirect:/post/post_list";
+		return "redirect:/";
 	}
 }

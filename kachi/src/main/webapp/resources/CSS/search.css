@@ -1,0 +1,150 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
+*{
+	font-family :'Spoqa Han Sans', sans-serif ;
+}
+body {
+	background-color : #f6f6f6;
+	position: relative;
+	height : 100%;
+}
+button {
+	background-color: transparent;
+	border: none;
+    outline: none;
+    cursor: pointer;
+}
+.aaa {
+	background-color : white;
+	width : 1000px;
+	height : 100%;
+	margin : 0 auto;
+}
+.search{
+	position : fixed;
+	top : 0;
+	width: 1000px;
+    height: 40px;
+    border-bottom: 1px solid black;
+    padding: 13px 0 10px 0;
+    background-color : white;
+    z-index: 9999;
+}
+.search-line {
+	width : 100%;
+	height : 40px;
+	background-color : white;
+}
+.home{
+	margin-left: 24px;
+}
+.form-input{
+	height: 40px;
+	width : 800px;
+    position: relative;
+    bottom: 5px;
+    left: 22px;
+    border : 0;
+    outline: none;
+    font-size : 20px;
+    font-weight: 400;
+}
+.search-btn {
+	margin-left: 70px;
+}
+.search-main{
+	margin-top: 65px;
+	height: 800px;
+}
+.title {
+	font-size : 25px;
+	font-weight : bold;
+	padding-left : 20px;
+}
+.recent {
+    position: relative;
+    top: 21px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+}
+.setting{
+	position : relative;
+	bottom: 3px;
+	left : 80%;
+	font-size: 16px;
+    font-weight: inherit;
+}
+.setting img{
+	position: absolute;
+    left: -8px;
+    top: 14px;
+}
+.setting-menu{
+    padding: 18px 16px;
+    border-radius: 6px;
+    border: 1px solid #aaaaaa;
+    background: #fff;
+    position: absolute;
+    top: 41px;
+    right: 13px;
+    width: 126px;
+    z-index: 10;
+}
+.hidden {
+    display : none;
+}
+}
+.setting-menu button{
+	cursor: pointer;
+}
+.box{
+    width: 96%;
+    height: 50px;
+    margin: 21px;
+    display: flex;
+    padding-top: 4px;
+    box-sizing: border-box;
+}
+.btn {
+    display: flex;
+    min-width : 100px;
+    align-items: center;
+    border: 1px solid #aaaaaa;
+    border-radius: 50px;
+    padding: 0 10px; /* 양쪽 패딩 추가 */
+    margin-right : 15px;
+}
+.search-ti{
+	font-size : 22px;
+	position : relative;
+	bottom : 2px;
+	flex-grow: 1; /* 요소가 남은 공간을 채우도록 설정 */
+}
+.cancel {
+	background-color : #dddddd;
+	border-radius : 25px;
+	margin-left: auto; /* 왼쪽으로부터 자동 마진 설정 */
+}
+.cancel.hidden { 
+	display: none; 
+}
+.pop {
+	position: relative;
+    top: 21px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+}
+.btn p{
+	font-size: 20px;
+	color : #ff920d;
+	font-weight : bold;
+}
+.pop-ti{
+	font-size : 22px;
+	color : #ff920d;
+	position : relative;
+	bottom : 2px;
+	flex-grow: 1; /* 요소가 남은 공간을 채우도록 설정 */
+}
