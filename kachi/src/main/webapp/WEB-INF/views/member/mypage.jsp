@@ -31,13 +31,7 @@
 			    </c:when>	        
 			    <c:otherwise> 
 			    	<li>로그인해 주세요</li>
-			    	<button id="loginButton" type="button">로그인</button>
-
-					<script>
-					document.getElementById('loginButton').addEventListener('click', function() {
-					    window.location.href = '${pageContext.request.contextPath}/member/loginform';
-					});
-					</script>
+			    	<button type="button" onclick="location.href='${pageContext.request.contextPath}/member/loginform';">로그인</button>
 			    </c:otherwise> 
 			</c:choose>
 		</div>
@@ -84,23 +78,29 @@
 		</div>
 		<div class="customer-btn">
 			<li>개인정보 수정</li>
-			<button type="button" class="right"><img src="${pageContext.request.contextPath}/resources/img/mypage/right.svg" width="9px" height="14px"></button>
+			<c:choose>
+				<c:when test="${not empty sessionScope.loggedInUser}">
+					<button type="button" class="right" onclick="modify()"><img src="${pageContext.request.contextPath}/resources/img/mypage/right.svg" width="9px" height="14px"></button>
+				</c:when>
+				<c:otherwise>
+					<button type="button" class="right" onclick="ale()"><img src="${pageContext.request.contextPath}/resources/img/mypage/right.svg" width="9px" height="14px"></button>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<script type="text/javascript">
-		window.onload = function() {
-	        var btn = document.querySelector(".customer-btn button");
-	        var customerDiv = document.querySelector(".customer");
-
-	        btn.addEventListener("click", function() {	   
-	            if (window.getComputedStyle(customerDiv).display === "none") {
-	                customerDiv.style.display = "block";
-	            } else {
-	                customerDiv.style.display = "none";
-	            }
-	        });
-	    }
+		function modify() {
+			var modify = document.querySelector('.customer');
+		     if (modify.classList.contains('hidden')) {
+		    	 modify.classList.remove('hidden');
+		     } else {
+		    	 modify.classList.add('hidden');
+		     }
+		}
+		function ale() {
+			alert("로그인이 필요합니다.");
+		}
 		</script>
-		<div class="customer">
+		<div class="customer hidden">
 			<table class="n-table table-row">
                     <colgroup>
                         <col style="width:190px">
