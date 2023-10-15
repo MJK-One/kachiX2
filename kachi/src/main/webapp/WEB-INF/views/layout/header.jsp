@@ -29,14 +29,18 @@
 				    var bodyElement = document.getElementsByTagName('body')[0];
 				    
 				    // 버튼 클릭 시 search.jsp를 보여주기 위해 bottom 값을 조정합니다.
-				    if (searchJSP.style.bottom === '-100%' || searchJSP.style.bottom === '') {
+				    if (searchJSP.style.bottom === '-1000%' || searchJSP.style.bottom === '') {
 				      searchJSP.style.bottom = '0';
 				      searchJSP.scrollIntoView({ behavior: 'smooth' }); // 스크롤 애니메이션 적용
 				      bodyElement.style.overflowY = 'hidden';
+				      setTimeout(function() { // setTimeout을 사용하여 지연시킵니다.
+				          searchJSP.style.top = '0';	
+				        }, 500);				    	      	
 				    } else {
-				      searchJSP.style.bottom = '-100%';
-				      window.scrollTo(0, 0); // 페이지 최상단으로 스크롤 이동
+				      searchJSP.style.bottom = '-1000%';
 				      bodyElement.style.overflowY = 'auto';
+				      searchJSP.style.position = '';
+				      searchJSP.style.top = '';
 				    }
 				  }
 				</script>

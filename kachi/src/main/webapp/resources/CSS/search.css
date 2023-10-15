@@ -14,11 +14,11 @@ button {
     outline: none;
     cursor: pointer;
 }
-.bbb {
+.bbb{
 	background-color : white;
 	width : 1000px;
-	height : 100%;
-	margin: -65px auto;
+	height : 1000%;
+	margin: -20px auto;
 }
 .search-m{
 	width: 1000px;

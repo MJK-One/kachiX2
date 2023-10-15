@@ -33,7 +33,7 @@
     left: 0;
     right: 0;
     padding: 20px;
-    transition: bottom 0.5s ease; /* 애니메이션 효과를 위한 transition 추가 */
+    transition: 0.5s ease; /* 애니메이션 효과를 위한 transition 추가 */
     z-index:99999;
 }
 .top-2 {

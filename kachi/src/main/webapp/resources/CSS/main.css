@@ -74,7 +74,7 @@ a{
 }
 #category.fixed {
     position: fixed;
-    top: 93px;
+    top: 92px;
     width: 1000px; /* 상단 고정바가 전체 너비를 차지하도록 설정 */
 }
 .swiper-slide {
