@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after5">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after8">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after6">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -50,11 +50,21 @@
 	</div>
 	<div class="event">2인 공동구매</div>
 	<div class="price">
-		<li class="price-s">${post.discountRate}<div>%</div></li>
-		<li class="price-w">${post.price} 원</li>
-		<li class="price-sw">${post.price - (post.price * post.discountRate / 100)}원</li>
-		<li class="star">★★★★★</li>
-		<li class="pro-name">${post.title}</li>
+		<div class="price-info">
+			<div class="sale">
+				<li class="price-s">${post.discountRate}</li>
+				<li class="price-s2">%</li>
+			</div>
+			<div class="price-won">
+				<li class="price-w">${post.price} 원</li>
+				<li class="price-sw">${post.price - (post.price * post.discountRate / 100)}원</li>
+			</div>
+			<li class="star">★★★★★</li>
+			<button class="heart">하트</button>
+		</div>
+		<div class="product-name">
+			<li class="pro-name">${post.title}</li>
+		</div>
 		<div class="line"></div>
 	</div>
 	<div class="group-buy"> <!--보류-->

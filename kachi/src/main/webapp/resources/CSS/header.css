@@ -29,7 +29,7 @@
 }
 .search-jsp {
     position: fixed;
-    bottom: -100%; /* 초기에는 보이지 않도록 설정 */
+    bottom: -1000%; /* 초기에는 보이지 않도록 설정 */
     left: 0;
     right: 0;
     padding: 20px;
