@@ -34,16 +34,16 @@
 					<img img id="coupon" src="${pageContext.request.contextPath}/resources/img/footer/coupon.png" width="50px" height="50px">
 				</div>
 		</a>
-		<a href="${pageContext.request.contextPath}/member/mypage">
-				<div class="bot-my">
-					<img id="mypage" src="${pageContext.request.contextPath}/resources/img/footer/mypage.png" width="50px" height="50px">
-				</div>
-		</a>
 		<a href="">
 				<div class="bot-my">
 					<img id="heart" src="${pageContext.request.contextPath}/resources/img/footer/heart.png" width="50px" height="50px">
 				</div>
-		</a>		
+		</a>	
+		<a href="${pageContext.request.contextPath}/member/mypage">
+				<div class="bot-my">
+					<img id="mypage" src="${pageContext.request.contextPath}/resources/img/footer/mypage.png" width="50px" height="50px">
+				</div>
+		</a>	
 	</footer>
 	<script type="text/javascript">
 		$(function(){			  
@@ -65,13 +65,13 @@
 		
 		    $('.bot-my').eq(2).hover(function() { // 세 번째 bot-my
 		    	  var $img = $(this).find('img');	
-		    	  var newImgSrc = $img.attr('src') === '${pageContext.request.contextPath}/resources/img/footer/mypage.png' ? '${pageContext.request.contextPath}/resources/img/footer/mypage-ac.png' : '${pageContext.request.contextPath}/resources/img/footer/mypage.png';
+		    	  var newImgSrc = $img.attr('src') === '${pageContext.request.contextPath}/resources/img/footer/heart.png' ? '${pageContext.request.contextPath}/resources/img/footer/heart-ac.png' : '${pageContext.request.contextPath}/resources/img/footer/heart.png';
 		          $img.attr('src', newImgSrc);
 		    });
 		
 		    $('.bot-my').eq(3).hover(function() { // 네 번째 bot-my
 			    var $img = $(this).find('img');
-			    var newImgSrc = $img.attr('src') === '${pageContext.request.contextPath}/resources/img/footer/heart.png' ? '${pageContext.request.contextPath}/resources/img/footer/heart-ac.png' : '${pageContext.request.contextPath}/resources/img/footer/heart.png';
+			    var newImgSrc = $img.attr('src') === '${pageContext.request.contextPath}/resources/img/footer/mypage.png' ? '${pageContext.request.contextPath}/resources/img/footer/mypage-ac.png' : '${pageContext.request.contextPath}/resources/img/footer/mypage.png';
 			    $img.attr('src', newImgSrc);
 			});
 		});
