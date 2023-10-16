@@ -5,6 +5,9 @@
 	position: relative;
     left: 30px;
 }
+#top-menu {
+	display: flex;
+}
 .top-post-img {
 	position: relative;
 	top : 10px;
@@ -12,23 +15,26 @@
 	border-radius : 8px;
 	visibility: hidden;
 }
-.top-post-name{
+.top-post-name {
 	position: relative;
-    top: 0;
-    left: 50px;
-    width : 500px;
-    font-size: 20px;
-    text-overflow: ellipsis;   
+    top: 33px;
+    left: 65px;
     visibility: hidden;
+}
+.top-post-name li{
+	width: 500px;
+	height: 25px;  
+    font-size: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;  
+    overflow: hidden;     
 }
 .search {
 	position: relative;
-	top: 8px;
     left: 250px;
 }
 .basket {
 	position: relative;
-	top: 8px;
     left: 250px;
 }
 #top-menu {

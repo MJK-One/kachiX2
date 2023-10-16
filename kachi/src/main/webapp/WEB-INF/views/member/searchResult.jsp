@@ -144,7 +144,7 @@
         		break;
         	case "1만원 미만":
         		var filteredProducts1 = document.querySelectorAll('.cate-product .price3');
-        		filteredProducts2.forEach(function(product) {
+        		filteredProducts1.forEach(function(product) {
         	        var price = parseInt(product.innerText.replace(/[^0-9]/g,""));// "원"이나 콤마(,)등이 포함된 숫자만 추출
         	        if (price < 10000) {
         	            product.closest('.cate-product').style.display = 'block';

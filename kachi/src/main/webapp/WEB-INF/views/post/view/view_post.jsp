@@ -17,7 +17,10 @@
     <div id="top-menu">
      	<button type="button"  onclick = "location.href = '${pageContext.request.contextPath}/'" class="home"><img src="${pageContext.request.contextPath}/resources/img/back1.svg" width="30" height="30"></button>
      	<img class="top-post-img" src="${post.mainImageUrl}" alt="Post image" width="50" height="50">
-     	<li class="top-post-name">${post.title}</li>
+     	<div class="top-post-name">
+     		<li>${post.title}</li>
+     	</div>
+     	
     	<button type="button" class="search"><img src="${pageContext.request.contextPath}/resources/img/search1.svg" width="50" height="55"></button>
     	<button type="button" class="basket"><img src="${pageContext.request.contextPath}/resources/img/basket1.svg" width="50" height="55"></button>
     </div>
