@@ -88,9 +88,7 @@
 			</script>
 			<!--포스트-->
 			<script>
-		    function roundUpToNearestHundred(value) {
-		        return Math.ceil(value / 100) * 100;
-		    }
+		   
 		
 		    function numberWithCommas(x) {
 		        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -103,11 +101,11 @@
 						<div class="cate-product">
 							<div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>	
 							<div class="pro-name">${post.title}</div>
-							<div class="pro-price">
+							<div class="pro-price" data-price="${post.totalprice}" >
 								<li class="price1"><script>document.write(numberWithCommas(${post.price}));</script> 원</li>
 								<li class="price2">${post.discountRate}%</li>
 								<!-- 가격과 할인율로 실제 판매가격 계산 -->
-								<li class="price3"><script>document.write(numberWithCommas(roundUpToNearestHundred(${post.price - (post.price * post.discountRate / 100)})));</script>원</li>
+								<li class="price3"><script>document.write(numberWithCommas(${post.totalprice}));</script>원</li>
 								<div class="pro-info">
 									<li>별점</li>
 									<li>구매 : ${i}</li>
@@ -146,49 +144,35 @@
         });
         //범위 확인 후 보여주기
         switch (selectedOption) {
-        	case "전체":
-        		products.forEach(function(product) {
-					product.style.display = "block";
-				});
-        		break;
-        	case "1만원 미만":
-        		var filteredProducts1 = document.querySelectorAll('.cate-product .price3');
-        		filteredProducts1.forEach(function(product) {
-        			var str = filteredProducts1
-        			var price = parseInt(str);
-        	        if (price < 10000) {
-        	            product.closest('.cate-product').style.display = 'block';
-        	        }
-        	    });
-				break;
-        	case "5만원 이하":
-        		var filteredProducts2 = document.querySelectorAll('.cate-product .price3');
-        	    filteredProducts2.forEach(function(product) {
-        	    	var price = parseInt(priceString.replace(/[^0-9]/g, ""));
-        	        if (price <= 50000) {
-        	            product.closest('.cate-product').style.display = 'block';
-        	        }
-        	    });
-				break;
-        	case "5~10만원":
-        		var filteredProducts3 = document.querySelectorAll('.cate-product .price3');
-        	    filteredProducts3.forEach(function(product) {
-        	    	var price = parseInt(priceString.replace(/[^0-9]/g, ""));
-        	        if (price > 50000 && price < 100000) {
-        	            product.closest('.cate-product').style.display = 'block';
-        	        }
-        	    });
-				break;
-        	case "10만원 이상":
-        		var filteredProducts4 = document.querySelectorAll('.cate-product .price3');
-        	    filteredProducts4.forEach(function(product) {
-        	    	var price = parseInt(priceString.replace(/[^0-9]/g, ""));
-        	        if (price >= 100000) {
-        	            product.closest('.cate-product').style.display = 'block';
-        	        }
-        	    });
-				break;
+            case "전체":
+                products.forEach(function(product) {
+                    product.style.display = "block";
+                });
+                break;
+            case "1만원 미만":
+                filterProductsByPrice(0, 10000);
+                break;
+            case "5만원 이하":
+                filterProductsByPrice(0, 50000);
+                break;
+            case "5~10만원":
+                filterProductsByPrice(50001, 100000);
+                break;
+            case "10만원 이상":
+                filterProductsByPrice(100001, Infinity);
+                break;
         }
+    }
+    function filterProductsByPrice(minPrice, maxPrice) {
+        var priceElements = document.querySelectorAll('.cate-product .pro-price');
+        
+        priceElements.forEach(function(priceElement) {
+            var price = parseInt(priceElement.getAttribute('data-price'));
+            
+            if (price >= minPrice && price <= maxPrice) {
+              priceElement.closest('.cate-product').style.display = 'block';
+           }
+       });
     }
 	</script>
 </body>

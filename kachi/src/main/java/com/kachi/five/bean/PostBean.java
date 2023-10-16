@@ -13,6 +13,7 @@ public class PostBean {
 	    private String title;
 	    private String content;
 	    private BigDecimal price;  
+	    private BigDecimal totalprice; 
 	    private Timestamp postDate;  
 	    private Date salePeriod; 
 	    private boolean saleStatus;
@@ -90,6 +91,12 @@ public class PostBean {
 		}
 		public void setContentImageUrl(String contentImageUrl) {
 			ContentImageUrl = contentImageUrl;
+		}
+		public BigDecimal getTotalprice() {
+			return totalprice;
+		}
+		public void setTotalprice(BigDecimal totalprice) {
+			this.totalprice = totalprice;
 		}	
 	    
 	    
