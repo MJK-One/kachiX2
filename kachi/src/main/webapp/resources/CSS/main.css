@@ -170,11 +170,12 @@ a{
 	text-decoration: line-through;
 	color: darkgray;
     font-weight: 600;
+    width: 100px;
 }
 .price2{
 	position : relative;
 	top : 20px;
-	right: 57px;
+	right: 95px;
 	font-size : 20px;
 	color : red;
 	font-weight: bold;
@@ -182,7 +183,7 @@ a{
 .price3{
 	position : relative;
 	top : 20px;
-	right: 53px;
+	right: 92px;
 	font-size : 20px;
 	color: black;
     font-weight: bold;
