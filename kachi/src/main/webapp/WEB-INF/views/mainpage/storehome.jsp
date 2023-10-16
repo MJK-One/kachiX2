@@ -87,17 +87,19 @@ function slide_auto(){
     }
 </script>
 
-<c:forEach var="post" items="${posts}">
+<c:forEach var="post" items="${posts}" varStatus="status">
    <c:if test="${post.postId >= 0}">
       <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
          <div class="cate-product ${post.categoryId}">
             <div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>   
             <div class="pro-name">${post.title}</div>
             <div class="pro-price">
-               <li class="price1"><script>document.write(numberWithCommas(${post.price}));</script> 원</li>
+                  <li class="price1" id="price1-${status.index}"></li>
+                  <script>document.getElementById('price1-${status.index}').innerText = numberWithCommas(${post.price}) + ' 원'; </script>
                <li class="price2">${post.discountRate}%</li>
                <!-- 가격과 할인율로 실제 판매가격 계산 -->
-               <li class="price3"><script>document.write(numberWithCommas(${post.totalprice}));</script>원</li>
+               <li class="price3" id="price3-${status.index}"></li>
+			   <script>document.getElementById('price3-${status.index}').innerText = numberWithCommas(${post.totalprice}) + ' 원';</script>
                <div class="pro-info">
                   <li>별점</li>
                   <li>구매 : ${i}</li>

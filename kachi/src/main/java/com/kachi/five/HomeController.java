@@ -49,12 +49,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping("mainpage/storehome")
-	public String storehome(Model model) {
-		 List<PostBean> posts = postService.getAllPosts();
-		 List<CategoryBean> categories = categoryService.getAllCategories();
-		 model.addAttribute("categories",categories);
-		 model.addAttribute("posts", posts);
-			return "mainpage/storehome";
+	public String storehome() {
+		
+		 return "redirect:/";
 	}
 	@RequestMapping("mainpage/timesale")
 	public String timesale() {
