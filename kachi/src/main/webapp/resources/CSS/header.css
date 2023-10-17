@@ -7,7 +7,7 @@
 	float : left;
 }
 .search {
-	width : 70%;
+	width : 77%;
 	height : 40px;
 	position : relative;
 	top: 12px;
@@ -32,12 +32,19 @@
     transition: 0.5s ease; /* 애니메이션 효과를 위한 transition 추가 */
     z-index:99999;
 }
-.m-login {
-    width: 200px;
-    height: 40px;
+.basket{
 	position: relative;
-    top: 10px;
-    left: 30px;
+    left: 24px;
+}
+.top-right {
+	width: 80px;
+    height: 25px;
+    background-color: #f4f4f4;
+    text-align: center;
+    border-radius: 20px;
+    position: relative;
+    left: 32px;
+    top: 20px;
 }
 .menu {
 	list-style-type: none;

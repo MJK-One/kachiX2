@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after5">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after9">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after6">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after12">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -44,13 +44,18 @@
 				    }
 				  }
 				</script>
-				<div class="m-login">
+				<img class="basket" src="${pageContext.request.contextPath}/resources/img/basket.svg" width="45px" height="50px">
+				<div class="top-right">
 					<c:choose>			        
 				        <c:when test="${not empty sessionScope.loggedInUser}">
-				            <a href="${pageContext.request.contextPath}/member/logout" class="nav-link px-2"><img  src="${pageContext.request.contextPath}/resources/img/logout.png" width="40" height="40"></a> 
+				            <a href="${pageContext.request.contextPath}/member/logout" class="nav-link px-2">
+				            	<span class="login-txt">로그아웃</span>
+				            </a> 
 				        </c:when>
 				        <c:otherwise> 
-				            <a href="${pageContext.request.contextPath}/member/loginform" class="nav-link px-2" ><img  src="${pageContext.request.contextPath}/resources/img/login.png" width="40" height="40"></a> 
+				            <a href="${pageContext.request.contextPath}/member/loginform" class="nav-link px-2" >
+				            	<span class="login-txt">로그인</span>
+				            </a> 
 				        </c:otherwise> 
 			    	</c:choose>
 				</div>

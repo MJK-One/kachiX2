@@ -15,7 +15,7 @@
 <body>
 <div class="aaa">
     <div id="top-menu">
-     	<button type="button"  onclick = "location.href = '${pageContext.request.contextPath}/'" class="home"><img src="${pageContext.request.contextPath}/resources/img/back1.svg" width="30" height="30"></button>
+     	<button type="button"  onclick = "history.back()" class="home"><img src="${pageContext.request.contextPath}/resources/img/back1.svg" width="30" height="30"></button>
      	<img class="top-post-img" src="${post.mainImageUrl}" alt="Post image" width="50" height="50">
      	<div class="top-post-name">
      		<li>${post.title}</li>
@@ -106,13 +106,14 @@
 	    <button class="heart">
 	        <c:choose>
 	            <c:when test="${isInWishlist}">
-	                <img src="${pageContext.request.contextPath}/resources/img/heart1.svg">
+	            	<img src="${pageContext.request.contextPath}/resources/img/heart1.svg" width="28" heigth="29">               
+	                <span class="txt">찜하기</span>
 	            </c:when>
-	            <c:otherwise>
-	                <img src="${pageContext.request.contextPath}/resources/img/heart.svg">
+	            <c:otherwise>	
+	            	<img src="${pageContext.request.contextPath}/resources/img/heart.svg" width="28" heigth="29">                
+	                <span class="txt">찜하기</span>
 	            </c:otherwise>
-	        </c:choose>
-	        <span class="txt">찜하기</span>
+	        </c:choose>       
 	    </button>
 	</div>
 	</div>

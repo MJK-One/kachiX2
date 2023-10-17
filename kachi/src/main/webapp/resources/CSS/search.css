@@ -3,11 +3,6 @@
 *{
 	font-family :'Spoqa Han Sans', sans-serif ;
 }
-body {
-	background-color : #f6f6f6;
-	position: relative;
-	height : 100%;
-}
 button {
 	background-color: transparent;
 	border: none;
