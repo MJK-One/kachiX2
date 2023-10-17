@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after5">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after5">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after4">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -57,26 +57,30 @@
 		</div>
 		<!--상단 메뉴바-->
 		<script>
-        $(document).ready(function() {
-            $(".m a").click(function(e) {
-                e.preventDefault();
-                $(".m a").removeClass("active");
-                $(this).addClass("active");
+		$(document).ready(function() {
+		    // 페이지 로딩 시 첫 번째 메뉴에 해당하는 섹션만 보여줍니다.
+		    $('section').eq(0).removeClass('hidden');
 
-                var href = $(this).attr('href');
-                
-                // Load the content from the href attribute into the .main div
-                $('.main').load(href);
-            });
-        });
+		    $(".m").click(function(e) {
+		        $(".m").removeClass("active");
+		        $(this).addClass("active");
+
+		        var index = $(this).index();
+
+		        // 모든 섹션을 숨깁니다.
+		        $('section').addClass('hidden');
+
+		        // 클릭한 메뉴에 해당하는 섹션만 보여줍니다.
+		        $('section').eq(index).removeClass('hidden');
+		    });
+		});
     	</script>
 		<div class="top-2">
 			<ul class="menu">
-				<li class="m"><a class="active" href="${pageContext.request.contextPath}/mainpage/storehome"><span>스토어홈</span></a></li>
-				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/interest"><span>관심추천</span></a></li>
-				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/timesale"><span>타임세일</span></a></li>
-				<li class="m"><a href="${pageContext.request.contextPath}/mainpage/newarticle"><span>신상품</span></a></li>
-		
+				<li class="m active"><span>스토어홈</span></a></li>
+				<li class="m"><span>관심추천</span></a></li>
+				<li class="m"><span>타임세일</span></a></li>
+				<li class="m"><span>신상품</span></a></li>
 		        <!-- Check if writePermission is true -->
 		        <c:if test="${sessionScope.writePermission}">
 		            <li class="m"><a href="${pageContext.request.contextPath}/admin/adminform"><span>관리자</span></a></li>
@@ -86,13 +90,7 @@
 	</header>
 	<div id="search-jsp" class="search-jsp">
 		<jsp:include page="/WEB-INF/views/member/search.jsp" flush="false" />
-	</div>
-	<div class="top-screen"></div>
-	<!-- 메인 화면 -->
-	<div class="main">
-		 <jsp:include page="/WEB-INF/views/mainpage/storehome.jsp" flush="false" />
-	</div>
-	
+	</div>	
 	<!-- 위로 가기 -->
 	<a class="back-to-top"></a>
 	<script type="text/javascript">

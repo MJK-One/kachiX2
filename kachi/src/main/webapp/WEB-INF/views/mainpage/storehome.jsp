@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/main.css?after5">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/storehome.css?after5">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
