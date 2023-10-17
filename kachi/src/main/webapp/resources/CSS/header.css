@@ -1,5 +1,6 @@
 .top-1 {
-	height : 80px;
+	display: flex;
+    height: 43px;
 }
 .icon {
 	position: relative;
@@ -22,11 +23,6 @@
 	left: 46%;
 	z-index: 1;
 }
-.nav-link {
-	 position: relative;
-	 bottom: 29px;
-     left: 87%;
-}
 .search-jsp {
     position: fixed;
     bottom: -1000%; /* 초기에는 보이지 않도록 설정 */
@@ -36,17 +32,15 @@
     transition: 0.5s ease; /* 애니메이션 효과를 위한 transition 추가 */
     z-index:99999;
 }
-.top-2 {
-    position: relative;
-    height: 27px;
-    width: 100%;
-    bottom: 25px;
+.m-login {
+    width: 200px;
+    height: 40px;
+	position: relative;
+    top: 10px;
+    left: 30px;
 }
-
 .menu {
- 	position: relative;
 	list-style-type: none;
-	bottom : 11px;
 }
 .m {
 	display: inline-block;

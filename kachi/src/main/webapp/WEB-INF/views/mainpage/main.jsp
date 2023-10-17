@@ -9,7 +9,7 @@
 	<div class="top-screen"></div>
 	<!-- 메인 화면 -->
 	<div class="main">
-		 <section class="storehome">
+		<section class="storehome">
 		 	<jsp:include page="/WEB-INF/views/mainpage/storehome.jsp" flush="false" />
 		 </section>
 		 <section class="interest hidden">
@@ -20,5 +20,5 @@
 		 </section>	 
 		 <section class="newarticle hidden">
 		 	<jsp:include page="/WEB-INF/views/mainpage/newarticle.jsp" flush="false" />
-		 </section>	 	 
+		 </section> 
 	</div>

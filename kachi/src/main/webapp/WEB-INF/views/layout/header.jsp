@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after5">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after4">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after9">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -44,7 +44,7 @@
 				    }
 				  }
 				</script>
-				<div class="login">
+				<div class="m-login">
 					<c:choose>			        
 				        <c:when test="${not empty sessionScope.loggedInUser}">
 				            <a href="${pageContext.request.contextPath}/member/logout" class="nav-link px-2"><img  src="${pageContext.request.contextPath}/resources/img/logout.png" width="40" height="40"></a> 
@@ -57,7 +57,7 @@
 		</div>
 		<!--상단 메뉴바-->
 		<script>
-		$(document).ready(function() {
+ 		$(document).ready(function() {
 		    // 페이지 로딩 시 첫 번째 메뉴에 해당하는 섹션만 보여줍니다.
 		    $('section').eq(0).removeClass('hidden');
 
