@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +32,7 @@ import com.kachi.five.service.ContentImageService;
 import com.kachi.five.service.MainImageService;
 import com.kachi.five.service.PostService;
 import com.kachi.five.service.StorageService;
+import com.kachi.five.service.WishlistService;
 
 @Controller
 public class PostController {
@@ -41,7 +42,8 @@ public class PostController {
 	private CategoryService categoryService;
 	@Autowired
 	private MainImageService mainImgService;
-
+	@Autowired
+	private WishlistService wishlistService;
 	@Autowired 
 	private ContentImageService contentImgService;
 	
@@ -66,14 +68,23 @@ public class PostController {
 	@RequestMapping("/post/post_create")
 	public String createPost(Model model) {
 		 List<CategoryBean> categories = categoryService.getAllCategories();
+		 
 		 model.addAttribute("categories", categories);
 		 
 			return "/post/post_create";
 	}
 	
 	@RequestMapping("/post/view/{postId}")
-	public String viewPost(@PathVariable int postId, Model model) {
+	public String viewPost(@PathVariable int postId, Model model,HttpSession session) {
+		
 	    PostBean post = postService.getPostById(postId);
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+	    //현재 찜한 상태의 게시물인지 확인
+	    boolean isInWishlist = false;
+	    if(user != null){ //사용자 로그인 상태이면 확인
+	        isInWishlist = wishlistService.isPostInWislist(user.getUserID(), postId);
+	    }
+	    model.addAttribute("isInWishlist", isInWishlist);
 	    model.addAttribute("post", post);
 	    
 	    return "/post/view/view_post";
@@ -197,4 +208,39 @@ public class PostController {
 		if(postId > 0) postService.deletePost(postId);
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/toggleWishlist", method=RequestMethod.POST)
+	@ResponseBody  // ResponseBody annotation은 return 값을 HTTP Response Body로 전송합니다.
+	public Map<String, Object> toggleWishlist(@RequestParam("postId") int postId,
+	                                          HttpSession session) {
+		
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+	    
+	    Map<String,Object> result = new HashMap<>();
+	    
+	    if(user != null){
+	        String userId = user.getUserID();
+	        
+	        if(wishlistService.isPostInWislist(userId, postId)){
+	        	
+	        	wishlistService.removeFromWishlist(userId, postId);
+	        	result.put("added", false);
+	        	
+	        }else{
+	        	
+	        	wishlistService.addToWishlist(userId, postId);
+	        	result.put("added", true);
+	        	
+	        }
+	        
+	    }else{
+	    	//사용자가 로그인하지 않았다면 로그인 페이지로 리다이렉션하는 코드 구현 
+	    	System.out.println("로그인 해야함");
+	    	result.put("error", "로그인후 이용 가능한 기능입니다.");
+	    }
+	    
+	    return result;
+	}
+	
+	
 }

@@ -74,12 +74,47 @@
 			<li class="deltxt t1">무료배송</li>
 			<li class="deltxt t2 ">(전상품 무료 배송)</li>
 		</div>
+		<script>
+		$(document).ready(function() {
+	 
+
+			$('.heart').click(function() {
+			    var postId = "${post.postId}";
+			    $.ajax({
+			        url: '${pageContext.request.contextPath}/toggleWishlist', 
+			        type: 'POST',
+			        data: {postId: postId},
+			        success: function(data) {
+			        	if (data.error) {
+			                alert(data.error); // 로그인하지 않았다면 경고창 띄우기
+			            } else if (data.added) {
+			                $('.heart img').attr('src', '${pageContext.request.contextPath}/resources/img/heart1.svg');
+			                addedToWishList = true;
+			            } else {
+			                $('.heart img').attr('src', '${pageContext.request.contextPath}/resources/img/heart.svg');
+			                addedToWishList = false;
+			            }
+			        },
+			        error: function(jqXHR, textStatus, errorThrown) {
+			            console.log(textStatus, errorThrown);
+			        }
+			    });
+			});
+		});
+		</script>
 		<div class="action-btn">
-			<button class="heart">
-				<img src="${pageContext.request.contextPath}/resources/img/heart.svg">
-		    	<span class="txt">찜하기</span>
-		    </button>
-	    </div>
+	    <button class="heart">
+	        <c:choose>
+	            <c:when test="${isInWishlist}">
+	                <img src="${pageContext.request.contextPath}/resources/img/heart1.svg">
+	            </c:when>
+	            <c:otherwise>
+	                <img src="${pageContext.request.contextPath}/resources/img/heart.svg">
+	            </c:otherwise>
+	        </c:choose>
+	        <span class="txt">찜하기</span>
+	    </button>
+	</div>
 	</div>
 	<div class="group-buy"> <!--보류-->
 		<div class="group-title">
