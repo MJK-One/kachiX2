@@ -20,6 +20,7 @@ public class PostBean {
 	    private int discountRate;
 	    private String MainImageUrl;
 	    private String ContentImageUrl;
+	    
 		public int getPostId() {
 			return postId;
 		}
