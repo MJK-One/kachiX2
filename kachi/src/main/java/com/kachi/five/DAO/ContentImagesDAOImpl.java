@@ -1,6 +1,7 @@
 package com.kachi.five.DAO;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -32,4 +33,10 @@ public class ContentImagesDAOImpl implements ContentImagesDAO {
 
 		    sqlSession.update("com.kachi.five.ImageMapper.updateContentImagesWithPostId", params);
 		}
+	@Override
+	public List<ContentImageBean> getContentImagesByPostId(int postId) {
+		List<ContentImageBean> contentimage = sqlSession.selectList("com.kachi.five.ImageMapper.getContentImgByPostId",postId);
+		return contentimage;
+	}
+	  
 }

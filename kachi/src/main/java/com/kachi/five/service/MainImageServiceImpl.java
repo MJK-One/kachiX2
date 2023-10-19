@@ -17,4 +17,10 @@ public class MainImageServiceImpl implements MainImageService {
 
 	}
 
+	@Override
+	public MainImageBean getMainImageByPostId(int postId) {
+		
+		return mainImgDao.getMainImageByPostId(postId);
+	}
+
 }

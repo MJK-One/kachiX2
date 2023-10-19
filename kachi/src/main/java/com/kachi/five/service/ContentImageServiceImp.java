@@ -1,5 +1,7 @@
 package com.kachi.five.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,9 @@ public class ContentImageServiceImp implements ContentImageService {
 	    public void updateContentImagesWithPostId(int tempPostId, int actualPostId) {
 	        contentImgDao.updateContentImagesWithPostId(tempPostId, actualPostId);
 	    }
+	@Override
+	public List<ContentImageBean> getContentImagesByPostId(int postId) {
+		return contentImgDao.getContentImagesByPostId(postId);
+	}
 
 }

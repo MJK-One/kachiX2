@@ -205,8 +205,37 @@ public class PostController {
 	}
 	@RequestMapping(value="/post/deletePost", method=RequestMethod.POST)
 	public String deletePost(@RequestParam("postId") int postId) {
-		if(postId > 0) postService.deletePost(postId);
-		return "redirect:/";
+		if(postId > 0) {
+			// MainImage와 ContentImage에서 postId에 해당하는 모든 이미지 정보 가져오기
+			MainImageBean mainImg = mainImgService.getMainImageByPostId(postId);
+			List<ContentImageBean> contentImgs = contentImgService.getContentImagesByPostId(postId);
+
+			if(mainImg != null){
+				String mainImageUrl = mainImg.getImageUrl();
+				String mainImageKey = getKeyFromUrl(mainImageUrl);
+				
+				storageService.deleteFile(mainImageKey); // AWS S3에서 메인 이미지 파일 삭제
+			}
+
+	        if(contentImgs != null){
+	            for(ContentImageBean img : contentImgs){
+	                String contentImageUrl = img.getImageUrl();
+	                String contentImageKey = getKeyFromUrl(contentImageUrl);
+	                
+	                storageService.deleteFile(contentImageKey); // AWS S3에서 컨텐츠 이미지 파일들 삭제
+	            }
+	        }
+
+		    postService.deletePost(postId); // DB에서 게시물 정보 삭제
+		    return "redirect:/";
+	    } else {
+	    	return "error"; 
+	    }
+	}
+	
+	private String getKeyFromUrl(String url) { //s3 파일 경로 받아오는함수
+	    String afterProtocol = url.substring(url.indexOf('/') + 2); // "https://" 뒤부터 추출
+	    return afterProtocol.substring(afterProtocol.indexOf('/') + 1); // "bucketName/" 뒤부터 추출
 	}
 	
 	@RequestMapping(value="/toggleWishlist", method=RequestMethod.POST)

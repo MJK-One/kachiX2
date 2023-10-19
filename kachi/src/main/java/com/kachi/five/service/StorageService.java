@@ -5,6 +5,7 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.AmazonS3Exception;
 
 public class StorageService {
 
@@ -22,6 +23,14 @@ public class StorageService {
 
     public void uploadFile(String keyName, File file) {
         s3client.putObject(bucketName, keyName, file);
+    }
+    public void deleteFile(String keyName) {
+        try {
+            s3client.deleteObject(bucketName, keyName);
+        } catch (AmazonS3Exception e) {
+            System.out.println("Error occurred while deleting file from S3 bucket");
+            e.printStackTrace();
+        }
     }
 }
 

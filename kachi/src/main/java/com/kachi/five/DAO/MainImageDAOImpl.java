@@ -25,6 +25,13 @@ public class MainImageDAOImpl implements MainImageDAO {
 		            System.out.println("Error Message: " + e.getMessage());
 		        }
 		}
+
+		@Override
+		public MainImageBean getMainImageByPostId(int postId) {
+			MainImageBean mainimage = sqlSession.selectOne("com.kachi.five.ImageMapper.getMainImgByPostId", postId); 
+			return mainimage;
+		}
+		
 }
 	
 
