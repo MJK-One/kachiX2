@@ -21,7 +21,7 @@
 		<div class="top-1">
 				<img class="icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="60" height="60">
 				<button type="button" class="search" style="cursor:pointer;" onclick="showSearchJSP()">
-					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.svg" width="26" height="30">
+					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.svg" width="26" height="32">
 				</button>
 				<script>
 				  function showSearchJSP() {

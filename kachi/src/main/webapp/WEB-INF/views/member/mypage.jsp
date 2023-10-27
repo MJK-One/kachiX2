@@ -7,8 +7,9 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mypage.css?after4">
-
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mypage.css?after6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
 <title>같이의 가치-공동구매</title>
 </head>
 <body>
@@ -71,11 +72,68 @@
 				</div>
 			</a>
 		</div>
-		<div class="save">
-			<li>나의 찜 목록</li>
+		<div class="save"> <!--찜목록-->
+			<li class="save-title">나의 찜 목록</li>
+			<li class="save-info">최근 10개의 찜</li>
 			<button type="button">찜가기</button>
-			<div class="save-list"></div>
+			<div class="swiper-container save-list" id="save-list">
+				<div class="swiper-wrapper">
+					<c:forEach begin="0" end="10" var="i" >
+	        			<div class="swiper-slide product">
+							<div class="pro-img">img<!--이미지--></div>
+							<div class="pro-name">이름<%--이름--%></div>
+							<div class="pro-price">
+								<!--할인률--><li class="price1">10%</li>
+								<li class="price2">9,000</li>
+								<!--원가--><li class="price3">10,000</li>
+							</div>
+	                	</div>
+	           		</c:forEach>
+	        	</div>
+			</div>
 		</div>
+		<script>
+		/*스와이핑*/
+		var swiper = new Swiper('.save-list', {
+	            slidesPerView: 'auto',
+	            preventClicks: true,
+	            preventClicksPropagation: false,
+	            observer: true,
+	            observeParents: true
+	        });
+	        var $snbSwiperItem = $('.save-list .swiper-wrapper .swiper-slide product a');
+	        $snbSwiperItem.click(function(){
+	            var target = $(this).parent();
+	            $snbSwiperItem.parent().removeClass('on')
+	            target.addClass('on');
+	            muCenter(target);
+	        })
+
+	        function muCenter(target){
+	            var snbwrap = $('.save-list .swiper-wrapper');
+	            var targetPos = target.position();
+	            var box = $('.save-list');
+	            var boxHarf = box.width()/2;
+	            var pos;
+	            var listWidth=0;
+	            
+	            snbwrap.find('.swiper-slide').each(function(){ listWidth += $(this).outerWidth(); })
+	            
+	            var selectTargetPos = targetPos.left + target.outerWidth()/2;
+	            if (selectTargetPos <= boxHarf) { // left
+	                pos = 0;
+	            }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
+	                pos = listWidth-box.width();
+	            }else {
+	                pos = selectTargetPos - boxHarf;
+	            }
+	            
+	            setTimeout(function(){snbwrap.css({
+	                "transform": "translate3d("+ (pos*-1) +"px, 0, 0)",
+	                "transition-duration": "500ms"
+	            })}, 200);
+	        }
+		</script>
 		<div class="customer-btn">
 			<li>개인정보 수정</li>
 			<c:choose>

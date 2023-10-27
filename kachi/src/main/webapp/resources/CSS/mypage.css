@@ -110,24 +110,77 @@
 }
 .save{
 	width : 100%;
-	height : 300px;
+	height: 380px;
 	border-bottom:5px solid #e1e1e1;
 }
-.save li {
+.save-title {
 	font-size : 18px;
 	padding-left : 15px;
-	padding-top : 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: 700;
 }
 .save button {
-	position : relative;
-	left : 764px
+	margin-left: 700px;
 }
 .save-list {
-	margin-top : 15px;
 	width : 100%;
-	height : 220px;
-	background-color : gray;
+	height: 320px;
+	box-sizing: border-box;
+	padding-left: 10px;
 }
+.save-info{
+	margin-left : 10px;
+	color : darkgray;
+}
+.swiper-slide {
+	cursor: pointer;
+}
+.product{
+	width: 200px !important;
+}
+.pro-img {
+	height: 198px;
+	margin: 5px;
+}
+.pro-name {
+	height: 50px;
+	margin: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.pro-price {
+	height: 50px;
+	margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+  .pro-price .price1 {
+    order: 1;
+    align-self: flex-start;
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+  }
+  .pro-price .price2 {
+    order: 2;
+    align-self: center;
+    text-align: right;
+    flex-grow: 1;
+    font-weight: bold;
+  }
+  .pro-price .price3 {
+    order: 3;
+    width: 100%;
+    text-decoration: line-through;
+	color: darkgray;
+    font-weight: 600;
+  }
 .customer{
 	width : 100%;
 	height: 230px;
