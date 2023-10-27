@@ -1,0 +1,117 @@
+.mychecklist-top{
+	position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 1000px;
+    z-index: 800;
+    display: block;
+    height: 70px;
+    background-color: #fff;
+    box-shadow: none;
+    -webkit-transform: translateZ(0);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid #ebebeb;
+}
+.middle{
+	width : 100%;
+	height : 50px;
+	margin-top: 3px;
+}
+.left {
+	float : left;
+	padding-left : 15px;
+}
+.left-icon{
+	position : relative;
+	top : 5px;
+}
+.back{
+	position : relative;
+	bottom : 5px;
+    width: 40px;
+    height: 40px;
+}
+.title{
+	position : relative;
+	top : 5px; 
+    width :130px;
+    height : 30px;
+	margin : 0 auto;
+	font-size : 20px;
+	text-align: center;
+	font-weight: bold;
+}
+.screen{
+	height : 78px;
+}
+.check-num {
+	margin-top : 10px;
+	padding-left : 15px;
+	font-size : 20px;
+}
+.check-num .all-num {
+	color : orange;'
+}
+.check-main {
+	height : 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.check-main .checklist{
+	height : 200px;
+	width : 95%;
+	margin : 5px auto;
+	box-sizing: border-box;
+	display : flex;
+	border-bottom : 1px solid #ebebeb;
+}
+.checklist .check-img {
+	height : 180px;
+	width : 180px;
+	border : 1px solid gray;
+	margin-top: 10px;
+}
+.checklist .check-info{
+	height : 180px;
+	width: 75%;
+	margin : 10px;
+}
+.check-info .check-name {
+	font-size: 22px;
+    height: 33px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.check-info .check-price1{
+	text-decoration: line-through;
+	color: darkgray;
+    font-weight: 600;
+}
+.check-info .check-price2{
+    font-size: 25px;
+    color: red;
+    font-weight: bold;
+    float : left;
+}
+.check-info .check-price3{
+    font-size: 25px;
+    font-weight: bold;
+    position : relative;
+    left : 10px;
+}
+.cancel {
+	background-color: #dddddd;
+    border-radius: 25px;
+    margin-right: 10px;
+    margin-top: 10px;
+    height: 20px;
+    width: 20px;
+}
+.cancel .x{
+	position: relative;
+    bottom: 5px;
+    right: 1px;
+}    

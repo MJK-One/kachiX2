@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mypage.css?after6">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mypage.css?after7">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
 <title>같이의 가치-공동구매</title>
@@ -75,7 +75,7 @@
 		<div class="save"> <!--찜목록-->
 			<li class="save-title">나의 찜 목록</li>
 			<li class="save-info">최근 10개의 찜</li>
-			<button type="button">찜가기</button>
+			<button type="button" onclick="location.href = '${pageContext.request.contextPath}/member/mychecklist'">전체보기</button>
 			<c:choose>		        
 				<c:when test="${not empty sessionScope.loggedInUser}">
 			    	<div class="swiper-container save-list" id="save-list">

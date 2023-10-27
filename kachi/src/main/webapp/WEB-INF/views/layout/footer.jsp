@@ -34,7 +34,7 @@
 					<img img id="coupon" src="${pageContext.request.contextPath}/resources/img/footer/coupon.png" width="50px" height="50px">
 				</div>
 		</a>
-		<a href="">
+		<a href="${pageContext.request.contextPath}/member/mychecklist">
 				<div class="bot-my">
 					<img id="heart" src="${pageContext.request.contextPath}/resources/img/footer/heart.png" width="50px" height="50px">
 				</div>

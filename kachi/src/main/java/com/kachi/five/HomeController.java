@@ -65,6 +65,10 @@ public class HomeController {
 	public String interest() {
 			return "mainpage/interest";
 	}
+	@RequestMapping("member/mychecklist")
+	public String mychecklist() {
+			return "member/mychecklist";
+	}
 	@RequestMapping("member/searchResult")
 	public String searchResult(Model model) {
 		 List<PostBean> posts = postService.getAllPosts();
