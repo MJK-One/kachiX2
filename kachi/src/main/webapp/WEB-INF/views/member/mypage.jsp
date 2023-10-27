@@ -76,21 +76,28 @@
 			<li class="save-title">나의 찜 목록</li>
 			<li class="save-info">최근 10개의 찜</li>
 			<button type="button">찜가기</button>
-			<div class="swiper-container save-list" id="save-list">
-				<div class="swiper-wrapper">
-					<c:forEach begin="0" end="10" var="i" >
-	        			<div class="swiper-slide product">
-							<div class="pro-img">img<!--이미지--></div>
-							<div class="pro-name">이름<%--이름--%></div>
-							<div class="pro-price">
-								<!--할인률--><li class="price1">10%</li>
-								<li class="price2">9,000</li>
-								<!--원가--><li class="price3">10,000</li>
-							</div>
-	                	</div>
-	           		</c:forEach>
-	        	</div>
-			</div>
+			<c:choose>		        
+				<c:when test="${not empty sessionScope.loggedInUser}">
+			    	<div class="swiper-container save-list" id="save-list">
+						<div class="swiper-wrapper">
+							<c:forEach begin="0" end="10" var="i" >
+			        			<div class="swiper-slide product">
+									<div class="pro-img">img<!--이미지--></div>
+									<div class="pro-name">이름<%--이름--%></div>
+									<div class="pro-price">
+										<!--할인률--><li class="price1">10%</li>
+										<li class="price2">9,000</li>
+										<!--원가--><li class="price3">10,000</li>
+									</div>
+			                	</div>
+			           		</c:forEach>
+			        	</div>
+					</div>
+			    </c:when>	        
+			    <c:otherwise> 
+			    	<div class="save-list">비로그인ㅋㅋ</div>
+			    </c:otherwise> 
+			</c:choose>			
 		</div>
 		<script>
 		/*스와이핑*/
