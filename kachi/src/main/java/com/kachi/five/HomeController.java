@@ -55,7 +55,7 @@ public class HomeController {
 	}
 	@RequestMapping("mainpage/timesale")
 	public String timesale() {
-			return "mainpage/timesale";
+		 return "mainpage/timesale";
 	}
 	@RequestMapping("mainpage/newarticle")
 	public String newarticle() {

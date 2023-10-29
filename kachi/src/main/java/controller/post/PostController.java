@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -57,6 +58,7 @@ public class PostController {
     @RequestMapping("/post/post_list")
 	public String postlist(Model model) {
     	 List<PostBean> posts = postService.getAllPosts();
+
     	 model.addAttribute("posts",posts);
 			return "post/post_list";
 	}

@@ -98,7 +98,7 @@ public class PostBean {
 		}
 		public void setTotalprice(BigDecimal totalprice) {
 			this.totalprice = totalprice;
-		}	
-	    
+		}
+
 	    
 }
