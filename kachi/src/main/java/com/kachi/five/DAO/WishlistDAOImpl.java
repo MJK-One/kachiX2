@@ -7,6 +7,8 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.kachi.five.bean.PostBean;
 @Repository
 public class WishlistDAOImpl implements WishlistDAO {
    @Autowired
@@ -47,6 +49,11 @@ public class WishlistDAOImpl implements WishlistDAO {
 	    Boolean isInWishlist = sqlSession.selectOne("com.kachi.five.WishlistMapper.isInWishlist", params); 
 
 	    return isInWishlist != null && isInWishlist;
+	}
+
+	@Override
+	public List<PostBean> getPostsInWishlist(String userId) {
+		  return sqlSession.selectList("com.kachi.five.WishlistMapper.getPostsInWishlist", userId);
 	}
 	
 }

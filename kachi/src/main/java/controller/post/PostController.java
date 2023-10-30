@@ -272,6 +272,19 @@ public class PostController {
 	    
 	    return result;
 	}
-	
+	@RequestMapping(value="/post/removeWishlist", method=RequestMethod.POST)
+	public String removeFromWishlistAndRedirect(@RequestParam("postId") int postId, HttpSession session) {
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+	    
+	    if(user != null) {
+	        String userId = user.getUserID();
+	        if(wishlistService.isPostInWislist(userId, postId)) {
+	            wishlistService.removeFromWishlist(userId, postId);
+	        }
+	        return "redirect:/member/mypage";  // 사용자의 mypage로 리다이렉트
+	    } else {
+	        return "redirect:/login";  // 로그인 페이지로 리다이렉트
+	    }
+	}
 	
 }

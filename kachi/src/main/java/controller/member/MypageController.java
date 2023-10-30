@@ -8,21 +8,32 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kachi.five.bean.AddressBean;
+import com.kachi.five.bean.PostBean;
 import com.kachi.five.bean.UserBean;
 import com.kachi.five.service.UserService;
+import com.kachi.five.service.WishlistService;
 
 @Controller
 public class MypageController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private WishlistService wishlistService;
 	
 	@RequestMapping("/member/mypage")
-	public String mypageJsp(Model model) {
+	public String mypageJsp(Model model , HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserBean user = (UserBean) session.getAttribute("loggedInUser");
+		if(user!= null ) { 
+		List<PostBean> wishlist = wishlistService.getPostsInWishlist(user.getUserID());
+	    model.addAttribute("wishlist", wishlist);
+	    }
 			return "/member/mypage";
 	}
 	
@@ -100,6 +111,19 @@ public class MypageController {
 	    } else {
 	        return "error/unauthorized";
 	    }
+	}
+	
+	@RequestMapping("member/mychecklist")
+	public String getWishlist(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserBean user = (UserBean) session.getAttribute("loggedInUser");
+	    if (user == null) {
+	        // 로그인 페이지로 리다이렉트
+	        return "redirect:/member/loginform";
+	    }
+	    List<PostBean> wishlist = wishlistService.getPostsInWishlist(user.getUserID());
+	    model.addAttribute("wishlist", wishlist);
+	    return "member/mychecklist";
 	}
 	
 }

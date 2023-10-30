@@ -109,10 +109,11 @@ public class HomeController {
 	public String interest() {
 			return "mainpage/interest";
 	}
-	@RequestMapping("member/mychecklist")
-	public String mychecklist() {
-			return "member/mychecklist";
-	}
+
+	/*
+	 * @RequestMapping("member/mychecklist") public String mychecklist() { return
+	 * "member/mychecklist"; }
+	 */
 	@RequestMapping("member/searchResult")
 	public String searchResult(@RequestParam("query") String query, Model model,HttpServletRequest request) {
 		 HttpSession session = request.getSession();

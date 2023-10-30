@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/storehome.css?after6">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -79,27 +80,16 @@ function slide_auto(){
 </div>
 <!--카테고리 게시물 화면-->
 <div class="cate-main">
-<script>
-   
-
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-</script>
-
-<c:forEach var="post" items="${posts}" varStatus="status">
+<c:forEach var="post" items="${posts}" >
    <c:if test="${post.postId >= 0}">
       <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
          <div class="cate-product ${post.categoryId}">
             <div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>   
             <div class="pro-name">${post.title}</div>
             <div class="pro-price">
-                  <li class="price1" id="price1-${status.index}"></li>
-                  <script>document.getElementById('price1-${status.index}').innerText = numberWithCommas(${post.price}) + ' 원'; </script>
-               <li class="price2">${post.discountRate}%</li>
-               <!-- 가격과 할인율로 실제 판매가격 계산 -->
-               <li class="price3" id="price3-${status.index}"></li>
-			   <script>document.getElementById('price3-${status.index}').innerText = numberWithCommas(${post.totalprice}) + ' 원';</script>
+                  <li class="price1"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+                  <li class="price2">${post.discountRate}%</li>
+                  <li class="price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
                <div class="pro-info">
                   <li>별점</li>
                   <li>구매 : ${i}</li>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kachi.five.DAO.WishlistDAO;
+import com.kachi.five.bean.PostBean;
 @Service
 public class WishlistServiceImpl implements WishlistService {
     @Autowired
@@ -30,6 +31,11 @@ public class WishlistServiceImpl implements WishlistService {
 	public boolean isPostInWislist(String UserId, int PostId) {
 		
 		return wishlistDAO.isPostInWishlist(UserId, PostId);
+	}
+
+	@Override
+	public List<PostBean> getPostsInWishlist(String userId) {
+		return wishlistDAO.getPostsInWishlist(userId);
 	}
     
 

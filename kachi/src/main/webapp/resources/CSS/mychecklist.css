@@ -71,11 +71,10 @@ img{
 	display : flex;
 	border-bottom : 1px solid #ebebeb;
 }
-.checklist .check-img {
-	height : 180px;
-	width : 180px;
-	border : 1px solid gray;
-	margin-top: 10px;
+.checklist .check-img img {
+	width : 100%;
+	height : 100%;
+	object-fit: contain;
 }
 .checklist .check-info{
 	height : 180px;
