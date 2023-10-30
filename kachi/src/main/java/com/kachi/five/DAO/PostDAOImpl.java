@@ -48,4 +48,9 @@ public class PostDAOImpl implements PostDAO {
 		 sqlSession.delete("com.kachi.five.PostMapper.deletePost",postId);
 		 
 	 }
+	@Override
+	public List<PostBean> findPostsByTitleContaining(String query) {
+		return sqlSession.selectList("com.kachi.five.PostMapper.findPostsByTitleContaining", query);
+	}
+	
 }

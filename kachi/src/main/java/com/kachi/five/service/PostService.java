@@ -9,4 +9,5 @@ public interface PostService {
 	public List<PostBean> getAllPosts();
 	public PostBean getPostById(int postId);
 	public void deletePost(int postId);
+	public  List<PostBean> findPostsByTitleContaining(String query);
 }

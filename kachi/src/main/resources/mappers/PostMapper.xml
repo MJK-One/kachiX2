@@ -23,4 +23,10 @@
 	<delete id="deletePost"> 
         DELETE FROM post WHERE postid = #{postId} 
     </delete> 
+    <select id="findPostsByTitleContaining" parameterType="String" resultType="com.kachi.five.bean.PostBean">
+	    SELECT p.*, m.imageUrl as mainImageUrl 
+	    FROM Post p 
+	    LEFT JOIN MainImage m ON p.postId = m.postId
+	    WHERE p.title LIKE CONCAT('%', #{query}, '%');
+	</select>
 </mapper>

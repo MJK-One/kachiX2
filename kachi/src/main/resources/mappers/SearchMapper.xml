@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kachi.five.SearchMapper">
+	<!-- 사용자가 이미 검색한 키워드 인지 확인 -->
+    <select id="checkExistingSearchHistory" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM SearchHistory
+        WHERE userID = #{userId} AND keyword = #{keyword}
+    </select>
+	<!-- 이미 검색한 키워드면 시간을 검색시간으로 변경후 제일 앞으로 보여줌 -->
+    <update id="updateSearchHistory" parameterType="map">
+        UPDATE SearchHistory
+        SET searchTime = CURRENT_TIMESTAMP
+        WHERE userID = #{userId} AND keyword = #{keyword}
+    </update>
+    <!-- 새로운 키워드를 SearchCount 테이블에 추가하는 쿼리 -->
+	<insert id="insertSearchCount" parameterType="String">
+	    INSERT INTO SearchCount (keyword, searchCount)
+	    VALUES (#{keyword}, 1)
+	</insert>
+	
+	<!-- 키워드가 SearchCount 테이블에 이미 있는지 확인하는 쿼리 -->
+	<select id="checkExistingSearchCount" parameterType="String" resultType="int">
+	    SELECT COUNT(*)
+	    FROM SearchCount
+	    WHERE keyword = #{keyword}
+	</select>
+	<!-- 사용자가 검색어 검색시 검색기록 테이블에 값이 들어감  -->
+    <insert id="insertSearchHistory" parameterType="map">
+        INSERT INTO SearchHistory (userID, keyword)
+        VALUES (#{userId}, #{keyword})
+    </insert>
+	<!-- 키워드 검색시 그 단어의 검색횟수 증가 : 인기 검색어 기능 -->
+    <update id="updateSearchCount" parameterType="String">
+        UPDATE SearchCount
+        SET searchCount = searchCount + 1
+        WHERE keyword = #{keyword}
+    </update>
+	<!-- 사용자의 최근검색어 선택삭제 -->
+    <delete id="deleteSearchHistoryById" parameterType="int">
+        DELETE FROM SearchHistory
+        WHERE searchID = #{searchId}
+    </delete>
+	<!-- 사용자의 최근검색어 전체삭제 -->
+    <delete id="deleteAllSearchHistory">
+        DELETE FROM SearchHistory
+    </delete>
+    <!-- 최근 검색어를 최신 순으로 5개만 가져옴 -->
+	<select id="getRecentSearchHistory" resultType="SearchHistoryBean">
+	    SELECT *
+	    FROM SearchHistory
+	    WHERE userID = #{userId}
+	    ORDER BY searchTime DESC
+	    LIMIT 5
+	</select>
+	
+	<!-- 인기 검색어를 검색 횟수가 많은 순으로 10개만 가져옴 -->
+	<select id="getPopularSearchKeywords" resultType="String">
+	    SELECT keyword
+	    FROM SearchCount
+	    ORDER BY searchCount DESC
+	    LIMIT 10
+	</select>
+	
+
+
+</mapper>

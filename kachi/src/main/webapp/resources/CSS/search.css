@@ -62,6 +62,15 @@ button {
     width: 100%;
     display: flex;
 }
+.recent1 {
+     display: flex;
+    min-width : 100px;
+    align-items: center;
+    border: 1px solid #aaaaaa;
+    border-radius: 50px;
+    padding: 0 10px; /* ï¿½ï¿½ï¿½ï¿½ ï¿½Ðµï¿½ ï¿½ß°ï¿½ */
+    margin-right : 15px;
+}
 .setting{
 	position : relative;
 	bottom: 3px;
@@ -92,7 +101,7 @@ button {
 .setting-menu button{
 	cursor: pointer;
 }
-.box{
+.box, .recent-items {
     width: 96%;
     height: 50px;
     margin: 21px;
@@ -106,19 +115,29 @@ button {
     align-items: center;
     border: 1px solid #aaaaaa;
     border-radius: 50px;
-    padding: 0 10px; /* ¾çÂÊ ÆÐµù Ãß°¡ */
+    padding: 0 10px; /* ï¿½ï¿½ï¿½ï¿½ ï¿½Ðµï¿½ ï¿½ß°ï¿½ */
     margin-right : 15px;
 }
+.btn-item {
+    display: flex;
+    min-width : 100px;
+    align-items: center;
+    border: 1px solid #aaaaaa;
+    border-radius: 50px;
+    padding: 0 10px;
+    margin-right : 15px;
+}
+
 .search-ti{
 	font-size : 22px;
 	position : relative;
 	bottom : 2px;
-	flex-grow: 1; /* ¿ä¼Ò°¡ ³²Àº °ø°£À» Ã¤¿ìµµ·Ï ¼³Á¤ */
+	flex-grow: 1; /* ï¿½ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ìµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 .cancel {
 	background-color : #dddddd;
 	border-radius : 25px;
-	margin-left: auto; /* ¿ÞÂÊÀ¸·ÎºÎÅÍ ÀÚµ¿ ¸¶Áø ¼³Á¤ */
+	margin-left: auto; /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	height: 20px;
     width: 20px;
 }
@@ -147,5 +166,5 @@ button {
 	color : #ff920d;
 	position : relative;
 	bottom : 2px;
-	flex-grow: 1; /* ¿ä¼Ò°¡ ³²Àº °ø°£À» Ã¤¿ìµµ·Ï ¼³Á¤ */
+	flex-grow: 1; /* ï¿½ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ìµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }

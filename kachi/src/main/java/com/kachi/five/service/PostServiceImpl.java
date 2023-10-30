@@ -30,4 +30,9 @@ public class PostServiceImpl implements PostService {
 	public void deletePost(int postId) {
 		postDAO.deletePost(postId);
 	}
+	@Override
+	public List<PostBean> findPostsByTitleContaining(String query) {
+		return postDAO.findPostsByTitleContaining(query);
+	}
+	
 }

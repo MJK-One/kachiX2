@@ -10,6 +10,26 @@
 <title>같이의 가치-공동구매</title>
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	    $(document).ready(function() {
+	      $('.search-btn').on('click', function() {
+	        var query = $('.form-input').val();
+	        var userId = '${user.userID}';
+	        if (query.length > 0) {
+	          // 검색어를 searchresult.jsp에 전달합니다.
+	          window.location.href = '${pageContext.request.contextPath}/member/searchResult?query=' + encodeURIComponent(query);
+	
+	          // 검색어를 서버에 기록합니다.
+	          $.post('${pageContext.request.contextPath}/search/record', { userId: userId, keyword: query }, function(data) {
+	              console.log("Search recorded successfully.");
+	          });
+	        }
+	      });
+	    });
+	</script>
+
+
 	<div class="bbb">
 		<div class="search-m">
 			<div class="search-line">
@@ -95,28 +115,37 @@
 		    }
 			</script>
 			<div class="filter-post">
-			<c:forEach var="post" items="${posts}">
-				<c:if test="${post.postId >= 0}">
-					<a href="${pageContext.request.contextPath}/post/view/${post.postId}">
-						<div class="cate-product">
-							<div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>	
-							<div class="pro-name">${post.title}</div>
-							<div class="pro-price" data-price="${post.totalprice}" >
-								<li class="price1"><script>document.write(numberWithCommas(${post.price}));</script> 원</li>
-								<li class="price2">${post.discountRate}%</li>
-								<!-- 가격과 할인율로 실제 판매가격 계산 -->
-								<li class="price3"><script>document.write(numberWithCommas(${post.totalprice}));</script>원</li>
-								<div class="pro-info">
-									<li>별점</li>
-									<li>구매 : ${i}</li>
-								</div>
-								<div class="line"></div>
-						    </div>	
-						</div>
-					</a>
-				</c:if>
-			</c:forEach>	
-			</div>
+    <c:choose>
+        <c:when test="${empty posts}">
+             <div style="width: 100%; text-align: center;">
+                <p style="color: gray;">아쉽게도 검색결과가 없습니다.</p>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <c:forEach var="post" items="${posts}">
+                <c:if test="${post.postId >= 0}">
+                    <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
+                        <div class="cate-product">
+                            <div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>	
+                            <div class="pro-name">${post.title}</div>
+                            <div class="pro-price" data-price="${post.totalprice}" >
+                                <li class="price1"><script>document.write(numberWithCommas(${post.price}));</script> 원</li>
+                                <li class="price2">${post.discountRate}%</li>
+                                <!-- 가격과 할인율로 실제 판매가격 계산 -->
+                                <li class="price3"><script>document.write(numberWithCommas(${post.totalprice}));</script>원</li>
+                                <div class="pro-info">
+                                    <li>별점</li>
+                                    <li>구매 : ${i}</li>
+                                </div>
+                                <div class="line"></div>
+                            </div>	
+                        </div>
+                    </a>
+                </c:if>
+            </c:forEach>
+        </c:otherwise>
+    </c:choose>
+</div>
 	    </div>
 	</div>
 	<script>
