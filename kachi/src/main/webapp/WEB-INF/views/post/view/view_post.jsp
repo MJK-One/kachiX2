@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -59,8 +60,8 @@
 				<li class="price-s2">%</li>
 			</div>
 			<div class="price-won">
-				<li class="price-w">${post.price} 원</li>
-				<li class="price-sw">${post.price - (post.price * post.discountRate / 100)}원</li>
+				<li class="price-w"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+				<li class="price-sw"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
 			</div>
 			<li class="star">★★★★★</li>	
 		</div>

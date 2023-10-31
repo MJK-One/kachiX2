@@ -19,9 +19,11 @@
     </select>
 	<!-- 사용자의 찜 게시물을 가져옴 -->
 	<select id="getPostsInWishlist" resultType="com.kachi.five.bean.PostBean">
-	    SELECT p.*, m.imageUrl as mainImageUrl 
-	    FROM Post p 
-	    LEFT JOIN MainImage m ON p.postId = m.postId
-	    WHERE p.postId IN (SELECT postId FROM Wishlist WHERE userID = #{userId});
+	    SELECT p.*, m.imageUrl as mainImageUrl
+		FROM Post p 
+		LEFT JOIN MainImage m ON p.postId = m.postId
+		INNER JOIN Wishlist w ON p.postId = w.postId
+		WHERE w.userId = #{userId}
+		ORDER BY w.wishlistID DESC
 	</select>
 </mapper>

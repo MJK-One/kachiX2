@@ -75,25 +75,27 @@
 		</div>
 		<div class="save"> <!--찜목록-->
 			<li class="save-title">나의 찜 목록</li>
-			<li class="save-info">최근 ${wishlist.size()}개의 찜</li>
+			<li class="save-info">최근 10개의 찜</li>
 			<button type="button" onclick="location.href = '${pageContext.request.contextPath}/member/mychecklist'">전체보기</button>
 			<c:choose>		        
 				<c:when test="${not empty sessionScope.loggedInUser}">
 			    	<div class="swiper-container save-list" id="save-list">
 						<div class="swiper-wrapper">
-							<c:forEach items="${wishlist}" var="post">
-								<a href="${pageContext.request.contextPath}/post/view/${post.postId}">
-				        			<div class="swiper-slide product">
-										<div class="pro-img"><img src="${post.mainImageUrl}" alt="이미지"></div>
-										<div class="pro-name">${post.title}</div>
-										<div class="pro-price">
-											<!--할인률--><li class="price1">${post.discountRate}%</li>
-											<li class="price2"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
-											<!--원가--><li class="price3"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+							<c:forEach items="${wishlist}" var="post" varStatus="status">
+								<c:if test="${status.index < 10}"> <!-- 최근 10개의 찜 게시물만 보여줌 -->
+									<a href="${pageContext.request.contextPath}/post/view/${post.postId}">
+										<div class="swiper-slide product">
+											<div class="pro-img"><img src="${post.mainImageUrl}" alt="이미지"></div>
+											<div class="pro-name">${post.title}</div>
+											<div class="pro-price">
+												<!--할인률--><li class="price1">${post.discountRate}%</li>
+												<li class="price2"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
+												<!--원가--><li class="price3"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+											</div>
 										</div>
-				                	</div>
-		                		</a>
-			           		</c:forEach>
+									</a>
+								</c:if>
+							</c:forEach>
 			        	</div>
 					</div>
 			    </c:when>	        

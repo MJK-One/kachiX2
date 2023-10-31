@@ -55,12 +55,12 @@
 	    LIMIT 5
 	</select>
 	
-	<!-- 인기 검색어를 검색 횟수가 많은 순으로 10개만 가져옴 -->
+	<!-- 인기 검색어를 검색 횟수가 많은 순으로 5개만 가져옴 -->
 	<select id="getPopularSearchKeywords" resultType="String">
 	    SELECT keyword
 	    FROM SearchCount
 	    ORDER BY searchCount DESC
-	    LIMIT 10
+	    LIMIT 5
 	</select>
 	
 
