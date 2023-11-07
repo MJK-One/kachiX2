@@ -18,6 +18,7 @@
 		<typeAlias alias="MainImage" type="com.kachi.five.bean.MainImageBean" />
 		<typeAlias alias="ContentImage" type="com.kachi.five.bean.ContentImageBean" />
 		<typeAlias alias="SearchHistoryBean" type="com.kachi.five.bean.SearchHistoryBean" />
+		<typeAlias alias="GroupBuyBean" type="com.kachi.five.bean.GroupBuyBean" />
 	</typeAliases>
 	
 	

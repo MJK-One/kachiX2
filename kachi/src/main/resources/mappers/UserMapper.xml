@@ -20,6 +20,9 @@
 		phoneNumber)
 		VALUES (#{userID}, #{name}, #{nickname}, #{email}, #{gender}, #{birthYear}, #{phoneNumber})
 	</insert>
+	<select id="getUserNameById" parameterType="string" resultType="string">
+    SELECT name FROM user WHERE userID = #{userID}
+</select>
 	<select id="getUserID" parameterType="string" resultType="User">
 		SELECT * FROM user WHERE userID = #{userID}
 	</select>

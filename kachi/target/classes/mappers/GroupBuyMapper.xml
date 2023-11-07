@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kachi.five.GroupBuyMapper">
+  <select id="getGroupBuy" parameterType="int" resultType="com.kachi.five.bean.GroupBuyBean">
+        SELECT * FROM groupbuy WHERE groupBuyID = #{groupBuyID}
+    </select>
+
+    <insert id="createGroupBuy" parameterType="com.kachi.five.bean.GroupBuyBean">
+        INSERT INTO groupbuy (creatorID, postID, status)
+        VALUES (#{creatorID}, #{postID}, #{status})
+    </insert>
+
+    <update id="updateGroupBuy" parameterType="com.kachi.five.bean.GroupBuyBean">
+        UPDATE groupbuy
+        SET participantID = #{participantID}, status = #{status}
+        WHERE groupBuyID = #{groupBuyID}
+    </update>
+   <select id="getGroupBuysByPostId" resultType="com.kachi.five.bean.GroupBuyBean">
+	    SELECT g.*, u.name as creatorName 
+	    FROM groupbuy g
+	    INNER JOIN user u ON g.creatorID = u.userID
+	    WHERE g.postID = #{postID}
+	    ORDER BY CASE WHEN g.status = 'waiting' THEN 1 ELSE 2 END
+	</select>
+    
+</mapper>

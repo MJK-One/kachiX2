@@ -185,9 +185,9 @@
 #product-menu.fixed {
     position: fixed;
     top: 80px;
-    width: 1000px; /* »ó´Ü °íÁ¤¹Ù°¡ ÀüÃ¼ ³Êºñ¸¦ Â÷ÁöÇÏµµ·Ï ¼³Á¤ */
+    width: 1000px; /* ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½Ã¼ ï¿½Êºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
     height : 50px;
-    z-index: 9999; /* ´Ù¸¥ ¿ä¼Ò À§¿¡ ¿Àµµ·Ï ¼³Á¤ */
+    z-index: 9999; /* ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 .product-info li{
 	padding-left : 97px;
@@ -226,25 +226,23 @@ section {
 	height : 70px;
 }
 .two-buy{
-	border-radius : 10px;
-	margin: 7px 15px;
-	width : 97%;
-	height : 80%;
-	display: inline-block;
-	background-color : #ff661c;
+	 border-radius: 10px;
+    margin: 7px 15px;
+    width: 97%;
+    height: 80%;
+    display: flex; /* ë³€ê²½ëœ ë¶€ë¶„ */
+    justify-content: center; /* ë³€ê²½ëœ ë¶€ë¶„ */
+    align-items: center; /* ë³€ê²½ëœ ë¶€ë¶„ */
+    flex-direction: column; /* ë³€ê²½ëœ ë¶€ë¶„ */
+    background-color: #ff661c;
 }
 .buy-price{
-	position : relative;
-	left: 470px;
-	font-size : 20px;
-	font-weight: 700;
-	color : white;
+	 font-size: 20px;
+    font-weight: 700;
+    color: white;
 }
 .buy-go {
-	position : relative;
-	top : 22px;
-	left: 360px;
-	font-size : 15px;
-	font-weight: 400;
-	color : white;
+	font-size: 15px;
+    font-weight: 400;
+    color: white;
 }

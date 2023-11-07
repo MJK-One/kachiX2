@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -122,15 +123,41 @@
 		<div class="group-title">
 			<li>2인 공동구매 참여하기</li>
 		</div>
-		<c:forEach var="i" begin="1" end="5">
-			<div class="group">
-				<div class="group-user">	
-					<li>${i}</li>
-					<li>이름</li>
-				</div>
-			</div>
-		</c:forEach> 
+		 <c:forEach var="groupBuy" items="${groupBuyList}">
+    <div class="group">
+        <div class="group-user">
+            <li>${fn:substring(groupBuy.creatorName, 0, 1)}<c:forEach begin="1" end="${fn:length(groupBuy.creatorName)-2}" varStatus="loop"><c:out value="*" /></c:forEach>${fn:substring(groupBuy.creatorName, fn:length(groupBuy.creatorName)-1, fn:length(groupBuy.creatorName))}
+                <c:choose>
+                    <c:when test="${groupBuy.status eq 'waiting'}">(1/2)</c:when>
+                    <c:otherwise>(2/2) 공동구매완료</c:otherwise>
+                </c:choose>
+            </li>
+            <c:if test="${groupBuy.status eq 'waiting'}">
+                <button class="join-btn" data-groupbuy-id="${groupBuy.groupBuyID}">참여하기</button>
+            </c:if>
+        </div>
+    </div>
+</c:forEach>
 	</div>
+	<script>
+	$(document).ready(function() {
+	    $('.join-btn').click(function() {
+	        var groupBuyId = $(this).data("groupbuy-id");
+
+	        $.ajax({
+	            url: '/five/joinGroupBuy',
+	            type: 'POST',
+	            data: {groupBuyId: groupBuyId},
+	            success: function(response) {
+	                alert(response);
+	            },
+	            error: function(jqXHR, textStatus, errorThrown) {
+	                console.log(textStatus, errorThrown);
+	            }
+	        });
+	    });
+	});
+	</script>
 	<div class="line2"></div>
 	<div class="product-menu" id="product-menu">
 		<ul class="product-info">
@@ -227,13 +254,34 @@
 	</div>
 	<!--하단 구매 고정바-->
 	<footer class="buy">
-		<div class="two-buy">
-			<li class="buy-price">9,900 ~</li>
-			<li class="buy-go">2인 공동구매 시작하기</li>
-		</div>
+		<button class="two-buy"  id="startGroupBuy">
+    <li class="buy-price"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
+    <li class="buy-go">2인 공동구매 시작하기</li>
+</button>
 	</footer>
 </div>
+<script>
+$(document).ready(function() {
+    $('#startGroupBuy').click(function() {
+        var payload = {
+            "postID": ${post.postId}  // JSP 페이지에서 postID 가져오기
+        };
 
+        $.ajax({
+            url: '/five/createGroupBuy',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(response) {
+                alert(response);  // 공동구매 방이 생성되었음을 알리는 메시지를 표시
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    });
+});
+</script>
 
 <!-- 위로 가기 -->
 <a class="back-to-top"></a>

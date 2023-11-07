@@ -25,11 +25,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kachi.five.DAO.MainImageDAO;
 import com.kachi.five.bean.CategoryBean;
 import com.kachi.five.bean.ContentImageBean;
+import com.kachi.five.bean.GroupBuyBean;
 import com.kachi.five.bean.MainImageBean;
 import com.kachi.five.bean.PostBean;
 import com.kachi.five.bean.UserBean;
 import com.kachi.five.service.CategoryService;
 import com.kachi.five.service.ContentImageService;
+import com.kachi.five.service.GroupBuyService;
 import com.kachi.five.service.MainImageService;
 import com.kachi.five.service.PostService;
 import com.kachi.five.service.StorageService;
@@ -47,7 +49,8 @@ public class PostController {
 	private WishlistService wishlistService;
 	@Autowired 
 	private ContentImageService contentImgService;
-	
+	@Autowired
+	private GroupBuyService groupBuyService;
 	String accessKey = "AKIA4PFYHLKYAQRQO7SQ"; // 실제 AWS Access Key
     String secretKey = "YCNMJad4dfSm+eJZ+z6g2nIlE2aC6nnBhHnmPuFh"; // 실제 AWS Secret Key
     String region = "ap-northeast-2"; // 예: "us-west-2", "ap-northeast-2" 등
@@ -89,6 +92,10 @@ public class PostController {
 	    model.addAttribute("isInWishlist", isInWishlist);
 	    model.addAttribute("post", post);
 	    
+	 // 게시물에 연관된 구매방 목록을 가져옵니다.
+        List<GroupBuyBean> groupBuyList = groupBuyService.getGroupBuysByPostId(postId);
+        model.addAttribute("groupBuyList", groupBuyList);
+	 
 	    return "/post/view/view_post";
 	}
 
@@ -202,7 +209,7 @@ public class PostController {
 	    } else {
 	        // 사용자가 로그인하지 않은 상태에서 글을 작성하려는 경우 처리
 	       
-	        return "redirect:/login";  
+	    	return "redirect:/member/loginform";  
 	    }
 	}
 	@RequestMapping(value="/post/deletePost", method=RequestMethod.POST)
@@ -283,7 +290,7 @@ public class PostController {
 	        }
 	        return "redirect:/member/mypage";  // 사용자의 mypage로 리다이렉트
 	    } else {
-	        return "redirect:/login";  // 로그인 페이지로 리다이렉트
+	        return "redirect:/member/loginform";  // 로그인 페이지로 리다이렉트
 	    }
 	}
 	

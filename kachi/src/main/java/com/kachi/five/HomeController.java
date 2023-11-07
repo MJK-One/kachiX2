@@ -31,6 +31,7 @@ import com.kachi.five.service.SearchService;
 @ComponentScan(basePackages = "controller.post")
 @ComponentScan(basePackages = "controller.admin")
 @ComponentScan(basePackages = "controller.search")
+@ComponentScan(basePackages = "controller.buy")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
