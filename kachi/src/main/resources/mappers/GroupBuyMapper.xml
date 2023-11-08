@@ -16,11 +16,16 @@
         VALUES (#{creatorID}, #{postID}, #{status})
     </insert>
 
-    <update id="updateGroupBuy" parameterType="com.kachi.five.bean.GroupBuyBean">
-        UPDATE groupbuy
-        SET participantID = #{participantID}, status = #{status}
-        WHERE groupBuyID = #{groupBuyID}
-    </update>
+    <update id="updateGroupBuy" parameterType="com.kachi.five.bean.GroupBuyBean"> <!-- 이미 참가된 사용자가 있다면 값이 들어가지 않는다. -->
+	    UPDATE groupbuy
+	    <set>
+	        <if test="participantID == null">
+	            participantID = #{participantID},
+	        </if>
+	        status = #{status}
+	    </set>
+	    WHERE groupBuyID = #{groupBuyID} AND participantID IS NULL
+	</update>
    <select id="getGroupBuysByPostId" resultType="com.kachi.five.bean.GroupBuyBean">
 	    SELECT g.*, u.name as creatorName 
 	    FROM groupbuy g

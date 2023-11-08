@@ -145,14 +145,24 @@
 	        var groupBuyId = $(this).data("groupbuy-id");
 
 	        $.ajax({
-	            url: '/five/joinGroupBuy',
+	            url: '/five/checkLoginStatus',
 	            type: 'POST',
-	            data: {groupBuyId: groupBuyId},
 	            success: function(response) {
-	                alert(response);
-	            },
-	            error: function(jqXHR, textStatus, errorThrown) {
-	                console.log(textStatus, errorThrown);
+	                if (response === 'loggedIn') {
+	                    $.ajax({
+	                        url: '/five/joinGroupBuy',
+	                        type: 'POST',
+	                        data: {groupBuyId: groupBuyId}, 
+	                        success: function(response) {
+	                            alert(response);
+	                        },
+	                        error: function(jqXHR, textStatus, errorThrown) {
+	                            console.log(textStatus, errorThrown);
+	                        }
+	                    });
+	                } else {
+	                    window.location.href = "${pageContext.request.contextPath}/member/loginform";  
+	                }
 	            }
 	        });
 	    });
@@ -263,20 +273,30 @@
 <script>
 $(document).ready(function() {
     $('#startGroupBuy').click(function() {
-        var payload = {
-            "postID": ${post.postId}  // JSP 페이지에서 postID 가져오기
-        };
-
         $.ajax({
-            url: '/five/createGroupBuy',
+            url: '/five/checkLoginStatus',
             type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(payload),
             success: function(response) {
-                alert(response);  // 공동구매 방이 생성되었음을 알리는 메시지를 표시
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
+                if (response === 'loggedIn') {
+                    var payload = {
+                        "postID": ${post.postId}  
+                    };
+
+                    $.ajax({
+                        url: '/five/createGroupBuy',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(payload),
+                        success: function(response) {
+                            alert(response);  
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                        }
+                    });
+                } else {
+                    window.location.href = "${pageContext.request.contextPath}/member/loginform";  
+                }
             }
         });
     });

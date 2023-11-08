@@ -22,14 +22,12 @@ public class GroupBuyContoller {
 	@Autowired
 	private GroupBuyService groupBuyService;
 	
-	@PostMapping("/createGroupBuy")
+	@PostMapping(value = "/createGroupBuy", produces = "text/plain; charset=UTF-8")
 	public ResponseEntity<String> createGroupBuy(@RequestBody Map<String, Object> payload, HttpServletRequest request) {
 	    HttpSession session = request.getSession();
 	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
 
-	    if (user == null) {
-	        return new ResponseEntity<>("사용자가 로그인하지 않았습니다.", HttpStatus.UNAUTHORIZED);
-	    }
+	   
 
 	    String creatorID = user.getUserID();
 	    int postID = (Integer) payload.get("postID");
@@ -45,27 +43,41 @@ public class GroupBuyContoller {
 	    return new ResponseEntity<>("공동구매 방이 생성되었습니다.", HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/joinGroupBuy")
+	@PostMapping(value = "/joinGroupBuy", produces = "text/plain; charset=UTF-8")
 	public ResponseEntity<String> joinGroupBuy(@RequestParam("groupBuyId") int groupBuyId ,  HttpServletRequest request) {
 	    
 	    
 	    HttpSession session = request.getSession();
 	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
 
-	    if (user == null) {
-	        return new ResponseEntity<>("사용자가 로그인하지 않았습니다.", HttpStatus.UNAUTHORIZED);
-	    }
+	 
 	    
 	    GroupBuyBean groupBuy = groupBuyService.getGroupBuy(groupBuyId);
 	    
 	    if (groupBuy != null && groupBuy.getStatus().equals("waiting")) {
 	        groupBuy.setStatus("completed");
 	        groupBuy.setParticipantID(user.getUserID());
-	        groupBuyService.updateGroupBuy(groupBuy);
+	        int updatedRows = groupBuyService.updateGroupBuy(groupBuy);
 	        
-	        return new ResponseEntity<>("공동구매에 참여하였습니다.", HttpStatus.OK);
+	        if(updatedRows > 0) {
+	            return new ResponseEntity<>("공동구매에 참여하였습니다.", HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>("공동구매방을 찾을 수 없거나 이미 참여가 완료되었습니다.", HttpStatus.BAD_REQUEST);
+	        }
 	    } else {
 	        return new ResponseEntity<>("공동구매방을 찾을 수 없거나 이미 참여가 완료되었습니다.", HttpStatus.BAD_REQUEST);
+	    }
+	}
+	//로그인 상태 확인
+	@RequestMapping("/checkLoginStatus")
+	public ResponseEntity<String> checkLoginStatus(HttpServletRequest request) {
+	    HttpSession session = request.getSession();
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+
+	    if (user == null) {
+	        return new ResponseEntity<>("notLoggedIn", HttpStatus.OK);
+	    } else {
+	        return new ResponseEntity<>("loggedIn", HttpStatus.OK);
 	    }
 	}
 }
