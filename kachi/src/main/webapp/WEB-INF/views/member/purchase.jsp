@@ -37,26 +37,49 @@
 					<button id="x-load"><img src="${pageContext.request.contextPath}/resources/img/x2.svg" width="30" height="30"></button>
 				</header>	
 				<div class="ad-load-list">
+					<c:forEach items="${addresses}" var="address">
+						<div class='address-card'>
+							<div class='row align-items-center'>
+								<div class='col-md-6'>
+									${address.postCode} ${address.streetAddress} <br> ${address.detailAddress}
+								</div>
+								<div class='col-md-6 text-right'>
+									<button class='btn btn-primary select-address' data-postcode="${address.postCode}" data-address="${address.streetAddress}" data-detail-address="${address.detailAddress}">선택</button>
+								</div>
+							</div>	
+						</div>	
+					</c:forEach>
 				</div>
-			</div>	
+			</div>
+			<script>
+			    var selectAddressButtons = document.querySelectorAll('.select-address');
+			    selectAddressButtons.forEach(function(button) {
+			        button.addEventListener('click', function() {
+			            var postcode = this.getAttribute('data-postcode');
+			            var address = this.getAttribute('data-address');
+			            var detailAddress = this.getAttribute('data-detail-address');
+			            
+			            document.getElementById('sample6_postcode').value = postcode;
+			            document.getElementById('sample6_address').value = address;
+			            document.getElementById('sample6_detailAddress').value = detailAddress;
+			        });
+			    });
+			</script>
 				<form action="${pageContext.request.contextPath}/member/updateAdress" method="post" id='updatenewAdress'>
 					<header class="area-title">
 						<h2>배송지</h2>
 					</header>
 					<div class="address-item">
-						<label for="same">주문자 정보와 동일</label>
+					    <label class="address-label">수령자명</label>
+					    <input class="address-input" id="infonm_name" name="infonm" placeholder="수령자명" value="${user.name}">
 					</div>
 					<div class="address-item">
-						<label class="address-label">수령자명</label>
-						<input class="address-input" id="infonm" name="infonm" placeholder="수령자명" value="">
+					    <label class="address-label">이메일</label>
+					    <input class="address-input" id="infonm_email" name="infonm" placeholder="이메일" value="${user.email}">
 					</div>
 					<div class="address-item">
-						<label class="address-label">이메일</label>
-						<input class="address-input" id="infonm" name="infonm" placeholder="이메일" value="">
-					</div>
-					<div class="address-item">
-						<label class="address-label">전화번호</label>
-						<input class="address-input" id="infonm" name="infonm" placeholder="전화번호" value="">
+					    <label class="address-label">전화번호</label>
+					    <input class="address-input" id="infonm_phone" name="infonm" placeholder="전화번호" value="${user.phoneNumber}">
 					</div>
 					<div class="address-item">
 						<button type="button" class="adress-find2" id="address-find">등록된 배송지 불러오기</button>
@@ -86,9 +109,7 @@
 						<label class="address-label">참고 항목</label>
 						<input class="address-input" id="sample6_extraAddress" name="infonm" placeholder="참고 항목" value="">
 					</div>
-					<div class="address-item">
-						<button type="submit" class="adress-find2" id="refund-account-btn">배송지 설정</button>
-					</div>
+
 					<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 							<script>
 							    function sample6_execDaumPostcode() {
@@ -204,7 +225,7 @@
     
     function requestPay() { // 결제창 호출 함수
         IMP.request_pay({
-            pg : 'html5_inicis', // 결제방식
+            pg : 'kakaopay.TC0ONETIME', // 결제방식
             pay_method : 'card', // 결제 수단
             merchant_uid : 'merchant_' + new Date().getTime(), // 주문번호
             name : '주문명:결제테스트', // 주문명

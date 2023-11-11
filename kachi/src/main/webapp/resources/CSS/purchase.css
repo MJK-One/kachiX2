@@ -157,9 +157,12 @@ a {text-decoration-line: none;}
 }
 .product-item {
     display: flex;
-    width: 210px;
+    width: 100%;
     margin-top : 5px;
-}
+} 
+.product-img img {
+   width : 100%;
+} 
 .del-item {
 	font-size: 18px;
 }

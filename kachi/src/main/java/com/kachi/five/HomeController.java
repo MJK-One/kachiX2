@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kachi.five.bean.AddressBean;
 import com.kachi.five.bean.CategoryBean;
 import com.kachi.five.bean.PostBean;
 import com.kachi.five.bean.SearchHistoryBean;
@@ -24,6 +25,7 @@ import com.kachi.five.bean.UserBean;
 import com.kachi.five.service.CategoryService;
 import com.kachi.five.service.PostService;
 import com.kachi.five.service.SearchService;
+import com.kachi.five.service.UserService;
 
 @Controller
 @ComponentScan(basePackages = "controller.member")
@@ -42,6 +44,8 @@ public class HomeController {
     private PostService postService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private UserService userService;
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model, HttpServletRequest request) {
@@ -76,23 +80,7 @@ public class HomeController {
     }
 	
 	
-	/*
-	 * @RequestMapping("member/search") public String search(Model model,
-	 * HttpServletRequest request) { HttpSession session = request.getSession();
-	 * UserBean user = (UserBean) session.getAttribute("loggedInUser");
-	 * 
-	 * try { List<SearchHistoryBean> recentSearches =
-	 * searchService.getRecentSearchHistory(user.getUserID());
-	 * model.addAttribute("recentSearches", recentSearches); } catch (Exception e) {
-	 * System.out.println("최근 검색어를 가져오는데 실패했습니다."); e.printStackTrace(); }
-	 * 
-	 * try { List<String> popularSearches =
-	 * searchService.getPopularSearchKeywords();
-	 * model.addAttribute("popularSearches", popularSearches); } catch (Exception e)
-	 * { System.out.println("인기 검색어를 가져오는데 실패했습니다."); e.printStackTrace(); }
-	 * 
-	 * return "member/search"; }
-	 */
+	
 	@RequestMapping("mainpage/storehome")
 	public String storehome(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -131,17 +119,19 @@ public class HomeController {
             @RequestParam("totalPrice") int totalPrice, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("loggedInUser");
-		if(user == null) return "member/loginForm"; //로그인이 안되어있으면 로그인 폼으로 이동
+		if(user == null) return "member/loginForm"; //로그인이 안되어있으면 로그인 폼으로 이동}
+		
+		List<AddressBean> addresses = userService.getAddresses(user.getUserID());
+	    model.addAttribute("addresses", addresses);
+	    
 		PostBean post = postService.getPostById(postId);
 		model.addAttribute("post", post);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("quantity", quantity);
+		model.addAttribute("user", user);
 			return "member/purchase";
 	}
-	/*
-	 * @RequestMapping("member/mychecklist") public String mychecklist() { return
-	 * "member/mychecklist"; }
-	 */
+
 	@RequestMapping("member/searchResult")
 	public String searchResult(@RequestParam("query") String query, Model model,HttpServletRequest request) {
 		 HttpSession session = request.getSession();
