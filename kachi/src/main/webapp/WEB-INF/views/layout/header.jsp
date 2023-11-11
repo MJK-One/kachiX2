@@ -45,7 +45,9 @@
 				    }
 				  }
 				</script>
-				<img class="basket" src="${pageContext.request.contextPath}/resources/img/basket.svg" width="45px" height="50px">
+				<a href="${pageContext.request.contextPath}/member/basket">
+					<img class="basket" src="${pageContext.request.contextPath}/resources/img/basket.svg" width="45px" height="50px">
+				</a>
 				<div class="top-right">
 					<c:choose>			        
 				        <c:when test="${not empty sessionScope.loggedInUser}">
@@ -84,7 +86,7 @@
 		<div class="top-2">
 			<ul class="menu">
 				<li class="m active"><span>스토어홈</span></a></li>
-				<li class="m"><span>관심추천</span></a></li>
+				<li class="m"><span>베스트</span></a></li>
 				<li class="m"><span>타임세일</span></a></li>
 				<li class="m"><span>신상품</span></a></li>
 		        <!-- Check if writePermission is true -->

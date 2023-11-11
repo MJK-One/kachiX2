@@ -125,5 +125,16 @@ public class MypageController {
 	    model.addAttribute("wishlist", wishlist);
 	    return "member/mychecklist";
 	}
-	
+	@RequestMapping("member/basket")
+	public String basket(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserBean user = (UserBean) session.getAttribute("loggedInUser");
+	    if (user == null) {
+	        // 로그인 페이지로 리다이렉트
+	        return "redirect:/member/loginform";
+	    }
+	    List<PostBean> wishlist = wishlistService.getPostsInWishlist(user.getUserID());
+	    model.addAttribute("wishlist", wishlist);
+			return "member/basket";
+	}
 }
