@@ -29,4 +29,9 @@
 	    LEFT JOIN MainImage m ON p.postId = m.postId
 	    WHERE p.title LIKE CONCAT('%', #{query}, '%');
 	</select>
+	<select id="getAllPostsOrderBySalePeriod" resultType="com.kachi.five.bean.PostBean"> 
+	  SELECT p.*, m.imageUrl as mainImageUrl FROM Post p 
+	  LEFT JOIN MainImage m ON p.postId = m.postId 
+	  ORDER BY salePeriod ASC;
+	</select>
 </mapper>

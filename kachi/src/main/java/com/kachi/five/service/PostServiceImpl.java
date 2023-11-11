@@ -34,5 +34,8 @@ public class PostServiceImpl implements PostService {
 	public List<PostBean> findPostsByTitleContaining(String query) {
 		return postDAO.findPostsByTitleContaining(query);
 	}
-	
+	@Override
+    public List<PostBean> getAllPostsOrderBySalePeriod() {
+        return postDAO.getAllPostsOrderBySalePeriod();
+    }
 }

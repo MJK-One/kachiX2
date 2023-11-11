@@ -10,4 +10,5 @@ public interface PostDAO {
 	 public PostBean getPostById(int postId);
 	 public void deletePost(int postId);
 	 public List<PostBean> findPostsByTitleContaining(String query);
+	 public List<PostBean> getAllPostsOrderBySalePeriod();
 }

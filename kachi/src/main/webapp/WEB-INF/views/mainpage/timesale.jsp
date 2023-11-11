@@ -6,7 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/timesale.css?after9">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/timesale.css?after11">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
 </head>
 <body>
 	<div class="time-banner">
@@ -24,33 +30,67 @@
 			    request.setAttribute("now", now);
 			    request.setAttribute("after", after);
 			%>
-			<c:forEach var="post" items="${posts}" varStatus="status">	
-				<c:if test="${post.salePeriod >= now && post.salePeriod <= after}">			
-					<a href="${pageContext.request.contextPath}/post/view/${post.postId}">	
-				    <div class="time-pro">
-						<div class="ts-pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>
-						<div class="ts-pro-time">
-							<img src="${pageContext.request.contextPath}/resources/img/timer.svg">
-							<jsp:useBean id="rnow" class="java.util.Date" />
-							<fmt:parseNumber value="${rnow.time / (1000*60*60*24)}" integerOnly="true" var="nowfmtTime" scope="request"/>
-							<fmt:parseNumber value="${post.salePeriod.time / (1000*60*60*24)}" integerOnly="true" var="saleperiod" scope="request"/>								
-							마감임박 ${saleperiod - nowfmtTime}일 남음
-						</div>
-						<div class="ts-pro-name">${post.title}</div>
-						<div class="ts-pro-price">
-							<li class="ts-price1">${post.discountRate}%</li>						
-							<li class="ts-price2"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>							
-							<li class="ts-price4"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
-							<li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>						
-					 	</div>
-				 	</div>
-				 	</a>
-				</c:if>
-			 </c:forEach>			
+			<script>
+		    function startCountdown(elementId, salePeriodTime) {
+		        var countDownDate = new Date(salePeriodTime).getTime();
+		        var countdownFunction = setInterval(function() {
+		            var now = new Date().getTime();
+		            var distance = countDownDate - now;
+		            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		            
+		            // 시간, 분, 초를 항상 두 자리로 표시
+		            hours = (hours < 10) ? "0" + hours : hours;
+		            minutes = (minutes < 10) ? "0" + minutes : minutes;
+		            seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+		            document.getElementById(elementId).innerHTML = hours + ':' + minutes + ':' + seconds;
+
+		            if (distance < 0) {
+		                clearInterval(countdownFunction);
+		                document.getElementById(elementId).innerHTML = '마감되었습니다.';
+		            }
+		        }, 1000);
+		    }
+			</script>
+			<c:set var="count" value="0" />
+<c:forEach var="post" items="${posts}" varStatus="status">
+    <c:if test="${post.salePeriod >= now && post.salePeriod <= after && count < 8}">			
+        <a href="${pageContext.request.contextPath}/post/view/${post.postId}">	
+            <div class="time-pro">
+                <div class="ts-pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>
+                <div class="ts-pro-time">
+                    <img src="${pageContext.request.contextPath}/resources/img/timer.svg">
+                    <jsp:useBean id="rnow" class="java.util.Date" />
+                    <fmt:parseNumber value="${rnow.time / (1000*60*60*24)}" integerOnly="true" var="nowfmtTime" scope="request"/>
+                    <fmt:parseNumber value="${post.salePeriod.time / (1000*60*60*24)}" integerOnly="true" var="saleperiod" scope="request"/>
+                    <c:choose>
+                        <c:when test="${saleperiod - nowfmtTime == 0}">
+                            마감임박 <span id="countdown_${status.index}">계산 중...</span>
+                            <script>startCountdown('countdown_${status.index}', ${post.salePeriod.time});</script>             
+                        </c:when>
+                        <c:otherwise>
+                            마감임박 ${saleperiod - nowfmtTime}일 남음
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                <div class="ts-pro-name">${post.title}</div>
+                <div class="ts-pro-price">
+                    <li class="ts-price1">${post.discountRate}%</li>						
+                    <li class="ts-price2"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>							
+                    <li class="ts-price4"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+                    <li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>						
+                </div>
+            </div>
+        </a>
+    <c:set var="count" value="${count + 1}" />
+    </c:if>
+</c:forEach>			
 		</div>
 		<div class="ts-title">놓치면 후회할 가격 타임세일 초특가</div>
 		<!--카테고리-->
-		<div class="swiper-container category" id="category-t">
+		<div class="swiper-container category" id="category">
 			<div class="swiper-wrapper">
 				<!-- 전체 항목 먼저 보이게 -->
 				<div class="swiper-slide product">
@@ -61,7 +101,7 @@
 							<span class="0">전체</span>
 						</div>
 			    </div>
-			    <!-- 카테고리의 모든 항목을 순서대로 출력 -->		    
+			    <!-- 카테고리의 모든 항목을 순서대로 출력 -->
 			    <c:forEach items="${categories}" var="category" >
 			        <div class="swiper-slide product">
 			                <div class="cate-icon">
@@ -74,28 +114,42 @@
 			    </c:forEach>
 		    </div>	
 		</div>
-		<div class="cate-main-t">
-			<c:forEach var="post" items="${posts}" >
-			   <c:if test="${post.salePeriod >= now && post.salePeriod <= after}">
-			      <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
-			         <div class="cate-product ${post.categoryId}">
-			            <div class="pro-img">			            	
-			            	<img src="${post.mainImageUrl}" alt="Post image">
-			            </div>   
-			            <div class="pro-name">${post.title}</div>
-			            <div class="pro-price">
-			                  <li class="price1"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
-			                  <li class="price2">${post.discountRate}%</li>
-			                  <li class="price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
-			               <div class="pro-info">
-			                  <li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
-			               </div>
-			               <div class="line"></div>
-			             </div>   
-			       </div>
-			        </a> 
-			    </c:if> 
-			</c:forEach>
+		<!--카테고리 게시물 화면-->
+		<div class="cate-main">
+		<c:forEach var="post" items="${posts}" >
+		   <c:if test="${post.salePeriod >= now && post.salePeriod <= after}">
+		      <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
+		         <div class="cate-product ${post.categoryId}">
+		            <div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>
+		           	<div class="pro-timesale">
+			           	<img src="${pageContext.request.contextPath}/resources/img/timer.svg">
+	                    <jsp:useBean id="tnow" class="java.util.Date" />
+	                    <fmt:parseNumber value="${tnow.time / (1000*60*60*24)}" integerOnly="true" var="tnowfmtTime" scope="request"/>
+	                    <fmt:parseNumber value="${post.salePeriod.time / (1000*60*60*24)}" integerOnly="true" var="tsaleperiod" scope="request"/>
+	                    <c:choose>
+	                        <c:when test="${tsaleperiod - tnowfmtTime == 0}">
+	                            마감임박 <span id="countdown2_${status.index}">계산 중...</span>	 
+	                            <script>startCountdown('countdown2_${status.index}', ${post.salePeriod.time});</script>             
+	                        </c:when>
+	                        <c:otherwise>
+	                            마감임박 ${tsaleperiod - tnowfmtTime}일 남음
+	                        </c:otherwise>
+	                    </c:choose>
+		           	</div>  
+		            <div class="pro-name">${post.title}</div>
+		            <div class="pro-price">
+		                  <li class="price1"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+		                  <li class="price2">${post.discountRate}%</li>
+		                  <li class="price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
+		               <div class="pro-info">
+		                  <li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
+		               </div>
+		               <div class="line"></div>
+		             </div>   
+		       </div>
+		        </a> 
+		    </c:if> 
+		</c:forEach>
 		</div>
 	</div>
 	<script>

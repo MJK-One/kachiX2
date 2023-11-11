@@ -94,21 +94,36 @@ public class HomeController {
 	 * return "member/search"; }
 	 */
 	@RequestMapping("mainpage/storehome")
-	public String storehome() {
-		
-		 return "redirect:/";
+	public String storehome(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+        UserBean user = (UserBean) session.getAttribute("loggedInUser");
+        
+		List<PostBean> posts = postService.getAllPosts();
+        List<CategoryBean> categories = categoryService.getAllCategories();
+        model.addAttribute("user", user); 
+        model.addAttribute("categories",categories);
+        model.addAttribute("posts", posts);
+		 return "mainpage/storehome";
 	}
 	@RequestMapping("mainpage/timesale")
-	public String timesale() {
+	public String timesale(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+	    
+	    List<PostBean> posts = postService.getAllPostsOrderBySalePeriod();
+	    List<CategoryBean> categories = categoryService.getAllCategories();
+	    model.addAttribute("user", user); 
+	    model.addAttribute("categories",categories);
+	    model.addAttribute("posts", posts);
 			return "mainpage/timesale";
 	}
 	@RequestMapping("mainpage/newarticle")
 	public String newarticle() {
 			return "mainpage/newarticle";
 	}
-	@RequestMapping("mainpage/interest")
+	@RequestMapping("mainpage/best")
 	public String interest() {
-			return "mainpage/interest";
+			return "mainpage/best";
 	}
 	@RequestMapping("member/purchase")
 	public String purchase(@RequestParam("postId") int postId, 

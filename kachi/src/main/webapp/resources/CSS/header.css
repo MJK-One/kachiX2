@@ -54,6 +54,10 @@
     left: 32px;
     top: 20px;
 }
+.top-2 {
+    margin-top: 16px;
+    margin-left: 20px;
+}
 .menu {
 	list-style-type: none;
 }

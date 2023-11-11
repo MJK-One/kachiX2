@@ -52,5 +52,8 @@ public class PostDAOImpl implements PostDAO {
 	public List<PostBean> findPostsByTitleContaining(String query) {
 		return sqlSession.selectList("com.kachi.five.PostMapper.findPostsByTitleContaining", query);
 	}
-	
+	@Override
+	public List<PostBean> getAllPostsOrderBySalePeriod() {
+	    return sqlSession.selectList("com.kachi.five.PostMapper.getAllPostsOrderBySalePeriod");
+	}
 }

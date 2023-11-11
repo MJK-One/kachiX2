@@ -6,6 +6,6 @@
 <head>
 </head>
 <body>
-관심추천
+베스트
 </body>
 </html>
