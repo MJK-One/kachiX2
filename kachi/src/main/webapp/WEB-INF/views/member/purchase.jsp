@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/purchase.css?after7">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/purchase.css?after10">
 <!-- 제이쿼리 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" type="text/javascript"></script>
 <!-- 아임포트 -->
@@ -31,24 +31,26 @@
 		<!--배송지, 주문자명 입력  -->
 			<section class="address-area">
 			<!--등록된 배송지 불러오기-->
-			<div class="adress-load" id="adress-load"> 
-				<header>
-					<h2>배송지 목록</h2>
-					<button id="x-load"><img src="${pageContext.request.contextPath}/resources/img/x2.svg" width="30" height="30"></button>
-				</header>	
-				<div class="ad-load-list">
-					<c:forEach items="${addresses}" var="address">
-						<div class='address-card'>
-							<div class='row align-items-center'>
-								<div class='col-md-6'>
-									${address.postCode} ${address.streetAddress} <br> ${address.detailAddress}
-								</div>
-								<div class='col-md-6 text-right'>
-									<button class='btn btn-primary select-address' data-postcode="${address.postCode}" data-address="${address.streetAddress}" data-detail-address="${address.detailAddress}">선택</button>
-								</div>
+			<div class="adress-detail" id="adress-detail">
+				<div class="adress-load" id="adress-load"> 
+					<header>
+						<h2>배송지 목록</h2>
+						<button id="x-load"><img src="${pageContext.request.contextPath}/resources/img/x2.svg" width="30" height="30"></button>
+					</header>	
+					<div class="ad-load-list">
+						<c:forEach items="${addresses}" var="address">
+							<div class='address-card'>
+								<div class='row align-items-center'>
+									<div class='col-md-6'>
+										${address.postCode} ${address.streetAddress} <br> ${address.detailAddress}
+									</div>
+									<div class='col-md-6 text-right'>
+										<button class='btn btn-primary select-address' data-postcode="${address.postCode}" data-address="${address.streetAddress}" data-detail-address="${address.detailAddress}">선택</button>
+									</div>
+								</div>	
 							</div>	
-						</div>	
-					</c:forEach>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 			<script>
@@ -86,10 +88,12 @@
 					</div>	
 					<script>
 					document.getElementById('x-load').addEventListener('click', function() {
-					    document.getElementById('adress-load').style.display = 'none';
+					    document.getElementById('adress-detail').style.display = 'none';
+					    document.body.style.overflowY = 'scroll'; // 스크롤 허용
 					});
 					document.getElementById('address-find').addEventListener('click', function() {
-					    document.getElementById('adress-load').style.display = 'block';
+					    document.getElementById('adress-detail').style.display = 'block';
+					    document.body.style.overflowY = 'hidden'; // 스크롤 막기
 					});
 					</script>			
 					<div class="address-item">

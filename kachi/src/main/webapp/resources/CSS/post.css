@@ -159,9 +159,9 @@
 }
 .group-buy{
 	flex-wrap: wrap;
-	width : 100%;
-	height : 250px;
-	margin-top: 16px;
+    width: 100%;
+    height: 100%;
+    margin-top: 16px;
 }
 .group-title{
     padding-left: 15px;
@@ -171,12 +171,24 @@
     width: 985px;
     height: 35px;
 }
+.all-group-see {
+    float: right;
+    font-size: 18px;
+    padding-top: 2px;
+    margin-right: 13px;
+}
+.all-group {
+	float: right;
+    font-size: 18px;
+    color: #1d5cff;
+    padding-top: 3px;
+}
 .group{
-	float: left;
-    height: 40px;
+    height: 55px;
     width: 100%;
     padding: 22px;
     box-sizing: border-box;
+    border-bottom: 1px solid #f5f5f5;
 }
 .group-user{
 	position : relative;
@@ -375,4 +387,93 @@ section {
     font-size: 23px;
     font-weight: 400;
     color: white;
+}
+/* 공동구매 */
+.group-user {
+	justify-content: space-between;
+}
+.group-user li{
+	font-size: 18px;
+	margin-top: 2px;
+}
+.success {
+	float: right;
+	padding-top: 2px;
+    padding-right: 4px;
+    font-size: 17px !important;
+    line-height: 19px;
+    font-weight: 400;
+    color: #aaa;
+}
+.join-btn {
+    float: right;
+    background-color: #ff6b00;
+    border-radius: 3px;
+    height: 35px;
+    width: 100px;
+    line-height: 17px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 18px;
+}
+.all-groupbuy {
+	position: fixed;
+    top: 0;
+    width: 1000px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+}
+.all-groupbuy-detail {
+	position: absolute;
+    top: 20%;
+    left: 30%;
+    height: 500px;
+    width: 400px;
+    border-radius: 10px;
+    background: #fff;
+}
+.all-groupbuy-detail header {
+	position: relative;
+}
+.all-groupbuy-detail h2 {
+    line-height: 25px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: center;
+}
+#x-load{
+	position: absolute;
+    top: -4px;
+    right: 15px;
+}
+.group-all {
+	height: 55px;
+    width: 90%;
+    padding-top: 22px;
+    margin-left: 5%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f5f5f5;
+}
+.group-user-all {
+	position: relative;
+    bottom: 2px;
+}
+.group-user-all li {
+	float : left;
+	font-size: 20px;
+}
+.success-all {
+	float: right;
+    padding-top: 2px;
+    padding-right: 4px;
+    font-size: 18px !important;
+    line-height: 19px;
+    font-weight: 400;
+    color: #aaa;
+}
+#join-btn {
+	position: relative;
+    bottom: 7px;
 }

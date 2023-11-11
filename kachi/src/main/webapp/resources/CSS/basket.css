@@ -126,6 +126,7 @@ a{text-decoration-line: none;
     border-radius: 8px;
     color: #fa4400;
     width: 115px;
+    font-weight: 600;
 }
 .active {
     background-color: #fa4400;
@@ -204,4 +205,5 @@ a{text-decoration-line: none;
     width: 60px;
     float: right;
     margin: 5px 15px;
+    font-weight: 600;
 }

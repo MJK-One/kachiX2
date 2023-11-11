@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/basket.css?after4">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/basket.css?after5">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <title>같이의 가치-공동구매</title>

@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after6">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after18">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after19">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -122,22 +122,68 @@
 	</div>
 		<div class="group-buy">
 		<div class="group-title">
-			<li>2인 공동구매 참여하기</li>
+			<li>2인 공동구매 참여하기</li>		
+			<button class="all-group-see" id="all-group-see">전체보기</button>
+			<span class="all-group">5개팀</span>
 		</div>
+		<div class="all-groupbuy" id="all-groupbuy">
+			<div class="all-groupbuy-detail">
+				<header>
+					<h2>전체 공동구매</h2>
+					<button id="x-load"><img src="${pageContext.request.contextPath}/resources/img/x2.svg" width="30" height="30"></button>
+				</header>
+				<div>
+					<c:set var="count" value="0" />
+					 <c:forEach var="groupBuy" items="${groupBuyList}">
+					 <c:if test="${count < 30}">
+					    <div class="group-all">
+					        <div class="group-user-all">
+					            <li>${fn:substring(groupBuy.creatorName, 0, 1)}<c:forEach begin="1" end="${fn:length(groupBuy.creatorName)-2}" varStatus="loop"><c:out value="*" /></c:forEach>${fn:substring(groupBuy.creatorName, fn:length(groupBuy.creatorName)-1, fn:length(groupBuy.creatorName))}
+					                <c:choose>
+					                    <c:when test="${groupBuy.status eq 'waiting'}">(1/2)</c:when>
+					                    <c:otherwise>					                    	
+					                    <li>(2/2)</li> <span class="success-all">공동구매완료</span></c:otherwise>
+					                </c:choose>
+					            </li>
+					            <c:if test="${groupBuy.status eq 'waiting'}">
+					                <button class="join-btn" id="join-btn" data-groupbuy-id="${groupBuy.groupBuyID}">주문참여</button>
+					            </c:if>
+					        </div>
+					    </div>
+					    <c:set var="count" value="${count + 1}" />
+					    </c:if>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+			<script>
+				document.getElementById('x-load').addEventListener('click', function() {
+					document.getElementById('all-groupbuy').style.display = 'none';				
+					document.body.style.overflowY = 'scroll'; // 스크롤 허용
+				});
+				document.getElementById('all-group-see').addEventListener('click', function() {
+					document.getElementById('all-groupbuy').style.display = 'block';
+					document.body.style.overflowY = 'hidden'; // 스크롤 막기
+				});
+			</script>
+		<c:set var="count" value="0" />
 		 <c:forEach var="groupBuy" items="${groupBuyList}">
+		 <c:if test="${count < 5}">
 		    <div class="group">
 		        <div class="group-user">
 		            <li>${fn:substring(groupBuy.creatorName, 0, 1)}<c:forEach begin="1" end="${fn:length(groupBuy.creatorName)-2}" varStatus="loop"><c:out value="*" /></c:forEach>${fn:substring(groupBuy.creatorName, fn:length(groupBuy.creatorName)-1, fn:length(groupBuy.creatorName))}
 		                <c:choose>
 		                    <c:when test="${groupBuy.status eq 'waiting'}">(1/2)</c:when>
-		                    <c:otherwise>(2/2) 공동구매완료</c:otherwise>
+		                    <c:otherwise><li>(2/2)</li> <li class="success">공동구매완료</li></c:otherwise>
 		                </c:choose>
 		            </li>
 		            <c:if test="${groupBuy.status eq 'waiting'}">
-		                <button class="join-btn" data-groupbuy-id="${groupBuy.groupBuyID}">참여하기</button>
+		                <button class="join-btn" data-groupbuy-id="${groupBuy.groupBuyID}">주문참여</button>
 		            </c:if>
 		        </div>
 		    </div>
+		    <c:set var="count" value="${count + 1}" />
+		    </c:if>
 		</c:forEach>
 	</div>
 	<div class="line2"></div>
