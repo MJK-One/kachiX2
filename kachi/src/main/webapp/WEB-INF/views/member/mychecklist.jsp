@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mychecklist.css?after">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mychecklist.css?after1">
 <title>같이의 가치-공동구매</title>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -38,7 +38,7 @@
 		                    <div class="check-price1"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</div>
 		                    <div class="check-price2">${post.discountRate}%</div>
 		                    <div class="check-price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</div>
-		                    <div class="check-star">★★★★★</div>
+		                    <div class="check-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li></div>
 		                </div>
 		            </div>
 		        </a>

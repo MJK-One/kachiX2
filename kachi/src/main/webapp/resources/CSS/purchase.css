@@ -1,0 +1,257 @@
+a {text-decoration-line: none;}
+.purchase-top{
+	position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 1000px;
+    z-index: 800;
+    display: block;
+    height: 70px;
+    background-color: #fff;
+    box-shadow: none;
+    -webkit-transform: translateZ(0);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.middle{
+	width : 100%;
+	height : 50px;
+	margin-top: 3px;
+}
+.left {
+	float : left;
+	padding-left : 15px;
+}
+.left-icon{
+	position : relative;
+	top : 5px;
+}
+.back{
+	position : relative;
+	bottom : 5px;
+    width: 40px;
+    height: 40px;
+}
+.title{
+	position : relative;
+	top : 5px; 
+    width :100px;
+    height : 30px;
+	margin : 0 auto;
+	font-size : 20px;
+	text-align: center;
+	font-weight: bold;
+}
+.screen{
+    height: 78px;
+}
+.purchase-main {
+	height: 100%;
+	background-color : #f5f5f5;
+}
+.address-area {
+	position: relative;
+    top: 20px;
+	margin: 0 12px 12px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+.area-title{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0;
+}
+.area-title h2{
+	margin-left: 3px;
+    font-size: 21px;
+    line-height: 0px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+.address-item{
+	position: relative;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+.address-label{
+	margin-left: 3px;
+	font-size: 18px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+.address-input{
+	border: 0px;
+	display: block;
+    width: 100%;
+    font-size: 20px;
+    line-height: 39px;
+    font-weight: 400;
+    color: #1a1a1a;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.adress-find {
+	position: absolute;
+    top: 29px;
+    left: 89%;
+    height: 32px;
+    width: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #fff;
+    border: 1px solid #777777;
+    border-radius: 4px;
+}
+.adress-find2 {
+    height: 32px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #fff;
+    border: 1px solid #777777;
+    border-radius: 4px;
+}
+.adress-load {
+	position: fixed;
+    width: 500px;
+    min-height: 600px;
+    background: #fff;
+    z-index: 999;
+    border: 1px solid;
+    margin-left: 233px;
+    margin-top: 33px;
+    display : none;
+}
+.adress-load header {
+	display: flex;
+	justify-content: space-between;
+}
+.adress-load h2{
+	margin: 10px;
+}
+.adress-load img{
+	align-self: center;
+}
+.ad-load-list {
+	width: 97%;
+    height: 87%;
+    margin: auto;
+}
+.product-area {
+	margin: 30px 12px 12px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+.credit-area {
+	margin: 8px 12px 12px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+.product-item {
+    display: flex;
+    width: 210px;
+    margin-top : 5px;
+}
+.del-item {
+	font-size: 18px;
+}
+.del-day {
+	margin-right: 3px;
+    font-weight: 700;
+    color: #2680eb;
+}
+.ask {
+    position: relative;
+    top: 1px;
+    right: 7px;
+}
+.product-img {
+    height: 60px;
+    width: 60px;
+    min-width: 60px;
+    border-radius: 3px;
+    overflow: hidden;
+    border : 1px solid;
+}
+.product-details {
+    margin-left: 12px;
+}
+.product-title{
+	font-size : 19px;
+}
+.product-price {
+    margin-top: 9px;
+}
+.bar {
+	display: inline-block;
+    margin: 0 12px;
+    height: 14px;
+    width: 1px;
+    vertical-align: middle;
+    background-color: #cdcdcd;
+}
+.product-price .pro-price {
+	font-weight : 700;
+}
+.group-purchase {
+	font-size: 15px;
+    line-height: 21px;
+    font-weight: 400;
+    color: #141414;
+    background-color: #ffde17;
+    border-radius: 6px;
+    display: inline-block;
+    padding: 0 6px;
+    margin-top: 8px;
+}
+.product-price .quan {
+	color: #777;
+}
+.group-credit {
+	margin-top: 10px;
+}
+.credit-total{
+	width: 100%;
+}
+.credit-total tbody th {
+	font-size: 20px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #999;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: top;
+}
+.credit-total tbody td {
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #1a1a1a;
+    text-align: right;
+}
+.credit-total tfoot th {
+    font-size: 23px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: top;
+    padding-top: 10px;
+}
+.credit-total tfoot td {
+	padding-top: 8px;
+    text-align: right;
+    font-size: 23px;
+    line-height: 27px;
+    font-weight: 700;
+    color: #fa4400;
+    padding-top: 10px;
+}

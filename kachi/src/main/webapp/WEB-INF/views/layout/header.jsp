@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after8">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after12">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after13">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -21,6 +21,7 @@
 		<div class="top-1">
 				<img class="icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="60" height="60">
 				<button type="button" class="search" style="cursor:pointer;" onclick="showSearchJSP()">
+					<li class="search-title">누가해도 맛있는 닭강정!</li>
 					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.svg" width="26" height="32">
 				</button>
 				<script>

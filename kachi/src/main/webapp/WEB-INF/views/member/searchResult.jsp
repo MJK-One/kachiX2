@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/searchResult.css?after">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/searchResult.css?after1">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after3">
 <title>같이의 가치-공동구매</title>
 </head>
@@ -40,8 +40,6 @@
 		</div>
 		<!--서치 메인-->
 		<div class="search-main">
-			<div class="search-cate">			
-			</div>
 			<!--필터 분류-->
 			<div class="filter-option">
 				<div class="option">
@@ -118,7 +116,7 @@
     <c:choose>
         <c:when test="${empty posts}">
              <div style="width: 100%; text-align: center;">
-                <p style="color: gray;">아쉽게도 검색결과가 없습니다.</p>
+                <p style="color: gray;">검색결과가 없습니다.</p>
             </div>
         </c:when>
         <c:otherwise>
@@ -134,9 +132,8 @@
                                 <!-- 가격과 할인율로 실제 판매가격 계산 -->
                                 <li class="price3"><script>document.write(numberWithCommas(${post.totalprice}));</script>원</li>
                                 <div class="pro-info">
-                                    <li>별점</li>
-                                    <li>구매 : ${i}</li>
-                                </div>
+				                	<li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
+				                </div>
                                 <div class="line"></div>
                             </div>	
                         </div>

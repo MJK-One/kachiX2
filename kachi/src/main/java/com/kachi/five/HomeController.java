@@ -110,7 +110,19 @@ public class HomeController {
 	public String interest() {
 			return "mainpage/interest";
 	}
-
+	@RequestMapping("member/purchase")
+	public String purchase(@RequestParam("postId") int postId, 
+			@RequestParam("quantity") int quantity, 
+            @RequestParam("totalPrice") int totalPrice, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserBean user = (UserBean) session.getAttribute("loggedInUser");
+		if(user == null) return "member/loginForm"; //로그인이 안되어있으면 로그인 폼으로 이동
+		PostBean post = postService.getPostById(postId);
+		model.addAttribute("post", post);
+		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("quantity", quantity);
+			return "member/purchase";
+	}
 	/*
 	 * @RequestMapping("member/mychecklist") public String mychecklist() { return
 	 * "member/mychecklist"; }

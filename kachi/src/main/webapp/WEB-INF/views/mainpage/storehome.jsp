@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/storehome.css?after6">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/storehome.css?after7">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -91,8 +91,7 @@ function slide_auto(){
                   <li class="price2">${post.discountRate}%</li>
                   <li class="price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
                <div class="pro-info">
-                  <li>별점</li>
-                  <li>구매 : ${i}</li>
+                  <li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
                </div>
                <div class="line"></div>
              </div>   

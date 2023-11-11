@@ -8,10 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after5">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after9">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after6">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after18">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -19,12 +20,12 @@
     <div id="top-menu">
      	<button type="button"  onclick = "history.back()" class="home"><img src="${pageContext.request.contextPath}/resources/img/back1.svg" width="30" height="30"></button>
      	<img class="top-post-img" src="${post.mainImageUrl}" alt="Post image" width="50" height="50">
+     	<div class="top-star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>	</div>
      	<div class="top-post-name">
      		<li>${post.title}</li>
      	</div>
      	
     	<button type="button" class="search"><img src="${pageContext.request.contextPath}/resources/img/search1.svg" width="50" height="55"></button>
-    	<button type="button" class="basket"><img src="${pageContext.request.contextPath}/resources/img/basket1.svg" width="50" height="55"></button>
     </div>
     <script type="text/javascript">
     window.onscroll = function() {changeBackground()};
@@ -35,16 +36,16 @@
             document.querySelector(".home img").src = "${pageContext.request.contextPath}/resources/img/back.svg";
             document.querySelector(".search img").src = "${pageContext.request.contextPath}/resources/img/search1.svg";
             document.querySelector(".search").style.visibility = "hidden";
-            document.querySelector(".basket img").src = "${pageContext.request.contextPath}/resources/img/basket.svg";
             document.querySelector(".top-post-img").style.visibility = "visible";
+            document.querySelector(".top-star").style.visibility = "visible";
             document.querySelector(".top-post-name").style.visibility = "visible";
         } else {
             document.getElementById("top-menu").style.background = "linear-gradient(#000 0%, rgba(0, 0, 0, 0) 100%)";
             document.querySelector(".home img").src = "${pageContext.request.contextPath}/resources/img/back1.svg";
             document.querySelector(".search img").src = "${pageContext.request.contextPath}/resources/img/search1.svg";
-            document.querySelector(".search").style.visibility = "visible";
-            document.querySelector(".basket img").src = "${pageContext.request.contextPath}/resources/img/basket1.svg";
+            document.querySelector(".search").style.visibility = "visible";          
             document.querySelector(".top-post-img").style.visibility = "hidden";
+            document.querySelector(".top-star").style.visibility = "hidden";
             document.querySelector(".top-post-name").style.visibility = "hidden";
         }
     }
@@ -64,7 +65,7 @@
 				<li class="price-w"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
 				<li class="price-sw"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
 			</div>
-			<li class="star">★★★★★</li>	
+			<li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>	
 		</div>
 		<div class="product-name">
 			<li class="pro-name">${post.title}</li>
@@ -119,55 +120,26 @@
 	    </button>
 	</div>
 	</div>
-	<div class="group-buy"> <!--보류-->
+		<div class="group-buy">
 		<div class="group-title">
 			<li>2인 공동구매 참여하기</li>
 		</div>
 		 <c:forEach var="groupBuy" items="${groupBuyList}">
-    <div class="group">
-        <div class="group-user">
-            <li>${fn:substring(groupBuy.creatorName, 0, 1)}<c:forEach begin="1" end="${fn:length(groupBuy.creatorName)-2}" varStatus="loop"><c:out value="*" /></c:forEach>${fn:substring(groupBuy.creatorName, fn:length(groupBuy.creatorName)-1, fn:length(groupBuy.creatorName))}
-                <c:choose>
-                    <c:when test="${groupBuy.status eq 'waiting'}">(1/2)</c:when>
-                    <c:otherwise>(2/2) 공동구매완료</c:otherwise>
-                </c:choose>
-            </li>
-            <c:if test="${groupBuy.status eq 'waiting'}">
-                <button class="join-btn" data-groupbuy-id="${groupBuy.groupBuyID}">참여하기</button>
-            </c:if>
-        </div>
-    </div>
-</c:forEach>
+		    <div class="group">
+		        <div class="group-user">
+		            <li>${fn:substring(groupBuy.creatorName, 0, 1)}<c:forEach begin="1" end="${fn:length(groupBuy.creatorName)-2}" varStatus="loop"><c:out value="*" /></c:forEach>${fn:substring(groupBuy.creatorName, fn:length(groupBuy.creatorName)-1, fn:length(groupBuy.creatorName))}
+		                <c:choose>
+		                    <c:when test="${groupBuy.status eq 'waiting'}">(1/2)</c:when>
+		                    <c:otherwise>(2/2) 공동구매완료</c:otherwise>
+		                </c:choose>
+		            </li>
+		            <c:if test="${groupBuy.status eq 'waiting'}">
+		                <button class="join-btn" data-groupbuy-id="${groupBuy.groupBuyID}">참여하기</button>
+		            </c:if>
+		        </div>
+		    </div>
+		</c:forEach>
 	</div>
-	<script>
-	$(document).ready(function() {
-	    $('.join-btn').click(function() {
-	        var groupBuyId = $(this).data("groupbuy-id");
-
-	        $.ajax({
-	            url: '/five/checkLoginStatus',
-	            type: 'POST',
-	            success: function(response) {
-	                if (response === 'loggedIn') {
-	                    $.ajax({
-	                        url: '/five/joinGroupBuy',
-	                        type: 'POST',
-	                        data: {groupBuyId: groupBuyId}, 
-	                        success: function(response) {
-	                            alert(response);
-	                        },
-	                        error: function(jqXHR, textStatus, errorThrown) {
-	                            console.log(textStatus, errorThrown);
-	                        }
-	                    });
-	                } else {
-	                    window.location.href = "${pageContext.request.contextPath}/member/loginform";  
-	                }
-	            }
-	        });
-	    });
-	});
-	</script>
 	<div class="line2"></div>
 	<div class="product-menu" id="product-menu">
 		<ul class="product-info">
@@ -264,48 +236,108 @@
 	</div>
 	<!--하단 구매 고정바-->
 	<footer class="buy">
-		<button class="two-buy"  id="startGroupBuy">
-    <li class="buy-price"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
-    <li class="buy-go">2인 공동구매 시작하기</li>
-</button>
+		<button type="button" class="two-buy" id="two-buy">
+			<li class="buy-price"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
+			<li class="buy-go">2인 공동구매 시작하기</li>
+		</button>
 	</footer>
+	<footer class="credit" id="credit">
+		<button type="button" class="under" id="under"><img src="${pageContext.request.contextPath}/resources/img/under.svg" width="40" heigth="35"></button>
+		<div class="credit-pro">
+			<li class="credit-title">${post.title}</li>
+			<div class="credit-buy">
+				<li class="credit-price"><strong><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/></strong>원</li>
+				<div class="quantity">
+					<button type="button" class="btn-dec" onclick='count("minus")'><img src="${pageContext.request.contextPath}/resources/img/-.svg" width="15" height="15"></button>
+					<li class="quant" id="quant1">1</li>
+					<button type="button" class="btn-inc" onclick='count("plus")'><img src="${pageContext.request.contextPath}/resources/img/+.svg" width="15" height="15"></button>
+				</div>	
+			</div>
+		</div>
+		<span class="delivery">
+			<span>무료배송</span>
+		</span>
+		<div class="coupon">
+			<button class="btn-coupon">쿠폰선택</button>
+		</div>
+		<div class="all-credit">
+			<li class="all-pro">총 <strong id="quant2">1</strong>개</li>
+			<li class="all-pro-price">총 금액
+				<strong id="totalPrice"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/></strong>
+				<span>원</span>
+			</li>								
+		</div>
+		<form id="purchaseForm" action="${pageContext.request.contextPath}/member/purchase" method="post">
+		    <input type="hidden" name="quantity" id="purchaseQuantity">
+		    <input type="hidden" name="totalPrice" id="purchaseTotalPrice">
+		    <input type="hidden" name="postId" id="postId" value="${post.postId}">
+		</form>
+		
+		<script>
+		    function submitForm(postId) {
+		        // 현재 화면에 표시된 수량과 총 가격
+		        let quantity = document.getElementById('quant1').innerText;
+		        let totalPrice = document.getElementById('totalPrice').innerText.replace(/,/g, ''); // 콤마(,) 제거
+		
+		        // hidden input 필드에 값 설정
+		        document.getElementById('purchaseQuantity').value = quantity;
+		        document.getElementById('purchaseTotalPrice').value = totalPrice;
+		
+		        // form 제출
+		        document.getElementById('purchaseForm').submit();
+		
+		        // 기존에 있던 purchasePost 함수 호출
+		        purchasePost(postId);
+		    }
+		</script>
+		<button type="button" class="credit-two-buy" onclick="submitForm(${post.postId});">
+		    <li class="credit-buy-go">2인 공동구매 시작하기</li>
+		</button>
+	</footer>
+	
+	<script type="text/javascript">
+	document.getElementById('two-buy').addEventListener('click', function() {
+		document.getElementById('credit').style.display = 'block';
+		document.getElementById('two-buy').style.display = 'none';
+	});
+	document.getElementById('under').addEventListener('click', function() {
+		document.getElementById('credit').style.display = 'none';
+		document.getElementById('two-buy').style.display = 'block';
+	});
+	
+	function count(type)  {
+	    // 결과를 표시할 element
+	    const resultElement1 = document.getElementById('quant1');
+	    const resultElement2 = document.getElementById('quant2');
+	    const totalPriceElement = document.getElementById('totalPrice');
+	    // 현재 화면에 표시된 값
+	    let number = resultElement1.innerText;
+	    // 더하기/빼기
+	    if(type === 'plus') {
+	        number = parseInt(number) + 1;
+	    }else if(type === 'minus')  {
+	        if(number > 1) 
+	        number = parseInt(number) - 1;
+	    }
+	    
+	    // 결과 출력
+	    resultElement1.innerText = number;
+	    resultElement2.innerText = number;
+	    
+	    // 총 금액 업데이트
+	    totalPriceElement.innerText = (number * ${post.totalprice}).toLocaleString('ko-KR');
+	    
+	  
+	}
+	</script>
 </div>
-<script>
-$(document).ready(function() {
-    $('#startGroupBuy').click(function() {
-        $.ajax({
-            url: '/five/checkLoginStatus',
-            type: 'POST',
-            success: function(response) {
-                if (response === 'loggedIn') {
-                    var payload = {
-                        "postID": ${post.postId}  
-                    };
-
-                    $.ajax({
-                        url: '/five/createGroupBuy',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify(payload),
-                        success: function(response) {
-                            alert(response);  
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus, errorThrown);
-                        }
-                    });
-                } else {
-                    window.location.href = "${pageContext.request.contextPath}/member/loginform";  
-                }
-            }
-        });
-    });
-});
-</script>
 
 <!-- 위로 가기 -->
 <a class="back-to-top"></a>
 <script type="text/javascript">
+
+
+
 $(function(){
 	$('.back-to-top').on('click',function(e){
 		e.preventDefault();

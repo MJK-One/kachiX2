@@ -8,8 +8,11 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mypage.css?after7">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/mypage.css?after9">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
 <title>같이의 가치-공동구매</title>
 </head>
@@ -79,32 +82,51 @@
 			<button type="button" onclick="location.href = '${pageContext.request.contextPath}/member/mychecklist'">전체보기</button>
 			<c:choose>		        
 				<c:when test="${not empty sessionScope.loggedInUser}">
-			    	<div class="swiper-container save-list" id="save-list">
-						<div class="swiper-wrapper">
-							<c:forEach items="${wishlist}" var="post" varStatus="status">
-								<c:if test="${status.index < 10}"> <!-- 최근 10개의 찜 게시물만 보여줌 -->
-									<a href="${pageContext.request.contextPath}/post/view/${post.postId}">
-										<div class="swiper-slide product">
-											<div class="pro-img"><img src="${post.mainImageUrl}" alt="이미지"></div>
-											<div class="pro-name">${post.title}</div>
-											<div class="pro-price">
-												<!--할인률--><li class="price1">${post.discountRate}%</li>
-												<li class="price2"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
-												<!--원가--><li class="price3"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
-											</div>
-										</div>
-									</a>
-								</c:if>
-							</c:forEach>
-			        	</div>
-					</div>
+			    	<c:choose>
+    <c:when test="${not empty wishlist}">
+        <div class="swiper-container save-list" id="save-list">
+            <div class="swiper-wrapper">
+                <c:forEach items="${wishlist}" var="post" varStatus="status">
+                    <c:if test="${status.index < 10}"> <!-- 최근 10개의 찜 게시물만 보여줌 -->
+                        <div class="swiper-slide product">
+                            <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
+                                <div class="pro-img"><img src="${post.mainImageUrl}" alt="이미지"></div>
+                                <div class="pro-name">${post.title}</div>
+                                <div class="pro-price">
+                                    <!--할인률--><li class="price1">${post.discountRate}%</li>
+                                    <li class="price2"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
+                                    <!--원가--><li class="price3"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+                                    <li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
+                                </div>
+                                <div class="pro-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li></div>
+                            </a>  
+                        </div>          
+                    </c:if>
+                </c:forEach>
+            </div>
+        </div>
+    </c:when>
+    <c:otherwise> 
+        <div class="save-list">
+            <div class="warning">
+                <img class="warning-img" src="${pageContext.request.contextPath}/resources/img/warning.svg" width="80" height="80"><img>
+                <p>내가 찜한 상품이 없습니다.</p>
+            </div>
+        </div>
+    </c:otherwise> 
+</c:choose>
 			    </c:when>	        
 			    <c:otherwise> 
-			    	<div class="save-list">비로그인ㅋㅋ</div>
+			    	<div class="save-list">
+			    		<div class="warning">
+				    		<img class="warning-img" src="${pageContext.request.contextPath}/resources/img/warning.svg" width="80" height="80"><img>
+				    		<p>내가 찜한 상품이 없습니다.</p>
+			    		</div>
+			    	</div>
 			    </c:otherwise> 
 			</c:choose>			
 		</div>
-		<script>
+		<script type="text/javascript">
 		/*스와이핑*/
 		var swiper = new Swiper('.save-list', {
 	            slidesPerView: 'auto',

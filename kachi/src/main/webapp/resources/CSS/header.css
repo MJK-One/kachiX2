@@ -18,10 +18,18 @@
 .search a{
 	width : 100%;
 }
+.search-title {
+	float: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 2px;
+    margin-left: 12px;
+    color: darkgray;
+}
 .search-i {
-	position : relative;
-	left: 46%;
-	z-index: 1;
+	float: right;
+    margin-right: 12px;
+    margin-bottom: 5px;
 }
 .search-jsp {
     position: fixed;

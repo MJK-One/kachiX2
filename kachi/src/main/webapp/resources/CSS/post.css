@@ -15,15 +15,24 @@
 	border-radius : 8px;
 	visibility: hidden;
 }
+.top-star {
+	position: relative;
+    left: 63px;
+    top: 10px;
+    font-weight: bold;
+    font-size: 17px;
+    color: black;
+    visibility: hidden;   
+}
 .top-post-name {
 	position: relative;
     top: 33px;
-    left: 65px;
+    left: 15px;
     visibility: hidden;
 }
 .top-post-name li{
 	width: 500px;
-	height: 25px;  
+	height: 35px;  
     font-size: 20px;
     text-overflow: ellipsis;
     white-space: nowrap;  
@@ -31,11 +40,7 @@
 }
 .search {
 	position: relative;
-    left: 250px;
-}
-.basket {
-	position: relative;
-    left: 250px;
+    left: 280px;
 }
 #top-menu {
     width: 1000px;
@@ -88,7 +93,7 @@
     font-weight: bold;
 }
 .price-won{
-	width: 160px;
+	width: 190px;
 	height: 69px;
 	margin-top: 10px;
 }
@@ -109,6 +114,11 @@
 	position: relative;
     left: 620px;
     top: 15px;
+    font-size : 20px;
+    font-weight : bold;
+}
+.star img {
+	margin-top : 2px;
 }
 .product-name{
 	width : 100%;
@@ -185,9 +195,9 @@
 #product-menu.fixed {
     position: fixed;
     top: 80px;
-    width: 1000px; /* ÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩŸ∞ÔøΩ ÔøΩÔøΩ√º ÔøΩ ∫ÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩœµÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ */
+    width: 1000px; /* ªÛ¥‹ ∞Ì¡§πŸ∞° ¿¸√º ≥ ∫Ò∏¶ ¬˜¡ˆ«œµµ∑œ º≥¡§ */
     height : 50px;
-    z-index: 9999; /* ÔøΩŸ∏ÔøΩ ÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ */
+    z-index: 9999; /* ¥Ÿ∏• ø‰º“ ¿ßø° ø¿µµ∑œ º≥¡§ */
 }
 .product-info li{
 	padding-left : 97px;
@@ -222,27 +232,147 @@ section {
 	border: 1px solid #e1e1e1;
 	position: fixed;
 	bottom : 0;
-	width : 1000px;
+	width : 998px;
 	height : 70px;
 }
 .two-buy{
-	 border-radius: 10px;
-    margin: 7px 15px;
-    width: 97%;
-    height: 80%;
-    display: flex; /* Î≥ÄÍ≤ΩÎêú Î∂ÄÎ∂Ñ */
-    justify-content: center; /* Î≥ÄÍ≤ΩÎêú Î∂ÄÎ∂Ñ */
-    align-items: center; /* Î≥ÄÍ≤ΩÎêú Î∂ÄÎ∂Ñ */
-    flex-direction: column; /* Î≥ÄÍ≤ΩÎêú Î∂ÄÎ∂Ñ */
-    background-color: #ff661c;
+	border-radius : 10px;
+	margin: 7px 15px;
+	width : 97%;
+	height : 80%;
+	display: inline-block;
+	background-color : #ff661c;
 }
 .buy-price{
-	 font-size: 20px;
-    font-weight: 700;
-    color: white;
+	font-size : 20px;
+	font-weight: 700;
+	color : white;
+	display: block;
 }
 .buy-go {
-	font-size: 15px;
+	font-size : 15px;
+	font-weight: 400;
+	color : white;
+	display: block;
+}
+.credit{
+	background-color :white;
+	border-radius: 16px 16px 0px 0px;
+	box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	bottom : 0;
+	width : 1000px;
+	max-height: 500px;
+	display: none;
+}
+.under {
+	position: absolute;
+    left: 48%;
+    top: 5px;
+}
+.credit-pro {
+	margin: 50px 30px 15px;
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+    font-size : 20px;
+    font-weight: 500;
+}
+.credit-buy {
+	display : flex;
+}
+.credit-price {
+	padding-top : 10px;
+}
+.credit-price strong{
+	font-weight : 600;
+}
+.quantity {
+	border: 1px solid #cdcdcd;
+    border-radius: 3px;
+    background-color: #fff;
+    position: absolute;
+    right: 60px;
+}
+.quantity button{
+	height: 40px;
+    width: 50px;
+}
+.quant {
+	font-size: 20px;
+    font-weight: 500;
+    width: 50px;
+    text-align: center;
+}
+.delivery {
+	position: relative;
+    bottom: 17px;
+    width: 51px;
+    border: 1px solid #1d5cff;
+    border-radius: 5px;
+    padding: 0 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 400;
+    color: #1d5cff;
+    margin-left: 30px;
+    display: inline-block;
+}
+.coupon{
+	display: inline-block;
+    width: 87%;
+}
+.btn-coupon {
+	float: right;
+    padding: 6px 14px 6px 6px;
+    min-width: 52px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #555;
+    line-height: 1;
+    border: solid #cdcdcd;
+    border-width: 1px 0 1px 1px;
+    border-radius: 3px;
+}
+.btn-coupon::after{
+	content: '';
+    position: absolute;
+    top: 167px;
+    right: 29px;
+    bottom: -1px;
+    width: 10px;
+    height: 35px;
+    background-color: #fa4400;
+    border-radius: 0 3px 3px 0;
+}
+.all-credit {
+	width: 94%;
+    margin: 10px 30px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.all-pro-price {
+	float : right;
+}
+.all-pro-price strong {
+	color: #fa4400;
+	font-size: 25px;
+}
+.all-pro-price span {
+	color: #fa4400;
+}
+.credit-two-buy{
+	border-radius: 10px;
+    margin: 7px 15px;
+    width: 97%;
+    height: 65px;
+    display: inline-block;
+    background-color: #ff661c;
+}
+.credit-buy-go {
+    font-size: 23px;
     font-weight: 400;
     color: white;
 }

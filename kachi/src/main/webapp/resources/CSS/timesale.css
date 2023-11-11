@@ -15,6 +15,8 @@
 .time-pro{
     width: 200px !important;
     margin: 5px 25px; 
+    height: 352px;
+    border-bottom: 2px solid #e1e1e1;
 }
 .ts-pro-img {
 	height: 198px;
@@ -62,13 +64,20 @@
     order: 2;
     align-self: center;
     text-align: right;
-    flex-grow: 1;
     font-weight: bold;
+    font-size: 20px;
+    width: 100px;
+    color : black;
   }
   .ts-price4 {
     order: 3;
-    width: 100%;
     text-decoration: line-through;
 	color: darkgray;
     font-weight: 600;
+  }
+  .star {
+  	order : 4;
+  	font-weight: bold;
+    font-size: 17px;
+    color : black;
   }

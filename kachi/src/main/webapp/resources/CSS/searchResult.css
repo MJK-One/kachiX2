@@ -191,14 +191,15 @@ a{
     font-weight: bold;
 }
 .pro-info{
-	width : 100px;
-	height : 100%;
-	position : relative;
-	bottom : 23px;
-	left : 200px;
+    width: 100px;
+    height: 100%;
+    position: relative;
+    bottom: 7px;
+    left: 235px;
 }
 .pro-info li{
-	margin-right : 20px;
+	font-weight: bold;
+    font-size: 17px;
 }
 .line {
 	position : relative;

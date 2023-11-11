@@ -4,7 +4,7 @@
 	font-family :'Spoqa Han Sans', sans-serif ;
 }
 body {
-	background-color : #f6f6f6;
+	background-color : #dddddd;
 	position: relative;
 	height : 100%;
 }
@@ -43,6 +43,7 @@ li {
   text-align: center;
   border-radius: 50px;
   position: fixed;
+  right : 50px;
   bottom: 90px;
   transition: background-color .3s, 
   opacity .5s, visibility .5s;

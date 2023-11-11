@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/timesale.css?after5">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/timesale.css?after8">
 </head>
 <body>
 	<div class="time-banner">
@@ -35,10 +35,9 @@
 						<div class="ts-pro-name">${post.title}</div>
 						<div class="ts-pro-price">
 							<li class="ts-price1">${post.discountRate}%</li>						
-							<li class="ts-price2" id="price2-${status.index}"></li>
-							<script>document.getElementById('price2-${status.index}').innerText = numberWithCommas(${post.totalprice}) + ' 원';</script>
-							<li class="ts-price4" id="price4-${status.index}"></li>
-							<script>document.getElementById('price4-${status.index}').innerText = numberWithCommas(${post.price}) + ' 원';</script>
+							<li class="ts-price2"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>							
+							<li class="ts-price4"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+							<li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>						
 					 	</div>
 				 	</div>
 				 	</a>
