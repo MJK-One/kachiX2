@@ -17,9 +17,9 @@ public class GroupBuyDAOImpl implements GroupBuyDAO {
 	}
 
 	@Override
-	public void createGroupBuy(GroupBuyBean groupBuy) {
-		sqlSession.insert("com.kachi.five.GroupBuyMapper.createGroupBuy", groupBuy);
-
+	public GroupBuyBean createGroupBuy(GroupBuyBean groupBuy) {
+	    sqlSession.insert("com.kachi.five.GroupBuyMapper.createGroupBuy", groupBuy);
+	    return groupBuy;
 	}
 
 	@Override

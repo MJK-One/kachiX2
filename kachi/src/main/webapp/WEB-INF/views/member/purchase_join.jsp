@@ -220,94 +220,93 @@
 	</div>
 </body>
 <script type="text/javascript">
-    var IMP = window.IMP; // 생략가능
-    IMP.init('imp71850440'); // 가맹점 식별코드를 교체해주세요.
+	var IMP = window.IMP; // 생략 가능
+	IMP.init('imp71850440'); // 가맹점 식별코드를 교체해주세요.
+	
+	// 결제 요청 함수
+	function requestPay() {
+	    // 입력 필드에서 사용자 입력 값을 가져옵니다.
+	    var buyerName = document.getElementById('infonm_name').value;
+	    var buyerEmail = document.getElementById('infonm_email').value;
+	    var buyerTel = document.getElementById('infonm_phone').value;
+	    var buyerPostcode = document.getElementById('sample6_postcode').value;
+	    var buyerAddr = document.getElementById('sample6_address').value;
+	    var buyerDetail = document.getElementById('sample6_detailAddress').value;
+	
+	    // 주문명, 결제금액, 물품 개수를 가져옵니다.
+	    var orderName = document.querySelector('.product-title').innerText;
+	    var amount = document.querySelector('.pro-price').innerText.replace(/,/g, ''); 
+	    var quantity = document.querySelector('.quan').innerText.replace(/[^\d]/g, '');
+	
+	    // 결제 요청에 사용자 입력 값을 사용합니다.
+	    IMP.request_pay({
+	        pg : 'kakaopay.TC0ONETIME', // 결제 방식
+	        pay_method : 'card', // 결제 수단
+	        merchant_uid : 'merchant_' + new Date().getTime(), // 주문 번호
+	        name : orderName, // 주문명
+	        amount : amount, // 결제 금액
+	        quantity : quantity, // 물품 개수
+	        buyer_email : buyerEmail, // 구매자 이메일
+	        buyer_name : buyerName, // 구매자 이름
+	        buyer_tel : buyerTel, // 구매자 전화번호
+	        buyer_addr : buyerAddr + " " + buyerDetail, // 구매자 주소
+	        buyer_postcode : buyerPostcode // 구매자 우편번호
+	    }, function(rsp) {
+	        if (rsp.success) {
+	            var msg = '결제가 완료되었습니다.';
+	            
+	            var joinGroupBuyData = {
+	                groupBuyId: groupBuyId, // 참여하려는 공동구매방의 ID
+	            };
+	
+	            // 결제가 성공적으로 완료된 후, joinGroupBuy를 호출합니다.
+	            $.ajax({
+	                url: '${pageContext.request.contextPath}/joinGroupBuy',
+	                type: 'POST',
+	                data: joinGroupBuyData,
+	                success: function(data) {
+	                    var purchase = {
+	                        userId: '${user.userID}',  
+	                        postId: '${post.postId}', 
+	                        userName: buyerName,  
+	                        userEmail: buyerEmail,  
+	                        userPhone: buyerTel,  
+	                        productName: orderName,
+	                        productPrice: amount,
+	                        quantity: quantity,
+	                        deliveryAddress: buyerAddr + " " + buyerDetail,
+	                        groupBuyId: groupBuyId  
+	                    };
+	
+	                    $.ajax({
+	                        url: '${pageContext.request.contextPath}/purchase',
+	                        type: 'POST',
+	                        contentType: 'application/json',
+	                        data: JSON.stringify(purchase),
+	                        success: function(data) {
+	                            window.location.href = '${pageContext.request.contextPath}/';
+	                        },
+	                        error: function(err) {
+	                            alert('결제에 실패하였습니다. 관리자에게 문의 부탁드립니다.');
+	                        }
+	                    });
+	                },
+	                error: function(xhr, status, error) {
+	                    alert('오류가 발생하였습니다. 관리자에게 문의해주세요. 오류 내용: ' + xhr.responseText);
+	                }
+	            });
+	        } else {
+	            var msg = '결제에 실패하였습니다.';
+	            msg += '에러내용 : ' + rsp.error_msg;
+	            alert(msg);
+	        }
+	    });
+	}
+	
+	// 결제창 호출 버튼 클릭 이벤트
+	document.getElementById('payment-button').addEventListener('click', function() {
+	    requestPay();
+	});
 
-    // 결제 요청 함수
-    function requestPay() {
-        // 입력 필드에서 사용자 입력 값을 가져옵니다.
-        var buyerName = document.getElementById('infonm_name').value;
-        var buyerEmail = document.getElementById('infonm_email').value;
-        var buyerTel = document.getElementById('infonm_phone').value;
-        var buyerPostcode = document.getElementById('sample6_postcode').value;
-        var buyerAddr = document.getElementById('sample6_address').value;
-        var buyerDetail = document.getElementById('sample6_detailAddress').value;
-
-        // 주문명, 결제금액, 물품개수를 가져옵니다.
-        var orderName = document.querySelector('.product-title').innerText;
-        var amount = document.querySelector('.pro-price').innerText.replace(/,/g, ''); 
-        var quantity = document.querySelector('.quan').innerText.replace(/[^\d]/g, '');
-
-        // 결제 요청에 사용자 입력 값을 사용합니다.
-        IMP.request_pay({
-            pg : 'kakaopay.TC0ONETIME', // 결제방식
-            pay_method : 'card', // 결제 수단
-            merchant_uid : 'merchant_' + new Date().getTime(), // 주문번호
-            name : orderName, // 주문명
-            amount : amount, // 결제금액
-            quantity : quantity, // 물품 개수
-            buyer_email : buyerEmail, // 구매자 이메일
-            buyer_name : buyerName, // 구매자 이름
-            buyer_tel : buyerTel, // 구매자 전화번호
-            buyer_addr : buyerAddr + " " + buyerDetail, // 구매자 주소
-            buyer_postcode : buyerPostcode // 구매자 우편번호
-        }, function(rsp) {
-        	if ( rsp.success ) {
-        	    var msg = '결제가 완료되었습니다.';
-        	    var groupBuy = {
-        	    	    creatorID: '${user.userID}', 
-        	    	    postID: '${post.postId}', 
-        	    	    status: 'waiting'
-        	    	};
-
-        	    $.ajax({
-        	        url: '${pageContext.request.contextPath}/createGroupBuy',
-        	        type: 'POST',
-        	        contentType: 'application/json',
-        	        data: JSON.stringify(groupBuy),
-        	        success: function(data) {
-        	            var groupBuyId = data.groupBuyID;
-        	            var purchase = {
-        	                userId: '${user.userID}',  
-        	                postId: '${post.postId}', 
-        	                userName: buyerName,  
-        	                userEmail: buyerEmail,  
-        	                userPhone: buyerTel,  
-        	                productName: orderName,
-        	                productPrice: amount,
-        	                quantity: quantity,
-        	                deliveryAddress: buyerAddr + " " + buyerDetail,
-        	                groupBuyId: groupBuyId  
-        	            };
-
-        	            $.ajax({
-        	                url: '${pageContext.request.contextPath}/purchase',
-        	                type: 'POST',
-        	                contentType: 'application/json',
-        	                data: JSON.stringify(purchase),
-        	                success: function(data) {
-        	                    window.location.href = '${pageContext.request.contextPath}/';
-        	                },
-        	                error: function(err) {
-        	                    alert('결제에 실패하였습니다. 관리자에게 문의 부탁드립니다.');
-        	                }
-        	            });
-        	        },
-        	        error: function(xhr, status, error) {
-        	            alert('오류가 발생하였습니다. 관리자에게 문의해주세요. 오류 내용: ' + xhr.responseText);
-        	        }
-        	    });
-        	} else {
-                var msg = '결제에 실패하였습니다.';
-                msg += '에러내용 : ' + rsp.error_msg;
-            }
-            alert(msg);
-        });
-    }
-
-    // 결제창 호출 버튼 클릭 이벤트
-    document.getElementById('payment-button').addEventListener('click', function() {
-        requestPay();
-    });
 </script>
 </html> 

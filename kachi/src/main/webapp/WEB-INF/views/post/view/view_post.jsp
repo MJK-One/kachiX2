@@ -319,6 +319,12 @@
 		    <input type="hidden" name="postId" id="postId" value="${post.postId}">
 		</form>
 		
+		<form id="joinForm" action="${pageContext.request.contextPath}/member/purchase_join" method="post">
+		  <input type="hidden" name="quantity" id="purchaseQuantity">
+		  <input type="hidden" name="totalPrice" id="purchaseTotalPrice">
+		  <input type="hidden" name="postId" id="postId" value="${post.postId}">
+		  <input type="hidden" name="groupBuyID" id="joinGroupBuyID">
+		</form>
 		<script>
 		    function submitForm(postId) {
 		        // 현재 화면에 표시된 수량과 총 가격
@@ -336,16 +342,56 @@
 		        purchasePost(postId);
 		    }
 		</script>
-		<button type="button" class="credit-two-buy" onclick="submitForm(${post.postId});">
+		<button type="button" class="credit-two-buy" id="credit-buy "onclick="submitForm(${post.postId});">
 		    <li class="credit-buy-go">2인 공동구매 시작하기</li>
 		</button>
+		
+		 <button type="button" class="credit-two-buy" id="credit-join-buy" onclick="submitjoinForm(${post.postId});">
+		    <li class="credit-buy-go">2인 공동구매 참여하기</li>
+		  </button>
 	</footer>
 	
-	<script type="text/javascript">
-	document.getElementById('two-buy').addEventListener('click', function() {
-		document.getElementById('credit').style.display = 'block';
-		document.getElementById('two-buy').style.display = 'none';
+	
+<script type="text/javascript">
+	// 2인 공동구매 시작하기 버튼에 이벤트 핸들러 추가
+	$('#two-buy').click(function() {
+	  // credit 보이기, two-buy 숨기기
+	  $('#credit').show();
+	  $('#two-buy').hide();
+
+	  // credit-buy 버튼 보이기, credit-join-buy 버튼 숨기기
+	  $('#credit-buy').show();
+	  $('#credit-join-buy').hide();
+	  
+	  // 구매하기 버튼 클릭 시 purchaseForm 제출
+	  $('#credit-buy').off('click').click(function() {
+	    $('#purchaseForm').submit();
+	  });
 	});
+
+	// 참여하기 버튼에 이벤트 핸들러 추가
+	$('.join-btn').click(function() {
+	  let groupBuyId = $(this).data('groupbuy-id'); // data-groupbuy-id 값 가져오기
+	  $('#joinGroupBuyID').val(groupBuyId); // hidden input 필드에 값 설정
+
+	  // credit 보이기, two-buy 숨기기
+	  $('#credit').show();
+	  $('#two-buy').hide();
+
+	  // credit-join-buy 버튼 보이기, credit-buy 버튼 숨기기
+	  $('#credit-join-buy').show();
+	  $('#credit-buy').hide();
+
+	  // 구매하기 버튼 클릭 시 joinForm 제출
+	  $('#credit-join-buy').off('click').click(function() {
+	    $('#joinForm').submit();
+	  });
+	});
+</script>
+	<script type="text/javascript">
+	
+	
+
 	document.getElementById('under').addEventListener('click', function() {
 		document.getElementById('credit').style.display = 'none';
 		document.getElementById('two-buy').style.display = 'block';

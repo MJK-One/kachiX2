@@ -17,8 +17,8 @@ public class GroupBuyServiceImpl implements GroupBuyService {
 	}
 
 	@Override
-	public void createGroupBuy(GroupBuyBean groupBuy) {
-		 groupBuyDAO.createGroupBuy(groupBuy);
+	public GroupBuyBean createGroupBuy(GroupBuyBean groupBuy) {
+	    return groupBuyDAO.createGroupBuy(groupBuy);
 	}
 
 	@Override

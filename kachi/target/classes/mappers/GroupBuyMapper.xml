@@ -11,7 +11,7 @@
         SELECT * FROM groupbuy WHERE groupBuyID = #{groupBuyID}
     </select>
 
-    <insert id="createGroupBuy" parameterType="com.kachi.five.bean.GroupBuyBean">
+    <insert id="createGroupBuy" parameterType="com.kachi.five.bean.GroupBuyBean" useGeneratedKeys="true" keyProperty="groupBuyID">
         INSERT INTO groupbuy (creatorID, postID, status)
         VALUES (#{creatorID}, #{postID}, #{status})
     </insert>

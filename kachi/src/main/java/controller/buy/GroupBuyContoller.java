@@ -22,25 +22,29 @@ public class GroupBuyContoller {
 	@Autowired
 	private GroupBuyService groupBuyService;
 	
-	@PostMapping(value = "/createGroupBuy", produces = "text/plain; charset=UTF-8")
-	public ResponseEntity<String> createGroupBuy(@RequestBody Map<String, Object> payload, HttpServletRequest request) {
+	@PostMapping(value = "/createGroupBuy", produces = "application/json; charset=UTF-8")
+	public ResponseEntity<?> createGroupBuy(@RequestBody Map<String, Object> payload, HttpServletRequest request) {
 	    HttpSession session = request.getSession();
 	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
 
-	   
+	    if (user == null) {
+	        // 로그인하지 않은 사용자에 대한 처리. 예를 들어, 오류 메시지를 반환하거나 로그인 페이지로 리디렉션.
+	        return new ResponseEntity<>("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
+	    }
 
 	    String creatorID = user.getUserID();
-	    int postID = (Integer) payload.get("postID");
-
+	    String postID = (String) payload.get("postID");
+	    int postIDInt = Integer.parseInt(postID);
 	    GroupBuyBean groupBuy = new GroupBuyBean();
 	    groupBuy.setCreatorID(creatorID);
-	    groupBuy.setPostID(postID);
+	    groupBuy.setPostID(postIDInt);
 	    groupBuy.setStatus("waiting");
 
-	    // 데이터베이스에 공동구매 방 정보 저장
-	    groupBuyService.createGroupBuy(groupBuy);
+	    // 데이터베이스에 공동구매 방 정보 저장 후, 새로 생성된 id를 반환받습니다.
+	    GroupBuyBean createdGroupBuy = groupBuyService.createGroupBuy(groupBuy);
+	    
 
-	    return new ResponseEntity<>("공동구매 방이 생성되었습니다.", HttpStatus.CREATED);
+	    return new ResponseEntity<>(createdGroupBuy, HttpStatus.CREATED);
 	}
 	
 	@PostMapping(value = "/joinGroupBuy", produces = "text/plain; charset=UTF-8")

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kachi.five.PurchaseMapper">
+  
+    <!-- insert -->
+	<insert id="insertPurchase" parameterType="Purchase">
+	    INSERT INTO Purchase (userID, postID, userName, userEmail, userPhone, productName, productPrice, quantity, deliveryAddress, groupBuyId)
+	    VALUES (#{userId}, #{postId}, #{userName}, #{userEmail}, #{userPhone}, #{productName}, #{productPrice}, #{quantity}, #{deliveryAddress}, #{groupBuyId})
+	</insert>
+	
+	<!-- select -->
+	<select id="selectPurchase" parameterType="int" resultType="Purchase">
+	    SELECT * FROM Purchase WHERE purchaseID = #{purchaseId}
+	</select>
+	
+	<!-- update -->
+	<update id="updatePurchase" parameterType="Purchase">
+	    UPDATE Purchase
+	    SET userID = #{userId}, postID = #{postId}, userName = #{userName}, userEmail = #{userEmail}, userPhone = #{userPhone}, 
+	    productName = #{productName}, productPrice = #{productPrice}, quantity = #{quantity}, deliveryAddress = #{deliveryAddress}, groupBuyId = #{groupBuyId}
+	    WHERE purchaseID = #{purchaseId}
+	</update>
+	
+	<!-- delete -->
+	<delete id="deletePurchase" parameterType="int">
+	    DELETE FROM Purchase WHERE purchaseID = #{purchaseId}
+	</delete>
+</mapper>
