@@ -124,7 +124,7 @@
 		<div class="group-title">
 			<li>2인 공동구매 참여하기</li>		
 			<button class="all-group-see" id="all-group-see">전체보기</button>
-			<span class="all-group">5개팀</span>
+			<span class="all-group">${groupBuyList.size()}개팀</span>
 		</div>
 		<div class="all-groupbuy" id="all-groupbuy">
 			<div class="all-groupbuy-detail">
