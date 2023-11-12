@@ -1,6 +1,6 @@
 package com.kachi.five.bean;
 
-import com.google.protobuf.Timestamp;
+import java.sql.Timestamp; 
 
 public class SearchHistoryBean {
 	  private int searchId;

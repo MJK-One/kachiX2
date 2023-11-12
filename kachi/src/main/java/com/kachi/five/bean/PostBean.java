@@ -3,7 +3,7 @@ package com.kachi.five.bean;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-import com.google.protobuf.Timestamp;
+import java.sql.Timestamp; 
 
 public class PostBean {
 	

@@ -153,10 +153,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping("member/purchase_join")
-	public String purchase_join(@RequestParam("postId") int postId, 
-			@RequestParam("quantity") int quantity, 
-            @RequestParam("totalPrice") int totalPrice,
-            @RequestParam("groupBuyId") int groupBuyId, Model model, HttpServletRequest request) {
+	public String purchase_join(@RequestParam("postId1") int postId, 
+			@RequestParam("quantity1") int quantity, 
+            @RequestParam("totalPrice1") int totalPrice,
+            @RequestParam("groupBuyID1") int groupBuyId, Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("loggedInUser");
@@ -169,6 +169,7 @@ public class HomeController {
 		model.addAttribute("post", post);
 		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("quantity", quantity);
+		model.addAttribute("groupBuyId", groupBuyId);
 		model.addAttribute("user", user);
 			return "member/purchase_join";
 	}

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+import java.sql.Timestamp; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,18 +49,16 @@ public class GroupBuyContoller {
 	
 	@PostMapping(value = "/joinGroupBuy", produces = "text/plain; charset=UTF-8")
 	public ResponseEntity<String> joinGroupBuy(@RequestParam("groupBuyId") int groupBuyId ,  HttpServletRequest request) {
-	    
-	    
 	    HttpSession session = request.getSession();
 	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
 
-	 
-	    
 	    GroupBuyBean groupBuy = groupBuyService.getGroupBuy(groupBuyId);
 	    
-	    if (groupBuy != null && groupBuy.getStatus().equals("waiting")) {
+	    if (groupBuy != null && groupBuy.getStatus().equals("waiting") && user !=null) {
 	        groupBuy.setStatus("completed");
 	        groupBuy.setParticipantID(user.getUserID());
+	        groupBuy.setCompletionTime(new Timestamp(System.currentTimeMillis())); // 참여한 시간을 기록합니다.
+
 	        int updatedRows = groupBuyService.updateGroupBuy(groupBuy);
 	        
 	        if(updatedRows > 0) {

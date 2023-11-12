@@ -1,6 +1,6 @@
 package com.kachi.five.bean;
 
-import com.google.protobuf.Timestamp;
+import java.sql.Timestamp; 
 
 public class GroupBuyBean {
 	private int groupBuyID;
@@ -10,6 +10,7 @@ public class GroupBuyBean {
     private int postID;
     private String status;
     private Timestamp startTime;
+    private Timestamp completionTime;
 	public int getGroupBuyID() {
 		return groupBuyID;
 	}
@@ -52,6 +53,12 @@ public class GroupBuyBean {
 	}
 	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
+	}
+	public Timestamp getCompletionTime() {
+		return completionTime;
+	}
+	public void setCompletionTime(Timestamp completionTime) {
+		this.completionTime = completionTime;
 	}
     
     

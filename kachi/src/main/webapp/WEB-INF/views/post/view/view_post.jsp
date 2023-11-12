@@ -320,10 +320,10 @@
 		</form>
 		
 		<form id="joinForm" action="${pageContext.request.contextPath}/member/purchase_join" method="post">
-		  <input type="hidden" name="quantity" id="purchaseQuantity">
-		  <input type="hidden" name="totalPrice" id="purchaseTotalPrice">
-		  <input type="hidden" name="postId" id="postId" value="${post.postId}">
-		  <input type="hidden" name="groupBuyID" id="joinGroupBuyID">
+		  <input type="hidden" name="quantity1" id="purchaseQuantity1">
+		  <input type="hidden" name="totalPrice1" id="purchaseTotalPrice1">
+		  <input type="hidden" name="postId1" id="postId1" value="${post.postId}">
+		  <input type="hidden" name="groupBuyID1" id="joinGroupBuyID1">
 		</form>
 		<script>
 		    function submitForm(postId) {
@@ -331,6 +331,10 @@
 		        let quantity = document.getElementById('quant1').innerText;
 		        let totalPrice = document.getElementById('totalPrice').innerText.replace(/,/g, ''); // 콤마(,) 제거
 		
+		        console.log('quantity:', quantity);
+		        console.log('totalPrice:', totalPrice);
+		        console.log('postId:', postId);
+		        
 		        // hidden input 필드에 값 설정
 		        document.getElementById('purchaseQuantity').value = quantity;
 		        document.getElementById('purchaseTotalPrice').value = totalPrice;
@@ -338,26 +342,45 @@
 		        // form 제출
 		        document.getElementById('purchaseForm').submit();
 		
-		        // 기존에 있던 purchasePost 함수 호출
-		        purchasePost(postId);
+		       
+		    }
+		    function submitjoinForm(postId, groupBuyId) {
+		        // 현재 화면에 표시된 수량과 총 가격
+		        let quantity = document.getElementById('quant1').innerText;
+		        let totalPrice = document.getElementById('totalPrice').innerText.replace(/,/g, ''); // 콤마(,) 제거
+
+		        
+		        // hidden input 필드에 값 설정
+		        document.getElementById('purchaseQuantity1').value = quantity;
+		        document.getElementById('purchaseTotalPrice1').value = totalPrice;
+		        document.getElementById('postId1').value = postId;
+		        document.getElementById('joinGroupBuyID1').value = groupBuyId;
+		        
+		        console.log('quantity:', quantity);
+		        console.log('totalPrice:', totalPrice);
+		        console.log('postId:', postId);
+		        console.log('groupBuyId:', groupBuyId);
+		        
+		        // form 제출
+		        document.getElementById('joinForm').submit();
 		    }
 		</script>
-		<button type="button" class="credit-two-buy" id="credit-buy" "onclick="submitForm(${post.postId});">
+		<button type="button" class="credit-two-buy" id="credit-buy" >
 		    <li class="credit-buy-go">2인 공동구매 시작하기</li>
 		</button>
 		
-		 <button type="button" class="credit-two-buy" id="credit-join-buy" onclick="submitjoinForm(${post.postId});">
+		 <button type="button" class="credit-two-buy" id="credit-join-buy" >
 		    <li class="credit-buy-go">2인 공동구매 참여하기</li>
 		  </button>
 	</footer>
 	
 	
 <script type="text/javascript">
-$(document).ready(function() {
 	// 2인 공동구매 시작하기 버튼에 이벤트 핸들러 추가
 	$('#two-buy').click(function() {
 	  // credit 보이기, two-buy 숨기기
 	  $('#credit').show();
+	  $('#two-buy').hide();
 
 	  // credit-buy 버튼 보이기, credit-join-buy 버튼 숨기기
 	  $('#credit-buy').show();
@@ -365,18 +388,20 @@ $(document).ready(function() {
 	  
 	  // 구매하기 버튼 클릭 시 purchaseForm 제출
 	  $('#credit-buy').off('click').click(function() {
-	    $('#purchaseForm').submit();
+	    //$('#purchaseForm').submit();
+		  submitForm(${post.postId});
 	  });
 	});
-});
-$(document).ready(function() {
+
+	let currentGroupBuyId; // 전역 변수 선언
+
 	// 참여하기 버튼에 이벤트 핸들러 추가
 	$('.join-btn').click(function() {
-	  let groupBuyId = $(this).data('groupbuy-id'); // data-groupbuy-id 값 가져오기
-	  $('#joinGroupBuyID').val(groupBuyId); // hidden input 필드에 값 설정
+	  currentGroupBuyId = $(this).data('groupbuy-id'); // data-groupbuy-id 값 가져와서 전역 변수에 저장
 
 	  // credit 보이기, two-buy 숨기기
 	  $('#credit').show();
+	  $('#two-buy').hide();
 
 	  // credit-join-buy 버튼 보이기, credit-buy 버튼 숨기기
 	  $('#credit-join-buy').show();
@@ -384,10 +409,10 @@ $(document).ready(function() {
 
 	  // 구매하기 버튼 클릭 시 joinForm 제출
 	  $('#credit-join-buy').off('click').click(function() {
-	    $('#joinForm').submit();
+	    submitjoinForm(${post.postId}, currentGroupBuyId); // 저장된 groupBuyId 값을 사용
+	 
 	  });
 	});
-});
 </script>
 	<script type="text/javascript">
 	
