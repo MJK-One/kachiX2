@@ -342,7 +342,7 @@
 		        purchasePost(postId);
 		    }
 		</script>
-		<button type="button" class="credit-two-buy" id="credit-buy "onclick="submitForm(${post.postId});">
+		<button type="button" class="credit-two-buy" id="credit-buy" "onclick="submitForm(${post.postId});">
 		    <li class="credit-buy-go">2인 공동구매 시작하기</li>
 		</button>
 		
@@ -353,11 +353,11 @@
 	
 	
 <script type="text/javascript">
+$(document).ready(function() {
 	// 2인 공동구매 시작하기 버튼에 이벤트 핸들러 추가
 	$('#two-buy').click(function() {
 	  // credit 보이기, two-buy 숨기기
 	  $('#credit').show();
-	  $('#two-buy').hide();
 
 	  // credit-buy 버튼 보이기, credit-join-buy 버튼 숨기기
 	  $('#credit-buy').show();
@@ -368,7 +368,8 @@
 	    $('#purchaseForm').submit();
 	  });
 	});
-
+});
+$(document).ready(function() {
 	// 참여하기 버튼에 이벤트 핸들러 추가
 	$('.join-btn').click(function() {
 	  let groupBuyId = $(this).data('groupbuy-id'); // data-groupbuy-id 값 가져오기
@@ -376,7 +377,6 @@
 
 	  // credit 보이기, two-buy 숨기기
 	  $('#credit').show();
-	  $('#two-buy').hide();
 
 	  // credit-join-buy 버튼 보이기, credit-buy 버튼 숨기기
 	  $('#credit-join-buy').show();
@@ -387,6 +387,7 @@
 	    $('#joinForm').submit();
 	  });
 	});
+});
 </script>
 	<script type="text/javascript">
 	

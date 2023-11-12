@@ -34,4 +34,14 @@
 	  LEFT JOIN MainImage m ON p.postId = m.postId 
 	  ORDER BY salePeriod ASC;
 	</select>
+	<select id="getAllPostsOrderBydiscountRate" resultType="com.kachi.five.bean.PostBean"> 
+	  SELECT p.*, m.imageUrl as mainImageUrl FROM Post p 
+	  LEFT JOIN MainImage m ON p.postId = m.postId 
+	  ORDER BY discountRate DESC;
+	</select>
+	<select id="getAllPostsOrderByrecent" resultType="com.kachi.five.bean.PostBean"> 
+	  SELECT p.*, m.imageUrl as mainImageUrl FROM Post p 
+	  LEFT JOIN MainImage m ON p.postId = m.postId 
+	  ORDER BY postDate DESC;
+	</select>
 </mapper>

@@ -38,4 +38,12 @@ public class PostServiceImpl implements PostService {
     public List<PostBean> getAllPostsOrderBySalePeriod() {
         return postDAO.getAllPostsOrderBySalePeriod();
     }
+	@Override
+    public List<PostBean> getAllPostsOrderBydiscountRate() {
+        return postDAO.getAllPostsOrderBydiscountRate();
+    }
+	@Override
+    public List<PostBean> getAllPostsOrderByrecent() {
+        return postDAO.getAllPostsOrderByrecent();
+    }
 }

@@ -10,6 +10,8 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after15">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <title>같이의 가치-공동구매</title>
 </head>
@@ -64,89 +66,88 @@
 		</div>
 		<!--상단 메뉴바-->
 		<script>
- 		$(document).ready(function() {
+		$(document).ready(function() {
 		    $(".m").click(function(e) {
 		        $(".m").removeClass("active");
 		        $(this).addClass("active");
 		    });
-		});
- 		
- 		 // 스토어홈 메뉴 클릭시
-        $(document).ready(function() {
-        	loadMenu1();
+		
+		    // 페이지가 로드되면 loadMenu1() 함수를 호출합니다.
+		    loadMenu1();
+		
+		    // 스토어홈 메뉴 클릭시
 		    $("#menu1").click(function(e) {
 		        console.log("스토어홈 메뉴 클릭");
 		        loadMenu1();
 		    });
-        // 베스트 메뉴 클릭시     
+		
+		    // 베스트 메뉴 클릭시
 		    $("#menu2").click(function(e) {
 		        console.log("베스트 메뉴 클릭");
 		        $.ajax({
-		            url: 'mainpage/best', // 여기에는 실제 요청을 보낼 서버의 엔드포인트를 입력해주세요.
+		            url: 'mainpage/best',
 		            type: 'GET',
 		            success: function(response) {
-		                console.log(response); // 응답을 콘솔에 출력
-		                $('#main').html(response); // #main 요소의 내용을 응답으로 변경
+		                $('#main').html(response);
 		            },
 		            error: function(error) {
-		                console.log(error); // 에러를 콘솔에 출력
+		                console.log(error);
 		            }
 		        });
-		    });		
-        // 타임세일 메뉴 클릭시   
+		    });
+		
+		    // 타임세일 메뉴 클릭시
 		    $("#menu3").click(function(e) {
 		        console.log("타임세일 메뉴 클릭");
 		
 		        $.ajax({
-		            url: 'mainpage/timesale', // 여기에는 실제 요청을 보낼 서버의 엔드포인트를 입력해주세요.
+		            url: 'mainpage/timesale',
 		            type: 'GET',
 		            success: function(response) {
-		                console.log(response); // 응답을 콘솔에 출력
-		                $('#main').html(response); // #main 요소의 내용을 응답으로 변경
+		                $('#main').html(response);
 		            },
 		            error: function(error) {
-		                console.log(error); // 에러를 콘솔에 출력
-		            }
-		        });
-		    });	
-        // 신상품 메뉴 클릭시     
-		    $("#menu4").click(function(e) {
-		        console.log("신상품 메뉴 클릭");
-		
-		        $.ajax({
-		            url: 'five/mainpage/newarticle', // 여기에는 실제 요청을 보낼 서버의 엔드포인트를 입력해주세요.
-		            type: 'GET',
-		            success: function(response) {
-		                console.log(response); // 응답을 콘솔에 출력
-		                $('#main').html(response); // #main 요소의 내용을 응답으로 변경
-		            },
-		            error: function(error) {
-		                console.log(error); // 에러를 콘솔에 출력
+		                console.log(error);
 		            }
 		        });
 		    });
-        
-		    function loadMenu1() {
+		
+		    // 신상품 메뉴 클릭시
+		    $("#menu4").click(function(e) {
+		        console.log("특가상품 메뉴 클릭");
+		
 		        $.ajax({
-		            url: 'mainpage/storehome', // 요청을 보낼 서버의 엔드포인트
+		            url: 'mainpage/newarticle',
 		            type: 'GET',
 		            success: function(response) {
-		                console.log(response); // 응답을 콘솔에 출력
-		                $('#main').html(response); // #main 요소의 내용을 응답으로 변경
+		                $('#main').html(response);
 		            },
 		            error: function(error) {
-		                console.log(error); // 에러를 콘솔에 출력
+		                console.log(error);
+		            }
+		        });
+		    });
+		
+		    function loadMenu1() {
+		        $.ajax({
+		            url: 'mainpage/storehome',
+		            type: 'GET',
+		            success: function(response) {
+		                $('#main').html(response);
+		            },
+		            error: function(error) {
+		                console.log(error);
 		            }
 		        });
 		    }
-		});
 
-    	</script>
+		});
+		</script>
 		<div class="top-2">
 				<button class="m active" id="menu1">스토어홈</button>
 				<button class="m" id="menu2">베스트</button>
 				<button class="m" id="menu3">타임세일</button>
-				<button class="m" id="menu4">신상품</button>		       
+				<button class="m" id="menu4">특가상품</button>		       
 		</div>
 	</header>
 	<div id="search-jsp" class="search-jsp">

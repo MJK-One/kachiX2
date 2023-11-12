@@ -114,6 +114,23 @@
 			    </c:forEach>
 		    </div>	
 		</div>
+		<!--인기순, 최신순 -->
+		<div class="items-order">
+			<button class="pop-order">인기순</button>
+			<button class="recent-order">최신순</button>
+			<button class="time-order item-active">마감임박순</button>
+		</div>
+		<script>
+		$(document).ready(function() {
+		    const buttons = $('.items-order button');
+		    buttons.each(function() {
+		        $(this).on('click', function() {
+		            buttons.removeClass('item-active');  // 모든 버튼의 active 클래스를 제거
+		            $(this).addClass('item-active');  // 클릭된 버튼에 active 클래스를 추가
+		        });
+		    });
+		});
+		</script>
 		<!--카테고리 게시물 화면-->
 		<div class="cate-main">
 		<c:forEach var="post" items="${posts}" >

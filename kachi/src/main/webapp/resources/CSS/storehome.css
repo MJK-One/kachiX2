@@ -102,6 +102,33 @@ a{
     line-height: 1em;
     color: #333;
 }
+/*나열 버튼*/
+.items-order{
+	position: relative;
+    bottom: 33px;
+    display: inline-flex;
+}
+.items-order button.item-active {
+    color: #fa4400;
+    border-color: #fa4400;
+}
+.items-order button {
+	border: 2px solid #e1e1e1;
+    border-radius: 30px;
+    width: 75px;
+    height: 35px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #e1e1e1;
+}
+.pop-order{
+	margin-top: 10px;
+    margin-left: 12px;
+}
+.recent-order{
+	margin-top: 10px;
+	margin-left:10px;
+}
 /*카테고리 메인*/
 .cate-main{
 	display: flex;

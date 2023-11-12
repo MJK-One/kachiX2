@@ -1,5 +1,6 @@
 package com.kachi.five;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -106,11 +107,30 @@ public class HomeController {
 			return "mainpage/timesale";
 	}
 	@RequestMapping("mainpage/newarticle")
-	public String newarticle() {
-			return "mainpage/newarticle";
+	public String newarticle(Model model, HttpServletRequest request) {
+	    HttpSession session = request.getSession();
+	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
+
+	    // 초기 게시물 데이터를 가져옴. 여기서는 "최신 게시물"을 가져옴
+	    List<PostBean> posts = postService.getAllPostsOrderByrecent();
+	    List<PostBean> saleposts = postService.getAllPostsOrderBydiscountRate();
+	    List<CategoryBean> categories = categoryService.getAllCategories();
+	    model.addAttribute("user", user); 
+	    model.addAttribute("categories",categories);
+	    model.addAttribute("posts", posts);
+
+	    return "mainpage/newarticle";
 	}
 	@RequestMapping("mainpage/best")
-	public String interest() {
+	public String interest(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+        UserBean user = (UserBean) session.getAttribute("loggedInUser");
+        
+		List<PostBean> posts = postService.getAllPosts();
+        List<CategoryBean> categories = categoryService.getAllCategories();
+        model.addAttribute("user", user); 
+        model.addAttribute("categories",categories);
+        model.addAttribute("posts", posts);
 			return "mainpage/best";
 	}
 	@RequestMapping("member/purchase")

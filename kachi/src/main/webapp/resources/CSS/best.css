@@ -2,86 +2,21 @@
 	width : 100%;
 	height : 200px;
 }
-.ts-title {
+.na-title {
 	font-size: 25px;
     font-weight: bold;
-    margin: 20px;
+    margin: 28px;
+    line-height: 15px;
 }
-.ts {
+.na-title img{
+	position: absolute;
+    top: 92px;
+}
+.na {
 	width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
-.time-pro{
-    width: 200px !important;
-    margin: 5px 25px; 
-    height: 352px;
-    border-bottom: 2px solid #e1e1e1;
-}
-.ts-pro-img {
-	height: 198px;
-	margin: 5px;
-}
-.ts-pro-img img {
-	width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-.ts-pro-time {
-	height: 28px;
-	margin: 5px 8px;
-	font-weight: 400;
-	font-size: 19px;
-    color: #4a15d3;
-	border-bottom : 1px solid #e1e1e1;
-	text-align: center;
-}
-.ts-pro-name {
-	height: 50px;
-	margin: 5px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-.ts-pro-price {
-	height: 50px;
-	margin: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-  .ts-price1 {
-    order: 1;
-    align-self: flex-start;
-    font-size: 20px;
-    color: red;
-    font-weight: bold;
-  }
-  .ts-price2 {
-    order: 2;
-    align-self: center;
-    text-align: right;
-    font-weight: bold;
-    font-size: 20px;
-    width: 100px;
-    color : black;
-  }
-  .ts-price4 {
-    order: 3;
-    text-decoration: line-through;
-	color: darkgray;
-    font-weight: 600;
-  }
-  .star {
-  	order : 4;
-  	font-weight: bold;
-    font-size: 17px;
-    color : black;
-  }
 /*카테고리*/
 #category{
 	width: 100%;
@@ -121,34 +56,6 @@
     line-height: 1em;
     color: #333;
 }
-/*나열 버튼*/
-.items-order{
-	display:inline-flex;
-}
-.items-order button.item-active {
-    color: #fa4400;
-    border-color: #fa4400;
-}
-.items-order button {
-	border: 2px solid #e1e1e1;
-    border-radius: 30px;
-    height: 35px;
-    font-size: 20px;
-    font-weight: 500;
-    color: #e1e1e1;
-}
-.pop-order{
-	margin-top: 10px;
-    margin-left: 12px;
-}
-.recent-order{
-	margin-top: 10px;
-	margin-left:10px;
-}
-.time-order{
-	margin: 10px;
-	margin-left:10px;
-}
 /*카테고리 메인*/
 .cate-main{
 	display: flex;
@@ -168,10 +75,16 @@
 	text-decoration-thickness : 4px;
 	z-index : 9000;
 }
+.rank {
+	font-size: 25px;
+    font-weight: bold;
+    margin-left: 22px;
+    margin-top: 5px;
+}
 /*카테고리 게시글*/
 .cate-product{
 	background-color : white;
-    height: 442px;
+    height: 465px;
     width: 333px;
     box-sizing: border-box;
 } 
@@ -184,8 +97,7 @@
 .pro-img{
 	width : 300px;
 	height : 300px;
-	margin-left : 15px;
-	margin-top : 10px; 
+	margin-left : 15px; 
 }
 .pro-timesale {
 	width: 280px;

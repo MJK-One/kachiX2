@@ -11,4 +11,6 @@ public interface PostService {
 	public void deletePost(int postId);
 	public List<PostBean> findPostsByTitleContaining(String query);
 	public List<PostBean> getAllPostsOrderBySalePeriod();
+	public List<PostBean> getAllPostsOrderBydiscountRate();
+	public List<PostBean> getAllPostsOrderByrecent();
 }
