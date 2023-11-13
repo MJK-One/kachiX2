@@ -115,25 +115,24 @@ a {text-decoration-line: none;}
     border: 1px solid #777777;
     border-radius: 4px;
 }
-.adress-detail {
+.adress-load {
     position: fixed;
     top: 0;
-    left: 190px;
-    width: 1001px;
+    width: 1000px;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9999;
-    display: none;
+    display : none;
 }
-.adress-load {
+.adress-load-detail{
 	position: absolute;
-	top: 20%;
-    left: 25%;
-    width: 500px;
-    min-height: 600px;
-    background: #fff;
-    z-index: 999;
+    top: 20%;
+    left: 30%;
+    height: 500px;
+    width: 400px;
     border-radius: 10px;
+    background: #fff;
+    z-index: 9999;
 }
 .adress-load header {
 	display: flex;

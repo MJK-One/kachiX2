@@ -84,6 +84,9 @@ a {text-decoration-line: none;}
 	height : 130px;
 	border-bottom:5px solid #e1e1e1;
 }
+.mypage-cate a:hover .bot-my p {
+	color : red;
+}
 .bot-my {
 	float : left;
 	height : 100%;
@@ -92,6 +95,7 @@ a {text-decoration-line: none;}
 }
 .bot-my p{
 	font-size : 20px;
+	color : black;
 }
 .customer-btn {
 	width : 100%;

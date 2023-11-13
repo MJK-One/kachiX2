@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after8">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after9">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/header.css?after15">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -127,7 +127,22 @@
 		            }
 		        });
 		    });
+			
+		 // 관리자 메뉴 클릭시
+		    $("#menu5").click(function(e) {
+		        console.log("관리자 메뉴 클릭");
 		
+		        $.ajax({
+		            url: 'admin/adminform',
+		            type: 'GET',
+		            success: function(response) {
+		                $('#main').html(response);
+		            },
+		            error: function(error) {
+		                console.log(error);
+		            }
+		        });
+		    });
 		    function loadMenu1() {
 		        $.ajax({
 		            url: 'mainpage/storehome',
@@ -147,7 +162,10 @@
 				<button class="m active" id="menu1">스토어홈</button>
 				<button class="m" id="menu2">베스트</button>
 				<button class="m" id="menu3">타임세일</button>
-				<button class="m" id="menu4">특가상품</button>		       
+				<button class="m" id="menu4">특가상품</button>
+				<c:if test="${sessionScope.writePermission}">
+					<button class="m" id="menu5">관리자</button>	
+				</c:if>	       
 		</div>
 	</header>
 	<div id="search-jsp" class="search-jsp">
