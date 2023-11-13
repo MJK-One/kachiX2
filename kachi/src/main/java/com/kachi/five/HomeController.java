@@ -135,47 +135,7 @@ public class HomeController {
         model.addAttribute("posts", posts);
 			return "mainpage/best";
 	}
-	@RequestMapping("member/purchase")
-	public String purchase(@RequestParam("postId") int postId, 
-			@RequestParam("quantity") int quantity, 
-            @RequestParam("totalPrice") int totalPrice, Model model, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		UserBean user = (UserBean) session.getAttribute("loggedInUser");
-		if(user == null) return "member/loginForm"; //로그인이 안되어있으면 로그인 폼으로 이동}
-		
-		List<AddressBean> addresses = userService.getAddresses(user.getUserID());
-	    model.addAttribute("addresses", addresses);
-	    
-		PostBean post = postService.getPostById(postId);
-		model.addAttribute("post", post);
-		model.addAttribute("totalPrice", totalPrice);
-		model.addAttribute("quantity", quantity);
-		model.addAttribute("user", user);
-			return "member/purchase";
-	}
 	
-	@RequestMapping("member/purchase_join")
-	public String purchase_join(@RequestParam("postId1") int postId, 
-			@RequestParam("quantity1") int quantity, 
-            @RequestParam("totalPrice1") int totalPrice,
-            @RequestParam("groupBuyID1") int groupBuyId, Model model, HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		UserBean user = (UserBean) session.getAttribute("loggedInUser");
-		if(user == null) return "member/loginForm"; //로그인이 안되어있으면 로그인 폼으로 이동}
-		
-		List<AddressBean> addresses = userService.getAddresses(user.getUserID());
-	    model.addAttribute("addresses", addresses);
-	    
-		PostBean post = postService.getPostById(postId);
-		model.addAttribute("post", post);
-		model.addAttribute("totalPrice", totalPrice);
-		model.addAttribute("quantity", quantity);
-		model.addAttribute("groupBuyId", groupBuyId);
-		model.addAttribute("user", user);
-			return "member/purchase_join";
-	}
-
 	@RequestMapping("member/searchResult")
 	public String searchResult(@RequestParam("query") String query, Model model,HttpServletRequest request) {
 		 HttpSession session = request.getSession();
