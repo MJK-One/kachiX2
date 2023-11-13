@@ -165,7 +165,8 @@
 				<button class="m" id="menu4">특가상품</button>
 				<c:if test="${sessionScope.writePermission}">
 					<button class="m" id="menu5">관리자</button>	
-				</c:if>	       
+				</c:if>	   
+				<button onclick="location.href='${pageContext.request.contextPath}/member/purchaseResult'">구매결과창</button>    
 		</div>
 	</header>
 	<div id="search-jsp" class="search-jsp">

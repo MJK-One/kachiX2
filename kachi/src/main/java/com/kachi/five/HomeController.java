@@ -147,4 +147,9 @@ public class HomeController {
 		 model.addAttribute("posts", posts);
 			return "member/searchResult";
 	}
+	
+	@RequestMapping("member/purchaseResult")
+	public String purchaseresult() {
+		return "member/purchaseResult";
+	}
 }
