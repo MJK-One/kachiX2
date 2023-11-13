@@ -50,10 +50,10 @@
 		<!--카테고리 게시물 화면-->
 		<div class="cate-main">
 		<c:set var="count" value="1" />
-		<c:forEach var="post" items="${posts}" >
+		<c:forEach var="post" items="${posts}">
 		<c:if test="${post.postId >= 0}">
 		      <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
-		         <div class="cate-product ${post.categoryId}">
+		         <div class="cate-product ${post.categoryId}" data-original-rank="${count}">
 		         	<div class="rank">${count}</div>
 		            <div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>   
 		            <div class="pro-name">${post.title}</div>
@@ -125,32 +125,35 @@
 		                "transition-duration": "500ms"
 		            })}, 200);
 		        }
-		        
-		        
+		        		      
 		        /*카테고리 목록별 정렬*/
 				$(document).ready(function(){
-		    		$(".swiper-slide.product").click(function() {
-		        		var classes = $(this).find('span').attr('class');  // span 클래스를 가져옴       	
-		        		var classArray = classes.split(" ");     // 공백으로 구분하여 배열로 변환   	
-		       			var category = classArray[0];   // 첫 번째 클래스가 카테고리 ID라고 가정하고 가져옴
-		         		$(".cate-product").hide();    // 모든 cate-product 클래스를 가진 div 숨기기     
-		         		// 모든 cate-name에 있는 click 클래스 제거 후, 선택된 cate-name에 click 클래스 추가
-		         		$('.cate-name').removeClass('click');  
-		         		$(this).find('.cate-name').addClass('click');
-		         		
-			     		if (category === "0") {
-			            	// 전체 버튼이 눌렸으면 모든 상품 표시 및 이미지 src 변경
-			            	$(".cate-product").show();
-				        	$('.cate-icon img').eq(0).attr('src', '${pageContext.request.contextPath}/resources/img/category/all.svg');
-			            	return;
-			    		} else {
-				    		// 다른 카테고리가 선택되었을 때 전체 버튼의 이미지 src 값을 all-no.svg로 설정 
-				    		$('.cate-icon img').eq(0).attr('src', '${pageContext.request.contextPath}/resources/img/category/all-no.svg');
-			    		} 
-			     		
-				        // 선택된 카테고리의 div 만 보이게 하기
-				        $('.cate-product.' + category).show();
-		    		});
+				    $(".swiper-slide.product").click(function() {
+				        var classes = $(this).find('span').attr('class');
+				        var classArray = classes.split(" ");   
+				        var category = classArray[0];   
+				        $(".cate-product").hide();    
+				        $('.cate-name').removeClass('click');  
+				        $(this).find('.cate-name').addClass('click');
+				        
+				        if (category === "0") {
+				            $(".cate-product").show();
+				            $('.cate-icon img').eq(0).attr('src', '${pageContext.request.contextPath}/resources/img/category/all.svg');
+				            // 전체 카테고리 선택시 원래 순위로 돌아가기
+				            $(".cate-product").each(function() {
+				                var originalRank = $(this).data('original-rank');
+				                $(this).find('.rank').text(originalRank);
+				            });
+				            return;
+				        } else {
+				            $('.cate-icon img').eq(0).attr('src', '${pageContext.request.contextPath}/resources/img/category/all-no.svg');
+				        } 
+				        
+				        var visiblePosts = $('.cate-product.' + category).show();
+				        visiblePosts.each(function(index) {
+				            $(this).find('.rank').text(index+1);
+				        });
+				    });
 				});
 		</script>
 </div>

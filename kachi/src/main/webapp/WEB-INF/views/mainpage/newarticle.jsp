@@ -47,24 +47,30 @@
 		</div>
 		<!--인기순, 최신순 -->
 		<div class="items-order">
-			<button class="pop-order">인기순</button>
-			<button class="recent-order item-active">최신순</button>
-			<button class="sale-order">할인율</button>
+			<!-- <button class="pop-order">인기순</button> -->
+			<button class="recent-order">최신순</button>
+			<button class="sale-order item-active">할인율</button>
 		</div>
 		<script>
 		$(document).ready(function() {
 		    const buttons = $('.items-order button');
-		    buttons.each(function() {
+		    const contents = $('.cate-main');
+		    
+		    $(contents[1]).show();
+		    buttons.each(function(index) {
 		        $(this).on('click', function() {
 		            buttons.removeClass('item-active');  // 모든 버튼의 active 클래스를 제거
 		            $(this).addClass('item-active');  // 클릭된 버튼에 active 클래스를 추가
+		            
+		            contents.hide();  // 모든 content를 숨김
+		            $(contents[index]).show();  // 클릭된 버튼과 일치하는 순서의 content를 표시
 		        });
 		    });
 		});
 		</script>
 		<!--카테고리 게시물 화면-->
-		<div class="cate-main">
-		<c:forEach var="post" items="${posts}" >
+		<div class="cate-main" style="display:none;">
+		<c:forEach var="post" items="${recentposts}" >
 		<c:if test="${post.postId >= 0 && post.discountRate >= 50}">
 		      <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
 		         <div class="cate-product ${post.categoryId}">
@@ -84,61 +90,27 @@
 		</c:if>
 		</c:forEach>
 		</div>
-		<script>
-		/* $(document).ready(function(){
-		    $(".recent-order").click(function(){
-		        $.ajax({
-		            url: 'mainpage/newarticle',  // Controller의 URL
-		            type: 'GET',
-		            data: { order: 'recent'},  // 요청 파라미터
-		            success: function(data) {
-		                // 서버로부터 받은 데이터를 처리하는 코드
-		                // 예를 들어, 받은 데이터로 게시물 목록을 업데이트
-					    // 서버로부터 받은 데이터를 처리하는 코드
-				        // 게시물 목록을 담고 있는 div를 비움
-				        $('.cate-main').empty();
-				
-				        // 데이터의 각 요소에 대해
-				        data.forEach(function(post) {
-				            // 새로운 div 요소를 생성
-				            var newPostDiv = $('<div>').addClass('cate-product ' + post.categoryId);
-				            newPostDiv.append($('<div>').addClass('pro-img').append($('<img>').attr('src', post.mainImageUrl)));
-				            newPostDiv.append($('<div>').addClass('pro-name').text(post.title));
-				            // ...
-				
-				            // 게시물 목록 div에 새로운 div를 추가
-				            $('.cate-main').append(newPostDiv);
-					}
-					});
-		    });
-		
-		    $(".sale-order").click(function(){
-		        $.ajax({
-		            url: 'mainpage/newarticle',  // Controller의 URL
-		            type: 'GET',
-		            data: { order: 'sale'},  // 요청 파라미터
-		            success: function(data) {
-		                // 서버로부터 받은 데이터를 처리하는 코드
-		                // 예를 들어, 받은 데이터로 게시물 목록을 업데이트
-		                // 서버로부터 받은 데이터를 처리하는 코드
-				        // 게시물 목록을 담고 있는 div를 비움
-				        $('.cate-main').empty();
-				
-				        // 데이터의 각 요소에 대해
-				        data.forEach(function(post) {
-				            // 새로운 div 요소를 생성
-				            var newPostDiv = $('<div>').addClass('cate-product ' + post.categoryId);
-				            newPostDiv.append($('<div>').addClass('pro-img').append($('<img>').attr('src', post.mainImageUrl)));
-				            newPostDiv.append($('<div>').addClass('pro-name').text(post.title));
-				            // ...
-				
-				            // 게시물 목록 div에 새로운 div를 추가
-				            $('.cate-main').append(newPostDiv);
-		            }
-		        });
-		    });
-		}); */
-		</script>
+		<div class="cate-main" style="display:none;">
+		<c:forEach var="post" items="${saleposts}" >
+		<c:if test="${post.postId >= 0 && post.discountRate >= 50}">
+		      <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
+		         <div class="cate-product ${post.categoryId}">
+		            <div class="pro-img"><img src="${post.mainImageUrl}" alt="Post image"></div>   
+		            <div class="pro-name">${post.title}</div>
+		            <div class="pro-price">
+		                  <li class="price1"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
+		                  <li class="price2">${post.discountRate}%</li>
+		                  <li class="price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
+		               <div class="pro-info">
+		                  <li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
+		               </div>
+		               <div class="line"></div>
+		             </div>   
+		       </div>
+		       </a> 
+		</c:if>
+		</c:forEach>
+		</div>		
 		<script type="text/javascript">
 			/*상단 고정*/
 			$(function() {

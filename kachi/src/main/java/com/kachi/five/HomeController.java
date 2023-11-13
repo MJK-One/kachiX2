@@ -99,11 +99,13 @@ public class HomeController {
 		HttpSession session = request.getSession();
 	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
 	    
-	    List<PostBean> posts = postService.getAllPostsOrderBySalePeriod();
+	    List<PostBean> recentposts = postService.getAllPostsOrderByrecent();
+	    List<PostBean> periodposts = postService.getAllPostsOrderBySalePeriod();    
 	    List<CategoryBean> categories = categoryService.getAllCategories();
 	    model.addAttribute("user", user); 
 	    model.addAttribute("categories",categories);
-	    model.addAttribute("posts", posts);
+	    model.addAttribute("recentposts", recentposts);
+	    model.addAttribute("periodposts", periodposts);
 			return "mainpage/timesale";
 	}
 	@RequestMapping("mainpage/newarticle")
@@ -112,13 +114,13 @@ public class HomeController {
 	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
 
 	    // 초기 게시물 데이터를 가져옴. 여기서는 "최신 게시물"을 가져옴
-	    List<PostBean> posts = postService.getAllPostsOrderByrecent();
+	    List<PostBean> recentposts = postService.getAllPostsOrderByrecent();
 	    List<PostBean> saleposts = postService.getAllPostsOrderBydiscountRate();
 	    List<CategoryBean> categories = categoryService.getAllCategories();
 	    model.addAttribute("user", user); 
 	    model.addAttribute("categories",categories);
-	    model.addAttribute("posts", posts);
-
+	    model.addAttribute("recentposts", recentposts);
+	    model.addAttribute("saleposts", saleposts);
 	    return "mainpage/newarticle";
 	}
 	@RequestMapping("mainpage/best")
