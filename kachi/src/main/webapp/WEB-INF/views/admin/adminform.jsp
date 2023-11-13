@@ -42,7 +42,8 @@ $(document).ready(function(){
         <ul>
             <li class="b"><a class = "active" href="${pageContext.request.contextPath}/post/post_create">게시물 생성</a></li>
             <li class="b"><a href="${pageContext.request.contextPath}/post/post_list">게시물 삭제</a></li>
-            <li class="b"><a href="${pageContext.request.contextPath}/memeber/user_list">회원 관리</a></li>
+            <li class="b"><a href="${pageContext.request.contextPath}/member/user_list">회원 관리</a></li>
+            <li class="b"><a href="${pageContext.request.contextPath}/member/purchase_list">주문 관리</a></li>
         </ul>        
     </div>
     

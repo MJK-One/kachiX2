@@ -28,29 +28,31 @@
 		</header>
 		<div class="screen"></div>
 		<div class="purchase-main">
-		<!--배송지, 주문자명 입력  -->
-			<section class="address-area">
-			<!--등록된 배송지 불러오기-->
-			<div class="adress-load" id="adress-load"> 
-				<header>
-					<h2>배송지 목록</h2>
-					<button id="x-load"><img src="${pageContext.request.contextPath}/resources/img/x2.svg" width="30" height="30"></button>
-				</header>	
-				<div class="ad-load-list">
-					<c:forEach items="${addresses}" var="address">
-						<div class='address-card'>
-							<div class='row align-items-center'>
-								<div class='col-md-6'>
-									${address.postCode} ${address.streetAddress} <br> ${address.detailAddress}
-								</div>
-								<div class='col-md-6 text-right'>
-									<button class='btn btn-primary select-address' data-postcode="${address.postCode}" data-address="${address.streetAddress}" data-detail-address="${address.detailAddress}">선택</button>
-								</div>
-							</div>	
-						</div>	
-					</c:forEach>
+		<!--등록된 배송지 불러오기-->			
+				 <div class="adress-load" id="adress-load"> 
+					<div class="adress-load-detail">
+						<header>
+							<h2>배송지 목록</h2>
+							<button id="x-load"><img src="${pageContext.request.contextPath}/resources/img/x2.svg" width="30" height="30"></button>
+						</header>	
+						<div class="ad-load-list">
+							<c:forEach items="${addresses}" var="address">
+								<div class='address-card'>
+									<div class='row align-items-center'>
+										<div class='col-md-6'>
+											${address.postCode} ${address.streetAddress} <br> ${address.detailAddress}
+										</div>
+										<div class='col-md-6 text-right'>
+											<button class='btn btn-primary select-address' data-postcode="${address.postCode}" data-address="${address.streetAddress}" data-detail-address="${address.detailAddress}">선택</button>
+										</div>
+									</div>	
+								</div>	
+							</c:forEach>
+						</div>
+					</div>
 				</div>
-			</div>
+		<!--배송지, 주문자명 입력  -->
+			<div class="address-area">
 			<script>
 			    var selectAddressButtons = document.querySelectorAll('.select-address');
 			    selectAddressButtons.forEach(function(button) {
@@ -171,7 +173,7 @@
 								});
 							</script>
 				</form>
-			</section>
+			</div>
 			<section class="product-area">
 				<header class="area-title">
 					<h2>주문 상품</h2>

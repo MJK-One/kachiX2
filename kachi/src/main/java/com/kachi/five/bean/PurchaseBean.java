@@ -15,6 +15,7 @@ public class PurchaseBean {
     private int quantity;
     private String deliveryAddress;
     private Date purchaseDate;
+    private boolean deliveryStatus;
 	public int getPurchaseId() {
 		return purchaseId;
 	}
@@ -86,6 +87,12 @@ public class PurchaseBean {
 	}
 	public void setGroupBuyId(int groupBuyId) {
 		this.groupBuyId = groupBuyId;
+	}
+	public boolean isDeliveryStatus() {
+		return deliveryStatus;
+	}
+	public void setDeliveryStatus(boolean deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
 	}
     
     

@@ -17,6 +17,15 @@
 	    SELECT * FROM Purchase WHERE purchaseID = #{purchaseId}
 	</select>
 	
+	<select id="selectPurchasesByCompletedGroupBuy"  resultType="Purchase">
+	    SELECT p.*
+	    FROM purchase p
+	    JOIN groupbuy g
+	    ON p.groupBuyId = g.groupBuyID
+	    WHERE g.status = 'completed'
+	    ORDER BY p.deliveryStatus ASC
+	</select>
+	
 	<!-- update -->
 	<update id="updatePurchase" parameterType="Purchase">
 	    UPDATE Purchase
@@ -29,4 +38,10 @@
 	<delete id="deletePurchase" parameterType="int">
 	    DELETE FROM Purchase WHERE purchaseID = #{purchaseId}
 	</delete>
+	
+	<update id="updateDeliveryStatus" parameterType="int">
+    UPDATE Purchase
+    SET deliveryStatus = true
+    WHERE purchaseID = #{purchaseId}
+</update>
 </mapper>

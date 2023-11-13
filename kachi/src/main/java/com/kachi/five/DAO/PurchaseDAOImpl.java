@@ -1,5 +1,7 @@
 package com.kachi.five.DAO;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,5 +16,17 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	public void createPurchase(PurchaseBean purchase) {
 		  sqlSession.insert("com.kachi.five.PurchaseMapper.insertPurchase", purchase);
 	}
+
+	@Override
+	public List<PurchaseBean> getPurchaseCompletedGroupBuy() {
+		List<PurchaseBean> purchases = sqlSession.selectList("com.kachi.five.PurchaseMapper.selectPurchasesByCompletedGroupBuy");
+		return purchases;
+	}
+
+	@Override
+	public void updateDeliveryStatus(int purchaseId) {
+		sqlSession.update("com.kachi.five.PurchaseMapper.updateDeliveryStatus", purchaseId);
+	}
+	
 
 }
