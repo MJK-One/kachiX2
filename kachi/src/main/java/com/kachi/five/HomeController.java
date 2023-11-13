@@ -148,8 +148,5 @@ public class HomeController {
 			return "member/searchResult";
 	}
 	
-	@RequestMapping("member/purchaseResult")
-	public String purchaseresult() {
-		return "member/purchaseResult";
-	}
+	
 }

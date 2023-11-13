@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -61,7 +62,7 @@ h5 {
 		   이메일 : ${purchases.userEmail} <br>
 		   전화번호 : ${purchases.userPhone} <br>
 		   상품명 : ${purchases.productName} <br>
-		   결제가격 : ${purchases.productPrice} <br>
+		   결제가격 : <fmt:formatNumber value="${purchases.productPrice}" pattern="#,###"/>원 <br>
 		   물건수량: ${purchases.quantity} <br>
 		   배송지: ${purchases.deliveryAddress} <br>
 		   주문날짜: ${purchases.purchaseDate} <br>

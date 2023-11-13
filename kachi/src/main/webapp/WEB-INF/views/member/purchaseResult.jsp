@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -20,37 +21,35 @@
 		<header class="purchase-top">
 			<div class="middle">
 				<div class="left">
-					<button type="button"  onclick="location.href = '${pageContext.request.contextPath}/'" class="back"><img src="${pageContext.request.contextPath}/resources/img/back.svg" width="30" height="30"></button>
-					<img class="left-icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="50" height="50">
+					
+					
 				</div>
 				<div class="title">주문 완료</div>	
 			</div>
 		</header>
 		<div class="screen"></div>
 			<section class="product-area">
-				<div class="product">
-					<div class="product-title">주문번호</div>
-					<div class="product-info">40</div>
-				</div>
+				
 				<div class="product">
 					<div class="product-title">상품정보</div>
 					<div class="product-info">
-						<div class="pro-name">상품명</div>
-						<div class="pro-price">가격</div>
+						<div class="pro-name">${purchase.productName}</div>
+						<div class="pro-name">${purchase.quantity} 개</div>
+						<div class="pro-price"><fmt:formatNumber value="${purchase.productPrice}" pattern="#,###"/>원</div>
 					</div>
 				</div>
 				<div class="product">
 					<div class="product-title">구매자</div>
 					<div class="product-info">
-						<div class="pro-name">이름</div>
-						<div class="pro-price">전화번호</div>
-						<div class="pro-price">이메일</div>
+						<div class="pro-name">${purchase.userName}</div>
+						<div class="pro-price">${purchase.userPhone}</div>
+						<div class="pro-price">${purchase.userEmail}</div>
 					</div>
 				</div>
 				<div class="product">
 					<div class="product-title">배송지</div>
 					<div class="product-info">
-						<div class="pro-del">배송지</div>
+						<div class="pro-del">${purchase.deliveryAddress}</div>
 					</div>
 				</div>
 				<div class="product-last">
@@ -64,5 +63,20 @@
 				홈으로
 			</button>		
 	</div>
+<script>
+$(document).ready(function() {
+    $('.home').click(function() {
+        window.location.href = '${pageContext.request.contextPath}/';
+    });
+});
+
+</script>
+
+<script type="text/javascript">
+    window.onload = function() {
+        window.history.replaceState(null, null, window.location.pathname);
+    };
+</script>
 </body>
+
 </html> 

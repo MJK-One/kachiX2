@@ -87,18 +87,38 @@ public class PurchaseController {
       }
       
       @PostMapping("/purchase")
-      public String createPurchase(@RequestBody PurchaseBean purchase ,  HttpServletResponse response) {
-         
-         
-          
-          GroupBuyBean groupBuy = groupBuyService.getGroupBuy(purchase.getGroupBuyId());
+      public ResponseEntity<PurchaseBean> createPurchase(Model model,@RequestBody PurchaseBean purchase ,  HttpServletRequest request) {
+                   
+          //GroupBuyBean groupBuy = groupBuyService.getGroupBuy(purchase.getGroupBuyId());
           if (purchase.getGroupBuyId() == 0) {
               // groupBuyId 값이 0인 경우 예외를 발생시킵니다.
               throw new IllegalArgumentException("Invalid groupBuyId: " + purchase.getGroupBuyId());
           }
-
+          // 세션에 purchase 정보를 저장합니다.
+          HttpSession session = request.getSession();
+          session.setAttribute("purchase", purchase);
+          
           purchaseService.createPurchase(purchase);
-
-          return "redirect:/";
+          
+          // purchase 객체를 JSON 형태로 반환.
+          return ResponseEntity.ok(purchase);
       }
+      
+      @RequestMapping("member/purchaseResult")
+	  	public String purchaseresult(Model model, HttpServletRequest request) {
+	    	  HttpSession session = request.getSession();
+	    	    PurchaseBean purchase = (PurchaseBean) session.getAttribute("purchase");
+	    	    
+	    	    if (purchase == null) {
+	    	        // purchase 정보가 세션에 없는 경우 에러 처리
+	    	    	
+	    	        throw new RuntimeException("No purchase information found");
+	    	    }
+	    	    
+	    	    model.addAttribute("purchase", purchase);
+	
+	    	    return "/member/purchaseResult";
+	  	
+	  	}
+      
 }

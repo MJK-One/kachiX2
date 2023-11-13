@@ -282,11 +282,12 @@
 	
 	                    $.ajax({
 	                        url: '${pageContext.request.contextPath}/purchase',
-	                        type: 'POST',
+	                        type: 'POST',	
 	                        contentType: 'application/json',
 	                        data: JSON.stringify(purchase),
 	                        success: function(data) {
-	                            window.location.href = '${pageContext.request.contextPath}/';
+	                            // 페이지 이동
+	                            window.location.href = '${pageContext.request.contextPath}/member/purchaseResult';
 	                        },
 	                        error: function(err) {
 	                            alert('결제에 실패하였습니다. 관리자에게 문의 부탁드립니다.');
