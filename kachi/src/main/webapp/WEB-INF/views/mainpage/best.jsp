@@ -51,7 +51,7 @@
 		<div class="cate-main">
 		<c:set var="count" value="1" />
 		<c:forEach var="post" items="${posts}">
-		<c:if test="${post.postId >= 0}">
+		<c:if test="${post.postId >= 0 && count < 52}">
 		      <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
 		         <div class="cate-product ${post.categoryId}" data-original-rank="${count}">
 		         	<div class="rank">${count}</div>

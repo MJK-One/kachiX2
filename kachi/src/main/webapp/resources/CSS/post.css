@@ -477,3 +477,62 @@ section {
 	position: relative;
     bottom: 7px;
 }
+.review-all{
+	display : flex;
+	width : 100%;
+	height: 175px;
+}
+.review-star{
+	width: 100%;
+	border-bottom : 1px solid #e1e1e1;
+}
+.review-star h2{
+	font-size: 45px;
+    line-height: 10px;
+}
+.review-star li{
+	font-size: 22px;
+}
+.rating {
+    background: transparent;
+    padding: 5px;
+    overflow: hidden;
+}
+.rating__result {
+    display: none;
+}
+.rating__star {
+   font-size: 2.3em;
+   cursor: pointer;
+   color: #ffeb91;
+   transition: filter linear .3s;
+}
+.rating2 {
+	display: flex;
+    background: transparent;
+    padding: 5px;
+    overflow: hidden;
+}
+.rating__result2 {
+    display: none;
+}
+.rating__star2 {
+   font-size: 1.0em;
+   cursor: pointer;
+   color: #ffeb91;
+   transition: filter linear .3s;
+}
+.review{
+	margin-top: 10px;
+	width : 100%;
+	height : 100px;
+}
+.reviewer{
+	font-weight : bold;
+	margin-left: 10px;
+	float :left;
+}
+.review-m {
+	float : left;
+	margin-left : 10px;
+}

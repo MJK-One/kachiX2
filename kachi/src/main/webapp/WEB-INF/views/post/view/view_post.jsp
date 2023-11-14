@@ -9,11 +9,11 @@
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after6">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after19">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after20">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
 <body>
 <div class="aaa">
@@ -189,8 +189,7 @@
 	<div class="line2"></div>
 	<div class="product-menu" id="product-menu">
 		<ul class="product-info">
-			<li><span id="info-btn">상품정보</span></li>
-			
+			<li><span id="info-btn">상품정보</span></li>		
 			<li><span id="after-btn">상품후기</span></li>
 			<li><span id="ask-btn">상품문의</span></li>
 		</ul>
@@ -271,7 +270,36 @@
 	</section>
 	
 	<section class="after" id="after-section">
-	    상품후기
+		<div class="review-all">
+			<div class="review-star">
+				<h2>4.5</h2>
+	            <div class="rating">                                               
+	                <i class="rating__star far fa-star"></i>
+	                <i class="rating__star far fa-star"></i>
+	                <i class="rating__star far fa-star"></i>
+	                <i class="rating__star far fa-star"></i>
+	                <i class="rating__star far fa-star"></i>
+	                <span class="rating__result">4.5</span> 
+	            </div>
+				<li>(상품후기수 2건)</li>
+			</div>
+		</div>
+	    <c:forEach var="i" begin="1" end="5">
+	    <div class="review">
+	    	<div class="reviewer">
+	    		<li>김*준</li>
+	    	</div>
+	    	<div class="rating2">                                               
+	                <i class="rating__star2 far fa-star"></i>
+	                <i class="rating__star2 far fa-star"></i>
+	                <i class="rating__star2 far fa-star"></i>
+	                <i class="rating__star2 far fa-star"></i>
+	                <i class="rating__star2 far fa-star"></i>
+	                <span class="rating__result2">3.5</span> 
+	    	</div>
+	    	<div class="review-m">리뷰쓰는곳</div>
+	    </div>
+		</c:forEach>
 	</section>
 	
 	<section class="ask" id="ask-section">
@@ -415,9 +443,6 @@
 	});
 </script>
 	<script type="text/javascript">
-	
-	
-
 	document.getElementById('under').addEventListener('click', function() {
 		document.getElementById('credit').style.display = 'none';
 		document.getElementById('two-buy').style.display = 'block';
@@ -449,28 +474,54 @@
 	  
 	}
 	</script>
-</div>
+	<script>
+	const ratingElements1 = document.querySelectorAll('.rating');
+	const ratingElements2 = document.querySelectorAll('.rating2');
 
-<!-- 위로 가기 -->
-<a class="back-to-top"></a>
-<script type="text/javascript">
+	function updateStars(ratingElements, starClass, resultClass) {
+	    ratingElements.forEach((ratingElement, index) => {
+	        const ratingStars = [...ratingElement.getElementsByClassName(starClass)];
+	        const ratingResult = ratingElement.querySelector(resultClass);
 
+	        // 기존에 rating__result에 값이 있으면 해당 값으로 별점 표시
+	        const initialRating = Number(ratingResult.textContent);
+	        if (initialRating > 0) {
+	            const fullStars = Math.floor(initialRating);
+	            const halfStar = (initialRating % 1) !== 0;
 
+	            for (let i = 0; i < fullStars; i++) {
+	                ratingStars[i].className = starClass + " fas fa-star";
+	            }
 
-$(function(){
-	$('.back-to-top').on('click',function(e){
-		e.preventDefault();
-		$('html, body').animate({scrollTop:0},600);
+	            if (halfStar) {
+	                ratingStars[fullStars].className = starClass + " fas fa-star-half";
+	            }
+	        }
+	    });
+	}
+
+	updateStars(ratingElements1, "rating__star", ".rating__result");
+	updateStars(ratingElements2, "rating__star2", ".rating__result2");
+	</script>
+	</div>
+	
+	<!-- 위로 가기 -->
+	<a class="back-to-top"></a>
+	<script type="text/javascript">
+	$(function(){
+		$('.back-to-top').on('click',function(e){
+			e.preventDefault();
+			$('html, body').animate({scrollTop:0},600);
+		});
+				  
+		$(window).scroll(function() {
+			if ($(document).scrollTop() > 500) {
+				$('.back-to-top').addClass('show');
+			} else {
+				$('.back-to-top').removeClass('show');
+			}
+		});
 	});
-			  
-	$(window).scroll(function() {
-		if ($(document).scrollTop() > 500) {
-			$('.back-to-top').addClass('show');
-		} else {
-			$('.back-to-top').removeClass('show');
-		}
-	});
-});
-</script>
+	</script>
 </body>
 </html>

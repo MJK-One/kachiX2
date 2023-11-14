@@ -12,13 +12,13 @@
 <!--광고 배너-->
 <div class="outer">
 	<ul class="slider">
-		<c:forEach var="i" begin="1" end="5">
+		<c:forEach var="i" begin="1" end="3">
 	  		<li class="slide slide"><img src="${pageContext.request.contextPath}/resources/img/advertisement/${i}.PNG" width="100%" height="100%"></li>
 	 	</c:forEach>
 	</ul>
   	<div class="slideNum">
 		  <div id='currentSlide'>1</div> <!-- Current Slide Number -->
-		  <div id='totalSlides'>/5 </div> <!-- Total Slide Number -->
+		  <div id='totalSlides'>/3 </div> <!-- Total Slide Number -->
 		  <div id='plus'>+</div>
   	</div>
 </div>

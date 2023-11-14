@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after2">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/purchase.css?after9">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/purchase.css?after11">
 <!-- 제이쿼리 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" type="text/javascript"></script>
 <!-- 아임포트 -->
@@ -216,7 +216,10 @@
 				<header class="area-title">
 					<h2>결제 수단</h2>
 				</header>
-				<button id="payment-button">결제하기</button>
+				<button id="payment-button"><img src="${pageContext.request.contextPath}/resources/img/kakaopay.png"></button>
+			</section>
+			<section class="credit-area-sc">
+				-------------
 			</section>
 		</div>
 	</div>

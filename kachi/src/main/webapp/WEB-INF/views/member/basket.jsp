@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after2">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/basket.css?after6">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/basket.css?after7">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <title>같이의 가치-공동구매</title>
@@ -63,35 +63,33 @@
             						<div class="pro-info-star">
             							<img src="${post.mainImageUrl}" alt="이미지">
             							<div class="review-de-middle">
-            								<li>${post.title}</li>
-            								
-            							</div>	
-            						</div>
-            						<div class="review-write">   
-    <form method="post" action="${pageContext.request.contextPath}/review/submit" enctype="multipart/form-data">
-        <input type="hidden" name="purchaseId" value="${post.purchaseId}">
-        <input type="hidden" name="postId" value="${post.postId}">
-        <input type="file" name="reviewImage" accept="image/*"><br>
-        <textarea name="reviewContent" rows="5" cols="50"></textarea><br>
-        <div class="star">
-            <div class="rating">                                               
-                <i class="rating__star far fa-star"></i>
-                <i class="rating__star far fa-star"></i>
-                <i class="rating__star far fa-star"></i>
-                <i class="rating__star far fa-star"></i>
-                <i class="rating__star far fa-star"></i>
-                <span class="rating__result"></span> 
-            </div>
-        </div>
-        <input type="hidden" name="rating" class="rating__result" value=1>
-        <button type="submit" class="submit">작성</button>
-    </form>
-</div>           								       						
+            								<li>${post.title}</li> 						   
+							    <form method="post" action="${pageContext.request.contextPath}/review/submit" enctype="multipart/form-data">
+							        <input type="hidden" name="purchaseId" value="${post.purchaseId}">
+							        <input type="hidden" name="postId" value="${post.postId}">
+									        <div class="star">
+									            <div class="rating">                                               
+									                <i class="rating__star far fa-star"></i>
+									                <i class="rating__star far fa-star"></i>
+									                <i class="rating__star far fa-star"></i>
+									                <i class="rating__star far fa-star"></i>
+									                <i class="rating__star far fa-star"></i>
+									                <span class="rating__result"></span> 
+									            </div>
+									        </div>
+								        </div>
+								    </div>				     
+							        <div class="review-write">
+								        <input type="hidden" name="rating" class="rating__result" value=1>
+								        <textarea name="reviewContent" rows="5" cols="50"></textarea><br>   
+								        <button type="submit" class="submit">작성</button>
+								   </div>     
+							    </form>           								       						
             					</div>       	
-			                </div>
-		            </div>	            	  
-		    </c:forEach>
-		</div>
+					</div>	
+			</div>    	            	  
+			</c:forEach>		
+	</div>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script>
 		$(document).ready(function() {

@@ -40,16 +40,6 @@
 			    </c:otherwise> 
 			</c:choose>
 		</div>
-		<div class="money">
-			<div class="money-main">
-				<div class="cash">
-					<img src="${pageContext.request.contextPath}/resources/img/cash.svg" width="30" height="30">
-					<li>CASH</li>
-					<li> :</li>
-					<li class="cash-won">10,000</li>
-				</div>
-			</div>
-		</div>
 		<div class="mypage-cate">
 			<a href="">
 				<div class="bot-my">
@@ -313,6 +303,9 @@
                     </tr>
                     </tbody>
                 </table>
+		</div>
+		<div class="under-ad">
+			<img src="${pageContext.request.contextPath}/resources/img/mypage/guide.png" width="100%" height="280px">
 		</div>
 	</div>
 </body>

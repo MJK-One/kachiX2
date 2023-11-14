@@ -200,6 +200,7 @@ a{
 .pro-info li{
 	font-weight: bold;
     font-size: 17px;
+    color : black;
 }
 .line {
 	position : relative;

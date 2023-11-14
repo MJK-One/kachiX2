@@ -288,3 +288,15 @@ a {text-decoration-line: none;}
     color: #fa4400;
     padding-top: 10px;
 }
+#payment-button{
+	margin-top: 10px;
+	width : 150px;
+	height : 150px;
+}
+#payment-button img{
+	width: 100%;
+    border-radius: 30px;
+}
+.credit-area-sc {
+    visibility: hidden;
+}
