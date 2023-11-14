@@ -168,6 +168,8 @@ a {text-decoration-line: none;}
     color: #fff;
     border-radius: 5px;
     font-weight: 600;
+    height :40px;
+    width: 60px;
 }
 .product-area {
 	margin: 30px 12px 12px;

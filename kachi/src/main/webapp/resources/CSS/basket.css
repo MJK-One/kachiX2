@@ -192,9 +192,31 @@ a{text-decoration-line: none;
    transition: filter linear .3s;
 }
 .review-write{
-	border: 1px solid;
     margin: 0 10px;
     height: 290px;
+}
+.review-write input{
+	margin-bottom : 10px;
+	color : #fa4400;
+	font-size : 20px;
+}
+input[type=file]::file-selector-button {
+	border : 1px solid #fa4400;
+	background: #fff;
+	color : #fa4400;
+	border-radius: 5px;
+  	cursor: pointer;
+}
+input[type=file]::file-selector-button:hover {
+	background: #fa4400;
+	color : #fff;
+}
+.review-write textarea{
+	width: 942px;
+    height: 18.45em;
+    border: 1px solid #fa4400;
+    border-radius: 10px;
+    resize: none;
 }
 .submit {
 	font-size: 20px;

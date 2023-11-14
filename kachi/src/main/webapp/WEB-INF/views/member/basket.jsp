@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after2">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/basket.css?after6">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -78,9 +78,7 @@
             						</div>
             						<div class="review-write">   
 									    <form method="post" enctype="multipart/form-data">
-									        <h3>이미지 업로드:</h3>
 									        <input type="file" name="reviewImage" accept="image/*"><br>
-									        <h3>후기 작성:</h3>
 									        <textarea name="reviewContent" rows="5" cols="50"></textarea><br>
 									        
 									    </form>
