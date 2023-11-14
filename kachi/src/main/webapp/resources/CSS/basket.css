@@ -120,7 +120,6 @@ a{text-decoration-line: none;
 }
 .review {
     margin-left: 83%;
-    margin-top: 22px;
     font-size: 20px;
     border: 1px solid #fa4400;
     border-radius: 8px;
@@ -206,4 +205,16 @@ a{text-decoration-line: none;
     float: right;
     margin: 5px 15px;
     font-weight: 600;
+}
+.delivery-status {
+    font-size: 19px;
+    font-weight: bold;
+    position: relative;
+    top: -5px;
+}
+.delivery-status.red {
+	color: orange;
+}
+.delivery-status.blue{
+	color: dodgerblue;
 }

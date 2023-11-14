@@ -27,11 +27,12 @@
 	</select>
 	
 	<select id="selectPurchasesByUserID"  resultType="Purchase">
-		SELECT P.*, MainImage.imageUrl AS mainImageUrl , Post.price, Post.totalprice, Post.discountRate, Post.title
+		SELECT P.*, MainImage.imageUrl AS mainImageUrl, Post.price, Post.totalprice, Post.discountRate, Post.title
 		FROM Purchase P
 		JOIN Post ON P.postID = Post.postId
 		JOIN MainImage ON Post.postId = MainImage.postId
-	 	WHERE P.userID = #{userID};
+		JOIN groupbuy G ON P.groupBuyId = G.groupBuyID
+		WHERE P.userID = #{userID} AND G.status = 'completed';
 	</select>
 	<!-- update -->
 	<update id="updatePurchase" parameterType="Purchase">

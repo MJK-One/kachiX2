@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?ver=3">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/basket.css?after5">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/basket.css?after6">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <title>같이의 가치-공동구매</title>
@@ -41,6 +41,19 @@
 			                    <div class="basket-price2">${post.discountRate}%</div>
 			                    <div class="basket-price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</div>
 			                    <div class="basket-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li></div>
+                    			<c:choose>
+								    <c:when test="${post.deliveryStatus == false}">
+								    	<img src="${pageContext.request.contextPath}/resources/img/del.svg" width="28" height="25">
+								        <li class="delivery-status red">배송 준비 중</li>
+								    </c:when>
+								    <c:when test="${post.deliveryStatus == true}">
+								    	<img src="${pageContext.request.contextPath}/resources/img/del.svg" width="28" height="25">
+								        <li class="delivery-status blue">배송 중</li>
+								    </c:when>
+								    <c:otherwise>
+								        <div class="delivery-status">배송 상태 정보 없음</div>
+								    </c:otherwise>
+								</c:choose>
 			            </a>
 			            		 <c:if test="${post.reviewWritten == false}">
 			         			 <button type="button" class="review">구매 후기</button>
