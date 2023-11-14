@@ -20,6 +20,9 @@
 		<typeAlias alias="SearchHistoryBean" type="com.kachi.five.bean.SearchHistoryBean" />
 		<typeAlias alias="GroupBuyBean" type="com.kachi.five.bean.GroupBuyBean" />
 		<typeAlias alias="Purchase" type="com.kachi.five.bean.PurchaseBean" />
+		<typeAlias alias="Review" type="com.kachi.five.bean.ReviewBean" />
+		<typeAlias alias="ReviewImage" type="com.kachi.five.bean.ReviewImageBean" />
+		
 	</typeAliases>
 	
 	
