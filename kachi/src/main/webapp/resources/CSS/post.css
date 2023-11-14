@@ -533,3 +533,14 @@ section {
 	float : left;
 	margin-left : 10px;
 }
+.all-groupbuy-detail header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white; /* 배경색 추가 */
+}
+
+.all-groupbuy-detail div {
+    overflow-y: auto; /* 수직 스크롤 추가 */
+    max-height: 400px; /* 원하는 최대 높이 설정 */
+}

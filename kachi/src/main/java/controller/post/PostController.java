@@ -28,12 +28,14 @@ import com.kachi.five.bean.ContentImageBean;
 import com.kachi.five.bean.GroupBuyBean;
 import com.kachi.five.bean.MainImageBean;
 import com.kachi.five.bean.PostBean;
+import com.kachi.five.bean.ReviewBean;
 import com.kachi.five.bean.UserBean;
 import com.kachi.five.service.CategoryService;
 import com.kachi.five.service.ContentImageService;
 import com.kachi.five.service.GroupBuyService;
 import com.kachi.five.service.MainImageService;
 import com.kachi.five.service.PostService;
+import com.kachi.five.service.ReviewService;
 import com.kachi.five.service.StorageService;
 import com.kachi.five.service.WishlistService;
 
@@ -43,6 +45,8 @@ public class PostController {
 	private PostService postService;
 	@Autowired  
 	private CategoryService categoryService;
+	@Autowired  
+	private ReviewService reviewService;
 	@Autowired
 	private MainImageService mainImgService;
 	@Autowired
@@ -83,6 +87,7 @@ public class PostController {
 	public String viewPost(@PathVariable int postId, Model model,HttpSession session) {
 		
 	    PostBean post = postService.getPostById(postId);
+	    List<ReviewBean> reviews =  reviewService.getReviewsByPostId(postId);
 	    UserBean user = (UserBean) session.getAttribute("loggedInUser");
 	    //현재 찜한 상태의 게시물인지 확인
 	    boolean isInWishlist = false;
@@ -91,7 +96,7 @@ public class PostController {
 	    }
 	    model.addAttribute("isInWishlist", isInWishlist);
 	    model.addAttribute("post", post);
-	    
+	    model.addAttribute("reviews",reviews);
 	 // 게시물에 연관된 구매방 목록을 가져옵니다.
         List<GroupBuyBean> groupBuyList = groupBuyService.getGroupBuysByPostId(postId);
         model.addAttribute("groupBuyList", groupBuyList);

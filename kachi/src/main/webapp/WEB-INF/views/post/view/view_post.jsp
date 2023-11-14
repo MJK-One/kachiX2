@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/style.css?after6">
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after20">
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/CSS/post.css?after23">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -272,33 +272,33 @@
 	<section class="after" id="after-section">
 		<div class="review-all">
 			<div class="review-star">
-				<h2>4.5</h2>
+				<h2>${post.avgrating}</h2>
 	            <div class="rating">                                               
 	                <i class="rating__star far fa-star"></i>
 	                <i class="rating__star far fa-star"></i>
 	                <i class="rating__star far fa-star"></i>
 	                <i class="rating__star far fa-star"></i>
 	                <i class="rating__star far fa-star"></i>
-	                <span class="rating__result">4.5</span> 
+	                <span class="rating__result">${post.avgrating}</span> 
 	            </div>
 				<li>(상품후기수 2건)</li>
 			</div>
 		</div>
-	    <c:forEach var="i" begin="1" end="5">
-	    <div class="review">
-	    	<div class="reviewer">
-	    		<li>김*준</li>
-	    	</div>
-	    	<div class="rating2">                                               
-	                <i class="rating__star2 far fa-star"></i>
-	                <i class="rating__star2 far fa-star"></i>
-	                <i class="rating__star2 far fa-star"></i>
-	                <i class="rating__star2 far fa-star"></i>
-	                <i class="rating__star2 far fa-star"></i>
-	                <span class="rating__result2">3.5</span> 
-	    	</div>
-	    	<div class="review-m">리뷰쓰는곳</div>
-	    </div>
+	    <c:forEach var="review" items="${reviews}">
+		    <div class="review">
+		    	<div class="reviewer">
+		    		<li>${review.userName}</li>
+		    	</div>
+		    	<div class="rating2">                                               
+		                <i class="rating__star2 far fa-star"></i>
+		                <i class="rating__star2 far fa-star"></i>
+		                <i class="rating__star2 far fa-star"></i>
+		                <i class="rating__star2 far fa-star"></i>
+		                <i class="rating__star2 far fa-star"></i>
+		                <span class="rating__result2">${review.rating}</span> 
+		    	</div>
+		    	<div class="review-m">${review.content}</div>
+		    </div>
 		</c:forEach>
 	</section>
 	

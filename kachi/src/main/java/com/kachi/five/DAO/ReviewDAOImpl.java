@@ -27,8 +27,8 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 	@Override
 	public List<ReviewBean> getReviewsByPostId(int postID) {
-		sqlSession.selectList("com.kachi.five.ReviewMapper.getReviewsByPostId",postID);
-		return null;
+		return sqlSession.selectList("com.kachi.five.ReviewMapper.getReviewsByPostId",postID);
+		
 	}
 
 }

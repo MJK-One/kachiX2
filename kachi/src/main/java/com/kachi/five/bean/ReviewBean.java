@@ -9,6 +9,7 @@ public class ReviewBean {
     private Date reviewDate;
     private int postID;
     private int purchaseID;
+    private String userName;
 	public int getReviewID() {
 		return reviewID;
 	}
@@ -44,6 +45,12 @@ public class ReviewBean {
 	}
 	public void setPurchaseID(int purchaseID) {
 		this.purchaseID = purchaseID;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
     
     

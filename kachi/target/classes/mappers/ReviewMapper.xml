@@ -14,6 +14,9 @@
         VALUES (#{content}, #{rating}, #{postID}, #{purchaseID})
     </insert>
     <select id="getReviewsByPostId" parameterType="int" resultType="Review">
-    SELECT * FROM review WHERE postID = #{postID}
+	    SELECT r.*, p.userName 
+		FROM review r
+		LEFT JOIN purchase p ON r.purchaseID = p.purchaseID
+		WHERE r.postID = #{postID}
 	</select>
 </mapper>
