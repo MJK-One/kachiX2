@@ -13,4 +13,7 @@
         INSERT INTO review (content, rating, postID, purchaseID)
         VALUES (#{content}, #{rating}, #{postID}, #{purchaseID})
     </insert>
+    <select id="getReviewsByPostId" parameterType="int" resultType="Review">
+    SELECT * FROM review WHERE postID = #{postID}
+	</select>
 </mapper>

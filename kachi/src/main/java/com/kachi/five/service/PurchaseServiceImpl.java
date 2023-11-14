@@ -35,4 +35,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return purchaseDAO.getPurchasesByUserID(userID);
 	}
 
+	@Override
+	public void updatereviewWritten(int purchaseId) {
+		purchaseDAO.updatereviewWritten(purchaseId);
+		
+	}
+
 }

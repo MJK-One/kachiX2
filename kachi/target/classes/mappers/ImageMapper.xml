@@ -26,12 +26,5 @@
   <update id="updateContentImagesWithPostId" parameterType="map">
 	  UPDATE contentimage SET postid = #{actual_post_id} WHERE postid = #{temp_post_id}
   </update>
-  <!-- 리뷰 이미지 -->
-   <insert id="insertReviewImage" parameterType="ReviewImage">
-        INSERT INTO ReviewImage (reviewId, imageUrl)
-        VALUES (#{reviewId}, #{imageUrl})
-    </insert>
-     <select id="getReviewImagesByReviewId" parameterType="int" resultType="ReviewImage">
-        SELECT * FROM ReviewImage WHERE reviewId = #{reviewId}
-    </select>
+
 </mapper>

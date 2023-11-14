@@ -55,19 +55,27 @@
 								    </c:otherwise>
 								</c:choose>
 			            </a>
-			            		 <c:if test="${post.reviewWritten == false}">
-			         			 <button type="button" class="review">구매 후기</button>
-			         			 </c:if>
+			            		<c:choose>
+								    <c:when test="${post.reviewWritten == true}">
+								        <div class="review-complete">후기 작성 완료</div>
+								    </c:when>
+								    <c:otherwise>
+								        <button type="button" class="review">구매 후기</button>
+								        
+								    </c:otherwise>
+								</c:choose>
             					<div class="review-detail">         					
             						<h2>후기 작성</h2>       
             						<div class="pro-info-star">
             							<img src="${post.mainImageUrl}" alt="이미지">
             							<div class="review-de-middle">
-            								<li>${post.title}</li> 						   
-							    <form method="post" action="${pageContext.request.contextPath}/review/submit" enctype="multipart/form-data">
-							        <input type="hidden" name="purchaseId" value="${post.purchaseId}">
-							        <input type="hidden" name="postId" value="${post.postId}">
-									        <div class="star">
+            								<li>${post.title}</li>
+            								
+            							</div>	
+            						</div>
+            						<div class="review-write">   
+									    <form method="post" action="${pageContext.request.contextPath}/review/submit" enctype="multipart/form-data">
+									     <div class="star">
 									            <div class="rating">                                               
 									                <i class="rating__star far fa-star"></i>
 									                <i class="rating__star far fa-star"></i>
@@ -77,19 +85,19 @@
 									                <span class="rating__result"></span> 
 									            </div>
 									        </div>
-								        </div>
-								    </div>				     
-							        <div class="review-write">
-								        <input type="hidden" name="rating" class="rating__result" value=1>
-								        <textarea name="reviewContent" rows="5" cols="50"></textarea><br>   
-								        <button type="submit" class="submit">작성</button>
-								   </div>     
-							    </form>           								       						
+									        <input type="hidden" name="purchaseId" value="${post.purchaseId}">
+									        <input type="hidden" name="postId" value="${post.postId}">
+									        <textarea name="reviewContent" rows="5" cols="50"></textarea><br>
+									       
+									        <input type="hidden" name="rating" class="rating__result" value=1>
+									        <button type="submit" class="submit">작성</button>
+									    </form>
+									</div>           								       						
             					</div>       	
-					</div>	
-			</div>    	            	  
-			</c:forEach>		
-	</div>
+			                </div>
+		            </div>	            	  
+		    </c:forEach>
+		</div>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script>
 		$(document).ready(function() {

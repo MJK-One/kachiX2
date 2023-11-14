@@ -1,5 +1,7 @@
 package com.kachi.five.DAO;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -22,6 +24,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 	        }
 
 
+	}
+	@Override
+	public List<ReviewBean> getReviewsByPostId(int postID) {
+		sqlSession.selectList("com.kachi.five.ReviewMapper.getReviewsByPostId",postID);
+		return null;
 	}
 
 }

@@ -20,6 +20,7 @@ public class PostBean {
 	    private int discountRate;
 	    private String MainImageUrl;
 	    private String ContentImageUrl;
+	    private float rating;
 	    
 		public int getPostId() {
 			return postId;
@@ -98,6 +99,12 @@ public class PostBean {
 		}
 		public void setTotalprice(BigDecimal totalprice) {
 			this.totalprice = totalprice;
+		}
+		public float getRating() {
+			return rating;
+		}
+		public void setRating(float rating) {
+			this.rating = rating;
 		}
 
 	    

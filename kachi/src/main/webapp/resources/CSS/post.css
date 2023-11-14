@@ -207,9 +207,9 @@
 #product-menu.fixed {
     position: fixed;
     top: 80px;
-    width: 1000px; /* »ó´Ü °íÁ¤¹Ù°¡ ÀüÃ¼ ³Êºñ¸¦ Â÷ÁöÇÏµµ·Ï ¼³Á¤ */
+    width: 1000px; /* ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½Ã¼ ï¿½Êºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
     height : 50px;
-    z-index: 9999; /* ´Ù¸¥ ¿ä¼Ò À§¿¡ ¿Àµµ·Ï ¼³Á¤ */
+    z-index: 9999; /* ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 }
 .product-info li{
 	padding-left : 97px;
@@ -388,7 +388,7 @@ section {
     font-weight: 400;
     color: white;
 }
-/* °øµ¿±¸¸Å */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 .group-user {
 	justify-content: space-between;
 }
@@ -408,8 +408,8 @@ section {
 .join-btn {
     float: right;
     background-color: #ff6b00;
-    border-radius: 3px;
-    height: 35px;
+    border-radius: 6px;
+    height: 32px;
     width: 100px;
     line-height: 17px;
     font-weight: 600;
@@ -473,10 +473,7 @@ section {
     font-weight: 400;
     color: #aaa;
 }
-#join-btn {
-	position: relative;
-    bottom: 7px;
-}
+
 .review-all{
 	display : flex;
 	width : 100%;

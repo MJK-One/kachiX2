@@ -10,4 +10,5 @@ public interface PurchaseService {
 	public List<PurchaseBean> getPurchaseCompletedGroupBuy();
 	public void updateDeliveryStatus(int purchaseId);
 	public List<PurchaseBean> getPurchasesByUserID(String userID);
+	public void updatereviewWritten(int purchaseId);
 }

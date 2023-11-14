@@ -72,7 +72,7 @@ a{text-decoration-line: none;
     box-sizing: border-box;
     display : flex;
     border-bottom : 1px solid #ebebeb;
-    position: relative;   /* Ãß°¡ */
+    position: relative;   /* ï¿½ß°ï¿½ */
 }
 .basketlist .basket-img img {
 	width: 87%;
@@ -239,4 +239,14 @@ input[type=file]::file-selector-button:hover {
 }
 .delivery-status.blue{
 	color: dodgerblue;
+}
+.review-complete{
+
+    font-size: 20px;
+    border-radius: 8px;
+    color: #528aff;
+    width: 120px;
+    font-weight: 600;
+    margin-left: 586px;
+	
 }

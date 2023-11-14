@@ -34,6 +34,12 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 		List<PurchaseBean> posts = sqlSession.selectList("com.kachi.five.PurchaseMapper.selectPurchasesByUserID",userID);
 		return posts;
 	}
+
+	@Override
+	public void updatereviewWritten(int purchaseId) {
+		sqlSession.update("com.kachi.five.PurchaseMapper.updatereviewWritten",purchaseId);
+		
+	}
 	
 
 }

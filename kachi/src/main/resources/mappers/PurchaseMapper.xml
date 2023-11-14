@@ -52,6 +52,10 @@
 	    SET deliveryStatus = true
 	    WHERE purchaseID = #{purchaseId}
 	</update>
-	
+	<update id="updatereviewWritten" parameterType="int">
+	    UPDATE Purchase
+	    SET reviewWritten = true
+	    WHERE purchaseID = #{purchaseId}
+	</update>
 	
 </mapper>

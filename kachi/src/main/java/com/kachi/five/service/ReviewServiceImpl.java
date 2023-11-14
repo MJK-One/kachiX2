@@ -1,5 +1,7 @@
 package com.kachi.five.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,10 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDAO.insertReview(review);
 
 	}
-
+	@Override
+	public List<ReviewBean> getReviewsByPostId(int postID) {
+		
+		return reviewDAO.getReviewsByPostId(postID);
+	}
+	
 }
