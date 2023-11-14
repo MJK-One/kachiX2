@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kachi.five.bean.AddressBean;
 import com.kachi.five.bean.PostBean;
+import com.kachi.five.bean.PurchaseBean;
 import com.kachi.five.bean.UserBean;
+import com.kachi.five.service.PurchaseService;
 import com.kachi.five.service.UserService;
 import com.kachi.five.service.WishlistService;
 
@@ -25,7 +27,8 @@ public class MypageController {
 	private UserService userService;
 	@Autowired
 	private WishlistService wishlistService;
-	
+	@Autowired
+	private PurchaseService purchaseService;
 	@RequestMapping("/member/mypage")
 	public String mypageJsp(Model model , HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -125,6 +128,8 @@ public class MypageController {
 	    model.addAttribute("wishlist", wishlist);
 	    return "member/mychecklist";
 	}
+	
+	
 	@RequestMapping("member/basket")
 	public String basket(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -133,8 +138,8 @@ public class MypageController {
 	        // 로그인 페이지로 리다이렉트
 	        return "redirect:/member/loginform";
 	    }
-	    List<PostBean> wishlist = wishlistService.getPostsInWishlist(user.getUserID());
-	    model.addAttribute("wishlist", wishlist);
+	    List<PurchaseBean> posts = purchaseService.getPurchasesByUserID(user.getUserID());
+	    model.addAttribute("posts", posts);
 			return "member/basket";
 	}
 }

@@ -1,11 +1,17 @@
 package com.kachi.five.bean;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 public class PurchaseBean {
 	private int purchaseId;
     private String userId;
     private int postId;
+    private String title;
+    private BigDecimal price;  
+    private BigDecimal totalprice; 
+    private int discountRate;
+    private String MainImageUrl;
     private int groupBuyId;
     private String userName;  
     private String userEmail;  
@@ -16,6 +22,7 @@ public class PurchaseBean {
     private String deliveryAddress;
     private Date purchaseDate;
     private boolean deliveryStatus;
+    private boolean reviewWritten;
 	public int getPurchaseId() {
 		return purchaseId;
 	}
@@ -93,6 +100,42 @@ public class PurchaseBean {
 	}
 	public void setDeliveryStatus(boolean deliveryStatus) {
 		this.deliveryStatus = deliveryStatus;
+	}
+	public boolean isReviewWritten() {
+		return reviewWritten;
+	}
+	public void setReviewWritten(boolean reviewWritten) {
+		this.reviewWritten = reviewWritten;
+	}
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+	public BigDecimal getTotalprice() {
+		return totalprice;
+	}
+	public void setTotalprice(BigDecimal totalprice) {
+		this.totalprice = totalprice;
+	}
+	public int getDiscountRate() {
+		return discountRate;
+	}
+	public void setDiscountRate(int discountRate) {
+		this.discountRate = discountRate;
+	}
+	public String getMainImageUrl() {
+		return MainImageUrl;
+	}
+	public void setMainImageUrl(String mainImageUrl) {
+		MainImageUrl = mainImageUrl;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
     
     

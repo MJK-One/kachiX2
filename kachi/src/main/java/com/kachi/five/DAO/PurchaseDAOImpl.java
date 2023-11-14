@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kachi.five.bean.PostBean;
 import com.kachi.five.bean.PurchaseBean;
 @Repository
 public class PurchaseDAOImpl implements PurchaseDAO {
@@ -26,6 +27,12 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	@Override
 	public void updateDeliveryStatus(int purchaseId) {
 		sqlSession.update("com.kachi.five.PurchaseMapper.updateDeliveryStatus", purchaseId);
+	}
+
+	@Override
+	public List<PurchaseBean> getPurchasesByUserID(String userID) {
+		List<PurchaseBean> posts = sqlSession.selectList("com.kachi.five.PurchaseMapper.selectPurchasesByUserID",userID);
+		return posts;
 	}
 	
 

@@ -26,6 +26,13 @@
 	    ORDER BY p.deliveryStatus ASC
 	</select>
 	
+	<select id="selectPurchasesByUserID"  resultType="Purchase">
+		SELECT P.*, MainImage.imageUrl AS mainImageUrl , Post.price, Post.totalprice, Post.discountRate, Post.title
+		FROM Purchase P
+		JOIN Post ON P.postID = Post.postId
+		JOIN MainImage ON Post.postId = MainImage.postId
+	 	WHERE P.userID = #{userID};
+	</select>
 	<!-- update -->
 	<update id="updatePurchase" parameterType="Purchase">
 	    UPDATE Purchase
@@ -40,8 +47,10 @@
 	</delete>
 	
 	<update id="updateDeliveryStatus" parameterType="int">
-    UPDATE Purchase
-    SET deliveryStatus = true
-    WHERE purchaseID = #{purchaseId}
-</update>
+	    UPDATE Purchase
+	    SET deliveryStatus = true
+	    WHERE purchaseID = #{purchaseId}
+	</update>
+	
+	
 </mapper>

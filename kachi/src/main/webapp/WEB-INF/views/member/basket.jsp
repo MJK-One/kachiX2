@@ -28,10 +28,10 @@
 		<div class="screen"></div>
 		<div class="basket-num">
 			<li class="all">전체 구매 상품</li>
-			<li class="all-num">${wishlist.size()}</li>
+			<li class="all-num">${posts.size()}</li>
 		</div>
 		<div class="basket-main">
-		    <c:forEach items="${wishlist}" var="post">
+		    <c:forEach items="${posts}" var="post">
 		            <div class="basketlist">
 			            <a href="${pageContext.request.contextPath}/post/view/${post.postId}">
 			            <div class="basket-img"><img src="${post.mainImageUrl}" alt="이미지"></div>
@@ -42,7 +42,9 @@
 			                    <div class="basket-price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</div>
 			                    <div class="basket-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li></div>
 			            </a>
+			            		 <c:if test="${post.reviewWritten == false}">
 			         			 <button type="button" class="review">구매 후기</button>
+			         			 </c:if>
             					<div class="review-detail">         					
             						<h2>후기 작성</h2>       
             						<div class="pro-info-star">

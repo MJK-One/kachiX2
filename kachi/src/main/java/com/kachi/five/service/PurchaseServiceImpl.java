@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kachi.five.DAO.PurchaseDAO;
+import com.kachi.five.bean.PostBean;
 import com.kachi.five.bean.PurchaseBean;
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
@@ -27,6 +28,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public void updateDeliveryStatus(int purchaseId) {
 		purchaseDAO.getPurchaseCompletedGroupBuy();
 		
+	}
+
+	@Override
+	public List<PurchaseBean> getPurchasesByUserID(String userID) {
+		return purchaseDAO.getPurchasesByUserID(userID);
 	}
 
 }
