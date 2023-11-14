@@ -432,6 +432,7 @@
 	    let number = resultElement1.innerText;
 	    // 더하기/빼기
 	    if(type === 'plus') {
+	    	if(number < 5)
 	        number = parseInt(number) + 1;
 	    }else if(type === 'minus')  {
 	        if(number > 1) 
