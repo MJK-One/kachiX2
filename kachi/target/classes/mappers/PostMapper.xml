@@ -13,15 +13,14 @@
 		INSERT INTO Post (writerId,  categoryId,  title, content, price, salePeriod, saleStatus, discountRate)
 		VALUES (#{writerId},  #{categoryId},  #{title}, #{content}, #{price}, #{salePeriod}, #{saleStatus}, #{discountRate})
 	</insert>
-    <select id="getAllPosts" resultType="com.kachi.five.bean.PostBean"> 
-	  SELECT p.*, m.imageUrl as mainImageUrl , AVG(r.rating) as avgrating FROM Post p 
-	  LEFT JOIN MainImage m ON p.postId = m.postId
-      LEFT JOIN review r ON p.postId = r.postId
-      GROUP BY p.postId;
-      
+   <select id="getAllPosts" resultType="com.kachi.five.bean.PostBean"> 
+	    SELECT p.*, m.imageUrl as mainImageUrl , ROUND(AVG(r.rating), 2) as avgrating FROM Post p 
+	    LEFT JOIN MainImage m ON p.postId = m.postId
+	    LEFT JOIN review r ON p.postId = r.postId
+	    GROUP BY p.postId;
 	</select>
 	<select id="getPostsByID" resultType="com.kachi.five.bean.PostBean">
-	    SELECT p.*, AVG(r.rating) as avgrating
+	    SELECT p.*, ROUND(AVG(r.rating), 2) as avgrating
 	    FROM Post p
 	    LEFT JOIN review r ON p.postId = r.postId
 	    WHERE p.postId = #{postId}
