@@ -19,11 +19,13 @@
     </select>
 	<!-- 사용자의 찜 게시물을 가져옴 -->
 	<select id="getPostsInWishlist" resultType="com.kachi.five.bean.PostBean">
-	    SELECT p.*, m.imageUrl as mainImageUrl
-		FROM Post p 
-		LEFT JOIN MainImage m ON p.postId = m.postId
-		INNER JOIN Wishlist w ON p.postId = w.postId
-		WHERE w.userId = #{userId}
-		ORDER BY w.wishlistID DESC
+	    SELECT p.*, m.imageUrl as mainImageUrl, ROUND(AVG(r.rating), 2) as avgrating
+	    FROM Post p 
+	    LEFT JOIN MainImage m ON p.postId = m.postId
+	    LEFT JOIN Review r ON p.postId = r.postId
+	    INNER JOIN Wishlist w ON p.postId = w.postId
+	    WHERE w.userId = #{userId}
+	    GROUP BY p.postId
+	    ORDER BY w.wishlistID DESC
 	</select>
 </mapper>

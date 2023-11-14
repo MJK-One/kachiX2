@@ -27,12 +27,14 @@
 	</select>
 	
 	<select id="selectPurchasesByUserID"  resultType="Purchase">
-		SELECT P.*, MainImage.imageUrl AS mainImageUrl, Post.price, Post.totalprice, Post.discountRate, Post.title
-		FROM Purchase P
-		JOIN Post ON P.postID = Post.postId
-		JOIN MainImage ON Post.postId = MainImage.postId
-		JOIN groupbuy G ON P.groupBuyId = G.groupBuyID
-		WHERE P.userID = #{userID} AND G.status = 'completed';
+		    SELECT P.*, MainImage.imageUrl AS mainImageUrl, Post.price, Post.totalprice, Post.discountRate, Post.title, ROUND(AVG(review.rating), 2) as avgrating
+		    FROM Purchase P
+		    JOIN Post ON P.postID = Post.postId
+		    JOIN MainImage ON Post.postId = MainImage.postId
+		    JOIN groupbuy G ON P.groupBuyId = G.groupBuyID
+		    LEFT JOIN review ON Post.postId = review.postId
+		    WHERE P.userID = #{userID} AND G.status = 'completed'
+		    GROUP BY Post.postId;
 	</select>
 	<!-- update -->
 	<update id="updatePurchase" parameterType="Purchase">

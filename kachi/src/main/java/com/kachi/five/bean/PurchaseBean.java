@@ -23,6 +23,7 @@ public class PurchaseBean {
     private Date purchaseDate;
     private boolean deliveryStatus;
     private boolean reviewWritten;
+    private float avgrating;
 	public int getPurchaseId() {
 		return purchaseId;
 	}
@@ -136,6 +137,12 @@ public class PurchaseBean {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public float getAvgrating() {
+		return avgrating;
+	}
+	public void setAvgrating(float avgrating) {
+		this.avgrating = avgrating;
 	}
     
     

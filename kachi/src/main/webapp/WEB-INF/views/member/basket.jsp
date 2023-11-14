@@ -40,7 +40,7 @@
 			                    <div class="basket-price1"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</div>
 			                    <div class="basket-price2">${post.discountRate}%</div>
 			                    <div class="basket-price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</div>
-			                    <div class="basket-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li></div>
+			                    <div class="basket-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> ${post.avgrating}</li></div>
                     			<c:choose>
 								    <c:when test="${post.deliveryStatus == false}">
 								    	<img src="${pageContext.request.contextPath}/resources/img/del.svg" width="28" height="25">

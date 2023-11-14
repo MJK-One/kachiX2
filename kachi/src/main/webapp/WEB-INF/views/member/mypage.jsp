@@ -86,9 +86,9 @@
                                     <!--할인률--><li class="price1">${post.discountRate}%</li>
                                     <li class="price2"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
                                     <!--원가--><li class="price3"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
-                                    <li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
+                                    <li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> ${post.avgrating}</li>
                                 </div>
-                                <div class="pro-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li></div>
+                                <div class="pro-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> ${post.avgrating}</li></div>
                             </a>  
                         </div>          
                     </c:if>

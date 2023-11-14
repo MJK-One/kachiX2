@@ -35,19 +35,27 @@
 	    LEFT JOIN MainImage m ON p.postId = m.postId
 	    WHERE p.title LIKE CONCAT('%', #{query}, '%');
 	</select>
-	<select id="getAllPostsOrderBySalePeriod" resultType="com.kachi.five.bean.PostBean"> 
-	  SELECT p.*, m.imageUrl as mainImageUrl FROM Post p 
-	  LEFT JOIN MainImage m ON p.postId = m.postId 
-	  ORDER BY salePeriod ASC;
-	</select>
-	<select id="getAllPostsOrderBydiscountRate" resultType="com.kachi.five.bean.PostBean"> 
-	  SELECT p.*, m.imageUrl as mainImageUrl FROM Post p 
-	  LEFT JOIN MainImage m ON p.postId = m.postId 
-	  ORDER BY discountRate DESC;
-	</select>
-	<select id="getAllPostsOrderByrecent" resultType="com.kachi.five.bean.PostBean"> 
-	  SELECT p.*, m.imageUrl as mainImageUrl FROM Post p 
-	  LEFT JOIN MainImage m ON p.postId = m.postId 
-	  ORDER BY postDate DESC;
-	</select>
+<select id="getAllPostsOrderBySalePeriod" resultType="com.kachi.five.bean.PostBean"> 
+    SELECT p.*, m.imageUrl as mainImageUrl, ROUND(AVG(r.rating), 2) as avgrating FROM Post p 
+    LEFT JOIN MainImage m ON p.postId = m.postId 
+    LEFT JOIN Review r ON p.postId = r.postId
+    GROUP BY p.postId
+    ORDER BY salePeriod ASC;
+</select>
+
+<select id="getAllPostsOrderBydiscountRate" resultType="com.kachi.five.bean.PostBean"> 
+    SELECT p.*, m.imageUrl as mainImageUrl, ROUND(AVG(r.rating), 2) as avgrating FROM Post p 
+    LEFT JOIN MainImage m ON p.postId = m.postId 
+    LEFT JOIN Review r ON p.postId = r.postId
+    GROUP BY p.postId
+    ORDER BY discountRate DESC;
+</select>
+
+<select id="getAllPostsOrderByrecent" resultType="com.kachi.five.bean.PostBean"> 
+    SELECT p.*, m.imageUrl as mainImageUrl, ROUND(AVG(r.rating), 2) as avgrating FROM Post p 
+    LEFT JOIN MainImage m ON p.postId = m.postId 
+    LEFT JOIN Review r ON p.postId = r.postId
+    GROUP BY p.postId
+    ORDER BY postDate DESC;
+</select>
 </mapper>

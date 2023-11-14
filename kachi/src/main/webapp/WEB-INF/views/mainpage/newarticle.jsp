@@ -81,7 +81,7 @@
 		                  <li class="price2">${post.discountRate}%</li>
 		                  <li class="price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
 		               <div class="pro-info">
-		                  <li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
+		                  <li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> ${post.avgrating}</li>
 		               </div>
 		               <div class="line"></div>
 		             </div>   
@@ -102,7 +102,7 @@
 		                  <li class="price2">${post.discountRate}%</li>
 		                  <li class="price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
 		               <div class="pro-info">
-		                  <li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>
+		                  <li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> ${post.avgrating}</li>
 		               </div>
 		               <div class="line"></div>
 		             </div>   

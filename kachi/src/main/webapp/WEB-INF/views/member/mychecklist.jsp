@@ -38,7 +38,7 @@
 		                    <div class="check-price1"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</div>
 		                    <div class="check-price2">${post.discountRate}%</div>
 		                    <div class="check-price3"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</div>
-		                    <div class="check-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li></div>
+		                    <div class="check-star"><li><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> ${post.avgrating}</li></div>
 		                </div>
 		            </div>
 		        </a>
