@@ -64,28 +64,29 @@
             							<img src="${post.mainImageUrl}" alt="이미지">
             							<div class="review-de-middle">
             								<li>${post.title}</li>
-            								<div class="star">
-	            								<div class="rating">											   
-												    <i class="rating__star far fa-star"></i>
-												    <i class="rating__star far fa-star"></i>
-												    <i class="rating__star far fa-star"></i>
-												    <i class="rating__star far fa-star"></i>
-												    <i class="rating__star far fa-star"></i>
-												    <span class="rating__result"></span> 
-												</div>
-											</div>
+            								
             							</div>	
             						</div>
             						<div class="review-write">   
-									    <form method="post" enctype="multipart/form-data">
-									        <input type="file" name="reviewImage" accept="image/*"><br>
-									        <textarea name="reviewContent" rows="5" cols="50"></textarea><br>
-									        
-									    </form>
-									</div>    
-            						<button class="submit">
-            							작성
-            						</button>			       						
+    <form method="post" action="${pageContext.request.contextPath}/review/submit" enctype="multipart/form-data">
+        <input type="hidden" name="purchaseId" value="${post.purchaseId}">
+        <input type="hidden" name="postId" value="${post.postId}">
+        <input type="file" name="reviewImage" accept="image/*"><br>
+        <textarea name="reviewContent" rows="5" cols="50"></textarea><br>
+        <div class="star">
+            <div class="rating">                                               
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <span class="rating__result"></span> 
+            </div>
+        </div>
+        <input type="hidden" name="rating" class="rating__result" value=1>
+        <button type="submit" class="submit">작성</button>
+    </form>
+</div>           								       						
             					</div>       	
 			                </div>
 		            </div>	            	  
@@ -116,36 +117,52 @@
 		});
 		</script>
 		<script>
-		const ratingStars = [...document.getElementsByClassName("rating__star")];
-		const ratingResult = document.querySelector(".rating__result");
+		// rating 클래스를 갖는 모든 요소를 가져옵니다.
+		const ratingElements = document.querySelectorAll('.rating');
 
-		printRatingResult(ratingResult);
+		ratingElements.forEach((ratingElement, index) => {
+		    const ratingStars = [...ratingElement.getElementsByClassName("rating__star")];
+		    const ratingResult = ratingElement.querySelector(".rating__result");
+		    const formElement = ratingElement.closest("form"); // 폼 요소를 찾습니다.
 
-		function executeRating(stars, result) {
-			const starClassActive = "rating__star fas fa-star";
-			const starClassUnactive = "rating__star far fa-star";
-			const starsLength = stars.length;
-				let i;
-				stars.map((star) => {
-					star.onclick = () => {
-						i = stars.indexOf(star);
+		    
 
-						if (star.className.indexOf(starClassUnactive) !== -1) {
-							printRatingResult(result, i + 1);
-							for (i; i >= 0; --i) stars[i].className = starClassActive;
-						} else {
-							printRatingResult(result, i);
-							for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
-						}
-					};
-				});
-			}
+	        if (!formElement) {
+	            console.error('Form element not found');
+	            return;
+	        }
+	        const ratingInput = formElement.querySelector("input[name='rating']"); // 폼에서 rating 필드를 찾습니다.
+	        
+		    printRatingResult(ratingResult);
+		    executeRating(ratingStars, ratingResult);
+		    
+		    function executeRating(stars, result) {
+		        const starClassActive = "rating__star fas fa-star";
+		        const starClassUnactive = "rating__star far fa-star";
 
-		function printRatingResult(result, num = 0) {
-			result.textContent = num.toString();
-		}
-		executeRating(ratingStars, ratingResult);
-		</script>		
+		        stars.map((star) => {
+		            star.onclick = () => {
+		                let i = stars.indexOf(star);
+
+		                if (star.className.indexOf(starClassUnactive) !== -1) {
+		                    printRatingResult(result, i + 1);
+		                    for (i; i >= 0; --i) stars[i].className = starClassActive;
+		                } else {
+		                    printRatingResult(result, i);
+		                    for (i; i < stars.length; ++i) stars[i].className = starClassUnactive;
+		                }
+		                ratingInput.value = result.textContent;
+		            };
+		        });
+		    }
+		    function printRatingResult(result, num = 0) {
+		        result.textContent = num.toString();
+		    }
+
+		    
+		});
+		</script>
+		
 	</div>
 </body>
 </html>

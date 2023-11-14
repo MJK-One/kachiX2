@@ -40,6 +40,7 @@ public class ReviewController {
     public String submitReview(@RequestParam("purchaseId") int purchaseId,
                                @RequestParam("reviewContent") String content,
                                @RequestParam("rating") float rating,
+                               @RequestParam("postId") int postId,
                                @RequestParam("reviewImage") MultipartFile imageFile) {
 
 	    
@@ -48,9 +49,9 @@ public class ReviewController {
         review.setPurchaseID(purchaseId);
         review.setContent(content);
         review.setRating(rating);
+        review.setPostID(postId);
 
-        // 리뷰 저장
-        reviewService.insertReview(review);
+       
 
         // 이미지가 있으면 저장
         if (!imageFile.isEmpty()) {
@@ -91,7 +92,9 @@ public class ReviewController {
                 return "error";
             }
         }
-
+        System.out.println(review.getPurchaseID()+"," + review.getContent()+"," + review.getRating()+","+review.getPostID());
+        // 리뷰 저장
+        reviewService.insertReview(review);
         return "redirect:/";
     }
 }
