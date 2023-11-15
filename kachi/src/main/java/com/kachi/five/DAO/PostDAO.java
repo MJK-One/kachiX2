@@ -13,4 +13,5 @@ public interface PostDAO {
 	 public List<PostBean> getAllPostsOrderBySalePeriod();
 	 public List<PostBean> getAllPostsOrderBydiscountRate();
 	 public List<PostBean> getAllPostsOrderByrecent();
+	 public List<PostBean> getAllPostsOrderByrating();
 }

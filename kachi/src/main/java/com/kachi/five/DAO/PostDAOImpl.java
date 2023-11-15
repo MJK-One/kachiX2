@@ -64,4 +64,10 @@ public class PostDAOImpl implements PostDAO {
 	public List<PostBean> getAllPostsOrderByrecent() {
 	    return sqlSession.selectList("com.kachi.five.PostMapper.getAllPostsOrderByrecent");
 	}
+	@Override
+	public List<PostBean> getAllPostsOrderByrating() {
+		
+		return sqlSession.selectList("com.kachi.five.PostMapper.getAllPostsOrderByrating");
+	}
+	
 }

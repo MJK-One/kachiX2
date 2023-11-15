@@ -46,11 +46,7 @@
 		    </div>	
 		</div>
 		<!--인기순, 최신순 -->
-		<div class="items-order">
-			<!-- <button class="pop-order">인기순</button> -->
-			<button class="recent-order">최신순</button>
-			<button class="sale-order item-active">할인율</button>
-		</div>
+
 		<script>
 		$(document).ready(function() {
 		    const buttons = $('.items-order button');

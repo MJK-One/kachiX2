@@ -128,7 +128,7 @@ public class HomeController {
 		HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute("loggedInUser");
         
-		List<PostBean> posts = postService.getAllPosts();
+		List<PostBean> posts = postService.getAllPostsOrderByrating();
         List<CategoryBean> categories = categoryService.getAllCategories();
         model.addAttribute("user", user); 
         model.addAttribute("categories",categories);

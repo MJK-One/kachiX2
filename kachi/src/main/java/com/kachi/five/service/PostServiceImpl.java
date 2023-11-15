@@ -46,4 +46,9 @@ public class PostServiceImpl implements PostService {
     public List<PostBean> getAllPostsOrderByrecent() {
         return postDAO.getAllPostsOrderByrecent();
     }
+	@Override
+	public List<PostBean> getAllPostsOrderByrating() {
+		return postDAO.getAllPostsOrderByrating();
+	}
+	
 }

@@ -58,4 +58,11 @@
     GROUP BY p.postId
     ORDER BY postDate DESC;
 </select>
+<select id="getAllPostsOrderByrating" resultType="com.kachi.five.bean.PostBean"> 
+    SELECT p.*, m.imageUrl as mainImageUrl, ROUND(AVG(r.rating), 2) as avgrating FROM Post p 
+    LEFT JOIN MainImage m ON p.postId = m.postId 
+    LEFT JOIN Review r ON p.postId = r.postId
+    GROUP BY p.postId
+    ORDER BY avgrating DESC;
+</select>
 </mapper>
