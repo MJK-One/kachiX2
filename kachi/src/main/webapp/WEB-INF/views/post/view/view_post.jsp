@@ -20,7 +20,7 @@
     <div id="top-menu">
      	<button type="button"  onclick = "history.back()" class="home"><img src="${pageContext.request.contextPath}/resources/img/back1.svg" width="30" height="30"></button>
      	<img class="top-post-img" src="${post.mainImageUrl}" alt="Post image" width="50" height="50">
-     	<div class="top-star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>	</div>
+     	<div class="top-star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> ${post.avgrating}</li>	</div>
      	<div class="top-post-name">
      		<li>${post.title}</li>
      	</div>
@@ -65,7 +65,7 @@
 				<li class="price-w"><fmt:formatNumber value="${post.price}" pattern="#,###"/>원</li>
 				<li class="price-sw"><fmt:formatNumber value="${post.totalprice}" pattern="#,###"/>원</li>
 			</div>
-			<li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> 4.5</li>	
+			<li class="star"><img src="${pageContext.request.contextPath}/resources/img/star.svg" width="17" height="17"> ${post.avgrating}</li>	
 		</div>
 		<div class="product-name">
 			<li class="pro-name">${post.title}</li>
@@ -281,7 +281,7 @@
 	                <i class="rating__star far fa-star"></i>
 	                <span class="rating__result">${post.avgrating}</span> 
 	            </div>
-				<li>(상품후기수 2건)</li>
+				<li>(상품후기수 ${reviews.size()}건)</li> 
 			</div>
 		</div>
 	    <c:forEach var="review" items="${reviews}">
@@ -300,6 +300,7 @@
 		    	<div class="review-m">${review.content}</div>
 		    </div>
 		</c:forEach>
+		<div style="visibility : hidden;"><br><br></div>
 		<div style="visibility : hidden;"><br><br></div>
 	</section>
 	

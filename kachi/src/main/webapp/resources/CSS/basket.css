@@ -167,12 +167,13 @@ a{text-decoration-line: none;
 .rating {
 	position: relative;
     width: 80%;
-    margin-top: 11px;
+    margin-top: -63px;
     background: transparent;
     display: flex;
     gap: 0.3em;
     padding: 5px;
     overflow: hidden;
+    margin-left: 102px;
 }
 
 .rating__result {
