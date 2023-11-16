@@ -26,7 +26,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Override
 	public void updateDeliveryStatus(int purchaseId) {
-		purchaseDAO.getPurchaseCompletedGroupBuy();
+		purchaseDAO.updateDeliveryStatus(purchaseId);
 		
 	}
 

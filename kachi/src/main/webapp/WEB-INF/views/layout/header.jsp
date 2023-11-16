@@ -22,7 +22,7 @@
 		<div class="top-1">
 				<img class="icon" src="${pageContext.request.contextPath}/resources/img/icon.jpg" width="60" height="60">
 				<button type="button" class="search" style="cursor:pointer;" onclick="showSearchJSP()">
-					<li class="search-title">누가해도 맛있는 닭강정!</li>
+					<li class="search-title">앗! 신발이 타이어보다 싸다!</li>
 					<img class="search-i" src="${pageContext.request.contextPath}/resources/img/search.svg" width="26" height="32">
 				</button>
 				<script>

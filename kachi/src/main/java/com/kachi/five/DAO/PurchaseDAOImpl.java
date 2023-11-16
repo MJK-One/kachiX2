@@ -26,7 +26,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 
 	@Override
 	public void updateDeliveryStatus(int purchaseId) {
-		sqlSession.update("com.kachi.five.PurchaseMapper.updateDeliveryStatus", purchaseId);
+				sqlSession.update("com.kachi.five.PurchaseMapper.updateDeliveryStatus", purchaseId);
 	}
 
 	@Override

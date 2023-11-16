@@ -180,7 +180,7 @@
 				</header>
 				<div class="del-item">
 					<strong>무료배송</strong> 
-					<strong class="del-day">11/13(월)</strong>
+					<strong class="del-day">11/18(토)</strong>
 					<strong>도착</strong>
 					<button class="ask"><img src="${pageContext.request.contextPath}/resources/img/ask.svg" width="16" height="16"></button>	
 				</div>
