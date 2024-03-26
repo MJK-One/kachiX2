@@ -54,17 +54,17 @@ Server <br>
 ## 화면 구성 Screen Layout
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/5610caa8-dec2-49e8-82ff-742108150f74" width="333" height="460"/>
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/20b40dc0-1aa2-449b-bd63-990eeb450cb6" width="333" height="460"/>
-<img src="https://github.com/MJK-One/kachiX2/assets/100755538/4f2e651f-cf4e-40bb-b165-d9ceb337f2ec" width="333" height="460"/> <br>
+<img src="https://github.com/MJK-One/kachiX2/assets/100755538/4f2e651f-cf4e-40bb-b165-d9ceb337f2ec" width="333" height="460"/>
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/ff0d4c72-115e-4949-9ba3-d3eb438fff46" width="333" height="460"/>
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/327bd284-1b7c-4a8d-afd7-3c98379a14fc" width="333" height="460"/>
-<img src="https://github.com/MJK-One/kachiX2/assets/100755538/92fa6f35-a474-4521-91f6-78cbaf579f82" width="333" height="460"/> <br>
+<img src="https://github.com/MJK-One/kachiX2/assets/100755538/92fa6f35-a474-4521-91f6-78cbaf579f82" width="333" height="460"/> 
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/b7873295-3496-42b1-a521-310be4181a5e" width="333" height="460"/>
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/6c5a0cc0-8c4b-4861-b62f-233004b1a9bc" width="333" height="460"/> 
-<img src="https://github.com/MJK-One/kachiX2/assets/100755538/a8a82d5a-5e1b-4ed9-8c51-67f59f773b46" width="333" height="460"/> <br>
+<img src="https://github.com/MJK-One/kachiX2/assets/100755538/a8a82d5a-5e1b-4ed9-8c51-67f59f773b46" width="333" height="460"/> 
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/45816bc4-58fc-43bf-8c45-9c6c0abf19e5" width="333" height="390"/>
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/e9696a7a-fa32-4df1-8f76-e5d34f3fdd41" width="333" height="390"/> 
-<img src="https://github.com/MJK-One/kachiX2/assets/100755538/3810ed1f-c588-41a6-871e-69b2cf9892a0" width="333" height="400"/> <br>
+<img src="https://github.com/MJK-One/kachiX2/assets/100755538/3810ed1f-c588-41a6-871e-69b2cf9892a0" width="333" height="400"/> 
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/2a52d8d2-3f32-4c4a-a34f-546c525835da" width="333" height="400"/>
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/bc9087bb-f405-4c77-8984-e45df00c0321" width="333" height="400"/>
-<img src="https://github.com/MJK-One/kachiX2/assets/100755538/22a3dd8d-a4c4-4749-9ab6-2338ab28cb39" width="333" height="400"/> <br>
+<img src="https://github.com/MJK-One/kachiX2/assets/100755538/22a3dd8d-a4c4-4749-9ab6-2338ab28cb39" width="333" height="400"/> 
 <img src="https://github.com/MJK-One/kachiX2/assets/100755538/f3846815-06d0-4166-ade7-32eaae457b07" width="333" height="400"/>
