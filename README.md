@@ -1,3 +1,2 @@
-# kachiX2
-<h1>같이의 가치</h1>
-![icon](https://github.com/MJK-One/kachiX2/assets/100755538/1330ec02-0d40-433d-a959-56a10826173a)
+# 같이의 가
+![icon](https://github.com/MJK-One/kachiX2/assets/100755538/f1c68c79-2fbb-415d-a39a-05a80c2f8697)
