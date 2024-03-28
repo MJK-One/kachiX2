@@ -10,8 +10,8 @@ import com.kachi.five.bean.UserBean;
 
 public class LogoutServiceImpl implements LogoutService {
 
-    private static final String CLIENT_ID = "mp5bUy7BFPU5qVPt5OgE";
-    private static final String CLIENT_SECRET = "rrpmQIm5cT";
+    private static final String CLIENT_ID = "";
+    private static final String CLIENT_SECRET = "";
 	
 	@Override
 	 public void logout(UserBean user) {
