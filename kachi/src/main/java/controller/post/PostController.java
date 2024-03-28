@@ -55,10 +55,10 @@ public class PostController {
 	private ContentImageService contentImgService;
 	@Autowired
 	private GroupBuyService groupBuyService;
-	String accessKey = "AKIA4PFYHLKYAQRQO7SQ"; // 실제 AWS Access Key
-    String secretKey = "YCNMJad4dfSm+eJZ+z6g2nIlE2aC6nnBhHnmPuFh"; // 실제 AWS Secret Key
-    String region = "ap-northeast-2"; // 예: "us-west-2", "ap-northeast-2" 등
-    String bucketName = "gatchibucket";
+	String accessKey = ""; // 실제 AWS Access Key
+    String secretKey = ""; // 실제 AWS Secret Key
+    String region = ""; // 예: "us-west-2", "ap-northeast-2" 등
+    String bucketName = "";
     StorageService storageService =
             new StorageService(accessKey, secretKey, region, bucketName);
     
