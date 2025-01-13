@@ -6,7 +6,7 @@
 > <b>**유한대학교 컴퓨터소프트웨어공학과 졸업작품**</b><br>
 > <b>**개발기간 : 2023.06 ~ 2023.11**</b>
 ## 웹 개발팀 Development Team
-
+김민준(Front-End,Back-End) 장민석(Back-End, Server, DataBase)
 ## 프로젝트 소개 Project introduction
 <b>기본적인 쇼핑몰 웹에 공동구매 시스템을 추가한 웹 사이트 입니다.</b> <br>
 <b>공동구매 시스템이란??</b> &nbsp;&nbsp; 특정 물건을 개인이 아닌 단체로 구매하는 방식으로 파티를 이용해 파티원이 다 찼을 경우 구매되는 시스템 <br>
