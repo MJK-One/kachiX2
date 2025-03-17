@@ -2,8 +2,8 @@
 
 <p align="center"><img src="https://github.com/MJK-One/kachiX2/assets/100755538/44170fec-94d4-4f47-87be-a378a0131313"/ width="400" height="100"></p>
 
-Kachi JDBC 버전 
-JPA 버전 : https://github.com/JangMinseok1211/kachi_JPA.git
+## Kachi JDBC Version 
+### JPA Version : https://github.com/JangMinseok1211/kachi_JPA.git
 
 ## 웹 프로젝트 WebPage Project
 > <b>**개발기간 : 2023.06 ~ 2023.11**</b>
